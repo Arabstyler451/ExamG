@@ -1,0 +1,24 @@
+Set Task Brief
+
+You work for a software development company. The company has secured a new contract to develop a digital solution for Greenfield Local Hub (GLH). GLH is a cooperative of local farmers and food producers. GLH offers:
+
+a single location retail outlet for locally produced food and drink
+collective marketing for local farmers and food producers
+product management, stock control and product  traceability.
+
+GLH (the client) would like to develop a digital solution that will:
+
+provide information about the producers, their methods and the benefits of buying locally
+allow customers to:
+
+ 	- view products with transparent pricing and availability
+ 	- place orders for collection or delivery
+ 	- manage their account and view order history
+
+provide a dashboard to enable producers to manage stock levels, update product details and view orders.
+
+The client has conducted market research with existing customers to identify features that could be included in the digital. The features suggested by the client are:
+
+order management, scheduling and tracking features
+a loyalty scheme that provides discounts and special offers
+accessibility features to support a wide range of users.
