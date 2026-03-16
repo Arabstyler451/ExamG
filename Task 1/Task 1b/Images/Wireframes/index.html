@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenfield Local Hub – Fresh From Our Farmers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:        #1B4D3F;
+    --green-light:  #2a6b58;
+    --green-dark:   #122e25;
+    --green-faint:  #f0f5f3;
+    --brown:        #7C5C3E;
+    --brown-light:  #9b7455;
+    --brown-faint:  #f7f3ee;
+    --white:        #FFFFFF;
+    --off-white:    #F9F9F9;
+    --border:       #E2E2E2;
+    --border-dark:  #C8C8C8;
+    --text:         #1A1A1A;
+    --text-muted:   #6B6B6B;
+    --text-light:   #9A9A9A;
+    --shadow-xs:    0 1px 3px rgba(0,0,0,.06);
+    --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
+    --shadow-md:    0 6px 20px rgba(0,0,0,.10);
+    --shadow-lg:    0 16px 48px rgba(0,0,0,.12);
+    --radius:       0px;
+    --font-serif:   'Playfair Display', Georgia, serif;
+    --font-sans:    'DM Sans', system-ui, sans-serif;
+    --transition:   all .22s ease;
+  }
+ 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--font-sans); background: var(--white); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; font-family: var(--font-sans); }
+  ul { list-style: none; }
+ 
+  /* SKIP LINK */
+  .skip-link {
+    position: absolute; top: -60px; left: 1rem;
+    background: var(--green); color: var(--white);
+    padding: .5rem 1rem; font-size: .85rem; z-index: 9999; transition: top .2s;
+  }
+  .skip-link:focus { top: 0; }
+ 
+  /* PAGE SYSTEM */
+  .page { display: none; animation: fadePage .3s ease; }
+  .page.active { display: block; }
+  @keyframes fadePage { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+ 
+  /* ─── ACCESSIBILITY BAR ─── */
+  .a11y-bar {
+    background: var(--green-dark);
+    padding: .35rem 2rem;
+    display: flex; align-items: center; justify-content: flex-end; gap: .6rem;
+  }
+  .a11y-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.7);
+    font-size: .72rem; font-family: var(--font-sans);
+    padding: .2rem .75rem; cursor: pointer; transition: var(--transition);
+    letter-spacing: .03em;
+  }
+  .a11y-btn:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+ 
+  /* ─── HEADER ─── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    max-width: 1320px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center; gap: 2rem; height: 72px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: .8rem; flex-shrink: 0;
+  }
+  .nav-logo-mark {
+    width: 38px; height: 38px;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; }
+  .nav-logo-text { line-height: 1.15; }
+  .nav-logo-text strong {
+    display: block; font-family: var(--font-serif);
+    font-size: 1.1rem; font-weight: 600; color: var(--green-dark); letter-spacing: -.01em;
+  }
+  .nav-logo-text span {
+    font-size: .62rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: .1rem; flex: 1;
+  }
+  .nav-links a {
+    font-size: .875rem; font-weight: 500; color: var(--text-muted);
+    padding: .5rem .9rem; transition: var(--transition); white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a.active { color: var(--green); border-bottom-color: var(--green); }
+  .nav-divider { width: 1px; height: 28px; background: var(--border); margin: 0 .5rem; }
+  .nav-actions { display: flex; align-items: center; gap: .6rem; margin-left: auto; flex-shrink: 0; }
+  .nav-icon-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-muted); width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 600; transition: var(--transition);
+    position: relative; cursor: pointer; letter-spacing: .03em;
+  }
+  .nav-icon-btn:hover { border-color: var(--green); color: var(--green); }
+  .cart-badge {
+    position: absolute; top: -5px; right: -5px;
+    background: var(--brown); color: var(--white);
+    font-size: .6rem; font-weight: 700; width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+ 
+  /* ─── BUTTONS ─── */
+  .btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .75rem 1.75rem; font-size: .875rem; font-weight: 600;
+    border: none; transition: var(--transition); cursor: pointer;
+    letter-spacing: .02em; font-family: var(--font-sans);
+  }
+  .btn-primary { background: var(--green); color: var(--white); }
+  .btn-primary:hover { background: var(--green-light); }
+  .btn-outline { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+  .btn-outline:hover { background: var(--green); color: var(--white); }
+  .btn-brown { background: var(--brown); color: var(--white); }
+  .btn-brown:hover { background: var(--brown-light); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .btn-sm { padding: .5rem 1.1rem; font-size: .8rem; }
+  .btn-lg { padding: .9rem 2.2rem; font-size: .95rem; }
+  .btn-full { width: 100%; justify-content: center; }
+ 
+  /* ─── IMAGE PLACEHOLDER ─── */
+  .img-placeholder {
+    background: #E8E8E8;
+    display: flex; align-items: center; justify-content: center;
+    color: #999; font-size: .8rem; font-weight: 500;
+    letter-spacing: .06em; text-transform: uppercase;
+    border: 1px solid #D8D8D8;
+  }
+  .img-placeholder.square { aspect-ratio: 1; }
+  .img-placeholder.landscape { aspect-ratio: 16/9; }
+  .img-placeholder.portrait { aspect-ratio: 3/4; }
+  .img-placeholder.wide { aspect-ratio: 21/9; }
+ 
+  /* ─── LAYOUT ─── */
+  .section { padding: 5rem 2rem; }
+  .section-sm { padding: 3rem 2rem; }
+  .container { max-width: 1320px; margin: 0 auto; }
+  .container-sm { max-width: 900px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-block; font-size: .72rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--brown);
+    margin-bottom: .75rem;
+  }
+  .section-title {
+    font-family: var(--font-serif); font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 600; color: var(--green-dark); line-height: 1.2;
+  }
+  .section-sub {
+    color: var(--text-muted); font-size: 1rem; max-width: 520px;
+    margin-top: .75rem; line-height: 1.7;
+  }
+  .row { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+ 
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--green-dark);
+    min-height: 86vh; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(135deg, rgba(124,92,62,.15) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,.02) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,.02) 80px);
+  }
+  .hero-inner {
+    max-width: 1320px; margin: 0 auto; padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; position: relative; z-index: 1; width: 100%;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(124,92,62,.25); border: 1px solid rgba(124,92,62,.4);
+    color: #d4a97a; font-size: .72rem; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: .3rem .9rem; margin-bottom: 1.4rem;
+  }
+  .hero-eyebrow-dot { width: 6px; height: 6px; background: #d4a97a; }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 700; color: var(--white); line-height: 1.12;
+    margin-bottom: 1.3rem;
+  }
+  .hero-title em { font-style: italic; color: #d4a97a; }
+  .hero-desc {
+    color: rgba(255,255,255,.68); font-size: 1.05rem;
+    line-height: 1.75; max-width: 480px; margin-bottom: 2.2rem;
+  }
+  .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 3rem;
+    padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .hero-stat strong {
+    display: block; font-family: var(--font-serif);
+    font-size: 2rem; color: #d4a97a; line-height: 1;
+  }
+  .hero-stat span {
+    font-size: .72rem; color: rgba(255,255,255,.5);
+    text-transform: uppercase; letter-spacing: .08em; margin-top: .25rem; display: block;
+  }
+  .hero-visual-stack { display: flex; flex-direction: column; gap: 1rem; }
+  .hero-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+  .hero-card-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: .4rem;
+  }
+  .hero-card-value {
+    font-family: var(--font-serif); font-size: 1.6rem; color: var(--white); font-weight: 600;
+  }
+  .hero-card-sub { font-size: .8rem; color: rgba(255,255,255,.5); margin-top: .2rem; }
+  .hero-card-row {
+    display: flex; gap: 1rem; margin-top: .9rem;
+    padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .hero-card-pill {
+    background: rgba(255,255,255,.08); padding: .25rem .7rem;
+    font-size: .72rem; color: rgba(255,255,255,.6);
+  }
+ 
+  /* ─── PAGE HERO (inner pages) ─── */
+  .page-hero {
+    background: var(--white); border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+  }
+  .page-hero-inner { max-width: 1320px; margin: 0 auto; }
+  .page-eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--brown); margin-bottom: .5rem; }
+  .page-hero h1 { font-family: var(--font-serif); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; color: var(--green-dark); }
+  .page-hero p { color: var(--text-muted); font-size: .95rem; margin-top: .5rem; max-width: 540px; line-height: 1.65; }
+  .breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: var(--text-light); margin-bottom: .75rem; }
+  .breadcrumb a { color: var(--text-muted); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--green); }
+  .breadcrumb-sep { color: var(--border-dark); }
+ 
+  /* ─── PRODUCT CARD ─── */
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1px; }
+  .product-grid-gap { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.5rem; }
+  .product-card {
+    background: var(--white); border: 1px solid var(--border);
+    transition: var(--transition); cursor: pointer; overflow: hidden;
+  }
+  .product-card:hover { border-color: var(--green); box-shadow: var(--shadow-md); }
+  .product-card:hover .pc-img-inner { transform: scale(1.03); }
+  .pc-img { overflow: hidden; }
+  .pc-img-inner {
+    width: 100%; aspect-ratio: 1;
+    transition: transform .4s ease;
+  }
+  .pc-img-inner .img-placeholder { height: 100%; aspect-ratio: 1; }
+  .pc-badge {
+    position: absolute; top: .75rem; left: .75rem;
+    background: var(--green); color: var(--white);
+    font-size: .65rem; font-weight: 700; padding: .2rem .6rem;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .pc-badge.brown { background: var(--brown); }
+  .pc-wrap { position: relative; }
+  .pc-body { padding: 1.1rem 1.2rem 1.3rem; }
+  .pc-producer { font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--brown); margin-bottom: .3rem; }
+  .pc-name { font-weight: 600; font-size: .95rem; margin-bottom: .3rem; color: var(--text); line-height: 1.3; }
+  .pc-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: .9rem; }
+  .pc-footer { display: flex; align-items: center; justify-content: space-between; }
+  .pc-price { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; color: var(--green); }
+  .pc-price small { font-family: var(--font-sans); font-size: .7rem; color: var(--text-muted); font-weight: 400; }
+  .pc-avail { font-size: .68rem; font-weight: 600; padding: .2rem .55rem; letter-spacing: .04em; }
+  .pc-avail.in { background: #eaf4ef; color: #1a6b40; }
+  .pc-avail.low { background: #fdf3e7; color: #9a5a10; }
+  .pc-avail.out { background: #fde8e8; color: #a0281e; }
+ 
+  /* ─── PRODUCER CARD ─── */
+  .producer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .producer-card {
+    background: var(--white); border: 1px solid var(--border);
+    padding: 2rem; transition: var(--transition); cursor: pointer;
+  }
+  .producer-card:hover { border-color: var(--green); box-shadow: var(--shadow-md); }
+  .producer-img { width: 100%; aspect-ratio: 16/9; margin-bottom: 1.2rem; }
+  .producer-name { font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem; margin-bottom: .3rem; color: var(--green-dark); }
+  .producer-type { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; color: var(--brown); margin-bottom: .7rem; }
+  .producer-desc { font-size: .85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem; }
+  .producer-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .tag {
+    background: var(--off-white); color: var(--text-muted);
+    font-size: .7rem; padding: .2rem .65rem;
+    border: 1px solid var(--border); font-weight: 500;
+  }
+ 
+  /* ─── FORMS ─── */
+  .form-group { margin-bottom: 1.2rem; }
+  .form-label { display: block; font-size: .82rem; font-weight: 600; color: var(--text); margin-bottom: .4rem; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: .75rem 1rem;
+    border: 1.5px solid var(--border);
+    font-family: var(--font-sans); font-size: .875rem;
+    background: var(--white); color: var(--text);
+    transition: var(--transition); outline: none; appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--green); box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+  }
+  .form-textarea { min-height: 110px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-hint { font-size: .75rem; color: var(--text-muted); margin-top: .35rem; }
+ 
+  /* ─── AUTH ─── */
+  .auth-page {
+    min-height: calc(100vh - 73px);
+    background: var(--off-white);
+    display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem;
+  }
+  .auth-box {
+    background: var(--white); padding: 2.8rem;
+    width: 100%; max-width: 460px;
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  }
+  .auth-logo-bar { display: flex; align-items: center; gap: .75rem; margin-bottom: 2rem; justify-content: center; }
+  .auth-logo-mark { width: 44px; height: 44px; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .auth-logo-mark svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2; }
+  .auth-title { font-family: var(--font-serif); font-size: 1.7rem; color: var(--green-dark); text-align: center; margin-bottom: .3rem; }
+  .auth-sub { font-size: .875rem; color: var(--text-muted); text-align: center; margin-bottom: 2rem; }
+  .auth-footer { text-align: center; font-size: .83rem; color: var(--text-muted); margin-top: 1.3rem; }
+  .auth-footer a { color: var(--green); font-weight: 600; }
+ 
+  /* ─── CART ─── */
+  .cart-table { width: 100%; border-collapse: collapse; }
+  .cart-table th {
+    text-align: left; font-size: .72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
+    padding: .75rem 1rem; background: var(--off-white); border-bottom: 1px solid var(--border);
+  }
+  .cart-table td { padding: 1.1rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .cart-product { display: flex; align-items: center; gap: 1rem; }
+  .cart-product-thumb { width: 60px; height: 60px; flex-shrink: 0; }
+  .cart-product-info strong { display: block; font-size: .9rem; font-weight: 600; }
+  .cart-product-info small { color: var(--text-muted); font-size: .78rem; }
+  .qty-ctrl { display: flex; align-items: center; gap: .4rem; }
+  .qty-btn {
+    width: 30px; height: 30px; border: 1.5px solid var(--border);
+    background: var(--white); font-size: 1rem; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: var(--transition);
+  }
+  .qty-btn:hover { border-color: var(--green); color: var(--green); }
+  .qty-val { min-width: 2rem; text-align: center; font-size: .9rem; font-weight: 500; }
+  .cart-summary {
+    background: var(--white); border: 1px solid var(--border); padding: 1.8rem;
+  }
+  .cart-summary-row { display: flex; justify-content: space-between; font-size: .875rem; padding: .5rem 0; color: var(--text-muted); }
+  .cart-summary-row.total { font-weight: 700; font-size: 1.05rem; color: var(--text); border-top: 1.5px solid var(--border); padding-top: .9rem; margin-top: .3rem; }
+ 
+  /* ─── ACCOUNT ─── */
+  .account-layout { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; }
+  .account-nav { background: var(--white); border: 1px solid var(--border); padding: .5rem; height: fit-content; position: sticky; top: 90px; }
+  .account-nav-item {
+    display: flex; align-items: center; gap: .65rem;
+    padding: .7rem 1rem; font-size: .86rem; font-weight: 500;
+    color: var(--text-muted); cursor: pointer; transition: var(--transition);
+    background: transparent; border: none; width: 100%; text-align: left;
+  }
+  .account-nav-item:hover { background: var(--off-white); color: var(--green); }
+  .account-nav-item.active { background: var(--green); color: var(--white); }
+  .account-nav-item .nav-icon { width: 18px; opacity: .7; }
+  .account-panel { display: none; }
+  .account-panel.active { display: block; }
+  .panel-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--green-dark); margin-bottom: 1.4rem; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .info-item { background: var(--off-white); padding: 1rem 1.2rem; border: 1px solid var(--border); }
+  .info-item label { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+  .info-item p { font-size: .9rem; margin-top: .3rem; font-weight: 500; }
+ 
+  /* ─── ORDERS ─── */
+  .order-row {
+    display: grid; grid-template-columns: 120px 1fr auto auto;
+    gap: 1.5rem; align-items: center;
+    padding: 1.1rem 1.4rem; background: var(--white);
+    border: 1px solid var(--border); margin-bottom: .6rem; font-size: .875rem;
+  }
+  .order-id { font-weight: 700; font-size: .875rem; color: var(--green-dark); }
+  .order-date { font-size: .75rem; color: var(--text-muted); margin-top: .15rem; }
+  .order-status { padding: .25rem .7rem; font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+  .order-status.delivered { background: #eaf4ef; color: #1a6b40; }
+  .order-status.processing { background: #fdf3e7; color: #9a5a10; }
+  .order-status.dispatched { background: #e8eef8; color: #1a3a8f; }
+ 
+  /* ─── LOYALTY ─── */
+  .loyalty-card {
+    background: var(--green-dark); padding: 2.2rem;
+    color: var(--white); position: relative; overflow: hidden; margin-bottom: 2rem;
+  }
+  .loyalty-card::before {
+    content:''; position:absolute; top:-60px; right:-60px;
+    width:220px; height:220px;
+    background: rgba(124,92,62,.2);
+  }
+  .loyalty-tier-label { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .loyalty-points { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 700; color: #d4a97a; line-height: 1; margin: .4rem 0; }
+  .loyalty-worth { font-size: .875rem; color: rgba(255,255,255,.6); }
+  .loyalty-worth strong { color: #d4a97a; }
+  .points-bar { height: 6px; background: rgba(255,255,255,.15); margin: 1.2rem 0 .35rem; overflow: hidden; }
+  .points-bar-fill { height: 100%; background: #d4a97a; }
+  .points-meta { display: flex; justify-content: space-between; font-size: .72rem; color: rgba(255,255,255,.45); }
+  .offer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+  .offer-card { background: var(--white); border: 1px solid var(--border); padding: 1.4rem; }
+  .offer-card-title { font-weight: 700; font-size: .9rem; margin-bottom: .3rem; }
+  .offer-card-desc { font-size: .78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: .75rem; }
+  .offer-cost { font-family: var(--font-serif); font-size: 1.05rem; color: var(--brown); font-weight: 600; }
+ 
+  /* ─── DASHBOARD ─── */
+  .dash-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-bottom: 2rem; }
+  .dash-stat { background: var(--white); border: 1px solid var(--border); padding: 1.4rem 1.6rem; }
+  .dash-stat-label { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted); margin-bottom: .5rem; }
+  .dash-stat-value { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--green-dark); line-height: 1; }
+  .dash-stat-delta { font-size: .78rem; color: #1a6b40; margin-top: .4rem; }
+  .dash-stat-delta.down { color: #a0281e; }
+  .tab-bar { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 2rem; }
+  .tab {
+    padding: .75rem 1.4rem; font-size: .86rem; font-weight: 500;
+    color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: var(--transition); background: none; border-top: none; border-left: none; border-right: none;
+    font-family: var(--font-sans);
+  }
+  .tab:hover { color: var(--green); }
+  .tab.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    text-align: left; font-size: .7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .09em; color: var(--text-muted);
+    padding: .75rem 1.1rem; background: var(--off-white); border-bottom: 1px solid var(--border);
+  }
+  .data-table td { padding: .95rem 1.1rem; border-bottom: 1px solid var(--border); font-size: .875rem; vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #fafafa; }
+  .stock-pill { display: inline-block; padding: .2rem .65rem; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  .stock-pill.in { background: #eaf4ef; color: #1a6b40; }
+  .stock-pill.low { background: #fdf3e7; color: #9a5a10; }
+  .stock-pill.out { background: #fde8e8; color: #a0281e; }
+ 
+  /* ─── ABOUT ─── */
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .value-card { background: var(--white); border: 1px solid var(--border); padding: 2rem; }
+  .value-card-icon { width: 44px; height: 44px; background: var(--green-faint); border: 1px solid rgba(27,77,63,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+  .value-card-icon svg { width: 22px; height: 22px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; }
+  .value-card-title { font-family: var(--font-serif); font-size: 1.05rem; color: var(--green-dark); margin-bottom: .5rem; }
+  .value-card-desc { font-size: .83rem; color: var(--text-muted); line-height: 1.65; }
+ 
+  /* ─── CONTACT ─── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
+  .contact-icon { width: 44px; height: 44px; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .contact-text strong { display: block; font-size: .875rem; font-weight: 600; margin-bottom: .25rem; }
+  .contact-text p { font-size: .83rem; color: var(--text-muted); line-height: 1.6; }
+ 
+  /* ─── ALERT ─── */
+  .alert { padding: .9rem 1.2rem; font-size: .85rem; margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: .6rem; border-left: 3px solid; }
+  .alert-success { background: #eaf4ef; color: #1a6b40; border-color: #1a6b40; }
+  .alert-info { background: #e8eef8; color: #1a3a8f; border-color: #1a3a8f; }
+  .alert-warning { background: #fdf3e7; color: #9a5a10; border-color: #9a5a10; }
+ 
+  /* ─── DETAIL PAGE ─── */
+  .detail-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+  .detail-img-main { width: 100%; aspect-ratio: 1; }
+  .detail-thumb-row { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: .5rem; }
+  .detail-thumb { aspect-ratio: 1; cursor: pointer; border: 2px solid transparent; transition: var(--transition); }
+  .detail-thumb:hover { border-color: var(--green); }
+  .detail-eyebrow { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--brown); margin-bottom: .5rem; }
+  .detail-title { font-family: var(--font-serif); font-size: 2rem; color: var(--green-dark); margin-bottom: .6rem; line-height: 1.2; }
+  .detail-price { font-family: var(--font-serif); font-size: 1.75rem; color: var(--green); margin: .8rem 0; }
+  .detail-price small { font-family: var(--font-sans); font-size: .85rem; color: var(--text-muted); font-weight: 400; }
+  .detail-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+  .detail-desc { font-size: .93rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.4rem; }
+  .trace-box { background: var(--green-faint); border: 1px solid rgba(27,77,63,.15); padding: 1.2rem; margin-bottom: 1.4rem; font-size: .83rem; line-height: 1.65; }
+  .trace-box strong { color: var(--green-dark); display: block; margin-bottom: .4rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+  .detail-add { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+  .qty-input { width: 54px; text-align: center; padding: .65rem .5rem; border: 1.5px solid var(--border); font-size: .95rem; font-family: var(--font-sans); }
+  .detail-shipping { display: flex; gap: 1.5rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-muted); flex-wrap: wrap; }
+ 
+  /* ─── FOOTER ─── */
+  footer { background: var(--green-dark); color: var(--white); padding: 4rem 2rem 1.5rem; margin-top: 5rem; }
+  .footer-inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: .75rem; }
+  .footer-brand-desc { font-size: .83rem; color: rgba(255,255,255,.5); line-height: 1.75; max-width: 280px; }
+  .footer-col h4 { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+  .footer-col a { display: block; font-size: .83rem; color: rgba(255,255,255,.6); margin-bottom: .55rem; transition: color .2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { max-width: 1320px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; font-size: .75rem; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a { color: rgba(255,255,255,.35); font-size: .75rem; transition: color .2s; }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,.7); }
+ 
+  /* ─── SECTION DIVIDERS ─── */
+  .divider { height: 1px; background: var(--border); margin: 0; }
+  .section-green { background: var(--green-faint); border-top: 1px solid rgba(27,77,63,.08); border-bottom: 1px solid rgba(27,77,63,.08); }
+  .section-dark { background: var(--green-dark); color: var(--white); }
+ 
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--green-dark); color: var(--white);
+    padding: .9rem 1.5rem; font-size: .85rem; font-weight: 500;
+    box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(8px);
+    transition: all .28s ease; z-index: 9999; pointer-events: none; max-width: 320px;
+    border-left: 3px solid var(--brown);
+  }
+  #toast.show { opacity: 1; transform: none; }
+ 
+  /* ─── HIGH CONTRAST ─── */
+  body.high-contrast { --border: #000; --text-muted: #333; }
+  body.high-contrast .product-card, body.high-contrast .producer-card { border-width: 2px; }
+  body.large-text { font-size: 18px; }
+ 
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1080px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual-stack { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .account-layout { grid-template-columns: 1fr; }
+    .account-nav { position: static; display: flex; flex-wrap: wrap; gap: .3rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .detail-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .order-row { grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .section { padding: 3.5rem 1.5rem; }
+  }
+  @media (max-width: 540px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+ 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+ 
+<!-- ACCESSIBILITY BAR -->
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
+  <button class="a11y-btn" onclick="toggleHighContrast()">High Contrast</button>
+  <button class="a11y-btn" onclick="toggleLargeText()">Large Text</button>
+</div>
+ 
+<!-- HEADER -->
+<header role="banner">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a class="nav-logo" href="#" onclick="showPage('home')" aria-label="Greenfield Local Hub home">
+      <div class="nav-logo-text">
+        <strong>Greenfield Local Hub</strong>
+        <span>Local Food Cooperative</span>
+      </div>
+    </a>
+ 
+    <div class="nav-links" role="list">
+      <a href="#" onclick="showPage('home')" role="listitem">Home</a>
+      <a href="#" onclick="showPage('shop')" role="listitem">Shop</a>
+      <a href="#" onclick="showPage('producers')" role="listitem">Producers</a>
+      <a href="#" onclick="showPage('about')" role="listitem">About Us</a>
+      <a href="#" onclick="showPage('contact')" role="listitem">Contact</a>
+    </div>
+ 
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="showPage('cart')" aria-label="View cart, 2 items">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge" aria-hidden="true">2</span>
+      </button>
+      <button class="nav-icon-btn" onclick="showPage('account')" aria-label="My account">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="showPage('register')">Register</button>
+      <button class="btn btn-ghost btn-sm" onclick="showPage('login')">Sign In</button>
+    </div>
+  </nav>
+</header>
+ 
+<main id="main-content">
+ 
+<!-- ======================================================
+     HOME
+====================================================== -->
+<div class="page active" id="page-home">
+ 
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          Certified Local Cooperative
+        </div>
+        <h1 class="hero-title" id="hero-heading">
+          Farm-fresh food,<br><em>straight to your door.</em>
+        </h1>
+        <p class="hero-desc">Greenfield Local Hub connects you with our community of local farmers and food producers. Seasonal produce, ethical farming, transparent pricing.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary btn-lg" onclick="showPage('shop')">Shop Now</button>
+          <button class="btn btn-lg" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.18);" onclick="showPage('producers')">Meet Our Producers</button>
+        </div>
+        <div class="hero-stats" aria-label="Key statistics">
+          <div class="hero-stat"><strong>28+</strong><span>Local Producers</span></div>
+          <div class="hero-stat"><strong>400+</strong><span>Products</span></div>
+          <div class="hero-stat"><strong>100%</strong><span>Traceable</span></div>
+        </div>
+      </div>
+      <div class="hero-visual-stack" aria-hidden="true">
+        <div class="hero-card">
+          <div class="hero-card-label">Today's Highlight</div>
+          <div class="hero-card-value">Heirloom Tomatoes</div>
+          <div class="hero-card-sub">Harvested this morning — Greenacre Farm</div>
+          <div class="hero-card-row">
+            <div class="hero-card-pill">Organic</div>
+            <div class="hero-card-pill">Field-grown</div>
+            <div class="hero-card-pill" style="margin-left:auto;color:#d4a97a;">£3.20 / 500g</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="hero-card">
+            <div class="hero-card-label">New In</div>
+            <div class="hero-card-value" style="font-size:1.1rem;">Raw Milk Cheddar</div>
+            <div class="hero-card-sub">Hillcrest Dairy</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Popular</div>
+            <div class="hero-card-value" style="font-size:1.1rem;">Country Sourdough</div>
+            <div class="hero-card-sub">The Old Mill Bakery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;flex-wrap:wrap;">
+        <div>
+          <span class="section-eyebrow">How It Works</span>
+          <h2 class="section-title">From field to your table in four steps</h2>
+          <p class="section-sub">We make buying local simple. Browse, order, and receive produce from farms within 30 miles of the hub.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+            <div style="width:32px;height:32px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">01</div>
+            <div><strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Browse</strong><p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Explore our seasonal products with full farm traceability.</p></div>
+          </div>
+          <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+            <div style="width:32px;height:32px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">02</div>
+            <div><strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Order</strong><p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Place orders for home delivery or in-store collection.</p></div>
+          </div>
+          <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+            <div style="width:32px;height:32px;background:var(--brown);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">03</div>
+            <div><strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Track</strong><p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Track your order from farm to your front door.</p></div>
+          </div>
+          <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);">
+            <div style="width:32px;height:32px;background:var(--brown);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">04</div>
+            <div><strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Earn Rewards</strong><p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Collect loyalty points and redeem for discounts.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FEATURED PRODUCTS -->
+  <section class="section section-green">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="section-eyebrow">This Week's Picks</span>
+          <h2 class="section-title">Freshly Harvested</h2>
+        </div>
+        <button class="btn btn-outline" onclick="showPage('shop')">View All Products</button>
+      </div>
+      <div class="product-grid-gap">
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0" aria-label="View Heirloom Tomatoes">
+          <div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square" style="font-size:.75rem;letter-spacing:.08em;">Image</div></div></div><span class="pc-badge">New In</span></div>
+          <div class="pc-body"><p class="pc-producer">Greenacre Farm</p><h3 class="pc-name">Heirloom Tomatoes</h3><p class="pc-desc">Mixed heritage varieties, vine-ripened</p><div class="pc-footer"><span class="pc-price">£3.20<small> / 500g</small></span><span class="pc-avail in">In Stock</span></div></div>
+        </article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0" aria-label="View Raw Milk Cheddar">
+          <div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div>
+          <div class="pc-body"><p class="pc-producer">Hillcrest Dairy</p><h3 class="pc-name">Raw Milk Cheddar</h3><p class="pc-desc">Aged 12 months, rich and crumbly</p><div class="pc-footer"><span class="pc-price">£5.50<small> / 200g</small></span><span class="pc-avail low">Low Stock</span></div></div>
+        </article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0" aria-label="View Country Sourdough">
+          <div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div><span class="pc-badge brown">Popular</span></div>
+          <div class="pc-body"><p class="pc-producer">The Old Mill Bakery</p><h3 class="pc-name">Country Sourdough</h3><p class="pc-desc">Long-fermented, stone-baked loaf</p><div class="pc-footer"><span class="pc-price">£4.80<small> / loaf</small></span><span class="pc-avail in">In Stock</span></div></div>
+        </article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0" aria-label="View Wildflower Honey">
+          <div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div>
+          <div class="pc-body"><p class="pc-producer">Meadow Apiary</p><h3 class="pc-name">Wildflower Honey</h3><p class="pc-desc">Raw, unfiltered, single origin</p><div class="pc-footer"><span class="pc-price">£6.90<small> / 350g</small></span><span class="pc-avail in">In Stock</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- PRODUCER STRIP -->
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div>
+          <span class="section-eyebrow">Our Community</span>
+          <h2 class="section-title">28 local farms & food producers</h2>
+          <p class="section-sub">Every product on GLH comes from a farm within 30 miles. Meet the people behind your food and learn about their methods.</p>
+          <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="showPage('producers')">Meet Our Producers</button>
+            <button class="btn btn-ghost" onclick="showPage('about')">Our Story</button>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+          <div style="background:var(--white);padding:1.6rem;"><p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">45</p><p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Avg. acres per farm</p></div>
+          <div style="background:var(--white);padding:1.6rem;"><p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">30mi</p><p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Maximum distance</p></div>
+          <div style="background:var(--white);padding:1.6rem;"><p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">4,000+</p><p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Regular customers</p></div>
+          <div style="background:var(--white);padding:1.6rem;"><p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--brown);">100%</p><p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Traceable</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CTA BANNER -->
+  <section style="background:var(--green);padding:4rem 2rem;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:1.9rem;color:var(--white);margin-bottom:.6rem;">Are you a local producer?</h2>
+          <p style="color:rgba(255,255,255,.65);font-size:.93rem;line-height:1.7;max-width:520px;">Join our cooperative. Reach thousands of customers, manage your products and stock, and grow your business with our dedicated producer dashboard.</p>
+        </div>
+        <button class="btn btn-brown btn-lg" onclick="showPage('contact')">Get in Touch</button>
+      </div>
+    </div>
+  </section>
+ 
+</div><!-- /home -->
+ 
+ 
+<!-- ======================================================
+     SHOP
+====================================================== -->
+<div class="page" id="page-shop">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">Our Products</span>
+      <h1>Shop Local Produce</h1>
+      <p>Browse fresh, seasonal products from our network of local farms and producers.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;align-items:center;padding-bottom:2rem;border-bottom:1px solid var(--border);">
+        <input type="search" class="form-input" placeholder="Search products..." style="max-width:260px;" aria-label="Search products">
+        <select class="form-select" style="max-width:190px;" aria-label="Filter by category">
+          <option>All Categories</option><option>Fruit &amp; Veg</option><option>Dairy &amp; Eggs</option><option>Bread &amp; Bakery</option><option>Meat &amp; Fish</option><option>Honey &amp; Preserves</option><option>Drinks</option>
+        </select>
+        <select class="form-select" style="max-width:190px;" aria-label="Sort products">
+          <option>Sort: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest First</option>
+        </select>
+        <span style="margin-left:auto;font-size:.83rem;color:var(--text-muted);">Showing 12 of 420 products</span>
+      </div>
+      <div class="product-grid-gap">
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div><span class="pc-badge">New In</span></div><div class="pc-body"><p class="pc-producer">Greenacre Farm</p><h3 class="pc-name">Heirloom Tomatoes</h3><p class="pc-desc">Mixed heritage varieties</p><div class="pc-footer"><span class="pc-price">£3.20<small> / 500g</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Valley Veg Co.</p><h3 class="pc-name">Purple Sprouting Broccoli</h3><p class="pc-desc">Spring harvest, tender stems</p><div class="pc-footer"><span class="pc-price">£2.80<small> / bag</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Oakview Farm</p><h3 class="pc-name">Heritage Carrots</h3><p class="pc-desc">Rainbow mix, pulled today</p><div class="pc-footer"><span class="pc-price">£2.40<small> / bunch</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Hillcrest Dairy</p><h3 class="pc-name">Raw Milk Cheddar</h3><p class="pc-desc">Aged 12 months, crumbly</p><div class="pc-footer"><span class="pc-price">£5.50<small> / 200g</small></span><span class="pc-avail low">Low Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Sunfield Farm</p><h3 class="pc-name">Free Range Eggs</h3><p class="pc-desc">Mixed flock, daily collection</p><div class="pc-footer"><span class="pc-price">£3.60<small> / dozen</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div><span class="pc-badge brown">Popular</span></div><div class="pc-body"><p class="pc-producer">The Old Mill Bakery</p><h3 class="pc-name">Country Sourdough</h3><p class="pc-desc">Long-fermented, stone-baked</p><div class="pc-footer"><span class="pc-price">£4.80<small> / loaf</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Meadow Apiary</p><h3 class="pc-name">Wildflower Honey</h3><p class="pc-desc">Raw, unfiltered, single origin</p><div class="pc-footer"><span class="pc-price">£6.90<small> / 350g</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Berry Lane</p><h3 class="pc-name">Strawberry Preserve</h3><p class="pc-desc">No additives, hand-set</p><div class="pc-footer"><span class="pc-price">£4.20<small> / jar</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Moorside Butchery</p><h3 class="pc-name">Grass-Fed Beef Mince</h3><p class="pc-desc">80/20 blend, pasture raised</p><div class="pc-footer"><span class="pc-price">£6.50<small> / 500g</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Valley Veg Co.</p><h3 class="pc-name">Mixed Salad Leaves</h3><p class="pc-desc">Picked this morning, washed</p><div class="pc-footer"><span class="pc-price">£2.10<small> / bag</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Orchard End Farm</p><h3 class="pc-name">Cox Apples</h3><p class="pc-desc">Sweet-sharp, crisp heritage</p><div class="pc-footer"><span class="pc-price">£2.90<small> / kg</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+        <article class="product-card" onclick="showPage('product-detail')" role="button" tabindex="0"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Riverbend Herbs</p><h3 class="pc-name">Herb Tea Blend</h3><p class="pc-desc">Dried mint, lemon balm, nettle</p><div class="pc-footer"><span class="pc-price">£3.80<small> / 30g</small></span><span class="pc-avail in">In Stock</span></div></div></article>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     PRODUCT DETAIL
+====================================================== -->
+<div class="page" id="page-product-detail">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="showPage('home')">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="#" onclick="showPage('shop')">Shop</a><span class="breadcrumb-sep">›</span>
+        <span aria-current="page">Heirloom Tomatoes</span>
+      </nav>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="detail-layout">
+        <div>
+          <div class="detail-img-main"><div class="img-placeholder" style="width:100%;aspect-ratio:1;">Image</div></div>
+          <div class="detail-thumb-row">
+            <div class="detail-thumb"><div class="img-placeholder square" style="font-size:.7rem;">Image</div></div>
+            <div class="detail-thumb"><div class="img-placeholder square" style="font-size:.7rem;">Image</div></div>
+            <div class="detail-thumb"><div class="img-placeholder square" style="font-size:.7rem;">Image</div></div>
+          </div>
+        </div>
+        <div>
+          <p class="detail-eyebrow">Greenacre Farm · Fruit &amp; Veg</p>
+          <h1 class="detail-title">Heirloom Tomatoes</h1>
+          <div class="detail-tags">
+            <span class="tag">Organic</span><span class="tag">Field-grown</span><span class="tag">Traceable</span><span class="pc-avail in" style="font-size:.72rem;padding:.25rem .65rem;">In Stock</span>
+          </div>
+          <p class="detail-price">£3.20 <small>per 500g</small></p>
+          <p class="detail-desc">A vibrant mix of heritage tomato varieties grown without pesticides at Greenacre Farm. Vine-ripened for maximum flavour — ideal for salads, roasting or sauces. Harvested within 24 hours of despatch.</p>
+          <div class="trace-box">
+            <strong>Traceability Information</strong>
+            Grown by James Hartley at Greenacre Farm, Midshire. Harvested: March 2026<br>          </div>
+          <div class="detail-add">
+            <div class="qty-ctrl" aria-label="Quantity">
+              <button class="qty-btn" aria-label="Decrease quantity" onclick="adjustQty(-1)">−</button>
+              <input type="number" class="qty-input" id="detailQty" value="1" min="1" max="20" aria-label="Quantity">
+              <button class="qty-btn" aria-label="Increase quantity" onclick="adjustQty(1)">+</button>
+            </div>
+            <button class="btn btn-primary btn-lg" onclick="addToCart()">Add to Basket</button>
+            <button class="btn btn-ghost" aria-label="Save for later">Save</button>
+          </div>
+          <div class="detail-shipping">
+            <span>Home Delivery available</span>
+            <span>Click &amp; Collect at GLH Hub</span>
+            <span>Order by 8pm for next-day</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div style="margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);">
+        <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.5rem;">You May Also Like</h2>
+        <div class="product-grid-gap" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr));">
+          <article class="product-card" onclick="showToast('Added to basket.')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Oakview Farm</p><h3 class="pc-name">Heritage Carrots</h3><div class="pc-footer"><span class="pc-price">£2.40</span><span class="pc-avail in">In Stock</span></div></div></article>
+          <article class="product-card" onclick="showToast('Added to basket.')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Valley Veg Co.</p><h3 class="pc-name">Salad Leaves</h3><div class="pc-footer"><span class="pc-price">£2.10</span><span class="pc-avail in">In Stock</span></div></div></article>
+          <article class="product-card" onclick="showToast('Added to basket.')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><p class="pc-producer">Valley Veg Co.</p><h3 class="pc-name">Purple Broccoli</h3><div class="pc-footer"><span class="pc-price">£2.80</span><span class="pc-avail in">In Stock</span></div></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     PRODUCERS
+====================================================== -->
+<div class="page" id="page-producers">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">Our Community</span>
+      <h1>Meet Our Producers</h1>
+      <p>28 local farmers and food artisans, all within 30 miles. Passionate about quality, sustainability and the land.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid var(--border);">
+        <input type="search" class="form-input" placeholder="Search producers..." style="max-width:260px;" aria-label="Search producers">
+        <select class="form-select" style="max-width:210px;" aria-label="Filter by type">
+          <option>All Types</option><option>Arable Farming</option><option>Dairy</option><option>Bakery</option><option>Beekeeping</option><option>Meat &amp; Poultry</option><option>Market Garden</option>
+        </select>
+      </div>
+      <div class="producer-grid">
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View Greenacre Farm">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">Greenacre Farm</h3>
+          <p class="producer-type">Arable &amp; Market Garden</p>
+          <p class="producer-desc">Family-run for four generations. Organic certified with a focus on heirloom vegetable varieties and soil health regeneration.</p>
+          <div class="producer-tags"><span class="tag">Organic</span><span class="tag">Traceable</span><span class="tag">30 products</span></div>
+        </article>
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View Hillcrest Dairy">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">Hillcrest Dairy</h3>
+          <p class="producer-type">Dairy &amp; Cheesemaking</p>
+          <p class="producer-desc">Small-scale herd of 40 Friesian cows, all grass-fed. Handmade cheeses aged on-site. Unpasteurised milk also available.</p>
+          <div class="producer-tags"><span class="tag">Grass-fed</span><span class="tag">Award Winning</span><span class="tag">12 products</span></div>
+        </article>
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View The Old Mill Bakery">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">The Old Mill Bakery</h3>
+          <p class="producer-type">Artisan Bakery</p>
+          <p class="producer-desc">Using locally-milled stoneground flour and slow fermentation. No additives, no preservatives — just honest bread.</p>
+          <div class="producer-tags"><span class="tag">Local Flour</span><span class="tag">No Additives</span><span class="tag">8 products</span></div>
+        </article>
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View Meadow Apiary">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">Meadow Apiary</h3>
+          <p class="producer-type">Beekeeping &amp; Honey</p>
+          <p class="producer-desc">200 hives across wildflower meadows and woodland. Raw, cold-extracted honey. A proportion of profits supports pollinator conservation.</p>
+          <div class="producer-tags"><span class="tag">Wildflower</span><span class="tag">Raw Unfiltered</span><span class="tag">6 products</span></div>
+        </article>
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View Moorside Butchery">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">Moorside Butchery</h3>
+          <p class="producer-type">Meat &amp; Poultry</p>
+          <p class="producer-desc">Traditional dry-ageing and butchery. All animals reared within 15 miles, slaughtered locally. Full traceability guaranteed.</p>
+          <div class="producer-tags"><span class="tag">Pasture Raised</span><span class="tag">Full Traceability</span><span class="tag">18 products</span></div>
+        </article>
+        <article class="producer-card" onclick="showPage('producer-detail')" tabindex="0" role="button" aria-label="View Valley Veg Co.">
+          <div class="producer-img"><div class="img-placeholder landscape" style="width:100%;height:100%;">Image</div></div>
+          <h3 class="producer-name">Valley Veg Co.</h3>
+          <p class="producer-type">Market Garden</p>
+          <p class="producer-desc">Year-round salad leaves, brassicas and roots using no-dig methods. Committed to zero food waste.</p>
+          <div class="producer-tags"><span class="tag">Zero Waste</span><span class="tag">No-Dig</span><span class="tag">25 products</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     PRODUCER DETAIL
+====================================================== -->
+<div class="page" id="page-producer-detail">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#" onclick="showPage('home')">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="#" onclick="showPage('producers')">Producers</a><span class="breadcrumb-sep">›</span>
+        <span aria-current="page">Greenacre Farm</span>
+      </nav>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="img-placeholder landscape" style="margin-bottom:3rem;">Image</div>
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:3rem;align-items:start;flex-wrap:wrap;">
+        <div style="background:var(--white);border:1px solid var(--border);padding:2rem;">
+          <h1 style="font-family:var(--font-serif);font-size:1.5rem;color:var(--green-dark);margin-bottom:.3rem;">Greenacre Farm</h1>
+          <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--brown);margin-bottom:1.2rem;">Arable &amp; Market Garden</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem;"><span class="tag">Organic</span><span class="tag">Traceable</span></div>
+          <div style="font-size:.83rem;color:var(--text-muted);line-height:1.8;border-top:1px solid var(--border);padding-top:1.2rem;">
+            <p>Location: Midshire, SK48</p>
+            <p>Email: greenacrefarm@example.com</p>
+            <p>Tel: 01234 567 890</p>
+          </div>
+          <button class="btn btn-primary btn-full" style="margin-top:1.4rem;" onclick="showPage('contact')">Contact This Producer</button>
+        </div>
+        <div>
+          <span class="section-eyebrow">Our Story</span>
+          <h2 style="font-family:var(--font-serif);font-size:1.6rem;color:var(--green-dark);margin-bottom:1rem;">Four generations of farming at Greenacre</h2>
+          <p style="color:var(--text-muted);line-height:1.8;font-size:.93rem;margin-bottom:.9rem;">Greenacre Farm has been in the Hartley family since 1942. What began as a traditional mixed farm has evolved into a leading organic market garden focused on heirloom varieties, soil health, and minimal environmental impact.</p>
+          <p style="color:var(--text-muted);line-height:1.8;font-size:.93rem;margin-bottom:2rem;">We grow over 60 varieties of vegetables across 45 acres. Every seed is open-pollinated, every harvest recorded, and every batch can be traced from field to plate using our batch codes.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:2rem;">
+            <div style="background:var(--white);padding:1.2rem;text-align:center;"><strong style="font-family:var(--font-serif);font-size:1.6rem;color:var(--green);">45</strong><p style="font-size:.75rem;color:var(--text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.06em;">Acres farmed</p></div>
+            <div style="background:var(--white);padding:1.2rem;text-align:center;"><strong style="font-family:var(--font-serif);font-size:1.6rem;color:var(--green);">60+</strong><p style="font-size:.75rem;color:var(--text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.06em;">Varieties</p></div>
+            <div style="background:var(--white);padding:1.2rem;text-align:center;"><strong style="font-family:var(--font-serif);font-size:1.6rem;color:var(--green);">30</strong><p style="font-size:.75rem;color:var(--text-muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.06em;">Products on GLH</p></div>
+          </div>
+          <h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--green-dark);margin-bottom:1.2rem;">Products from Greenacre Farm</h3>
+          <div class="product-grid-gap" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr));">
+            <article class="product-card" onclick="showPage('product-detail')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><h3 class="pc-name">Heirloom Tomatoes</h3><div class="pc-footer"><span class="pc-price">£3.20</span><span class="pc-avail in">In Stock</span></div></div></article>
+            <article class="product-card" onclick="showPage('product-detail')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><h3 class="pc-name">Heritage Carrots</h3><div class="pc-footer"><span class="pc-price">£2.40</span><span class="pc-avail in">In Stock</span></div></div></article>
+            <article class="product-card" onclick="showPage('product-detail')"><div class="pc-wrap"><div class="pc-img"><div class="pc-img-inner"><div class="img-placeholder square">Image</div></div></div></div><div class="pc-body"><h3 class="pc-name">Mixed Leaves</h3><div class="pc-footer"><span class="pc-price">£2.10</span><span class="pc-avail in">In Stock</span></div></div></article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     ABOUT
+====================================================== -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">Who We Are</span>
+      <h1>About Greenfield Local Hub</h1>
+      <p>A cooperative of local farmers and food producers working together to bring fresh, traceable food to our community.</p>
+    </div>
+  </div>
+  <section class="section section-green">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem;flex-wrap:wrap;">
+        <div>
+          <span class="section-eyebrow">Our Mission</span>
+          <h2 class="section-title">Connecting communities through honest food</h2>
+          <p style="color:var(--text-muted);font-size:.93rem;line-height:1.8;margin-top:.8rem;">GLH was founded by a group of local farmers who wanted to cut out the middleman and sell direct to their community. Today we represent 28 farms and food producers, serving over 4,000 customers across the region.</p>
+          <p style="color:var(--text-muted);font-size:.93rem;line-height:1.8;margin-top:.75rem;">Every product sold through GLH supports a real farmer, keeps money in the local economy, and provides full traceability from farm to fork.</p>
+        </div>
+        <div><div class="img-placeholder landscape">Image</div></div>
+      </div>
+    </div>
+  </section>
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem;flex-wrap:wrap;">
+      <div>
+        <span class="section-eyebrow">Benefits of buying locally</span>
+        <h2 class="section-title">Benefits of buying locally</h2>
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.8;margin-top:.8rem;">Buying locally grown food helps support farmers and producers within your community. It keeps money circulating in the local economy and helps small businesses continue to grow and provide jobs.</p>
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.8;margin-top:.75rem;">Local food is often fresher because it travels a shorter distance from farm to table. This also reduces transportation emissions and allows customers to better understand where their food comes from and how it was produced.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="section section-green">
+    <div class="container">
+      <div style="text-align:center;max-width:560px;margin:0 auto 3rem;">
+        <span class="section-eyebrow">What We Stand For</span>
+        <h2 class="section-title">Our Values</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 01-9 9M12 2a9 9 0 009 9M12 2v20"/></svg></div>
+          <h3 class="value-card-title">Sustainability</h3>
+          <p class="value-card-desc">We only partner with producers who demonstrate genuine commitment to sustainable farming practices and environmental stewardship.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <h3 class="value-card-title">Transparency</h3>
+          <p class="value-card-desc">Every product carries full traceability information so you can see exactly where your food was grown, by whom, and how.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="value-card-title">Community</h3>
+          <p class="value-card-desc">We reinvest in local food networks, support new producers, and run regular community events throughout the year.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pound-sterling-icon lucide-pound-sterling"><path d="M18 7c0-5.333-8-5.333-8 0"/><path d="M10 7v14"/><path d="M6 21h12"/><path d="M6 13h10"/></svg></div>
+          <h3 class="value-card-title">Fair Pricing</h3>
+          <p class="value-card-desc">Producers set their prices freely. GLH takes a small commission on each transaction with complete transparency.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 class="value-card-title">Accessibility</h3>
+          <p class="value-card-desc">Our platform is designed for everyone. We follow WCAG 2.1 AA guidelines and support a wide range of access needs.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 class="value-card-title">Local First</h3>
+          <p class="value-card-desc">All producers are within 30 miles of our hub. Shorter supply chains mean fresher food, fewer miles, lower emissions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     CONTACT
+====================================================== -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">Get in Touch</span>
+      <h1>Contact Us</h1>
+      <p>We welcome enquiries from customers, producers, and anyone interested in what we do.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Send a Message</h2>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="cf-fname">First Name</label><input type="text" id="cf-fname" class="form-input" placeholder="Adam" autocomplete="given-name"></div>
+            <div class="form-group"><label class="form-label" for="cf-lname">Last Name</label><input type="text" id="cf-lname" class="form-input" placeholder="Mcarthy" autocomplete="family-name"></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="cf-email">Email Address</label><input type="email" id="cf-email" class="form-input" placeholder="adam@example.ac.uk" autocomplete="email"></div>
+          <div class="form-group"><label class="form-label" for="cf-subject">Subject</label>
+            <select id="cf-subject" class="form-select"><option>General Enquiry</option><option>Order Issue</option><option>Producer Membership</option><option>Press &amp; Media</option><option>Accessibility Support</option></select>
+          </div>
+          <div class="form-group"><label class="form-label" for="cf-msg">Message</label><textarea id="cf-msg" class="form-textarea" placeholder="Tell us how we can help..."></textarea></div>
+          <button class="btn btn-primary" onclick="showToast('Message sent. We will be in touch shortly.')">Send Message</button>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Find Us</h2>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="contact-text"><strong>Our Hub</strong><p>14 Market Square, Greenfield<br>Midshire, MK12 4AB</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="contact-text"><strong>Opening Hours</strong><p>Mon–Fri: 8am – 6pm<br>Sat: 8am – 4pm &nbsp; Sun: 10am – 2pm</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.96a16 16 0 006.26 6.26l1.32-1.32a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="contact-text"><strong>Phone</strong><p>01234 567 890<br>Mon–Fri, 9am–5pm</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-text"><strong>Email</strong><p>greenfieldlocalhub@example.com</p></div>
+          </div>
+          <div style="background:var(--brown-faint);border:1px solid rgba(124,92,62,.2);padding:1.4rem;margin-top:.5rem;">
+            <p style="font-size:.85rem;font-weight:600;color:var(--brown);margin-bottom:.4rem;">Interested in joining as a producer?</p>
+            <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;margin-bottom:.8rem;">Contact us via the form or call to discuss our cooperative membership and what it means for your business.</p>
+            <button class="btn btn-brown btn-sm" onclick="document.getElementById('cf-subject').value='Producer Membership';showToast('Subject set to Producer Membership.')">Apply as a Producer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     CART
+====================================================== -->
+<div class="page" id="page-cart">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">Your Basket</span>
+      <h1>Shopping Cart</h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start;flex-wrap:wrap;">
+        <div>
+          <div class="alert alert-info" role="status">Free delivery on orders over £30. You are £12.30 away from qualifying.</div>
+          <table class="cart-table" role="table" aria-label="Shopping cart items">
+            <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th><span style="position:absolute;left:-9999px;">Remove</span></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="cart-product"><div class="cart-product-thumb"><div class="img-placeholder square" style="width:60px;height:60px;">Image</div></div><div class="cart-product-info"><strong>Heirloom Tomatoes</strong><small>Greenacre Farm &middot; 500g</small></div></div></td>
+                <td>£3.20</td>
+                <td><div class="qty-ctrl"><button class="qty-btn" aria-label="Decrease quantity">−</button><span class="qty-val">2</span><button class="qty-btn" aria-label="Increase quantity">+</button></div></td>
+                <td style="font-weight:600;">£6.40</td>
+                <td><button style="background:none;border:none;color:var(--text-light);cursor:pointer;font-size:.8rem;font-weight:500;" aria-label="Remove item" onclick="showToast('Item removed.')">Remove</button></td>
+              </tr>
+              <tr>
+                <td><div class="cart-product"><div class="cart-product-thumb"><div class="img-placeholder square" style="width:60px;height:60px;">Image</div></div><div class="cart-product-info"><strong>Raw Milk Cheddar</strong><small>Hillcrest Dairy &middot; 200g</small></div></div></td>
+                <td>£5.50</td>
+                <td><div class="qty-ctrl"><button class="qty-btn" aria-label="Decrease quantity">−</button><span class="qty-val">1</span><button class="qty-btn" aria-label="Increase quantity">+</button></div></td>
+                <td style="font-weight:600;">£5.50</td>
+                <td><button style="background:none;border:none;color:var(--text-light);cursor:pointer;font-size:.8rem;font-weight:500;" aria-label="Remove item" onclick="showToast('Item removed.')">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:.75rem;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--border);flex-wrap:wrap;">
+            <button class="btn btn-ghost btn-sm" onclick="showPage('shop')">Continue Shopping</button>
+            <div style="display:flex;gap:.5rem;margin-left:auto;">
+              <input type="text" class="form-input" placeholder="Promo code" style="max-width:160px;" aria-label="Enter promo code">
+              <button class="btn btn-ghost btn-sm" onclick="showToast('Promo code applied. 10% discount added.')">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-summary" role="region" aria-label="Order summary">
+            <h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--green-dark);margin-bottom:1.2rem;">Order Summary</h3>
+            <div class="cart-summary-row"><span>Subtotal</span><span>£11.90</span></div>
+            <div class="cart-summary-row"><span>Delivery</span><span>£3.50</span></div>
+            <div class="cart-summary-row"><span>Loyalty discount</span><span style="color:#1a6b40;">− £0.60</span></div>
+            <div class="cart-summary-row total"><span>Total</span><span>£14.80</span></div>
+            <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--border);">
+              <p style="font-size:.8rem;font-weight:600;margin-bottom:.8rem;">Fulfilment Method</p>
+              <div style="display:flex;flex-direction:column;gap:.55rem;font-size:.85rem;">
+                <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;"><input type="radio" name="fulfilment" checked> Home Delivery — next available Thu 20 Mar</label>
+                <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;"><input type="radio" name="fulfilment"> Click &amp; Collect — GLH Hub</label>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-full" style="margin-top:1.4rem;" onclick="showToast('Order placed. Confirmation sent to your email.')">Checkout Securely</button>
+            <p style="font-size:.72rem;color:var(--text-muted);text-align:center;margin-top:.7rem;">SSL encrypted &middot; Secure payment</p>
+          </div>
+          <div style="background:var(--green-faint);border:1px solid rgba(27,77,63,.12);padding:1.1rem;margin-top:1rem;font-size:.82rem;">
+            <strong style="color:var(--green-dark);">Loyalty Points</strong>
+            <p style="color:var(--text-muted);margin-top:.3rem;">This order earns you <strong>148 points</strong> — worth approximately £1.48 off your next shop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     REGISTER
+====================================================== -->
+<div class="page" id="page-register">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-logo-bar">
+        <div class="auth-logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8 6 4 9 4 14a8 8 0 0016 0c0-5-4-8-8-12z"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+        </div>
+        <div>
+          <strong style="font-family:var(--font-serif);font-size:1rem;color:var(--green-dark);">Greenfield Local Hub</strong>
+        </div>
+      </div>
+      <h1 class="auth-title">Create an Account</h1>
+      <p class="auth-sub">Join GLH and start shopping local today</p>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label" for="reg-fn">First Name</label><input type="text" id="reg-fn" class="form-input" placeholder="Adam" autocomplete="given-name"></div>
+        <div class="form-group"><label class="form-label" for="reg-ln">Last Name</label><input type="text" id="reg-ln" class="form-input" placeholder="Mcarthy" autocomplete="family-name"></div>
+      </div>
+      <div class="form-group"><label class="form-label" for="reg-email">Email Address</label><input type="email" id="reg-email" class="form-input" placeholder="adam@example.ac.uk" autocomplete="email"></div>
+      <div class="form-group"><label class="form-label" for="reg-pw">Password</label><input type="password" id="reg-pw" class="form-input" placeholder="Minimum 8 characters" autocomplete="new-password"><p class="form-hint">Must include at least one number and one special character.</p></div>
+      <div class="form-group"><label class="form-label" for="reg-pw2">Confirm Password</label><input type="password" id="reg-pw2" class="form-input" placeholder="Repeat your password" autocomplete="new-password"></div>
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--text-muted);">
+        <input type="checkbox" id="reg-terms" style="margin-top:3px;flex-shrink:0;">
+        <label for="reg-terms">I agree to the <a href="#" style="color:var(--green);font-weight:600;">Terms &amp; Conditions</a> and <a href="#" style="color:var(--green);font-weight:600;">Privacy Policy</a></label>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="showToast('Account created. Welcome to Greenfield Local Hub.')">Create Account</button>
+      <div class="auth-footer">Already have an account? <a href="#" onclick="showPage('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ======================================================
+     LOGIN
+====================================================== -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div class="auth-logo-bar">
+        <div class="auth-logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8 6 4 9 4 14a8 8 0 0016 0c0-5-4-8-8-12z"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+        </div>
+        <div>
+          <strong style="font-family:var(--font-serif);font-size:1rem;color:var(--green-dark);">Greenfield Local Hub</strong>
+        </div>
+      </div>
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-sub">Sign in to your account</p>
+      <div class="form-group"><label class="form-label" for="login-email">Email Address</label><input type="email" id="login-email" class="form-input" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="form-group"><label class="form-label" for="login-pw">Password</label><input type="password" id="login-pw" class="form-input" placeholder="Your password" autocomplete="current-password"></div>
+      <div style="text-align:right;margin-top:-.4rem;margin-bottom:1.2rem;">
+        <a href="#" onclick="showPage('forgot-password')" style="font-size:.82rem;color:var(--green);font-weight:500;">Forgot password?</a>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="showPage('account');showToast('Signed in successfully.')">Sign In</button>
+      <div class="auth-footer">New to GLH? <a href="#" onclick="showPage('register')">Create an account</a></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ======================================================
+     FORGOT PASSWORD
+====================================================== -->
+<div class="page" id="page-forgot-password">
+  <div class="auth-page">
+    <div class="auth-box">
+      <h1 class="auth-title">Reset Password</h1>
+      <p class="auth-sub">Enter your email and we will send a reset link</p>
+      <div class="alert alert-info" role="status">Enter the email address associated with your account and we will send you a link to reset your password.</div>
+      <div class="form-group"><label class="form-label" for="fp-email">Email Address</label><input type="email" id="fp-email" class="form-input" placeholder="you@example.com" autocomplete="email"></div>
+      <button class="btn btn-primary btn-full" onclick="showToast('Reset link sent. Please check your inbox.')">Send Reset Link</button>
+      <div class="auth-footer"><a href="#" onclick="showPage('login')">Back to sign in</a></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ======================================================
+     ACCOUNT
+====================================================== -->
+<div class="page" id="page-account">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-eyebrow">My Account</span>
+      <h1>Welcome back, Adam</h1>
+      <p>Manage your profile, orders, and loyalty rewards.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="account-layout">
+        <nav class="account-nav" aria-label="Account navigation">
+          <button class="account-nav-item active" onclick="switchPanel(this,'profile')">Profile</button>
+          <button class="account-nav-item" onclick="switchPanel(this,'orders')">My Orders</button>
+          <button class="account-nav-item" onclick="switchPanel(this,'loyalty')">My Loyalty</button>
+          <button class="account-nav-item" onclick="switchPanel(this,'address')">Address Book</button>
+          <hr style="border:none;border-top:1px solid var(--border);margin:.4rem 0;">
+          <button class="account-nav-item" onclick="showPage('login');showToast('Signed out.')">Sign Out</button>
+        </nav>
+        <div>
+ 
+          <!-- PROFILE -->
+          <div class="account-panel active" id="panel-profile">
+            <h2 class="panel-title">My Profile</h2>
+            <div class="info-grid">
+              <div class="info-item"><label>Full Name</label><p>Adam Mcarthy</p></div>
+              <div class="info-item"><label>Email</label><p>adam@example.ac.uk</p></div>
+              <div class="info-item"><label>Phone</label><p>07700 900 123</p></div>
+              <div class="info-item"><label>Member Since</label><p>January 2024</p></div>
+            </div>
+            <h3 style="font-size:1rem;font-weight:600;color:var(--green-dark);margin-bottom:1rem;">Update Details</h3>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" for="p-fn">First Name</label><input type="text" id="p-fn" class="form-input" value="Adam" autocomplete="given-name"></div>
+              <div class="form-group"><label class="form-label" for="p-ln">Last Name</label><input type="text" id="p-ln" class="form-input" value="Mcarthy" autocomplete="family-name"></div>
+            </div>
+            <div class="form-group"><label class="form-label" for="p-email">Email</label><input type="email" id="p-email" class="form-input" value="adam@example.ac.uk" autocomplete="email"></div>
+            <div class="form-group"><label class="form-label" for="p-phone">Phone</label><input type="tel" id="p-phone" class="form-input" value="07700 900 123" autocomplete="tel"></div>
+            <button class="btn btn-primary" onclick="showToast('Profile updated.')">Save Changes</button>
+          </div>
+ 
+          <!-- ORDERS -->
+          <div class="account-panel" id="panel-orders">
+            <h2 class="panel-title">My Orders</h2>
+            <div class="alert alert-success" role="status">Your order #GLH-2847 is out for delivery today.</div>
+            <div class="order-row" role="row">
+              <div><p class="order-id">#GLH-2847</p><p class="order-date">12 Mar 2025</p></div>
+              <div style="font-size:.83rem;color:var(--text-muted);">Heirloom Tomatoes x2, Raw Milk Cheddar x1</div>
+              <span class="order-status dispatched">Out for Delivery</span>
+              <button class="btn btn-outline btn-sm" onclick="showToast('Tracking: Your order left the hub at 9:14am.')">Track Order</button>
+            </div>
+            <div class="order-row" role="row">
+              <div><p class="order-id">#GLH-2801</p><p class="order-date">5 Mar 2025</p></div>
+              <div style="font-size:.83rem;color:var(--text-muted);">Sourdough x2, Eggs x1, Honey x1</div>
+              <span class="order-status delivered">Delivered</span>
+              <button class="btn btn-ghost btn-sm" onclick="showToast('Items added to basket.')">Reorder</button>
+            </div>
+            <div class="order-row" role="row">
+              <div><p class="order-id">#GLH-2769</p><p class="order-date">26 Feb 2025</p></div>
+              <div style="font-size:.83rem;color:var(--text-muted);">Mixed Veg Box, Heritage Carrots x3</div>
+              <span class="order-status delivered">Delivered</span>
+              <button class="btn btn-ghost btn-sm" onclick="showToast('Items added to basket.')">Reorder</button>
+            </div>
+          </div>
+ 
+          <!-- LOYALTY -->
+          <div class="account-panel" id="panel-loyalty">
+            <h2 class="panel-title">My Loyalty Rewards</h2>
+            <div class="loyalty-card" role="region" aria-label="Loyalty points card">
+              <p class="loyalty-tier-label">Silver Member</p>
+              <p class="loyalty-points" aria-label="1,240 loyalty points">1,240</p>
+              <p class="loyalty-worth">points &mdash; worth <strong>£12.40</strong> in discounts</p>
+              <div class="points-bar"><div class="points-bar-fill" style="width:62%;" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div></div>
+              <div class="points-meta"><span>Silver</span><span>760 points to Gold (2,000)</span></div>
+            </div>
+            <h3 style="font-size:1rem;font-weight:600;color:var(--green-dark);margin-bottom:1.2rem;">Redeem Offers</h3>
+            <div class="offer-grid">
+              <div class="offer-card"><p class="offer-card-title">10% off Vegetables</p><p class="offer-card-desc">10% off your next vegetable order</p><p class="offer-cost">200 pts</p><button class="btn btn-primary btn-sm btn-full" style="margin-top:.75rem;" onclick="showToast('Offer redeemed. Use code: VEG10')">Redeem</button></div>
+              <div class="offer-card"><p class="offer-card-title">Free Cheese</p><p class="offer-card-desc">One 200g cheese of your choice</p><p class="offer-cost">500 pts</p><button class="btn btn-primary btn-sm btn-full" style="margin-top:.75rem;" onclick="showToast('Offer redeemed. Add any cheese to your basket.')">Redeem</button></div>
+              <div class="offer-card"><p class="offer-card-title">Free Delivery</p><p class="offer-card-desc">Free delivery on your next order</p><p class="offer-cost">300 pts</p><button class="btn btn-primary btn-sm btn-full" style="margin-top:.75rem;" onclick="showToast('Free delivery applied to your next order.')">Redeem</button></div>
+              <div class="offer-card"><p class="offer-card-title">£5 Voucher</p><p class="offer-card-desc">£5 off any order over £20</p><p class="offer-cost">800 pts</p><button class="btn btn-ghost btn-sm btn-full" style="margin-top:.75rem;" disabled aria-disabled="true">Insufficient Points</button></div>
+            </div>
+          </div>
+ 
+          <!-- ADDRESS -->
+          <div class="account-panel" id="panel-address">
+            <h2 class="panel-title">Address Book</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="background:var(--white);border:2px solid var(--green);padding:1.4rem;">
+                <p style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.7rem;">Default Address</p>
+                <p style="font-size:.9rem;line-height:1.7;">Adam Mcarthy<br>42 Elm Close<br>Greenfield<br>MK12 4BT</p>
+                <button class="btn btn-ghost btn-sm" style="margin-top:1rem;" onclick="showToast('Edit address form opened.')">Edit</button>
+              </div>
+              <div style="background:var(--off-white);border:1.5px dashed var(--border);padding:1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;min-height:140px;" onclick="showToast('Add new address form opened.')">
+                <p style="font-size:1.4rem;color:var(--text-light);margin-bottom:.4rem;">+</p>
+                <p style="font-size:.85rem;color:var(--text-muted);">Add new address</p>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
+<!-- ======================================================
+     PRODUCER DASHBOARD
+====================================================== -->
+<div class="page" id="page-producer-dashboard">
+  <div class="page-hero" style="background:var(--green-dark);border-bottom:none;">
+    <div class="page-hero-inner">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span style="font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);">Producer Dashboard &mdash; Restricted Access</span>
+          <h1 style="font-family:var(--font-serif);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600;color:var(--white);margin-top:.4rem;">Greenacre Farm</h1>
+          <p style="color:rgba(255,255,255,.55);font-size:.9rem;margin-top:.4rem;">Manage your products, orders, and producer profile.</p>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+          <button class="btn btn-brown" onclick="showToast('Add product form opened.')">Add Product</button>
+          <button class="btn" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.15);" onclick="showPage('login');showToast('Signed out.')">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="dash-grid" role="list" aria-label="Dashboard statistics">
+        <div class="dash-stat" role="listitem"><p class="dash-stat-label">This Week's Sales</p><p class="dash-stat-value">£842</p><p class="dash-stat-delta">+14% vs last week</p></div>
+        <div class="dash-stat" role="listitem"><p class="dash-stat-label">Active Orders</p><p class="dash-stat-value">17</p><p class="dash-stat-delta">3 new today</p></div>
+        <div class="dash-stat" role="listitem"><p class="dash-stat-label">Products Listed</p><p class="dash-stat-value">30</p><p class="dash-stat-delta" style="color:var(--brown);">2 low stock alerts</p></div>
+        <div class="dash-stat" role="listitem"><p class="dash-stat-label">Average Rating</p><p class="dash-stat-value">4.8</p><p class="dash-stat-delta">From 124 reviews</p></div>
+      </div>
+ 
+      <div class="tab-bar" role="tablist" aria-label="Dashboard sections">
+        <button class="tab active" role="tab" aria-selected="true" onclick="switchDashTab(this,'dtab-orders')">Order Management</button>
+        <button class="tab" role="tab" aria-selected="false" onclick="switchDashTab(this,'dtab-products')">Product Management</button>
+        <button class="tab" role="tab" aria-selected="false" onclick="switchDashTab(this,'dtab-prodprofile')">Producer Details</button>
+      </div>
+ 
+      <!-- ORDERS -->
+      <div id="dtab-orders" class="dtab">
+        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;">
+          <input type="search" class="form-input" placeholder="Search orders..." style="max-width:240px;" aria-label="Search orders">
+          <select class="form-select" style="max-width:190px;" aria-label="Filter by status"><option>All Orders</option><option>Pending</option><option>Processing</option><option>Dispatched</option><option>Delivered</option></select>
+          <span style="margin-left:auto;font-size:.83rem;color:var(--text-muted);">17 active orders</span>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);overflow:hidden;">
+          <table class="data-table" role="table" aria-label="Order management table">
+            <thead><tr><th>Order No.</th><th>Customer</th><th>Items</th><th>Value</th><th>Fulfilment</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>#GLH-2847</strong></td><td>Adam Mcarthy</td><td>Heirloom Tomatoes x2</td><td>£6.40</td><td>Home Delivery</td><td><span class="order-status dispatched">Dispatched</span></td><td><button class="btn btn-ghost btn-sm" onclick="showToast('Order details opened.')">View</button></td></tr>
+              <tr><td><strong>#GLH-2845</strong></td><td>Robert Davis</td><td>Carrots x3, Leaves x1</td><td>£9.30</td><td>Collection</td><td><span class="order-status processing">Processing</span></td><td><button class="btn btn-primary btn-sm" onclick="showToast('Order marked as ready for collection.')">Mark Ready</button></td></tr>
+              <tr><td><strong>#GLH-2843</strong></td><td>Sarah Hughes</td><td>Tomatoes x1, Carrots x2</td><td>£8.00</td><td>Home Delivery</td><td><span class="order-status processing">Processing</span></td><td><button class="btn btn-primary btn-sm" onclick="showToast('Order marked as dispatched.')">Dispatch</button></td></tr>
+              <tr><td><strong>#GLH-2838</strong></td><td>Mohammed Ali</td><td>Mixed Leaves x2</td><td>£4.20</td><td>Home Delivery</td><td><span class="order-status delivered">Delivered</span></td><td><button class="btn btn-ghost btn-sm" onclick="showToast('Invoice opened.')">Invoice</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+ 
+      <!-- PRODUCTS -->
+      <div id="dtab-products" class="dtab" style="display:none;">
+        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;">
+          <input type="search" class="form-input" placeholder="Search your products..." style="max-width:240px;" aria-label="Search products">
+          <button class="btn btn-primary btn-sm" onclick="showToast('Add product form opened.')">Add Product</button>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);overflow:hidden;">
+          <table class="data-table" role="table" aria-label="Product management table">
+            <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Heirloom Tomatoes</strong><br><small style="color:var(--text-muted);">500g &middot; Batch T-2847</small></td><td>Fruit &amp; Veg</td><td>£3.20</td><td>48 units</td><td><span class="stock-pill in">In Stock</span></td><td><button class="btn btn-ghost btn-sm" onclick="showToast('Edit product opened.')">Edit</button></td></tr>
+              <tr><td><strong>Heritage Carrots</strong><br><small style="color:var(--text-muted);">bunch &middot; Batch C-2841</small></td><td>Fruit &amp; Veg</td><td>£2.40</td><td>8 units</td><td><span class="stock-pill low">Low Stock</span></td><td><button class="btn btn-ghost btn-sm" onclick="showToast('Edit product opened.')">Edit</button></td></tr>
+              <tr><td><strong>Mixed Salad Leaves</strong><br><small style="color:var(--text-muted);">bag &middot; Batch L-2839</small></td><td>Fruit &amp; Veg</td><td>£2.10</td><td>22 units</td><td><span class="stock-pill in">In Stock</span></td><td><button class="btn btn-ghost btn-sm" onclick="showToast('Edit product opened.')">Edit</button></td></tr>
+              <tr><td><strong>Purple Broccoli</strong><br><small style="color:var(--text-muted);">bag &middot; Batch B-2835</small></td><td>Fruit &amp; Veg</td><td>£2.80</td><td>0 units</td><td><span class="stock-pill out">Out of Stock</span></td><td><button class="btn btn-primary btn-sm" onclick="showToast('Stock updated to 30 units.')">Restock</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+ 
+      <!-- PRODUCER PROFILE -->
+      <div id="dtab-prodprofile" class="dtab" style="display:none;">
+        <div style="max-width:640px;">
+          <h3 style="font-family:var(--font-serif);font-size:1.25rem;color:var(--green-dark);margin-bottom:1.4rem;">Producer Details</h3>
+          <div class="form-group"><label class="form-label" for="dp-name">Farm / Business Name</label><input type="text" id="dp-name" class="form-input" value="Greenacre Farm"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="dp-type">Producer Type</label><select id="dp-type" class="form-select"><option>Arable &amp; Market Garden</option><option>Dairy</option><option>Bakery</option><option>Beekeeping</option><option>Meat &amp; Poultry</option></select></div>
+            <div class="form-group"><label class="form-label" for="dp-county">County / Region</label><input type="text" id="dp-county" class="form-input" value="Midshire"></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="dp-desc">About Your Farm</label><textarea id="dp-desc" class="form-textarea">Family-run for four generations. Organic certified with a focus on heirloom vegetable varieties and soil health regeneration.</textarea></div>
+          <div class="form-group"><label class="form-label" for="dp-methods">Farming Methods</label><input type="text" id="dp-methods" class="form-input" placeholder="e.g. Organic, No-dig, Regenerative..."></div>
+
+          <button class="btn btn-primary" onclick="showToast('Producer profile updated.')">Save Profile</button>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+</div>
+ 
+</main>
+ 
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand-name">Greenfield Local Hub</p>
+      <p class="footer-brand-desc">Supporting local farmers and food producers. Fresh, traceable, community-owned.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#" onclick="showPage('shop')">All Products</a>
+      <a href="#" onclick="showPage('shop')">Fruit &amp; Veg</a>
+      <a href="#" onclick="showPage('shop')">Dairy &amp; Eggs</a>
+      <a href="#" onclick="showPage('shop')">Bread &amp; Bakery</a>
+      <a href="#" onclick="showPage('shop')">Meat &amp; Fish</a>
+      <a href="#" onclick="showPage('shop')">Honey &amp; Preserves</a>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="#" onclick="showPage('about')">Our Story</a>
+      <a href="#" onclick="showPage('producers')">Our Producers</a>
+      <a href="#" onclick="showPage('about')">Sustainability</a>
+      <a href="#" onclick="showPage('contact')">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <a href="#" onclick="showPage('register')">Register</a>
+      <a href="#" onclick="showPage('login')">Sign In</a>
+      <a href="#" onclick="showPage('account')">My Orders</a>
+      <a href="#" onclick="switchPanel(document.querySelector('[onclick*=loyalty]'),'loyalty');showPage('account')">Loyalty Rewards</a>
+      <a href="#" onclick="showPage('producer-dashboard')">Producer Login</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Greenfield Local Hub. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+ 
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+ 
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const t = document.getElementById('page-' + id);
+    if (t) { t.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  }
+ 
+  function switchPanel(btn, id) {
+    document.querySelectorAll('.account-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.account-nav-item').forEach(b => b.classList.remove('active'));
+    const p = document.getElementById('panel-' + id);
+    if (p) p.classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+ 
+  function switchDashTab(btn, tabId) {
+    document.querySelectorAll('.dtab').forEach(t => t.style.display = 'none');
+    document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    const t = document.getElementById(tabId);
+    if (t) t.style.display = 'block';
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+  }
+ 
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+ 
+  function addToCart() { showToast('Added to your basket.'); }
+ 
+  function adjustQty(delta) {
+    const input = document.getElementById('detailQty');
+    input.value = Math.max(1, Math.min(20, parseInt(input.value) + delta));
+  }
+ 
+  function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+    showToast(document.body.classList.contains('high-contrast') ? 'High contrast mode enabled.' : 'High contrast mode disabled.');
+  }
+ 
+  function toggleLargeText() {
+    document.body.classList.toggle('large-text');
+    showToast(document.body.classList.contains('large-text') ? 'Large text mode enabled.' : 'Large text mode disabled.');
+  }
+ 
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.matches('[role="button"]')) e.target.click();
+  });
+</script>
+</body>
+</html>
