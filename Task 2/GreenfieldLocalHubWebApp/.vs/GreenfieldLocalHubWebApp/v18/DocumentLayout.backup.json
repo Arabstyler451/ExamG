@@ -1,0 +1,66 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Program.cs",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Program.cs",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Program.cs",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T15:57:09.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Data\\SeedData.cs",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Data\\SeedData.cs",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Data\\SeedData.cs",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Data\\SeedData.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAIAwwMIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T13:59:29.879Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

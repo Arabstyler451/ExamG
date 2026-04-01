@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.products>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productAvailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categories)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productAvailability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producers.producersId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categories.categoriesId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.productsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.productsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.productsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

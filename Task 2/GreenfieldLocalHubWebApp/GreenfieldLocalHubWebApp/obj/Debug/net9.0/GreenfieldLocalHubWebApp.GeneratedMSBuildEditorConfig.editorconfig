@@ -15,51 +15,253 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v9.0
 build_property.RootNamespace = GreenfieldLocalHubWebApp
 build_property.RootNamespace = GreenfieldLocalHubWebApp
-build_property.ProjectDir = \\dom.sandwell.ac.uk\Student\HomeEven\709016\GitHub\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\
+build_property.ProjectDir = D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = \\dom.sandwell.ac.uk\Student\HomeEven\709016\GitHub\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp
+build_property.MSBuildProjectDirectory = D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Home/Index.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/addresses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkcmVzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/addresses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkcmVzc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/addresses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkcmVzc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/addresses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkcmVzc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/addresses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkcmVzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Home/Privacy.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/Error.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyAccounts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eUFjY291bnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyAccounts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eUFjY291bnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyAccounts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eUFjY291bnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyAccounts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eUFjY291bnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyAccounts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eUFjY291bnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyTransactions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eVRyYW5zYWN0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyTransactions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eVRyYW5zYWN0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyTransactions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eVRyYW5zYWN0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyTransactions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eVRyYW5zYWN0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/loyaltyTransactions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbG95YWx0eVRyYW5zYWN0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orderProducts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJQcm9kdWN0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orderProducts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJQcm9kdWN0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orderProducts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJQcm9kdWN0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orderProducts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJQcm9kdWN0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orderProducts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJQcm9kdWN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncb3JkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/producers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/producers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/producers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/producers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/producers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/products/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/products/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/products/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/products/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/products/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_LoginPartial.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/_ViewImports.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCartItems/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0SXRlbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCartItems/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0SXRlbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCartItems/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0SXRlbXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCartItems/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0SXRlbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCartItems/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0SXRlbXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCarts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCarts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCarts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCarts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/shoppingCarts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2hvcHBpbmdDYXJ0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/_ViewStart.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[//dom.sandwell.ac.uk/Student/HomeEven/709016/GitHub/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_Layout.cshtml]
+[D:/T Level Material/Visual Studio 2026/ExamG/Task 2/GreenfieldLocalHubWebApp/GreenfieldLocalHubWebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dkhqk1mpuj
