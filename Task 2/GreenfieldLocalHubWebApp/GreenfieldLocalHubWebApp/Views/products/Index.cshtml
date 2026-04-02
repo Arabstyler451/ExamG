@@ -70,6 +70,19 @@
                 <a asp-action="Edit" asp-route-id="@item.productsId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.productsId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.productsId">Delete</a>
+                <form asp-controller="shoppingCartItems" asp-action="Create" method="post">
+                        <input type="hidden" name="productsId" value="@item.productsId" />
+
+                        @if (item.stockQuantity > 0)
+                        {
+                            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-secondary w-100" disabled>Out of Stock</button>
+                        }
+                        
+                </form>
             </td>
         </tr>
 }

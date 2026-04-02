@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenfieldLocalHubWebApp.Data;
+using GreenfieldLocalHubWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GreenfieldLocalHubWebApp.Data;
-using GreenfieldLocalHubWebApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -22,7 +23,50 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: shoppingCarts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.shoppingCart.ToListAsync());
+
+            // Get the current user's ID from the claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+
+            // Check if the user has an active shopping cart, if not create one
+            var shoppingCart = await _context.shoppingCart.FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus); // Find the active shopping cart for the user
+
+            if (shoppingCart == null)
+            {
+                shoppingCart = new shoppingCart
+                {
+                    UserId = userId,
+                    shoppingCartCreatedAt = DateTime.Now,
+                    shoppingCartStatus = true
+                };
+                _context.shoppingCart.Add(shoppingCart);
+                await _context.SaveChangesAsync();
+            }
+
+
+            // Retrieve the shopping cart items for the current user's shopping cart, including the related products and shopping cart information
+            var shoppingCartItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId) // Filter shopping cart items by the current user's shopping cart
+                .Include(sci => sci.shoppingCart) // Include the related shopping cart
+                .Include(sci => sci.products) // Include the related products
+                .ToListAsync();
+
+            float subTotalAmount = 0f; // Stores the total amount for the shopping cart
+
+            foreach (var shoppingCartItem in shoppingCartItems)
+            {
+                var productTotal = shoppingCartItem.products.productPrice * shoppingCartItem.quantity; // Calculate the total price for each item
+                subTotalAmount += productTotal; // Add the total price of each item to the overall total amount
+            }
+
+
+            ViewBag.subTotalAmount = subTotalAmount; // Pass the total amount to the view using ViewBag
+            return View(shoppingCartItems);
         }
 
         // GET: shoppingCarts/Details/5

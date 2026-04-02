@@ -1,5 +1,12 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\countrySourdough.jpg
+wwwroot\images\greenacreFarm.jpg
+wwwroot\images\heritageCarrots.jpg
+wwwroot\images\heritageTomatoes.jpg
+wwwroot\images\hillcrestDairy.jpg
+wwwroot\images\rawMilkCheddar.jpg
+wwwroot\images\theOldMillBakery.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -61,13 +68,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\images\greenacreFarm.jpg
-wwwroot\images\hillcrestDairy.jpg
-wwwroot\images\theOldMillBakery.jpg
-wwwroot\images\heritageTomatoes.jpg
-wwwroot\images\rawMilkCheddar.jpg
-wwwroot\images\countrySourdough.jpg
-wwwroot\images\heritageCarrots.jpg
 D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\site.css
 D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\favicon.ico
 D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\site.js
