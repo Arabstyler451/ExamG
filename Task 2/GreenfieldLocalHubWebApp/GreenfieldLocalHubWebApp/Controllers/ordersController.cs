@@ -46,9 +46,10 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: orders/Create
-        public IActionResult Create()
+        public IActionResult Create(int shoppingCartId)
         {
             ViewData["addressId"] = new SelectList(_context.address, "addressId", "addressId");
+            ViewBag.shoppingCartId = shoppingCartId;
             return View();
         }
 

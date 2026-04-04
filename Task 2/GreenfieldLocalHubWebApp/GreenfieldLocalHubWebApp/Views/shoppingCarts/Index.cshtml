@@ -63,8 +63,10 @@ else
             </div>
 
             <div>
+                <a asp-controller="orders" asp-action="Create" asp-route-shoppingCartId="@shoppingCartId" class="btn btn-primary w-100 mb-2">Proceed to Checkout</a>
                 <a asp-controller="products" asp-action="Index">Continue Shopping</a>
             </div>
+
         </div>
     </div>
 }
