@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenfieldLocalHubWebApp.Data;
+using GreenfieldLocalHubWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GreenfieldLocalHubWebApp.Data;
-using GreenfieldLocalHubWebApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -44,8 +45,9 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: addresses/Create
-        public IActionResult Create()
+        public IActionResult Create(string returnUrl = null)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -54,14 +56,32 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("addressId,UserId,street,city,postalCode,country")] address address)
+        public async Task<IActionResult> Create([Bind("addressId,street,city,postalCode,country")] address address, string returnUrl = null)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            address.UserId = userId;
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
                 _context.Add(address);
                 await _context.SaveChangesAsync();
+
+                // Return to checkout and pre-select the newly created address
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl + "&selectedAddressId=" + address.addressId);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.ReturnUrl = returnUrl;
             return View(address);
         }
 

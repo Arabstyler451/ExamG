@@ -23,39 +23,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: orders
         public async Task<IActionResult> Index()
         {
-            // Get the currently logged-in user's ID
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-
-
-            // If the user is an admin, show all orders
-            if (User.IsInRole("Admin"))
-            {
-                var allOrders = await _context.orders.Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
-                return View(allOrders);
-            }
-
-            //If the user is a producer, show only orders that contain their products. Otherwise, show only the user's own orders.
-            else if (User.IsInRole("Producer"))
-            {
-                var producerProducts = await _context.products.Where(p => p.producers.UserId == userId).Select(p => p.productsId).ToListAsync();
-                var producerOrders = await _context.orderProducts.Where(op => producerProducts.Contains(op.productsId)).Include(op => op.orders).Include(op => op.products).ToListAsync();
-                return View(producerOrders.Select(vo => vo.orders).Distinct().ToList());
-            }
-            else
-            {
-                var orders = _context.orders.Where(o => o.UserId == userId).Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
-                return View(orders);
-            }
-
+            var applicationDbContext = _context.orders.Include(o => o.address);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-
-        // GET: Orders/Details/5
+        // GET: orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,34 +35,22 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return NotFound();
             }
 
-            var orderProducts = await _context.orderProducts
-                .Where(op => op.ordersId == id)
-                .Include(op => op.orders)
-                .Include(op => op.products)
-                .ToListAsync();
-
-            if (!orderProducts.Any())   // ← Fixed the check
+            var orders = await _context.orders
+                .Include(o => o.address)
+                .FirstOrDefaultAsync(m => m.ordersId == id);
+            if (orders == null)
             {
                 return NotFound();
             }
 
-            return View(orderProducts);   // ← Pass the list directly
+            return View(orders);
         }
 
         // GET: orders/Create
-        public async Task<IActionResult> Create(int shoppingCartId, int? selectedAddressId = null)
+        public IActionResult Create(int shoppingCartId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            PopulateAddressSelectList();
             ViewBag.shoppingCartId = shoppingCartId;
-
-            // Get user's addresses
-            var userAddresses = await _context.address.Where(a => a.UserId == userId).ToListAsync();
-
-            ViewBag.HasAddresses = userAddresses.Any();
-
-            // Build dropdown (pre-select the newly added address if coming back from Addresses/Create)
-            ViewData["AddressId"] = new SelectList(userAddresses,"addressId","street",selectedAddressId);
             return View();
         }
 
@@ -107,6 +67,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             if (userId == null)
             {
                 ViewBag.shoppingCartId = shoppingCartId;
+                PopulateAddressSelectList(orders?.addressId);
                 return View(orders);
             }
 
@@ -138,6 +99,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             {
                 ModelState.AddModelError("", "Your shopping cart is empty.");
                 ViewBag.shoppingCartId = shoppingCartId;
+                PopulateAddressSelectList(orders?.addressId);
                 return View(orders);
             }
 
@@ -222,6 +184,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.shoppingCartId = shoppingCartId;
+                PopulateAddressSelectList(orders?.addressId);
                 return View(orders);
             }
 
@@ -236,6 +199,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 {
                     ModelState.AddModelError("", $"Sorry, we only have {shoppingCartItem.products.stockQuantity} units of {shoppingCartItem.products.productName} in stock. Please adjust the quantity in your shopping cart.");
                     ViewBag.shoppingCartId = shoppingCartId;
+                    PopulateAddressSelectList(orders?.addressId);
                     return View(orders);
                 }
                 

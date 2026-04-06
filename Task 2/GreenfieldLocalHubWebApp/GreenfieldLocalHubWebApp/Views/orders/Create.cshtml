@@ -1,4 +1,4 @@
-﻿@model GreenfieldLocalHubWebApp.Models.orders
+﻿    @model GreenfieldLocalHubWebApp.Models.orders
 
 @{
     ViewData["Title"] = "Checkout";
@@ -9,7 +9,7 @@
 <p>Choose how you would like to receive your order.</p>
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="ModelOnly" style="color: red;"></div>
+    <div asp-validation-summary="All" style="color: red;"></div>
 
     <input type="hidden" name="shoppingCartId" value ="@ViewBag.shoppingCartId"/>
 
@@ -25,6 +25,41 @@
             <input asp-for="collection" id="collectionCheck" />
             <label asp-for="collection">Collection</label>
         </div>
+    </div>
+
+
+    <div style="margin-bottom:25px;">
+        <label style="font-weight:bold; display:block; margin-bottom:10px;">Delivery Address</label>
+
+        @if (ViewBag.HasAddresses == true)
+        {
+            @Html.DropDownListFor(model => model.addressId,(SelectList)ViewData["AddressId"],"Select an address from your address book",new { @class = "form-control" })
+            <span asp-validation-for="addressId" style="color: red;"></span>
+
+            <div style="margin-top:8px;">
+                <a asp-controller="Addresses"
+                       asp-action="Create"
+                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                       class="btn btn-sm btn-outline-primary">
+                    + Add another address
+                </a>
+            </div>
+        }
+        else
+        {
+            <div style="background:#f8f9fa; padding:20px; border:2px dashed #ccc; border-radius:8px; text-align:center;">
+                <p style="margin-bottom:15px; font-size:1.1em;">
+                    You don't have any saved addresses yet.<br>
+                    Please add your first delivery address to continue.
+                </p>
+                <a asp-controller="Addresses"
+                       asp-action="Create"
+                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                       class="btn btn-primary btn-lg">
+                    ➕ Add Your First Delivery Address
+                </a>
+            </div>
+        }
     </div>
 
     <div id="deliveryTypeGroup" style="display:none; margin-bottom:15px;">
@@ -54,7 +89,6 @@
         <a asp-controller="shoppingCarts" asp-action="Index">Back to Cart</a>"
     </div>
 
-
 </form>
 
 <script>
@@ -66,7 +100,7 @@
 
     if (collectionDateInput) {
         collectionDateInput.min = minDate;
-    })
+    }
 
     const deliveryCheck = document.getElementById("deliveryCheck");
     const collectionCheck = document.getElementById("collectionCheck");
@@ -82,7 +116,7 @@
         deliveryCheck.disabled = false;
         collectionCheck.disabled = false;
 
-        if (deliveryCheck.checkedchecked) {
+        if (deliveryCheck.checked) {
             deliveryTypeGroup.style.display = "block";
             collectionCheck.disabled = true;
         }
