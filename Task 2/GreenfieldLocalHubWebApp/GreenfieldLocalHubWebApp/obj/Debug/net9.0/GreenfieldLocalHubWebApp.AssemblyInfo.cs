@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GreenfieldLocalHubWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f1cd81fd4cee2b2c71c9267948bd31c717677b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04c5f18dc6b57150f8fa3b62e3fc376f0fc871e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("GreenfieldLocalHubWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GreenfieldLocalHubWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

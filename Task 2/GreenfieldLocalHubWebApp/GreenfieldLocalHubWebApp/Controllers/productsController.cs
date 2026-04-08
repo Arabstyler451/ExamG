@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GreenfieldLocalHubWebApp.Data;
 using GreenfieldLocalHubWebApp.Models;
+using System.Security.Claims;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -22,8 +23,34 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: products
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.products.Include(p => p.categories).Include(p => p.producers);
-            return View(await applicationDbContext.ToListAsync());
+            // Check if the user is in the "producer" role
+            if (User.IsInRole("Producer"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if(userId == null)
+                {
+                    return Unauthorized();
+                }
+
+                // Find the producer associated with the current user
+                var producer = await _context.producers.FirstOrDefaultAsync(p => p.UserId == userId);
+
+                if (producer == null)
+                {
+                    return NotFound();
+                }
+
+                // Retrieve products associated with the producer
+                var producerProducts = await _context.products.Where(p => p.producersId == producer.producersId).Include(p => p.producersId).ToListAsync();
+                return View(producerProducts);
+            }
+            else
+            {
+                // If the user is not a producer, show all products
+                var allProducts = await _context.products.Include(p => p.categories).Include(p => p.producers).ToListAsync();
+                return View(allProducts);
+            }
         }
 
         // GET: products/Details/5
@@ -86,7 +113,6 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return NotFound();
             }
             ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId", products.categoriesId);
-            ViewData["producersId"] = new SelectList(_context.producers, "producersId", "producersId", products.producersId);
             return View(products);
         }
 
@@ -95,12 +121,30 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("productsId,producersId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
+        public async Task<IActionResult> Edit(int id, [Bind("productsId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
         {
+
             if (id != products.productsId)
             {
                 return NotFound();
             }
+
+            // Get the current user's ID
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            // Find the producer associated with the current user
+            var producer = await _context.producers.FirstOrDefaultAsync(p => p.UserId == userId);
+            if (producer == null)
+            {
+                return NotFound();
+            }
+
+            products.producersId = producer.producersId;
+            ModelState.Remove("producersId");
 
             if (ModelState.IsValid)
             {
@@ -123,7 +167,6 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId", products.categoriesId);
-            ViewData["producersId"] = new SelectList(_context.producers, "producersId", "producersId", products.producersId);
             return View(products);
         }
 
@@ -147,18 +190,31 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(products);
         }
 
-        // POST: products/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var products = await _context.products.FindAsync(id);
-            if (products != null)
+            var products = await _context.products
+                .Include(p => p.producers)
+                .FirstOrDefaultAsync(p => p.productsId == id);
+
+            if (products == null)
             {
-                _context.products.Remove(products);
+                return NotFound();
             }
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Only the owner/producer of this product can delete it
+            if (products.producers.UserId != userId)
+            {
+                return Forbid();
+            }
+
+            _context.products.Remove(products);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
