@@ -48,7 +48,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             }
             else
             {
-                var orders = _context.orders.Where(o => o.UserId == userId).Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
+                var orders = await _context.orders.Where(o => o.UserId == userId).Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
                 return View(orders);
             }
 

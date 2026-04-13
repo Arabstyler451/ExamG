@@ -45,7 +45,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="orderStatus" class="control-label"></label>
-                <input asp-for="orderStatus" class="form-control" />
+                <select asp-for="orderStatus" class="form-control">
+                    <option value="">-- Select Status--</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
                 <span asp-validation-for="orderStatus" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -2,25 +2,81 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<style>
+    .login-partial { display: flex; align-items: center; gap: .5rem; }
+
+    /* Signed-in state */
+    .nav-user-greeting {
+        display: flex; align-items: center; gap: .6rem;
+    }
+    .nav-user-avatar {
+        width: 32px; height: 32px;
+        background: var(--green-faint);
+        border: 1.5px solid rgba(27,77,63,.2);
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        font-size: .72rem; font-weight: 700;
+        color: var(--green); letter-spacing: .03em;
+    }
+    .nav-user-name {
+        font-size: .83rem; font-weight: 500; color: var(--text-muted);
+        text-decoration: none; transition: var(--transition);
+        white-space: nowrap; max-width: 120px;
+        overflow: hidden; text-overflow: ellipsis;
+    }
+    .nav-user-name:hover { color: var(--green); }
+
+    .nav-logout-btn {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: .78rem; font-weight: 500;
+        padding: .35rem .85rem;
+        font-family: var(--font-sans);
+        cursor: pointer; transition: var(--transition);
+        letter-spacing: .02em; white-space: nowrap;
+    }
+    .nav-logout-btn:hover { border-color: var(--green); color: var(--green); }
+
+    /* Signed-out state */
+    .nav-auth-links { display: flex; align-items: center; gap: .4rem; }
+
+    .nav-auth-link {
+        font-size: .83rem; font-weight: 500; color: var(--text-muted);
+        text-decoration: none; padding: .35rem .75rem;
+        border: 1px solid transparent; transition: var(--transition);
+        white-space: nowrap;
+    }
+    .nav-auth-link:hover { color: var(--green); }
+
+    .nav-auth-link.primary {
+        background: var(--green); color: var(--white);
+        border-color: var(--green);
+    }
+    .nav-auth-link.primary:hover { background: var(--green-light); border-color: var(--green-light); color: var(--white); }
+</style>
+
+<div class="login-partial">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+<div class="nav-user-greeting">
+    <a class="nav-icon-btn" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage your account" aria-label="My account">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </svg>
+    </a>
+</div>
+
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post"style="margin:0;">
+        <button type="submit" class="nav-logout-btn">Sign out</button>
+    </form>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+    <div class="nav-auth-links">
+        <a class="nav-auth-link" asp-area="Identity"asp-page="/Account/Register">Register</a>
+        <a class="nav-auth-link primary"asp-area="Identity"asp-page="/Account/Login">Sign in</a>
+    </div>
 }
-</ul>
+</div>
