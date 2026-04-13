@@ -40,42 +40,40 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.productName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.stockQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productAvailability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producers.producersId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.categories.categoriesId)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.productsId">Details</a>
-                @if (User.IsInRole("Producer"))
-                {
-                    <a asp-action="Edit" asp-route-id=@item.productsId">Edit</a> 
-                    <a asp-action="Delete" asp-route-id="@item.productsId">Delete</a>
-                }
-
-              
-                <form asp-controller="shoppingCartItems" asp-action="Create" method="post">
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stockQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productAvailability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.producers.producersId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categories.categoriesId)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.productsId">Details</a>
+                    @if (User.IsInRole("Producer"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.productsId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.productsId">Delete</a>
+                    }
+                    <form asp-controller="shoppingCartItems" asp-action="Create" method="post">
                         <input type="hidden" name="productsId" value="@item.productsId" />
 
                         @if (item.stockQuantity > 0)
@@ -86,10 +84,10 @@
                         {
                             <button type="button" disabled>Out of Stock</button>
                         }
-                        
-                </form>
-            </td>
-        </tr>
-}
+
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

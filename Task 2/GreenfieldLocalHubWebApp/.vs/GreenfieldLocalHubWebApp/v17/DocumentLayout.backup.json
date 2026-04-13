@@ -1,7 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "\\\\dom.sandwell.ac.uk\\Student\\HomeEven\\709016\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\task 2\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\task 2\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAFgAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T14:48:02.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\products\\Index.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\products\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\Task 2\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\products\\Index.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\products\\Index.cshtml",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAEwFEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T14:43:37.829Z",
+              "EditorCaption": ""
             }
           ]
         }
