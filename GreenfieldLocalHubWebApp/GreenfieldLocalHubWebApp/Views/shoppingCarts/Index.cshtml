@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.shoppingCartItems>
+
+@{
+    ViewData["Title"] = "Your Shopping Cart";
+    var shoppingCartId = Model.FirstOrDefault()?.shoppingCartId;
+}
+
+<h1>Your Shopping Cart</h1>
+
+@if (!Model.Any())
+{
+    <div>
+        <h3>Your shopping cart is empty</h3>
+        <p>You haven't added any products yet.'</p>
+        <a asp-controller="products" asp-action="Index">Continue Shopping</a>
+    </div>
+}
+
+else
+{
+    <div>
+        <div>
+            @foreach(var item in Model)
+            {
+                <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+
+                    <div>
+                        <h4>@item.products.productName</h4>
+                        <p>Price: £@item.products.productPrice.ToString("0.00")</p>
+                    </div>
+
+                    <div>
+                        <p>Qty: £@item.quantity</p>
+                    </div>
+
+                    <div>
+                        <p>
+                            Total: £@((item.products.productPrice * item.quantity).ToString("0.00"))
+                        </p>
+
+                        <a asp-controller="shoppingCartItems" asp-action="Delete" asp-route-id="@item.shoppingCartItemsId">Remove</a>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div style="border:1px solid #000; padding:15px; margin-top:20px;">
+            <h3>Order Summary</h3>
+
+            <div>
+                <span>Subtotal:</span>
+                <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
+            </div>
+
+            <div>
+                <span>Loyalty Discount:</span>
+                <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
+            </div>
+
+            <div>
+                <strong>Total:</strong>
+                <strong>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</strong>
+            </div>
+
+            <div>
+                <a asp-controller="orders" asp-action="Create" asp-route-shoppingCartId="@shoppingCartId" class="btn btn-primary w-100 mb-2">Proceed to Checkout</a>
+                <a asp-controller="products" asp-action="Index">Continue Shopping</a>
+            </div>
+
+        </div>
+    </div>
+}

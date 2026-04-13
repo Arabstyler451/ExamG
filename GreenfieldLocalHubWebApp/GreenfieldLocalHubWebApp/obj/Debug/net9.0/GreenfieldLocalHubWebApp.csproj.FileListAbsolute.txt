@@ -1,0 +1,890 @@
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\appsettings.Development.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\appsettings.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.staticwebassets.runtime.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.staticwebassets.endpoints.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.exe
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.deps.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.runtimeconfig.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.pdb
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Azure.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Azure.Identity.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Humanizer.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Framework.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Tasks.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Utilities.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Features.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Elfie.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Features.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Razor.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Scripting.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.DiaSymReader.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.DotNet.Scaffolding.Shared.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.NET.StringTools.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Setup.Configuration.Interop.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\dotnet-aspnet-codegenerator-design.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Common.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Configuration.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.DependencyResolver.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Frameworks.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.LibraryModel.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Packaging.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.ProjectModel.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Protocol.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Versioning.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.ClientModel.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.CodeDom.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Memory.Data.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Resources.Extensions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Runtime.Caching.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Security.Permissions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Windows.Extensions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\af\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ar\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\az\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\bg\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\bn-BD\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\da\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\el\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fa\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fi-FI\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr-BE\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\he\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hr\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hu\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hy\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\id\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\is\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko-KR\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ku\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\lv\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ms-MY\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\mt\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nb\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nb-NO\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nl\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ro\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sk\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sl\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sr\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sr-Latn\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sv\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\th-TH\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uk\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uz-Cyrl-UZ\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uz-Latn-UZ\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\vi\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-CN\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Humanizer.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.csproj.AssemblyReference.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.AssemblyInfoInputs.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.AssemblyInfo.cs
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.csproj.CoreCompileInputs.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.MvcApplicationPartsAssemblyInfo.cs
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.MvcApplicationPartsAssemblyInfo.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.RazorAssemblyInfo.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.RazorAssemblyInfo.cs
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.sourcelink.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\bundle\GreenfieldLocalHubWebApp.styles.css
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\projectbundle\GreenfieldLocalHubWebApp.bundle.scp.css
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ofa40bqe71-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\j9swiz3yzq-{0}-90yqlj465b-90yqlj465b.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vltxs1u3vm-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\14ipv7q33s-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rh65p086id-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\eb27mqwgz2-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9glsckmvxo-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\hh8ihyobdx-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\bww8ud00yd-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\edcrak57d7-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\sf8kf2lula-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\3tzsqhslk9-{0}-ub07r2b239-ub07r2b239.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\oxk5o6czdw-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\k8b25g0zwc-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8axix7wldr-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\d5z9sfpxbi-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\u8428c4e9i-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\tg53r17ghy-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\nlrl0f3xs3-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\1fc4q00scq-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8xykfy6qmd-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vsrbd71spn-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\cynp17w084-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7o8oyvng68-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\h9vwtoirpy-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\o5k23vqhrk-{0}-06098lyss8-06098lyss8.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\iznc766avz-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ns4583i71s-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\47012z8l2l-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4vzefxwp2m-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\bh4v3mdph9-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l186vlgaag-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rsc7qacj1u-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\z408qb6q7a-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qfr28sqcy1-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0k1i85ntyh-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\xa379ftczi-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\lr5hmrr0j7-{0}-493y06b0oq-493y06b0oq.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ivy2s9gwh5-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\higufxz8op-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\s3tglgz8hr-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vw9sls9bhj-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ym8tkpcl2i-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zzna4nrm5w-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\igscs4x0yk-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zap00c0tb5-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\pogzkicjpz-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\j3hwsq15kh-{0}-47otxtyo56-47otxtyo56.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\q3naettu8c-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ldxy2n3w6q-{0}-356vix0kms-356vix0kms.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ypthv7q62w-{0}-83jwlth58m-83jwlth58m.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\t6e3b82hrf-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\uocis9wxbx-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\2tikzqlmtu-{0}-ag7o75518u-ag7o75518u.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9muusbdg0a-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\tpsq5dibur-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\t0qo7o574p-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\b9lhb08218-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\a3ygkwa5zy-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\nezrqnk58p-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\v0zgfp0y55-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\xp8v8m7lsp-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\txngqqbm1v-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\2nw57v0bib-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\aut4t56xs5-{0}-t1cqhe9u97-t1cqhe9u97.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\wzx8ck4e00-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\c43in8vnv5-{0}-sejl45xvog-sejl45xvog.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\afc5ohzuqw-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ssbdjo2edn-{0}-xvp3kq03qx-xvp3kq03qx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\se7zvludkg-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9vkyycuhmw-{0}-22vffe00uq-22vffe00uq.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zr3riwcdpy-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\sxan4qwmlw-{0}-qesaa3a1fm-qesaa3a1fm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9cm13wxxa8-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\i1d5rq4hck-{0}-tmc1g35s3z-tmc1g35s3z.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\obexmbpun0-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\h7rgayjwm6-{0}-rxsg74s51o-rxsg74s51o.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\6lqoki50wy-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\wfkddyec16-{0}-q9ht133ko3-q9ht133ko3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\aglt9ytdyw-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ihwlg0bjga-{0}-gye83jo8yx-gye83jo8yx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\q2w670674s-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qox5iokr4b-{0}-wl58j5mj3v-wl58j5mj3v.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\1yrmyl4msj-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\pm0kd5ld5d-{0}-d4r6k3f320-d4r6k3f320.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\h7p6z4z91q-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\6b7bgdo1x0-{0}-keugtjm085-keugtjm085.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\wyywgt2v4u-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\y07ziqu4b4-{0}-zub09dkrxp-zub09dkrxp.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\um1huyyteg-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4cp8u2moto-{0}-43atpzeawx-43atpzeawx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8vtqj38nn1-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0oh2cxf3tc-{0}-ynyaa8k90p-ynyaa8k90p.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\p9dca7egru-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\j4zfhshf9v-{0}-c63t5i9ira-c63t5i9ira.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\359f9tk73z-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ydjpxfkweq-{0}-4094rpi4f9-4094rpi4f9.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rtqachh2rd-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\as2fy1byew-{0}-hd3gran6i8-hd3gran6i8.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ek401e4fe6-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\k83ynvam5r-{0}-ltid2c489k-ltid2c489k.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\cr2z5hpgd7-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\01rbhtw64t-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\fpqfe2cwv2-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\60ssidf01e-{0}-u9q1upor1n-u9q1upor1n.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\k4oy3wxyed-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\m6czsbe5e3-{0}-4d85u1mtcx-4d85u1mtcx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\mm7dsajwtk-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\43ewlfef4g-{0}-03hjc8e09r-03hjc8e09r.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\2x3i0zr66m-{0}-48y08845bh-48y08845bh.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9b787shsjq-{0}-356vix0kms-356vix0kms.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0detotd0xm-{0}-83jwlth58m-83jwlth58m.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l7i4raxg5i-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\gokoufdsez-{0}-worgj0nhwm-worgj0nhwm.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\cefeqmjb0t-{0}-gk0pw8i4co-gk0pw8i4co.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ux4fz4tbyq-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\xmtpl2e98b-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rrzc2bxt5y-{0}-m9qm4tazc0-m9qm4tazc0.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l8yxuetvbw-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\wgfateur3r-{0}-jjsuc0puko-jjsuc0puko.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vv87u764o4-{0}-9vr69e8ynj-9vr69e8ynj.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\kl5g10k44p-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vuvm4bt12t-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zpygr9xi4g-{0}-inzdyc1fys-inzdyc1fys.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7z8quixz74-{0}-inzdyc1fys-inzdyc1fys.gz
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.build.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.development.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\swae.build.ex.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\Greenfie.CCF1237A.Up2Date
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\refint\GreenfieldLocalHubWebApp.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.pdb
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.genruntimeconfig.cache
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\ref\GreenfieldLocalHubWebApp.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Embedded.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.core.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\T Level Material\Visual Studio 2026\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.csproj.AssemblyReference.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.AssemblyInfoInputs.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.AssemblyInfo.cs
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.RazorAssemblyInfo.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.RazorAssemblyInfo.cs
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.sourcelink.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\refint\GreenfieldLocalHubWebApp.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.pdb
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\appsettings.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.staticwebassets.runtime.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.staticwebassets.endpoints.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.exe
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.deps.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.runtimeconfig.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\GreenfieldLocalHubWebApp.pdb
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Humanizer.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Framework.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Tasks.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Build.Utilities.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Features.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Elfie.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Features.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.DiaSymReader.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.DotNet.Scaffolding.Shared.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.NET.StringTools.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Setup.Configuration.Interop.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Common.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Configuration.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.DependencyResolver.Core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Frameworks.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.LibraryModel.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Packaging.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.ProjectModel.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Protocol.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\NuGet.Versioning.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.core.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Resources.Extensions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\af\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ar\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\az\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\bg\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\bn-BD\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\da\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\el\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fa\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fi-FI\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr-BE\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\he\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hr\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hu\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\hy\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\id\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\is\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko-KR\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ku\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\lv\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ms-MY\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\mt\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nb\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nb-NO\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\nl\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ro\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sk\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sl\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sr\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sr-Latn\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\sv\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\th-TH\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uk\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uz-Cyrl-UZ\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\uz-Latn-UZ\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\vi\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-CN\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Humanizer.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-arm\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-armel\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-x64\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\linux-x86\native\libe_sqlite3.so
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\bundle\GreenfieldLocalHubWebApp.styles.css
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\scopedcss\projectbundle\GreenfieldLocalHubWebApp.bundle.scp.css
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ofa40bqe71-b9sayid5wm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\j9swiz3yzq-90yqlj465b.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vltxs1u3vm-xtxxf3hu2r.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\14ipv7q33s-bqjiyaj88i.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rh65p086id-c2jlpeoesf.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\eb27mqwgz2-erw9l3u2r3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9glsckmvxo-aexeepp0ev.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\hh8ihyobdx-d7shbmvgxk.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\bww8ud00yd-ausgxo2sd3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\edcrak57d7-k8d9w2qqmf.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\sf8kf2lula-cosvhxvwiu.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\3tzsqhslk9-ub07r2b239.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\oxk5o6czdw-fvhpjtyr6v.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\k8b25g0zwc-b7pk76d08c.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8axix7wldr-fsbi9cje9m.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\d5z9sfpxbi-rzd6atqjts.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\u8428c4e9i-ee0r1s7dh0.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\tg53r17ghy-dxx9fxp4il.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\nlrl0f3xs3-jd9uben2k1.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\1fc4q00scq-khv3u5hwcm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8xykfy6qmd-r4e9w2rdcm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vsrbd71spn-lcd1t2u6c8.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\cynp17w084-c2oey78nd0.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7o8oyvng68-tdbxkamptv.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\h9vwtoirpy-j5mq2jizvt.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\o5k23vqhrk-06098lyss8.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\iznc766avz-nvvlpmu67g.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ns4583i71s-s35ty4nyc5.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\47012z8l2l-pj5nd1wqec.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4vzefxwp2m-46ein0sx1k.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\bh4v3mdph9-v0zj4ognzu.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l186vlgaag-37tfw0ft22.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rsc7qacj1u-hrwsygsryq.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\z408qb6q7a-pk9g2wxc8p.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qfr28sqcy1-ft3s53vfgj.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0k1i85ntyh-6cfz1n2cew.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\xa379ftczi-6pdc2jztkx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\lr5hmrr0j7-493y06b0oq.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ivy2s9gwh5-iovd86k7lj.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\higufxz8op-vr1egmr9el.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\s3tglgz8hr-kbrnm935zg.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vw9sls9bhj-jj8uyg4cgr.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ym8tkpcl2i-y7v9cxd14o.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zzna4nrm5w-notf2xhcfb.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\igscs4x0yk-h1s4sie4z3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zap00c0tb5-63fj8s7r0e.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\pogzkicjpz-0j3bgjxly4.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\j3hwsq15kh-47otxtyo56.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\q3naettu8c-4v8eqarkd7.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ldxy2n3w6q-356vix0kms.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ypthv7q62w-83jwlth58m.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\t6e3b82hrf-mrlpezrjn3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\uocis9wxbx-lzl9nlhx6b.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\2tikzqlmtu-ag7o75518u.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9muusbdg0a-x0q3zqp4vz.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\tpsq5dibur-0i3buxo5is.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\t0qo7o574p-o1o13a6vjx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\b9lhb08218-ttgo8qnofa.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\a3ygkwa5zy-2z0ns9nrw6.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ppmhma3a8x-b9sayid5wm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\msh6cb0sdi-61n19gt1b8.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\58lpday2eg-xtxxf3hu2r.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\bgnpko96cw-t1cqhe9u97.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qa3ka1lf5n-c2jlpeoesf.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\d2sdgrueqm-sejl45xvog.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\26a5xdin8v-aexeepp0ev.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\hlyxm7zjkz-xvp3kq03qx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\xfmsnfkkdc-ausgxo2sd3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\1a2i6vvg2q-22vffe00uq.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\vwrq6jsm0b-cosvhxvwiu.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\zkpgmw7d6f-qesaa3a1fm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ezckmi3fif-fvhpjtyr6v.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qdeanvb600-tmc1g35s3z.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\6u0yrzslzt-fsbi9cje9m.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7oghtss9fr-rxsg74s51o.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\8bfj9bruzi-ee0r1s7dh0.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\2pw2tq3v1j-q9ht133ko3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\s6q4y8x5go-jd9uben2k1.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7hfx5kf0zx-gye83jo8yx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\f0hwyjngan-r4e9w2rdcm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\7zjlvj6ugc-wl58j5mj3v.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\t8k92reksh-c2oey78nd0.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\w66hi5jike-d4r6k3f320.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\jr548r1f7a-j5mq2jizvt.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\lz3ygpucjc-keugtjm085.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\euzjfuymsl-nvvlpmu67g.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\9if1cyvjgc-zub09dkrxp.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\azx6pauf41-pj5nd1wqec.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\98b56vegw9-43atpzeawx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\fbhfggyo8e-v0zj4ognzu.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\jbrkq6odp7-ynyaa8k90p.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\6aabxkphhd-hrwsygsryq.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\h3ls2kik8m-c63t5i9ira.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\yrb1co4l6g-ft3s53vfgj.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l8pudo8u8x-4094rpi4f9.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\w14fhkx8ml-6pdc2jztkx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4hvm443w09-hd3gran6i8.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\88eatusx1l-iovd86k7lj.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\u8i5ad2nkz-ltid2c489k.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4aqsih56uo-kbrnm935zg.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\z70q9tyg2o-8vyfqsqgz1.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0bd3r2rtb6-y7v9cxd14o.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\4fhusl2hgp-u9q1upor1n.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\q1r7o4n3sp-h1s4sie4z3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\dff6ccqfv3-4d85u1mtcx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\0d1jjkz9cf-0j3bgjxly4.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\41jl64z51y-03hjc8e09r.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\3novaeyk33-48y08845bh.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\dy8rasremt-356vix0kms.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\rlg7c9vap9-83jwlth58m.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\w3yaxqrk31-mrlpezrjn3.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ly2llbiuqq-worgj0nhwm.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\aybyfs3pxt-gk0pw8i4co.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\a0xlp1bcwk-x0q3zqp4vz.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\1i6dbfej35-d6nrnj6jjx.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\6spcl2r7oz-m9qm4tazc0.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ghgmug8ify-ttgo8qnofa.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\pyqtfqhdw7-jjsuc0puko.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\ig53xvcwnn-9vr69e8ynj.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\18v236v1lt-87fc7y1x7t.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\qoh2pa3ehg-mlv21k5csn.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\b4hdbhj3nu-cwp43iqbzl.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\compressed\l4gduudlka-cwp43iqbzl.gz
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets\msbuild.GreenfieldLocalHubWebApp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets\msbuild.GreenfieldLocalHubWebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets\msbuild.build.GreenfieldLocalHubWebApp.props
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.GreenfieldLocalHubWebApp.props
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.GreenfieldLocalHubWebApp.props
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\Greenfie.CCF1237A.Up2Date
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.genruntimeconfig.cache
+C:\Users\Digi-T-Y2-18\source\repos\ExamG\Task 2\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\ref\GreenfieldLocalHubWebApp.dll

@@ -1,0 +1,101 @@
+﻿@model GreenfieldLocalHubWebApp.Models.orders
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>orders</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ordersId" />
+            <div class="form-group">
+                <label asp-for="addressId" class="control-label"></label>
+                <select asp-for="addressId" class="form-control" asp-items="ViewBag.addressId"></select>
+                <span asp-validation-for="addressId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="totalAmount" class="control-label"></label>
+                <input asp-for="totalAmount" class="form-control" />
+                <span asp-validation-for="totalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="delivery" /> @Html.DisplayNameFor(model => model.delivery)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="collection" /> @Html.DisplayNameFor(model => model.collection)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="deliveryType" class="control-label"></label>
+                <input asp-for="deliveryType" class="form-control" />
+                <span asp-validation-for="deliveryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="orderStatus" class="control-label"></label>
+                <select asp-for="orderStatus" class="form-control">
+                    <option value="">-- Select Status--</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+                <span asp-validation-for="orderStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="orderCollectionDate" class="control-label"></label>
+                <input asp-for="orderCollectionDate" class="form-control" />
+                <span asp-validation-for="orderCollectionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="orderDate" class="control-label"></label>
+                <input asp-for="orderDate" class="form-control" />
+                <span asp-validation-for="orderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryStreet" class="control-label"></label>
+                <input asp-for="DeliveryStreet" class="form-control" />
+                <span asp-validation-for="DeliveryStreet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryCity" class="control-label"></label>
+                <input asp-for="DeliveryCity" class="form-control" />
+                <span asp-validation-for="DeliveryCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryPostalCode" class="control-label"></label>
+                <input asp-for="DeliveryPostalCode" class="form-control" />
+                <span asp-validation-for="DeliveryPostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryCountry" class="control-label"></label>
+                <input asp-for="DeliveryCountry" class="form-control" />
+                <span asp-validation-for="DeliveryCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

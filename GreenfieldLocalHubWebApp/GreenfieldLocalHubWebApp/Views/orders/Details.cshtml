@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.orderProducts>
+
+@{
+    ViewData["Title"] = "Order Details";
+    var firstItem = Model.FirstOrDefault();
+}
+
+<h1>Order Details</h1>
+
+@if (firstItem != null)
+{
+    <div>
+        <p><strong>Order ID:</strong> @firstItem.orders.ordersId</p>
+        <p><strong>Order Date:</strong> @firstItem.orders.orderDate</p>
+        <p><strong>Status:</strong> @firstItem.orders.orderStatus</p>
+
+        @if (firstItem.orders.delivery)
+        {
+            <p><strong>Order Method:</strong> Delivery</p>
+            <p><strong>Delivery Type:</strong> @firstItem.orders.deliveryType</p>
+            <p>
+                <strong>Address:</strong>
+                @firstItem.orders.DeliveryStreet, 
+                @firstItem.orders.DeliveryCity, 
+                @firstItem.orders.DeliveryPostalCode, 
+                @firstItem.orders.DeliveryCountry
+            </p>
+        }
+
+        @if (firstItem.orders.collection)
+        {
+            <p><strong>Order Method:</strong> Collection</p>
+            <p><strong>Collection Date:</strong> @firstItem.orders.orderCollectionDate</p>
+        }
+    </div>
+
+    <hr />
+
+    <h2>Products Ordered</h2>
+
+    <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+        <thead>
+            <tr>
+                <th style="text-align:left; padding:12px 20px 12px 0;">Product</th>
+                <th style="text-align:left; padding:12px 20px 12px 0;">Price</th>
+                <th style="text-align:left; padding:12px 20px 12px 0;">Quantity</th>
+                <th style="text-align:left; padding:12px 20px 12px 0;">Line Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="padding:10px 20px 10px 0;">@item.products.productName</td>
+                    <td style="padding:10px 20px 10px 0;">£@item.products.productPrice.ToString("0.00")</td>
+                    <td style="padding:10px 20px 10px 0;">@item.quantity</td>
+                    <td style="padding:10px 20px 10px 0;">£@((item.products.productPrice * item.quantity).ToString("0.00"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div style="margin-top:20px;">
+    <a asp-action="Index">Back to Order List</a>
+</div>

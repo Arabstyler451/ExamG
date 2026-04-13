@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.producers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producerImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producerImage)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.producersId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.producersId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.producersId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

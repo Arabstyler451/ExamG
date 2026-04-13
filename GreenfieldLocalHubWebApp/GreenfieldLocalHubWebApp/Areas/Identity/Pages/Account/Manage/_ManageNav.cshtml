@@ -1,0 +1,111 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<style>
+    .account-layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 2rem;
+    }
+
+    .account-nav {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: .5rem;
+        height: fit-content;
+        position: sticky;
+        top: 90px;
+    }
+
+    .account-nav-item {
+        display: flex;
+        align-items: center;
+        gap: .65rem;
+        padding: .7rem 1rem;
+        font-size: .86rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        transition: var(--transition);
+        text-decoration: none;
+    }
+
+        .account-nav-item:hover {
+            background: var(--off-white);
+            color: var(--green);
+        }
+
+        .account-nav-item.active {
+            background: var(--green);
+            color: var(--white);
+        }
+
+    .account-panel.active {
+        display: block;
+    }
+</style>
+
+
+<div class="account-nav">
+    <!-- Profile (now includes email and password management) -->
+    <a class="account-nav-item @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </span>
+        Profile
+    </a>
+
+    @if (hasExternalLogins)
+    {
+        <a class="account-nav-item @ManageNavPages.ExternalLoginsNavClass(ViewContext)" id="external-login" asp-page="./ExternalLogins">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14L21 3"></path>
+                    <path d="M21 14v7H3V3h7"></path>
+                </svg>
+            </span>
+            External Logins
+        </a>
+    }
+
+    <a class="account-nav-item @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7H3V3h11"></path>
+            </svg>
+        </span>
+        Two-Factor Authentication
+    </a>
+
+    <a class="account-nav-item @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+            </svg>
+        </span>
+        Personal Data
+    </a>
+
+    <a class="account-nav-item" asp-area="" asp-controller="Orders" asp-action="Index">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+        </span>
+        Orders
+    </a>
+</div>

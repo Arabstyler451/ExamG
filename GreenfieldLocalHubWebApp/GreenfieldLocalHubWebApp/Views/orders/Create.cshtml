@@ -1,0 +1,138 @@
+﻿    @model GreenfieldLocalHubWebApp.Models.orders
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<p>Choose how you would like to receive your order.</p>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" style="color: red;"></div>
+
+    <input type="hidden" name="shoppingCartId" value ="@ViewBag.shoppingCartId"/>
+
+    <div style="margin-bottom:20px;">
+        <label style="font-weight:bold; display:block; margin-bottom:10px;">Order Method</label>
+
+        <div>
+            <input asp-for="delivery" id="deliveryCheck" />
+            <label asp-for="delivery">Delivery</label>
+        </div>
+
+        <div>
+            <input asp-for="collection" id="collectionCheck" />
+            <label asp-for="collection">Collection</label>
+        </div>
+    </div>
+
+
+    <div style="margin-bottom:25px;">
+        <label style="font-weight:bold; display:block; margin-bottom:10px;">Delivery Address</label>
+
+        @if (ViewBag.HasAddresses == true)
+        {
+            @Html.DropDownListFor(model => model.addressId,(SelectList)ViewData["AddressId"],"Select an address from your address book",new { @class = "form-control" })
+            <span asp-validation-for="addressId" style="color: red;"></span>
+
+            <div style="margin-top:8px;">
+                <a asp-controller="Addresses"
+                       asp-action="Create"
+                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                       class="btn btn-sm btn-outline-primary">
+                    + Add another address
+                </a>
+            </div>
+        }
+        else
+        {
+            <div style="background:#f8f9fa; padding:20px; border:2px dashed #ccc; border-radius:8px; text-align:center;">
+                <p style="margin-bottom:15px; font-size:1.1em;">
+                    You don't have any saved addresses yet.<br>
+                    Please add your first delivery address to continue.
+                </p>
+                <a asp-controller="Addresses"
+                       asp-action="Create"
+                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                       class="btn btn-primary btn-lg">
+                    ➕ Add Your First Delivery Address
+                </a>
+            </div>
+        }
+    </div>
+
+    <div id="deliveryTypeGroup" style="display:none; margin-bottom:15px;">
+        <label asp-for="deliveryType"></label>
+        <select asp-for="deliveryType">
+            <option value="">Select Delivery Type</option>
+            <option value="Next Day">Next Day</option>
+            <option value="First Class">First Class</option>
+            <option value="Standard">Standard</option>
+        </select>
+        <br/>
+        <span asp-validation-for="deliveryType" style="color: red;"></span>
+    </div>
+
+    <div id="orderCollectionDateGroup" style="display:none; margin-bottom:20px;">
+        <label asp-for="orderCollectionDate"></label>
+        <input asp-for="orderCollectionDate" type="date" id="collectionDate"/>
+        <div>Earliest collection date is 2 days from today</div>
+        <span asp-validation-for="orderCollectionDate" style="color:red;"></span>
+    </div>
+
+    <div>
+        <button type="submit">Place Order</button>
+    </div>
+
+    <div style="margin-top:10px;">
+        <a asp-controller="shoppingCarts" asp-action="Index">Back to Cart</a>
+    </div>
+
+</form>
+
+<script>
+    const collectionDateInput = document.getElementById('collectionDate');
+
+    const today = new Date();
+    today.setDate(today.getDate() + 2); // Add 2 days to current date
+    const minDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+    if (collectionDateInput) {
+        collectionDateInput.min = minDate;
+    }
+
+    const deliveryCheck = document.getElementById("deliveryCheck");
+    const collectionCheck = document.getElementById("collectionCheck");
+
+    const deliveryTypeGroup = document.getElementById("deliveryTypeGroup");
+    const orderCollectionDateGroup = document.getElementById("orderCollectionDateGroup");
+
+    function updateForm() {
+
+        deliveryTypeGroup.style.display = "none";
+        orderCollectionDateGroup.style.display = "none";
+
+        deliveryCheck.disabled = false;
+        collectionCheck.disabled = false;
+
+        if (deliveryCheck.checked) {
+            deliveryTypeGroup.style.display = "block";
+            collectionCheck.disabled = true;
+        }
+        else if (collectionCheck.checked) {
+            orderCollectionDateGroup.style.display = "block";
+            deliveryCheck.disabled = true;
+        }
+    }
+
+    deliveryCheck.addEventListener("change", updateForm);
+    collectionCheck.addEventListener("change", updateForm);
+
+    updateForm();
+</script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

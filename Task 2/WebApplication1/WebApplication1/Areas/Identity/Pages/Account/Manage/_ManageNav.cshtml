@@ -1,0 +1,155 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<style>
+    .account-layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 2rem;
+    }
+
+    .account-nav {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: .5rem;
+        height: fit-content;
+        position: sticky;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .account-nav-item {
+        display: flex;
+        align-items: center;
+        gap: .65rem;
+        padding: .7rem 1rem;
+        font-size: .86rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        transition: var(--transition);
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        font-family: inherit;
+        text-align: left;
+    }
+
+        .account-nav-item:hover {
+            background: var(--off-white);
+            color: var(--green);
+        }
+
+        .account-nav-item.active {
+            background: var(--green);
+            color: var(--white);
+        }
+
+    /* Remove any special logout styling - make it match exactly */
+    .logout-form {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .account-panel.active {
+        display: block;
+    }
+</style>
+
+
+<div class="account-nav">
+    <!-- Profile -->
+    <a class="account-nav-item @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </span>
+        Profile
+    </a>
+
+    <a class="account-nav-item" asp-page="./Security">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+        </span>
+        Security
+    </a>
+
+    <!-- My Orders (example - add if needed) -->
+    <a class="account-nav-item" asp-page="./Orders">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+        </span>
+        My Orders
+    </a>
+
+    <!-- My Loyalty (example - add if needed) -->
+    <a class="account-nav-item" asp-page="./Loyalty">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+        </span>
+        My Loyalty
+    </a>
+
+    <!-- Address Book (example - add if needed) -->
+    <a class="account-nav-item" asp-page="./Addresses">
+        <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </span>
+        Address Book
+    </a>
+
+    @if (hasExternalLogins)
+    {
+        <a class="account-nav-item @ManageNavPages.ExternalLoginsNavClass(ViewContext)" id="external-login" asp-page="./ExternalLogins">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14L21 3"></path>
+                    <path d="M21 14v7H3V3h7"></path>
+                </svg>
+            </span>
+            External Logins
+        </a>
+    }
+
+    <!-- Sign Out - Now matches exactly like other nav items -->
+    <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button type="submit" class="account-nav-item">
+            <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+            </span>
+            Sign Out
+        </button>
+    </form>
+</div>
