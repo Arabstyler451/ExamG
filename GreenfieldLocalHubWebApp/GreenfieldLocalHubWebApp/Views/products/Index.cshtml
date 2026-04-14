@@ -1,94 +1,481 @@
 ﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.products>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Shop";
 }
 
-<h1>Index</h1>
+<style>
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --brown-light: #9b7455;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --border-dark: #C8C8C8;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --text-light: #9A9A9A;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.productName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.stockQuantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productAvailability)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.categories)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.productName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.stockQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productAvailability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producers.producersId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.categories.categoriesId)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.productsId">Details</a>
-                    @if (User.IsInRole("Producer"))
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 3rem 2rem 2.5rem;
+    }
+
+    .page-hero-inner {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .page-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+        display: block;
+    }
+
+    .page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: var(--green-dark);
+    }
+
+    .page-hero p {
+        color: var(--text-muted);
+        font-size: .95rem;
+        margin-top: .5rem;
+        max-width: 540px;
+        line-height: 1.65;
+    }
+
+    /* ─── LAYOUT ─── */
+    .shop-section {
+        padding: 4rem 2rem;
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .form-input, .form-select {
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+    }
+
+    .form-input:focus, .form-select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+
+    .filter-count {
+        margin-left: auto;
+        font-size: .83rem;
+        color: var(--text-muted);
+    }
+
+    /* ─── PRODUCT GRID ─── */
+    .product-grid-gap {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* ─── PRODUCT CARD ─── */
+    .product-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        transition: var(--transition);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card:hover {
+        border-color: var(--green);
+        box-shadow: var(--shadow-md);
+    }
+
+    .product-card:hover .pc-img-inner {
+        transform: scale(1.03);
+    }
+
+    .pc-wrap {
+        position: relative;
+    }
+
+    .pc-img {
+        overflow: hidden;
+    }
+
+    .pc-img-inner {
+        width: 100%;
+        aspect-ratio: 1;
+        transition: transform .4s ease;
+        overflow: hidden;
+    }
+
+    .pc-img-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .img-placeholder {
+        background: #E8E8E8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: .8rem;
+        font-weight: 500;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        border: 1px solid #D8D8D8;
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .pc-badge {
+        position: absolute;
+        top: .75rem;
+        left: .75rem;
+        background: var(--green);
+        color: var(--white);
+        font-size: .65rem;
+        font-weight: 700;
+        padding: .2rem .6rem;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .pc-body {
+        padding: 1.1rem 1.2rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .pc-producer {
+        font-size: .68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: var(--brown);
+        margin-bottom: .3rem;
+    }
+
+    .pc-name {
+        font-weight: 600;
+        font-size: .95rem;
+        margin-bottom: .3rem;
+        color: var(--text);
+        line-height: 1.3;
+    }
+
+    .pc-desc {
+        font-size: .8rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-bottom: .9rem;
+        flex: 1;
+    }
+
+    .pc-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: .9rem;
+    }
+
+    .pc-price {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--green);
+    }
+
+    .pc-avail {
+        font-size: .68rem;
+        font-weight: 600;
+        padding: .2rem .55rem;
+        letter-spacing: .04em;
+    }
+
+    .pc-avail.in {
+        background: #eaf4ef;
+        color: #1a6b40;
+    }
+
+    .pc-avail.low {
+        background: #fdf3e7;
+        color: #9a5a10;
+    }
+
+    .pc-avail.out {
+        background: #fde8e8;
+        color: #a0281e;
+    }
+
+    /* ─── CARD ACTIONS ─── */
+    .pc-actions {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-top: .85rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .6rem 1.1rem;
+        font-size: .8rem;
+        font-weight: 600;
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background: var(--green);
+        color: var(--white);
+    }
+
+    .btn-primary:hover {
+        background: var(--green-light);
+        color: var(--white);
+    }
+
+    .btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1.5px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+    }
+
+    .btn-brown {
+        background: var(--brown);
+        color: var(--white);
+    }
+
+    .btn-brown:hover {
+        background: var(--brown-light);
+        color: var(--white);
+    }
+
+    .btn-disabled {
+        background: #E8E8E8;
+        color: #999;
+        border: none;
+        cursor: not-allowed;
+        opacity: .75;
+    }
+
+    .btn-add-cart {
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* ─── CREATE NEW ─── */
+    .shop-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    @@media (max-width: 768px) {
+        .product-grid-gap {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+
+        .shop-section {
+            padding: 2.5rem 1.5rem;
+        }
+    }
+
+    @@media (max-width: 540px) {
+        .product-grid-gap {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-eyebrow">Our Products</span>
+        <h1>Shop Local Produce</h1>
+        <p>Browse fresh, seasonal products from our network of local farms and producers.</p>
+    </div>
+</div>
+
+<!-- SHOP CONTENT -->
+<div class="shop-section">
+
+    <!-- TOP BAR: Create New (Producer only) -->
+    @if (User.IsInRole("Producer"))
+    {
+        <div class="shop-topbar">
+            <span></span>
+            <a asp-action="Create" class="btn btn-primary">
+                + Add New Product
+            </a>
+        </div>
+    }
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+        <input type="search" class="form-input" placeholder="Search products..." style="max-width:260px;" aria-label="Search products">
+        <select class="form-select" style="max-width:190px;" aria-label="Filter by category">
+            <option>All Categories</option>
+            <option>Fruit &amp; Veg</option>
+            <option>Dairy &amp; Eggs</option>
+            <option>Bread &amp; Bakery</option>
+            <option>Meat &amp; Fish</option>
+            <option>Honey &amp; Preserves</option>
+        </select>
+        <select class="form-select" style="max-width:190px;" aria-label="Sort products">
+            <option>Sort: Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest First</option>
+        </select>
+        <span class="filter-count">Showing @Model.Count() products</span>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid-gap">
+        @foreach (var item in Model)
+        {
+            <article class="product-card">
+
+                <!-- IMAGE -->
+                <div class="pc-wrap">
+                    <div class="pc-img">
+                        <div class="pc-img-inner">
+                            @if (!string.IsNullOrEmpty(item.productImage))
+                            {
+                                <img src="@item.productImage" alt="@item.productName" />
+                            }
+                            else
+                            {
+                                <div class="img-placeholder">No Image</div>
+                            }
+                        </div>
+                    </div>
+                    @if (item.stockQuantity > 0 && item.stockQuantity <= 5)
                     {
-                        <a asp-action="Edit" asp-route-id="@item.productsId">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.productsId">Delete</a>
+                        <span class="pc-badge" style="background:var(--brown);">Low Stock</span>
                     }
-                    <form asp-controller="shoppingCartItems" asp-action="Create" method="post">
-                        <input type="hidden" name="productsId" value="@item.productsId" />
+                </div>
 
-                        @if (item.stockQuantity > 0)
+                <!-- BODY -->
+                <div class="pc-body">
+                    @if (item.producers != null)
+                    {
+                        <p class="pc-producer">@item.producers.producerName</p>
+                    }
+                    <h3 class="pc-name">@Html.DisplayFor(modelItem => item.productName)</h3>
+                    <p class="pc-desc">@Html.DisplayFor(modelItem => item.productDescription)</p>
+
+                    <!-- PRICE + AVAILABILITY -->
+                    <div class="pc-footer">
+                        <span class="pc-price">£@item.productPrice.ToString("0.00")</span>
+                        @if (item.stockQuantity > 5)
                         {
-                            <button type="submit">Add to Cart</button>
+                            <span class="pc-avail in">In Stock</span>
+                        }
+                        else if (item.stockQuantity > 0)
+                        {
+                            <span class="pc-avail low">Low Stock</span>
                         }
                         else
                         {
-                            <button type="button" disabled>Out of Stock</button>
+                            <span class="pc-avail out">Out of Stock</span>
+                        }
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="pc-actions">
+                        <a asp-action="Details" asp-route-id="@item.productsId" class="btn btn-ghost">
+                            Details
+                        </a>
+
+                        @if (User.IsInRole("Producer"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.productsId" class="btn btn-ghost">
+                                Edit
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.productsId" class="btn btn-ghost" style="color:#a0281e;border-color:#fde8e8;">
+                                Delete
+                            </a>
                         }
 
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                        <form asp-controller="shoppingCartItems" asp-action="Create" method="post" style="flex:1;display:flex;">
+                            <input type="hidden" name="productsId" value="@item.productsId" />
+                            @if (item.stockQuantity > 0)
+                            {
+                                <button type="submit" class="btn btn-primary btn-add-cart">
+                                    Add to Cart
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-disabled btn-add-cart" disabled>
+                                    Out of Stock
+                                </button>
+                            }
+                        </form>
+                    </div>
+                </div>
 
+            </article>
+        }
+    </div>
+
+</div>

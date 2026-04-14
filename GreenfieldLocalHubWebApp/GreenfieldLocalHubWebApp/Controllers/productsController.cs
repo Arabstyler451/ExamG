@@ -42,7 +42,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 }
 
                 // Retrieve products associated with the producer
-                var producerProducts = await _context.products.Where(p => p.producersId == producer.producersId).Include(p => p.producersId).ToListAsync();
+                var producerProducts = await _context.products.Where(p => p.producersId == producer.producersId).Include(p => p.producers).ToListAsync();
                 return View(producerProducts);
             }
             else
