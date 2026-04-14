@@ -1,0 +1,196 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\areas\\identity\\pages\\account\\manage\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\areas\\identity\\pages\\account\\manage\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\areas\\identity\\pages\\account\\manage\\security.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\areas\\identity\\pages\\account\\manage\\security.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\areas\\identity\\pages\\account\\manage\\security.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\areas\\identity\\pages\\account\\manage\\security.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|d:\\t level material\\visual studio 2026\\examg\\task 2\\webapplication1\\webapplication1\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B876FD9F-A323-4A22-A0DE-9F2928746B93}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "WebApplication1\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAABACAAAAAAAAAAAAAEECAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-14T21:15:05.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:14:23.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:45.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Security.cshtml.cs",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml.cs",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml.cs",
+              "RelativeToolTip": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAwGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T21:13:38.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Security.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml",
+              "RelativeToolTip": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Security.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeToolTip": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_ManageNav.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeToolTip": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAIoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\Task 2\\WebApplication1\\WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "RelativeToolTip": "WebApplication1\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:13:38.876Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

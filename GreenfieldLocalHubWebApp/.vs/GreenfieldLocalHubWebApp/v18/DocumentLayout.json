@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +35,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAJUBAAAAAAAAAAAAAL8BAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:17:59.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAnwKYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:14:17.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-14T21:14:09.402Z",
+              "EditorCaption": ""
             }
           ]
         }

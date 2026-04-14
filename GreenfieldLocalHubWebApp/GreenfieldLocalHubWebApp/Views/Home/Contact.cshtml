@@ -1,1 +1,177 @@
-﻿
+﻿<style>
+    /* ─── DESIGN TOKENS ─── */
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --brown-light: #9b7455;
+        --brown-faint: #f7f3ee;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --border-dark: #C8C8C8;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --text-light: #9A9A9A;
+        --shadow-xs: 0 1px 3px rgba(0,0,0,.06);
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+        --shadow-lg: 0 16px 48px rgba(0,0,0,.12);
+        --radius: 0px;
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background: var(--white);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+        /* Override Bootstrap body margin */
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    button {
+        cursor: pointer;
+        font-family: var(--font-sans);
+    }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+        position: absolute;
+        top: -60px;
+        left: 1rem;
+        background: var(--green);
+        color: var(--white);
+        padding: .5rem 1rem;
+        font-size: .85rem;
+        z-index: 9999;
+        transition: top .2s;
+        text-decoration: none;
+    }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+
+    /* ─── CONTACT ─── */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .contact-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+    .contact-text strong {
+        display: block;
+        font-size: .875rem;
+        font-weight: 600;
+        margin-bottom: .25rem;
+    }
+
+    .contact-text p {
+        font-size: .83rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+</style>
+
+
+<div class="page" id="page-contact">
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <span class="page-eyebrow">Get in Touch</span>
+            <h1>Contact Us</h1>
+            <p>We welcome enquiries from customers, producers, and anyone interested in what we do.</p>
+        </div>
+    </div>
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Send a Message</h2>
+                    <div class="form-row">
+                        <div class="form-group"><label class="form-label" for="cf-fname">First Name</label><input type="text" id="cf-fname" class="form-input" placeholder="Adam" autocomplete="given-name"></div>
+                        <div class="form-group"><label class="form-label" for="cf-lname">Last Name</label><input type="text" id="cf-lname" class="form-input" placeholder="Mcarthy" autocomplete="family-name"></div>
+                    </div>
+                    <div class="form-group"><label class="form-label" for="cf-email">Email Address</label><input type="email" id="cf-email" class="form-input" placeholder="adam@example.ac.uk" autocomplete="email"></div>
+                    <div class="form-group">
+                        <label class="form-label" for="cf-subject">Subject</label>
+                        <select id="cf-subject" class="form-select"><option>General Enquiry</option><option>Order Issue</option><option>Producer Membership</option><option>Press &amp; Media</option><option>Accessibility Support</option></select>
+                    </div>
+                    <div class="form-group"><label class="form-label" for="cf-msg">Message</label><textarea id="cf-msg" class="form-textarea" placeholder="Tell us how we can help..."></textarea></div>
+                    <button class="btn btn-primary" onclick="showToast('Message sent. We will be in touch shortly.')">Send Message</button>
+                </div>
+                <div>
+                    <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Find Us</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg></div>
+                        <div class="contact-text"><strong>Our Hub</strong><p>14 Market Square, Greenfield<br>Midshire, MK12 4AB</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></div>
+                        <div class="contact-text"><strong>Opening Hours</strong><p>Mon–Fri: 8am – 6pm<br>Sat: 8am – 4pm &nbsp; Sun: 10am – 2pm</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.96a16 16 0 006.26 6.26l1.32-1.32a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg></div>
+                        <div class="contact-text"><strong>Phone</strong><p>01234 567 890<br>Mon–Fri, 9am–5pm</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg></div>
+                        <div class="contact-text"><strong>Email</strong><p>greenfieldlocalhub@example.com</p></div>
+                    </div>
+                    <div style="background:var(--brown-faint);border:1px solid rgba(124,92,62,.2);padding:1.4rem;margin-top:.5rem;">
+                        <p style="font-size:.85rem;font-weight:600;color:var(--brown);margin-bottom:.4rem;">Interested in joining as a producer?</p>
+                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;margin-bottom:.8rem;">Contact us via the form or call to discuss our cooperative membership and what it means for your business.</p>
+                        <button class="btn btn-brown btn-sm">Apply as a Producer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
