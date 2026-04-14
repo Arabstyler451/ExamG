@@ -1,0 +1,87 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.products>
+
+
+@{
+    ViewData["Title"] = "Producer Dashboard";
+}
+
+<h1>Producer Dashboard</h1>
+
+<p>
+    <strong>Total products:</strong> @ViewBag.totalProducts
+</p>
+<p>
+    <strong>Low Stock Products:</strong> @ViewBag.lowStockProducts
+</p>
+<p>
+    <strong>Total Stock Units:</strong> @ViewBag.totalStockUnits
+</p>
+
+
+@if (!Model.Any())
+{
+    <p>You do not have any products yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Products</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Take(5))
+                {
+                    <tr>
+                        <td>@item.productName</td>
+                    <td>£@((item.productPrice ?? 0.00m).ToString("0.00"))</td>
+                    <td>@item.stockQuantity</td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+
+    <p>
+        <a asp-controller="products" asp-action="Index">View All Your Products</a>
+    </p>
+    
+    <h2>Recent Orders</h2>
+
+    @if (ViewBag.recentOrders == null || ((List<GreenfieldLocalHubWebApp.Models.orders>)ViewBag.recentOrders).Count == 0)
+    {
+        <p>No recent orders.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in ((List<GreenfieldLocalHubWebApp.Models.orders>)ViewBag.recentOrders).Take(5))
+                {
+                    <tr>
+                        <td>@order.ordersId</td>
+                        <td>@order.orderDate</td>
+                        <td>@order.orderStatus</td>
+                        <td>£@((order.totalAmount ?? 0.00m).ToString("0.00"))</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <p>
+        <a asp-controller="orders" asp-action="Index">View All Your Orders</a>
+    </p>
+}

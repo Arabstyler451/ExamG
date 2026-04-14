@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\images\\coxApples.jpg"
     },
     {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\freeRangeEggs.jpg",
+      "PackagePath": "staticwebassets\\images\\freeRangeEggs.jpg"
+    },
+    {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\grassFedBeefMince.jpg",
       "PackagePath": "staticwebassets\\images\\grassFedBeefMince.jpg"
     },
@@ -45,6 +49,10 @@
       "PackagePath": "staticwebassets\\images\\mixedSaladLeaves.jpg"
     },
     {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\purpleSproutingBroccoli.jpg",
+      "PackagePath": "staticwebassets\\images\\purpleSproutingBroccoli.jpg"
+    },
+    {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\rawMilkCheddar.jpg",
       "PackagePath": "staticwebassets\\images\\rawMilkCheddar.jpg"
     },
@@ -55,6 +63,10 @@
     {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\theOldMillBakery.jpg",
       "PackagePath": "staticwebassets\\images\\theOldMillBakery.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\wildflowerHoney.jpg",
+      "PackagePath": "staticwebassets\\images\\wildflowerHoney.jpg"
     },
     {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\js\\site.js",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2d+Tn6602e7ADYdCZP+GxPprBBaCI68ofivHjZ46eno=",
+  "Hash": "fOGrGamNp2+XfIcdGcU2W7dauwTDiHDk/nnKqQJmoCQ=",
   "Source": "GreenfieldLocalHubWebApp",
   "BasePath": "_content/GreenfieldLocalHubWebApp",
   "Mode": "Default",
@@ -4112,6 +4112,27 @@
       "OriginalItemSpec": "wwwroot\\images\\coxApples.jpg"
     },
     {
+      "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\freeRangeEggs.jpg",
+      "SourceId": "GreenfieldLocalHubWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\",
+      "BasePath": "_content/GreenfieldLocalHubWebApp",
+      "RelativePath": "images/freeRangeEggs#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fpefg1cxun",
+      "Integrity": "zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\freeRangeEggs.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\grassFedBeefMince.jpg",
       "SourceId": "GreenfieldLocalHubWebApp",
       "SourceType": "Discovered",
@@ -4238,6 +4259,27 @@
       "OriginalItemSpec": "wwwroot\\images\\mixedSaladLeaves.jpg"
     },
     {
+      "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\purpleSproutingBroccoli.jpg",
+      "SourceId": "GreenfieldLocalHubWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\",
+      "BasePath": "_content/GreenfieldLocalHubWebApp",
+      "RelativePath": "images/purpleSproutingBroccoli#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "929jw7edgn",
+      "Integrity": "oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\purpleSproutingBroccoli.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\rawMilkCheddar.jpg",
       "SourceId": "GreenfieldLocalHubWebApp",
       "SourceType": "Discovered",
@@ -4299,6 +4341,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\theOldMillBakery.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\wildflowerHoney.jpg",
+      "SourceId": "GreenfieldLocalHubWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\",
+      "BasePath": "_content/GreenfieldLocalHubWebApp",
+      "RelativePath": "images/wildflowerHoney#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kxq5orgsxg",
+      "Integrity": "aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\wildflowerHoney.jpg"
     },
     {
       "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\js\\site.js",
@@ -15471,6 +15534,88 @@
       ]
     },
     {
+      "Route": "images/freeRangeEggs.fpefg1cxun.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\freeRangeEggs.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "768695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fpefg1cxun"
+        },
+        {
+          "Name": "label",
+          "Value": "images/freeRangeEggs.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw="
+        }
+      ]
+    },
+    {
+      "Route": "images/freeRangeEggs.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\freeRangeEggs.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "768695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw="
+        }
+      ]
+    },
+    {
       "Route": "images/grassFedBeefMince.cs00ihm1s1.jpg",
       "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\grassFedBeefMince.jpg",
       "Selectors": [],
@@ -15963,6 +16108,88 @@
       ]
     },
     {
+      "Route": "images/purpleSproutingBroccoli.929jw7edgn.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\purpleSproutingBroccoli.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1035314"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "929jw7edgn"
+        },
+        {
+          "Name": "label",
+          "Value": "images/purpleSproutingBroccoli.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/purpleSproutingBroccoli.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\purpleSproutingBroccoli.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1035314"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ="
+        }
+      ]
+    },
+    {
       "Route": "images/rawMilkCheddar.4ywfwohl17.jpg",
       "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\rawMilkCheddar.jpg",
       "Selectors": [],
@@ -16205,6 +16432,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-FPjV9zb7rtX4XcYHqIB2fqn9XgBkh3EHa+SNr+urV5w="
+        }
+      ]
+    },
+    {
+      "Route": "images/wildflowerHoney.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\wildflowerHoney.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1670094"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:36:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8="
+        }
+      ]
+    },
+    {
+      "Route": "images/wildflowerHoney.kxq5orgsxg.jpg",
+      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\wildflowerHoney.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1670094"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:36:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kxq5orgsxg"
+        },
+        {
+          "Name": "label",
+          "Value": "images/wildflowerHoney.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8="
         }
       ]
     },

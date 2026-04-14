@@ -9592,6 +9592,88 @@
       ]
     },
     {
+      "Route": "images/freeRangeEggs.fpefg1cxun.jpg",
+      "AssetFile": "images/freeRangeEggs.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "768695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fpefg1cxun"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/freeRangeEggs.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/freeRangeEggs.jpg",
+      "AssetFile": "images/freeRangeEggs.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "768695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zVMraZ7tolj8286Tk8yLwMfNXx3dyKps6udFpp33Syw="
+        }
+      ]
+    },
+    {
       "Route": "images/grassFedBeefMince.cs00ihm1s1.jpg",
       "AssetFile": "images/grassFedBeefMince.jpg",
       "Selectors": [],
@@ -10084,6 +10166,88 @@
       ]
     },
     {
+      "Route": "images/purpleSproutingBroccoli.929jw7edgn.jpg",
+      "AssetFile": "images/purpleSproutingBroccoli.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1035314"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "929jw7edgn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ="
+        },
+        {
+          "Name": "label",
+          "Value": "images/purpleSproutingBroccoli.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/purpleSproutingBroccoli.jpg",
+      "AssetFile": "images/purpleSproutingBroccoli.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1035314"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:37:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oXAkI+kkz4EdbwjcebGVshEjxrSbucKN1/8VbqlN+rQ="
+        }
+      ]
+    },
+    {
       "Route": "images/rawMilkCheddar.4ywfwohl17.jpg",
       "AssetFile": "images/rawMilkCheddar.jpg",
       "Selectors": [],
@@ -10326,6 +10490,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-FPjV9zb7rtX4XcYHqIB2fqn9XgBkh3EHa+SNr+urV5w="
+        }
+      ]
+    },
+    {
+      "Route": "images/wildflowerHoney.jpg",
+      "AssetFile": "images/wildflowerHoney.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1670094"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:36:44 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8="
+        }
+      ]
+    },
+    {
+      "Route": "images/wildflowerHoney.kxq5orgsxg.jpg",
+      "AssetFile": "images/wildflowerHoney.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1670094"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Apr 2026 10:36:44 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kxq5orgsxg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aIRkv+bOxBG5eNox7MzRuxiJkFDgxYkHk2pldhm7ey8="
+        },
+        {
+          "Name": "label",
+          "Value": "images/wildflowerHoney.jpg"
         }
       ]
     },

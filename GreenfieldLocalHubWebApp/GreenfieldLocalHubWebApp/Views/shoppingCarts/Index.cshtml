@@ -5,68 +5,592 @@
     var shoppingCartId = Model.FirstOrDefault()?.shoppingCartId;
 }
 
-<h1>Your Shopping Cart</h1>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 
-@if (!Model.Any())
-{
-    <div>
-        <h3>Your shopping cart is empty</h3>
-        <p>You haven't added any products yet.'</p>
-        <a asp-controller="products" asp-action="Index">Continue Shopping</a>
+<style>
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --brown-light: #9b7455;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 3rem 2rem 2.5rem;
+    }
+
+    .page-hero-inner {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .page-eyebrow {
+        display: block;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+    }
+
+    .page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: var(--green-dark);
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .78rem;
+        color: #9A9A9A;
+        margin-bottom: .75rem;
+    }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+            .breadcrumb a:hover {
+                color: var(--green);
+            }
+
+    .breadcrumb-sep {
+        color: var(--border);
+    }
+
+    /* ─── LAYOUT ─── */
+    .cart-section {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+
+    .cart-layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    /* ─── CART TABLE ─── */
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+        border: 1px solid var(--border);
+    }
+
+        .cart-table th {
+            text-align: left;
+            font-size: .72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--text-muted);
+            padding: .85rem 1.2rem;
+            background: var(--off-white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-table td {
+            padding: 1.2rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+            font-size: .875rem;
+        }
+
+        .cart-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cart-table tr:hover td {
+            background: #fafafa;
+        }
+
+    /* ─── PRODUCT CELL ─── */
+    .cart-product {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .cart-product-thumb {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 1px solid var(--border);
+    }
+
+        .cart-product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .img-placeholder-sm {
+        width: 64px;
+        height: 64px;
+        background: #E8E8E8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #bbb;
+        font-size: .65rem;
+        font-weight: 500;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        border: 1px solid #D8D8D8;
+        flex-shrink: 0;
+    }
+
+    .cart-product-info strong {
+        display: block;
+        font-size: .9rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .2rem;
+    }
+
+    .cart-product-info small {
+        color: var(--text-muted);
+        font-size: .78rem;
+    }
+
+    /* ─── PRICE / QTY ─── */
+    .cart-price {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: var(--green);
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .cart-qty {
+        font-size: .875rem;
+        font-weight: 500;
+        color: var(--text);
+        text-align: center;
+    }
+
+    .cart-line-total {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        white-space: nowrap;
+    }
+
+    /* ─── REMOVE BTN ─── */
+    .btn-remove {
+        display: inline-flex;
+        align-items: center;
+        gap: .3rem;
+        font-size: .78rem;
+        font-weight: 600;
+        color: #a0281e;
+        background: transparent;
+        border: 1.5px solid #fde8e8;
+        padding: .35rem .75rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        font-family: var(--font-sans);
+        white-space: nowrap;
+    }
+
+        .btn-remove:hover {
+            background: #fde8e8;
+            border-color: #a0281e;
+            color: #a0281e;
+        }
+
+    /* ─── ORDER SUMMARY ─── */
+    .order-summary {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        position: sticky;
+        top: 90px;
+    }
+
+    .summary-title {
+        font-family: var(--font-serif);
+        font-size: 1.25rem;
+        color: var(--green-dark);
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .875rem;
+        padding: .55rem 0;
+        color: var(--text-muted);
+    }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text);
+            border-top: 1.5px solid var(--border);
+            margin-top: .5rem;
+            padding-top: 1rem;
+        }
+
+            .summary-row.total span:last-child {
+                font-family: var(--font-serif);
+                font-size: 1.2rem;
+                color: var(--green);
+            }
+
+    .summary-divider {
+        height: 1px;
+        background: var(--border);
+        margin: .75rem 0;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .4rem;
+        padding: .8rem 1.5rem;
+        font-size: .875rem;
+        font-weight: 600;
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        text-decoration: none;
+        width: 100%;
+        margin-bottom: .65rem;
+    }
+
+    .btn-primary {
+        background: var(--green);
+        color: var(--white);
+    }
+
+        .btn-primary:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+    .btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1.5px solid var(--border);
+    }
+
+        .btn-ghost:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+    /* ─── EMPTY STATE ─── */
+    .empty-cart {
+        text-align: center;
+        padding: 5rem 2rem;
+        border: 1px solid var(--border);
+        background: var(--white);
+    }
+
+    .empty-cart-icon {
+        width: 64px;
+        height: 64px;
+        background: var(--green-faint);
+        border: 1px solid rgba(27,77,63,.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+        .empty-cart-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+    .empty-cart h3 {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        color: var(--green-dark);
+        margin-bottom: .5rem;
+    }
+
+    .empty-cart p {
+        color: var(--text-muted);
+        font-size: .9rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.6;
+    }
+
+    .btn-inline {
+        display: inline-flex;
+        width: auto;
+    }
+
+    /* ─── TRUST STRIP ─── */
+    .trust-strip {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .75rem;
+        color: var(--text-muted);
+    }
+
+        .trust-item svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            flex-shrink: 0;
+        }
+
+    @@media (max-width: 1080px) {
+        .cart-layout
+
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .order-summary {
+        position: static;
+    }
+
+    }
+
+    @@media (max-width: 768px) {
+        .cart-section
+
+    {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .cart-table th:nth-child(3),
+    .cart-table td:nth-child(3) {
+        display: none;
+    }
+
+    }
+</style>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a asp-controller="products" asp-action="Index">Shop</a>
+            <span class="breadcrumb-sep">›</span>
+            <span aria-current="page">Your Cart</span>
+        </nav>
+        <span class="page-eyebrow">Basket</span>
+        <h1>Your Shopping Cart</h1>
     </div>
-}
+</div>
 
-else
-{
-    <div>
-        <div>
-            @foreach(var item in Model)
-            {
-                <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+<!-- CART CONTENT -->
+<div class="cart-section">
 
-                    <div>
-                        <h4>@item.products.productName</h4>
-                        <p>Price: £@item.products.productPrice.ToString("0.00")</p>
+    @if (!Model.Any())
+    {
+        <!-- EMPTY STATE -->
+        <div class="empty-cart">
+            <div class="empty-cart-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 01-8 0" />
+                </svg>
+            </div>
+            <h3>Your basket is empty</h3>
+            <p>You haven't added any products yet. Browse our local produce and add something fresh.</p>
+            <a asp-controller="products" asp-action="Index" class="btn btn-primary btn-inline">
+                Browse Products
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="cart-layout">
+
+            <!-- LEFT: CART ITEMS -->
+            <div>
+                <table class="cart-table" role="table" aria-label="Shopping cart items">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Unit Price</th>
+                            <th>Qty</th>
+                            <th>Line Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <!-- PRODUCT -->
+                                <td>
+                                    <div class="cart-product">
+                                        @if (!string.IsNullOrEmpty(item.products?.productImage))
+                                        {
+                                            <div class="cart-product-thumb">
+                                                <img src="@item.products.productImage" alt="@item.products.productName" />
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="img-placeholder-sm">IMG</div>
+                                        }
+                                        <div class="cart-product-info">
+                                            <strong>@item.products?.productName</strong>
+                                            @if (item.products?.categories != null)
+                                            {
+                                                <small>@item.products.categories.categoryName</small>
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- UNIT PRICE -->
+                                <td>
+                                    <span class="cart-price">£@item.products?.productPrice.ToString("0.00")</span>
+                                </td>
+
+                                <!-- QTY -->
+                                <td>
+                                    <span class="cart-qty">@item.quantity</span>
+                                </td>
+
+                                <!-- LINE TOTAL -->
+                                <td>
+                                    <span class="cart-line-total">
+                                        £@((item.products != null ? item.products.productPrice * item.quantity : 0).ToString("0.00"))
+                                    </span>
+                                </td>
+
+                                <!-- REMOVE -->
+                                <td>
+                                    <a asp-controller="shoppingCartItems"
+                                       asp-action="Delete"
+                                       asp-route-id="@item.shoppingCartItemsId"
+                                       class="btn-remove"
+                                       aria-label="Remove @item.products?.productName from cart">
+                                        Remove
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!-- CONTINUE SHOPPING -->
+                <div style="margin-top:1.25rem;">
+                    <a asp-controller="products" asp-action="Index" class="btn btn-ghost btn-inline" style="width:auto;display:inline-flex;">
+                        ← Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: ORDER SUMMARY -->
+            <aside>
+                <div class="order-summary">
+                    <h2 class="summary-title">Order Summary</h2>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
                     </div>
 
-                    <div>
-                        <p>Qty: £@item.quantity</p>
+                    <div class="summary-row">
+                        <span>Loyalty Discount</span>
+                        <span style="color:#1a6b40;">−£@(((float)ViewBag.loyaltyDiscount).ToString("0.00"))</span>
                     </div>
 
-                    <div>
-                        <p>
-                            Total: £@((item.products.productPrice * item.quantity).ToString("0.00"))
-                        </p>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span style="color:#1a6b40;">Calculated at checkout</span>
+                    </div>
 
-                        <a asp-controller="shoppingCartItems" asp-action="Delete" asp-route-id="@item.shoppingCartItemsId">Remove</a>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>£@(((float)ViewBag.totalAmount).ToString("0.00"))</span>
+                    </div>
+
+                    <div style="margin-top:1.5rem;">
+                        <a asp-controller="orders"
+                           asp-action="Create"
+                           asp-route-shoppingCartId="@shoppingCartId"
+                           class="btn btn-primary">
+                            Proceed to Checkout
+                        </a>
+                        <a asp-controller="products" asp-action="Index" class="btn btn-ghost">
+                            Continue Shopping
+                        </a>
+                    </div>
+
+                    <!-- TRUST STRIP -->
+                    <div class="trust-strip">
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                            Secure checkout
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                            Next-day delivery
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                            100% local produce
+                        </div>
                     </div>
                 </div>
-            }
-        </div>
-        
-        <div style="border:1px solid #000; padding:15px; margin-top:20px;">
-            <h3>Order Summary</h3>
-
-            <div>
-                <span>Subtotal:</span>
-                <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
-            </div>
-
-            <div>
-                <span>Loyalty Discount:</span>
-                <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
-            </div>
-
-            <div>
-                <strong>Total:</strong>
-                <strong>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</strong>
-            </div>
-
-            <div>
-                <a asp-controller="orders" asp-action="Create" asp-route-shoppingCartId="@shoppingCartId" class="btn btn-primary w-100 mb-2">Proceed to Checkout</a>
-                <a asp-controller="products" asp-action="Index">Continue Shopping</a>
-            </div>
+            </aside>
 
         </div>
-    </div>
-}
+    }
+
+</div>

@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Greenfield Local Hub</title>
+    <script type="importmap"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GreenfieldLocalHubWebApp.styles.css" asp-append-version="true" />
+
+    <style>
+        /* ─── DESIGN TOKENS ─── */
+        :root {
+            --green: #1B4D3F;
+            --green-light: #2a6b58;
+            --green-dark: #122e25;
+            --green-faint: #f0f5f3;
+            --brown: #7C5C3E;
+            --brown-light: #9b7455;
+            --brown-faint: #f7f3ee;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --border: #E2E2E2;
+            --border-dark: #C8C8C8;
+            --text: #1A1A1A;
+            --text-muted: #6B6B6B;
+            --text-light: #9A9A9A;
+            --shadow-xs: 0 1px 3px rgba(0,0,0,.06);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+            --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,.12);
+            --radius: 0px;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'DM Sans', system-ui, sans-serif;
+            --transition: all .22s ease;
+        }
+
+        /* ─── RESET ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--white);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Override Bootstrap body margin */
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        /* ─── SKIP LINK ─── */
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: 1rem;
+            background: var(--green);
+            color: var(--white);
+            padding: .5rem 1rem;
+            font-size: .85rem;
+            z-index: 9999;
+            transition: top .2s;
+            text-decoration: none;
+        }
+
+            .skip-link:focus {
+                top: 0;
+            }
+
+        /* ─── ACCESSIBILITY BAR ─── */
+        .a11y-bar {
+            background: var(--green-dark);
+            padding: .35rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: .6rem;
+        }
+
+        .a11y-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.2);
+            color: rgba(255,255,255,.7);
+            font-size: .72rem;
+            font-family: var(--font-sans);
+            padding: .2rem .75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: .03em;
+        }
+
+            .a11y-btn:hover {
+                border-color: rgba(255,255,255,.5);
+                color: #fff;
+            }
+
+        /* ─── HEADER ─── */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .nav-logo-mark {
+            width: 38px;
+            height: 38px;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .nav-logo-mark svg {
+                width: 22px;
+                height: 22px;
+                fill: none;
+                stroke: #fff;
+                stroke-width: 2;
+            }
+
+        .nav-logo-text {
+            line-height: 1.15;
+        }
+
+            .nav-logo-text strong {
+                display: block;
+                font-family: var(--font-serif);
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--green-dark);
+                letter-spacing: -.01em;
+            }
+
+            .nav-logo-text span {
+                font-size: .62rem;
+                font-weight: 500;
+                letter-spacing: .12em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+            }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+            flex: 1;
+        }
+
+            .nav-links a {
+                font-size: .875rem;
+                font-weight: 500;
+                color: var(--text-muted);
+                padding: .5rem .9rem;
+                transition: var(--transition);
+                white-space: nowrap;
+                border-bottom: 2px solid transparent;
+                text-decoration: none;
+            }
+
+                .nav-links a:hover {
+                    color: var(--green);
+                }
+
+                .nav-links a.active {
+                    color: var(--green);
+                    border-bottom-color: var(--green);
+                }
+
+        .nav-divider {
+            width: 1px;
+            height: 28px;
+            background: var(--border);
+            margin: 0 .5rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .nav-icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            letter-spacing: .03em;
+            text-decoration: none;
+        }
+
+            .nav-icon-btn:hover {
+                border-color: var(--green);
+                color: var(--green);
+            }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--brown);
+            color: var(--white);
+            font-size: .6rem;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Mobile hamburger */
+        .nav-hamburger {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+            .nav-hamburger svg {
+                width: 20px;
+                height: 20px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+            }
+
+        /* ─── MAIN CONTENT WRAPPER ─── */
+        .site-main {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+            min-height: calc(100vh - 72px - 260px);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 4rem 2rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: .75rem;
+        }
+
+        .footer-brand-desc {
+            font-size: .83rem;
+            color: rgba(255,255,255,.5);
+            line-height: 1.75;
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .13em;
+            color: rgba(255,255,255,.4);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: .83rem;
+            color: rgba(255,255,255,.6);
+            margin-bottom: .55rem;
+            transition: color .2s;
+            text-decoration: none;
+        }
+
+            .footer-col a:hover {
+                color: var(--white);
+            }
+
+        .footer-bottom {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .75rem;
+            color: rgba(255,255,255,.3);
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+            .footer-bottom-links a {
+                color: rgba(255,255,255,.35);
+                font-size: .75rem;
+                transition: color .2s;
+                text-decoration: none;
+            }
+
+                .footer-bottom-links a:hover {
+                    color: rgba(255,255,255,.7);
+                }
+
+        /* ─── TOAST ─── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--green-dark);
+            color: var(--white);
+            padding: .9rem 1.5rem;
+            font-size: .85rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all .28s ease;
+            z-index: 9999;
+            pointer-events: none;
+            max-width: 320px;
+            border-left: 3px solid var(--brown);
+        }
+
+            #toast.show {
+                opacity: 1;
+                transform: none;
+            }
+
+        /* ─── HIGH CONTRAST / LARGE TEXT ─── */
+        body.high-contrast {
+            --border: #000;
+            --text-muted: #333;
+        }
+
+        body.large-text {
+            font-size: 18px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @@media (max-width: 1080px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .site-main {
+                padding: 1.5rem 1.25rem 3rem;
+            }
+        }
+
+        @@media (max-width: 540px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .a11y-bar {
+                padding: .35rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SKIP LINK -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ACCESSIBILITY BAR -->
+    <div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
+        <button class="a11y-btn" onclick="toggleHighContrast()">High Contrast</button>
+        <button class="a11y-btn" onclick="toggleLargeText()">Large Text</button>
+    </div>
+
+    <!-- HEADER -->
+    <header role="banner">
+        <nav class="nav-inner" aria-label="Main navigation">
+
+            <!-- Logo -->
+            <a class="nav-logo" asp-area="" asp-controller="Home" asp-action="Index" aria-label="Greenfield Local Hub home">
+                <div class="nav-logo-text">
+                    <strong>Greenfield Local Hub</strong>
+                    <span>Local Food Cooperative</span>
+                </div>
+            </a>
+
+            <!-- Nav links -->
+            <div class="nav-links" role="list">
+                <a class="nav-link" role="listitem" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link" role="listitem" asp-area="" asp-controller="products" asp-action="Index">Shop</a>
+                <a class="nav-link" role="listitem" asp-area="" asp-controller="producers" asp-action="Index">Producers</a>
+                <a class="nav-link" role="listitem" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                <a class="nav-link" role="listitem" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+            </div>
+
+            <!-- Right-side actions -->
+            <div class="nav-actions">
+                <div class="nav-divider" aria-hidden="true"></div>
+
+                <!-- Cart icon -->
+                <a class="nav-icon-btn" asp-area="" asp-controller="shoppingCarts" asp-action="Index" aria-label="Shopping cart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                    <span class="cart-badge" aria-label="items in cart">0</span>
+                </a>
+
+                <!-- Login partial -->
+                <partial name="_LoginPartial" />
+
+                <!-- Mobile hamburger -->
+                <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileNav(this)">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+        </nav>
+
+        <!-- Mobile nav drawer (hidden by default) -->
+        <div id="mobile-nav" style="display:none; border-top:1px solid var(--border); background:var(--white); padding:.75rem 2rem 1rem;" aria-label="Mobile navigation">
+            <a style="display:block;padding:.55rem 0;font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a style="display:block;padding:.55rem 0;font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);" asp-area="" asp-controller="products" asp-action="Index">Shop</a>
+            <a style="display:block;padding:.55rem 0;font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);" asp-area="" asp-controller="producers" asp-action="Index">Producers</a>
+            <a style="display:block;padding:.55rem 0;font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);" asp-area="" asp-controller="shoppingCarts" asp-action="Index">Cart</a>
+            <a style="display:block;padding:.55rem 0;font-size:.9rem;font-weight:500;color:var(--text-muted);text-decoration:none;" asp-area="" asp-controller="orders" asp-action="Index">Orders</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="site-main">
+        <main id="main-content" role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <div>
+                <p class="footer-brand-name">Greenfield Local Hub</p>
+                <p class="footer-brand-desc">Supporting local farmers and food producers. Fresh, traceable, community-owned.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a asp-area="" asp-controller="products" asp-action="Index">All Products</a>
+                <a asp-area="" asp-controller="products" asp-action="Index">Fruit & Veg</a>
+                <a asp-area="" asp-controller="products" asp-action="Index">Dairy & Eggs</a>
+                <a asp-area="" asp-controller="products" asp-action="Index">Bread & Bakery</a>
+                <a asp-area="" asp-controller="products" asp-action="Index">Meat & Fish</a>
+                <a asp-area="" asp-controller="products" asp-action="Index">Honey & Preserves</a>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <a asp-area="" asp-controller="Home" asp-action="About">Our Story</a>
+                <a asp-area="" asp-controller="producers" asp-action="Index">Our Producers</a>
+                <a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a>
+
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+                <a asp-area="Identity" asp-page="/Account/Login">Sign in</a>
+                <a asp-area="" asp-controller="orders" asp-action="Index">My Orders</a>
+                <a asp-area="" asp-controller="loyaltyAccounts" asp-action="Index">Loyalty Rewards</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Greenfield Local Hub. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Terms of Use</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+                function toggleHighContrast() {
+                    document.body.classList.toggle('high-contrast');
+                    showToast(document.body.classList.contains('high-contrast') ? 'High contrast enabled.' : 'High contrast disabled.');
+                }
+                function toggleLargeText() {
+                    document.body.classList.toggle('large-text');
+                    showToast(document.body.classList.contains('large-text') ? 'Large text enabled.' : 'Large text disabled.');
+                }
+                function toggleMobileNav(btn) {
+                    const nav = document.getElementById('mobile-nav');
+                    const open = nav.style.display === 'none' || nav.style.display === '';
+                    nav.style.display = open ? 'block' : 'none';
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                }
+                function showToast(msg) {
+                    const t = document.getElementById('toast');
+                    t.textContent = msg;
+                    t.classList.add('show');
+                    setTimeout(() => t.classList.remove('show'), 3500);
+                }
+
+        // Highlight active nav link based on current path
+        (function () {
+            const currentPath = window.location.pathname.toLowerCase();
+
+            // Remove trailing slash for consistent comparison
+            const normalizedPath = currentPath.endsWith('/') && currentPath !== '/'
+                ? currentPath.slice(0, -1)
+                : currentPath;
+
+            document.querySelectorAll('.nav-links .nav-link').forEach(function (link) {
+                const href = link.getAttribute('href');
+                if (href && href !== '#') {
+                    let linkPath = href.toLowerCase().split('?')[0].split('#')[0]; // Remove query/hash
+
+                    // Handle relative paths (e.g., './about', '../contact')
+                    if (linkPath.startsWith('./')) linkPath = linkPath.slice(1);
+                    if (linkPath.startsWith('../')) linkPath = linkPath.slice(2);
+
+                    // Normalize link path
+                    let normalizedLink = linkPath.endsWith('/') && linkPath !== '/'
+                        ? linkPath.slice(0, -1)
+                        : linkPath;
+
+                    // If linkPath is empty, it's likely the home page
+                    if (normalizedLink === '') normalizedLink = '/';
+
+                    // Exact match (home page or exact path)
+                    if (normalizedPath === normalizedLink ||
+                        (normalizedPath === '' && normalizedLink === '/') ||
+                        (normalizedLink !== '/' && normalizedPath === normalizedLink)) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        })();
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

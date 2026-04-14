@@ -1,0 +1,42 @@
+﻿@model GreenfieldLocalHubWebApp.Models.orderProducts
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>orderProducts</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.unitPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.unitPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.orders)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.orders.ordersId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.products)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.products.productsId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.orderProductsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

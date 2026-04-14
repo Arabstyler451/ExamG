@@ -1,0 +1,107 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.orders>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.delivery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.collection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deliveryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orderCollectionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryStreet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryPostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.delivery)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.collection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deliveryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderCollectionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryStreet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryPostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address.addressId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ordersId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ordersId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ordersId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
