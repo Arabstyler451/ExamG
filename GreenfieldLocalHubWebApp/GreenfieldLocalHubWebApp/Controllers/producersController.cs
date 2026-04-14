@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenfieldLocalHubWebApp.Data;
+using GreenfieldLocalHubWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GreenfieldLocalHubWebApp.Data;
-using GreenfieldLocalHubWebApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -22,12 +24,16 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: producers
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             return View(await _context.producers.ToListAsync());
         }
 
         // GET: producers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -43,6 +49,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(producers);
         }
 
+        [Authorize(Roles = "Admin, Developer")]
         // GET: producers/Create
         public IActionResult Create()
         {
@@ -54,6 +61,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Create([Bind("producersId,UserId,producerName,producerEmail,producerPhone,producerDescription,producerLocation,producerImage")] producers producers)
         {
             if (ModelState.IsValid)
@@ -152,6 +160,27 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool producersExists(int id)
         {
             return _context.producers.Any(e => e.producersId == id);
+        }
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

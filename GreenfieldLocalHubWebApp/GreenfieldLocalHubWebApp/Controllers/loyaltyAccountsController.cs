@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenfieldLocalHubWebApp.Data;
+using GreenfieldLocalHubWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GreenfieldLocalHubWebApp.Data;
-using GreenfieldLocalHubWebApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -22,6 +23,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: loyaltyAccounts
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             return View(await _context.loyaltyAccount.ToListAsync());
         }
 
@@ -152,6 +155,27 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool loyaltyAccountExists(int id)
         {
             return _context.loyaltyAccount.Any(e => e.loyaltyAccountId == id);
+        }
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

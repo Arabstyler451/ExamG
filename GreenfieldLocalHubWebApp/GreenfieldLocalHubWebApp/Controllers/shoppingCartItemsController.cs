@@ -23,6 +23,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: shoppingCartItems
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             var applicationDbContext = _context.shoppingCartItems.Include(s => s.products).Include(s => s.shoppingCart);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -207,12 +209,34 @@ namespace GreenfieldLocalHubWebApp.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "shoppingCarts");
         }
 
         private bool shoppingCartItemsExists(int id)
         {
             return _context.shoppingCartItems.Any(e => e.shoppingCartItemsId == id);
+        }
+
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

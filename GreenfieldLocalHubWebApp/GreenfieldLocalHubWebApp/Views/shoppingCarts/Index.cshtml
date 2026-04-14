@@ -513,14 +513,17 @@
                                 </td>
 
                                 <!-- REMOVE -->
-                                <td>
-                                    <a asp-controller="shoppingCartItems"
-                                       asp-action="Delete"
-                                       asp-route-id="@item.shoppingCartItemsId"
-                                       class="btn-remove"
-                                       aria-label="Remove @item.products?.productName from cart">
-                                        Remove
-                                    </a>
+                                <td class="cart-item-actions">
+                                    <form asp-controller="shoppingCartItems"
+                                          asp-action="Delete"
+                                          asp-route-id="@item.shoppingCartItemsId"
+                                          method="post"
+                                          style="display: inline;">
+                                        <input type="hidden" name="shoppingCartItemsId" value="@item.shoppingCartItemsId" />
+                                        <button type="submit" class="btn-remove" aria-label="Remove @item.products?.productName from cart">
+                                            Remove
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         }
@@ -542,12 +545,12 @@
 
                     <div class="summary-row">
                         <span>Subtotal</span>
-                        <span>£@(((float)ViewBag.subTotalAmount).ToString("0.00"))</span>
+                        <span>£@(((float)(ViewBag.subTotalAmount ?? 0f)).ToString("0.00"))</span>
                     </div>
 
                     <div class="summary-row">
                         <span>Loyalty Discount</span>
-                        <span style="color:#1a6b40;">−£@(((float)ViewBag.loyaltyDiscount).ToString("0.00"))</span>
+                        <span style="color:#1a6b40;">−£@(((float)(ViewBag.loyaltyDiscount ?? 0f)).ToString("0.00"))</span>
                     </div>
 
                     <div class="summary-row">
@@ -557,7 +560,7 @@
 
                     <div class="summary-row total">
                         <span>Total</span>
-                        <span>£@(((float)ViewBag.totalAmount).ToString("0.00"))</span>
+                        <span>£@(((float)(ViewBag.total ?? 0f)).ToString("0.00"))</span>
                     </div>
 
                     <div style="margin-top:1.5rem;">

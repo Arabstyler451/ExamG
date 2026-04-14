@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GreenfieldLocalHubWebApp.Data;
 using GreenfieldLocalHubWebApp.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -23,6 +24,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: products
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             // Check if the user is in the "producer" role
             if (User.IsInRole("Producer"))
             {
@@ -56,6 +59,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -74,6 +79,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: products/Create
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public IActionResult Create()
         {
             ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId");
@@ -86,6 +92,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> Create([Bind("productsId,producersId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
         {
             if (ModelState.IsValid)
@@ -99,6 +106,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(products);
         }
 
+        [Authorize(Roles = "Producer, Admin, Developer")]
         // GET: products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -121,6 +129,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> Edit(int id, [Bind("productsId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
         {
 
@@ -170,7 +179,9 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(products);
         }
 
+
         // GET: products/Delete/5
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -191,6 +202,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // POST: Products/Delete/5
+        [Authorize(Roles = "Producer, Admin, Developer")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -221,6 +233,28 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool productsExists(int id)
         {
             return _context.products.Any(e => e.productsId == id);
+        }
+
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

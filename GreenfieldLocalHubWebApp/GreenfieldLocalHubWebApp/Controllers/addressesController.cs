@@ -23,12 +23,16 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: addresses
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             return View(await _context.address.ToListAsync());
         }
 
         // GET: addresses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -47,6 +51,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: addresses/Create
         public IActionResult Create(string returnUrl = null)
         {
+            ViewBag.CartItemCount = GetCartItemCount();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -58,6 +63,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("addressId,street,city,postalCode,country")] address address, string returnUrl = null)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (userId == null)
@@ -88,6 +95,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: addresses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -108,6 +117,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("addressId,UserId,street,city,postalCode,country")] address address)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id != address.addressId)
             {
                 return NotFound();
@@ -139,6 +150,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: addresses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -159,6 +172,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             var address = await _context.address.FindAsync(id);
             if (address != null)
             {
@@ -172,6 +187,26 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool addressExists(int id)
         {
             return _context.address.Any(e => e.addressId == id);
+        }
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

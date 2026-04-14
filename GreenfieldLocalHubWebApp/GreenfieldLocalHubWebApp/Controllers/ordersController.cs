@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GreenfieldLocalHubWebApp.Data;
 using GreenfieldLocalHubWebApp.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -23,6 +24,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: orders
         public async Task<IActionResult> Index()
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             // Get the currently logged-in user's ID
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -58,6 +61,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -69,17 +74,19 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 .Include(op => op.products)
                 .ToListAsync();
 
-            if (!orderProducts.Any())   // ← Fixed the check
+            if (!orderProducts.Any())   
             {
                 return NotFound();
             }
 
-            return View(orderProducts);   // ← Pass the list directly
+            return View(orderProducts);  
         }
 
         // GET: orders/Create
         public async Task<IActionResult> Create(int shoppingCartId, int? selectedAddressId = null)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             ViewBag.shoppingCartId = shoppingCartId;
@@ -101,6 +108,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ordersId,addressId,delivery,collection,deliveryType,orderCollectionDate")] orders orders, int shoppingCartId)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             // Set the UserId of the order to the currently logged-in user's ID
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -255,7 +264,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             shoppingCart.shoppingCartStatus = false;
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "shoppingCarts");
         }
 
         // GET: orders/Edit/5
@@ -348,6 +357,27 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool ordersExists(int id)
         {
             return _context.orders.Any(e => e.ordersId == id);
+        }
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }

@@ -23,13 +23,16 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: shoppingCarts
         public async Task<IActionResult> Index()
         {
+            
+            ViewBag.CartItemCount = await GetCartItemCount();
+
 
             // Get the current user's ID from the claims
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID
 
             if (userId == null)
             {
-                return Unauthorized();
+                return RedirectToPage("/Account/Login", new { area = "Identity" });   // Redirect to the login page if the user is not authenticated
             }
 
 
@@ -64,14 +67,31 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 subTotalAmount += productTotal; // Add the total price of each item to the overall total amount
             }
 
+            var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
 
-            ViewBag.subTotalAmount = subTotalAmount; // Pass the total amount to the view using ViewBag
+            float loyaltyDiscount = 0f;
+
+            if (orderCount >= 5)
+            {
+                loyaltyDiscount = subTotalAmount * 0.10f;
+            }
+
+            float total = subTotalAmount - loyaltyDiscount;
+
+
+            ViewBag.subTotalAmount = subTotalAmount;
+            ViewBag.loyaltyDiscount = loyaltyDiscount;
+            ViewBag.total = total;
+            ViewBag.orderCount = orderCount;
+
             return View(shoppingCartItems);
         }
 
         // GET: shoppingCarts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -87,9 +107,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(shoppingCart);
         }
 
+
         // GET: shoppingCarts/Create
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -100,6 +122,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("shoppingCartId,UserId,shoppingCartCreatedAt,shoppingCartStatus")] shoppingCart shoppingCart)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(shoppingCart);
@@ -112,6 +135,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: shoppingCarts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
             if (id == null)
             {
                 return NotFound();
@@ -196,6 +221,27 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool shoppingCartExists(int id)
         {
             return _context.shoppingCart.Any(e => e.shoppingCartId == id);
+        }
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
         }
     }
 }
