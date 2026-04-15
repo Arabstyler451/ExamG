@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.products>
 
+
 @{
     ViewData["Title"] = "Shop";
 }
@@ -370,26 +371,93 @@
 
     <!-- FILTER BAR -->
     <div class="filter-bar">
-        <input type="search" class="form-input" placeholder="Search products..." style="max-width:260px;" aria-label="Search products">
-        <select class="form-select" style="max-width:190px;" aria-label="Filter by category">
-            <option>All Categories</option>
-            <option>Fruit &amp; Veg</option>
-            <option>Dairy &amp; Eggs</option>
-            <option>Bread &amp; Bakery</option>
-            <option>Meat &amp; Fish</option>
-            <option>Honey &amp; Preserves</option>
-        </select>
-        <select class="form-select" style="max-width:190px;" aria-label="Sort products">
-            <option>Sort: Featured</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Newest First</option>
-        </select>
+
+        <!-- Search -->
+        <form asp-controller="products" asp-action="Search" method="get" class="display; contents:">
+            <div class="input-group">
+                <input type="text"
+                       name="query"
+                       class="form-input"
+                       placeholder="Search for products..."
+                       value="@ViewBag.CurrentQuery" />
+
+                <!-- Preserve filters -->
+                <input type="hidden" name="categoryId" value="@ViewBag.CurrentCategoryId" />
+                <input type="hidden" name="stockFilter" value="@ViewBag.CurrentStockFilter" />
+                <input type="hidden" name="sortBy" value="@ViewBag.CurrentSort" />
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </div>
+        </form>
+
+        <!-- Filter by Category -->
+        <form method="get" asp-action="FilterProducts" style="display:contents;">
+            <input type="hidden" name="stockFilter" value="@ViewBag.CurrentStockFilter" />
+            <input type="hidden" name="sortBy" value="@ViewBag.CurrentSort" />
+            <select name="categoryId" class="form-select" style="max-width:190px;" aria-label="Filter by category" onchange="this.form.submit()">
+                <option value="">All Categories</option>
+                @if (ViewBag.Categories != null)
+                {
+                    foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.categoriesId"
+                                selected="@(ViewBag.CurrentCategoryId == category.categoriesId)">
+                            @category.categoryName
+                        </option>
+                    }
+                }
+            </select>
+        </form>
+
+        <!-- Stock Filter -->
+        <form method="get" asp-action="FilterProducts" style="display:contents;">
+            <input type="hidden" name="categoryId" value="@ViewBag.CurrentCategoryId" />
+            <input type="hidden" name="sortBy" value="@ViewBag.CurrentSort" />
+            <select name="stockFilter" class="form-select" style="max-width:190px;" aria-label="Filter by stock" onchange="this.form.submit()">
+                <option value="" selected="@(string.IsNullOrEmpty(ViewBag.CurrentStockFilter))">All Products</option>
+                <option value="in_stock" selected="@(ViewBag.CurrentStockFilter == "in_stock")">In Stock Only</option>
+                <option value="out_of_stock" selected="@(ViewBag.CurrentStockFilter == "out_of_stock")">Out of Stock Only</option>
+                <option value="low_stock" selected="@(ViewBag.CurrentStockFilter == "low_stock")">Low Stock (≤10)</option>
+            </select>
+        </form>
+
+        <!-- Sort -->
+        <form method="get" asp-action="FilterProducts" style="display:contents;">
+            <input type="hidden" name="categoryId" value="@ViewBag.CurrentCategoryId" />
+            <input type="hidden" name="stockFilter" value="@ViewBag.CurrentStockFilter" />
+            <select name="sortBy" class="form-select" style="max-width:190px;" aria-label="Sort products" onchange="this.form.submit()">
+                <option value="" selected="@(string.IsNullOrEmpty(ViewBag.CurrentSort))">Sort: Recommended</option>
+                <option value="price_asc" selected="@(ViewBag.CurrentSort == "price_asc")">Price: Low to High</option>
+                <option value="price_desc" selected="@(ViewBag.CurrentSort == "price_desc")">Price: High to Low</option>
+                <option value="name_asc" selected="@(ViewBag.CurrentSort == "name_asc")">Name: A to Z</option>
+                <option value="name_desc" selected="@(ViewBag.CurrentSort == "name_desc")">Name: Z to A</option>
+            </select>
+        </form>
+
         <span class="filter-count">Showing @Model.Count() products</span>
     </div>
 
     <!-- PRODUCT GRID -->
     <div class="product-grid-gap">
+
+        <!-- SEARCH NOT FOUND ERROR MESSAGE -->
+        @if (!Model.Any())
+        {
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                <div style="max-width: 460px; margin: 0 auto; background: var(--green-faint); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem 2rem; color: var(--text);">
+                    <p style="font-size: 1.1rem; font-weight: 500; margin: 0 0 0.5rem 0; color: var(--green-dark);">
+                        No products found matching your search.
+                    </p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">
+                        Try adjusting your filters or search term.
+                    </p>
+                </div>
+            </div>
+        }
+
+
         @foreach (var item in Model)
         {
             <article class="product-card">
@@ -426,7 +494,7 @@
                     <!-- PRICE + AVAILABILITY -->
                     <div class="pc-footer">
                         <span class="pc-price">£@item.productPrice.ToString("0.00")</span>
-                        @if (item.stockQuantity > 5)
+                        @if (item.stockQuantity > 10)
                         {
                             <span class="pc-avail in">In Stock</span>
                         }
@@ -458,6 +526,7 @@
 
                         <form asp-controller="shoppingCartItems" asp-action="Create" method="post" style="flex:1;display:flex;">
                             <input type="hidden" name="productsId" value="@item.productsId" />
+
                             @if (item.stockQuantity > 0)
                             {
                                 <button type="submit" class="btn btn-primary btn-add-cart">

@@ -24,7 +24,12 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // GET: products
         public async Task<IActionResult> Index()
         {
+            
             ViewBag.CartItemCount = await GetCartItemCount();
+
+            // Load categories for the filter dropdown
+            ViewBag.Categories = await _context.categories.OrderBy(c => c.categoryName).ToListAsync();
+
 
             // Check if the user is in the "producer" role
             if (User.IsInRole("Producer"))
@@ -255,6 +260,202 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 .SumAsync(sci => sci.quantity);
 
             return totalItems;
+        }
+
+
+        // GET: /Products/AvailableProducts
+        public async Task<IActionResult> AvailableProducts()
+        {
+            var availableProducts = await _context.products
+                .Where(p => p.productAvailability == true)
+                .ToListAsync();
+            return View("Index", availableProducts);
+        }
+
+
+
+
+
+
+        public async Task<IActionResult> Search(
+            string query,
+            int? categoryId,
+            string stockFilter,
+            string sortBy,
+            int page = 1,
+            int pageSize = 12)
+        {
+            // Load categories for dropdowns
+            ViewBag.Categories = await _context.categories
+                .OrderBy(c => c.categoryName)
+                .ToListAsync();
+
+            ViewBag.CurrentQuery = query;
+            ViewBag.CurrentCategoryId = categoryId;
+            ViewBag.CurrentStockFilter = stockFilter;
+            ViewBag.CurrentSort = sortBy;
+            ViewBag.CurrentPage = page;
+
+            // Start building the query
+            IQueryable<products> productsQuery = _context.products
+                .AsNoTracking()
+                .Include(p => p.categories)
+                .Include(p => p.producers);
+
+            // Role-based filtering for Producers
+            if (User.IsInRole("Producer"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var producer = await _context.producers
+                    .FirstOrDefaultAsync(p => p.UserId == userId);
+
+                if (producer != null)
+                {
+                    productsQuery = productsQuery
+                        .Where(p => p.producersId == producer.producersId);
+                }
+            }
+
+            // Apply search query across multiple fields
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                query = query.Trim().ToLower();
+
+                productsQuery = productsQuery.Where(p =>
+                    p.productName.ToLower().Contains(query) ||
+                    p.productDescription.ToLower().Contains(query) ||
+                    p.categories.categoryName.ToLower().Contains(query) ||
+                    p.producers.producerName.ToLower().Contains(query));
+            }
+
+            // Apply category filter
+            if (categoryId.HasValue && categoryId.Value > 0)
+            {
+                productsQuery = productsQuery
+                    .Where(p => p.categoriesId == categoryId.Value);
+            }
+
+            // Apply stock filter
+            if (!string.IsNullOrEmpty(stockFilter))
+            {
+                productsQuery = stockFilter switch
+                {
+                    "in_stock" => productsQuery.Where(p => p.stockQuantity > 0),
+                    "out_of_stock" => productsQuery.Where(p => p.stockQuantity == 0),
+                    "low_stock" => productsQuery.Where(p => p.stockQuantity <= 10 && p.stockQuantity > 0),
+                    _ => productsQuery
+                };
+            }
+
+            // Apply sorting
+            productsQuery = sortBy switch
+            {
+                "price_asc" => productsQuery.OrderBy(p => p.productPrice),
+                "price_desc" => productsQuery.OrderByDescending(p => p.productPrice),
+                "name_desc" => productsQuery.OrderByDescending(p => p.productName),
+                "name_asc" => productsQuery.OrderBy(p => p.productName),
+                _ => productsQuery.OrderBy(p => p.productName)
+            };
+
+            // Pagination
+            var totalItems = await productsQuery.CountAsync();
+
+            var products = await productsQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            ViewBag.TotalItems = totalItems;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            return View("Index", products);
+        }
+
+
+
+
+
+
+        public async Task<IActionResult> FilterProducts(string stockFilter, int? categoryId, string sortBy)
+        {
+            ViewBag.CartItemCount = await GetCartItemCount();
+
+            // Load categories for the filter dropdown
+            ViewBag.Categories = await _context.categories.OrderBy(c => c.categoryName).ToListAsync();
+
+            // Store current values to maintain state in the view
+            ViewBag.CurrentCategoryId = categoryId;
+            ViewBag.CurrentSort = sortBy;
+            ViewBag.CurrentStockFilter = stockFilter;
+
+            IQueryable<products> query = _context.products.Include(p => p.categories).Include(p => p.producers);
+
+            // Apply role-based filtering first
+            if (User.IsInRole("Producer"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (userId == null)
+                {
+                    return Unauthorized();
+                }
+
+                var producer = await _context.producers.FirstOrDefaultAsync(p => p.UserId == userId);
+
+                if (producer == null)
+                {
+                    return NotFound();
+                }
+
+                query = query.Where(p => p.producersId == producer.producersId);
+            }
+
+            // Apply category filter
+            if (categoryId.HasValue && categoryId.Value > 0)
+            {
+                query = query.Where(p => p.categoriesId == categoryId.Value);
+            }
+
+            // Apply stock filter
+            if (!string.IsNullOrEmpty(stockFilter))
+            {
+                switch (stockFilter)
+                {
+                    case "in_stock":
+                        query = query.Where(p => p.stockQuantity > 0);
+                        break;
+                    case "out_of_stock":
+                        query = query.Where(p => p.stockQuantity == 0);
+                        break;
+                    case "low_stock":
+                        query = query.Where(p => p.stockQuantity <= 10 && p.stockQuantity > 0);
+                        break;
+                }
+            }
+
+            // Apply sorting
+            switch (sortBy)
+            {
+                case "price_asc":
+                    query = query.OrderBy(p => p.productPrice);
+                    break;
+                case "price_desc":
+                    query = query.OrderByDescending(p => p.productPrice);
+                    break;
+                case "name_asc":
+                    query = query.OrderBy(p => p.productName);
+                    break;
+                case "name_desc":
+                    query = query.OrderByDescending(p => p.productName);
+                    break;
+                default:
+                    query = query.OrderBy(p => p.productsId);
+                    break;
+            }
+
+            var filteredProducts = await query.ToListAsync();
+            return View("Index", filteredProducts);
         }
     }
 }

@@ -77,7 +77,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
             if (userId == null)
             {
-                return Unauthorized();
+                return RedirectToPage("/Account/Login", new { area = "Identity" });   // Redirect to the login page if the user is not authenticated
             }
 
 
@@ -119,7 +119,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "shoppingCarts");
+
+            return RedirectToAction("Index", "products");
         }
 
         // GET: shoppingCartItems/Edit/5

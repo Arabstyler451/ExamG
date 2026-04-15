@@ -263,8 +263,7 @@ namespace GreenfieldLocalHubWebApp.Data
 
             var list = new List<categories>
             {
-                new categories { categoryName = "Vegetables" },
-                new categories { categoryName = "Fruit" },
+                new categories { categoryName = "Fruit & Veg" },
                 new categories { categoryName = "Dairy & Eggs" },
                 new categories { categoryName = "Bakery" },
                 new categories { categoryName = "Meat & Poultry" },
@@ -281,14 +280,13 @@ namespace GreenfieldLocalHubWebApp.Data
             var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
             // Ensure categories exist and retrieve them
-            var vegCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Vegetables");
+            var vegCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Fruit & Veg");
             var dairyCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Dairy & Eggs");
             var bakeryCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Bakery");
-            var fruitCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Fruit");
             var meatCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Meat & Poultry");
             var honeyCat = await context.categories.FirstOrDefaultAsync(c => c.categoryName == "Honey & Preserves");
 
-            if (vegCat == null || dairyCat == null || bakeryCat == null || fruitCat == null || meatCat == null || honeyCat == null)
+            if (vegCat == null || dairyCat == null || bakeryCat == null || meatCat == null || honeyCat == null)
                 throw new Exception("Required categories not found.");
 
             // Finding the producers to associate products with
@@ -366,7 +364,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productAvailability = true,
                         productImage = "/images/coxApples.jpg",
                         producersId = sunfieldFarm.producersId,
-                        categoriesId = fruitCat.categoriesId
+                        categoriesId = vegCat.categoriesId
                     },
                     
                     new products

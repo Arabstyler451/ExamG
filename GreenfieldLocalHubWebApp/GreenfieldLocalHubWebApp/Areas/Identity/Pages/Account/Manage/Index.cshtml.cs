@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System.Text.Encodings.Web;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using GreenfieldLocalHubWebApp.Data;
 
 namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
 {
@@ -22,17 +25,22 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDbContext _context;
+
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             IEmailSender emailSender,
-            ILogger<IndexModel> logger)
+            ILogger<IndexModel> logger, ApplicationDbContext context)
+
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _context = context;
+
         }
 
         // =======================
@@ -104,6 +112,7 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // Load User Data
         private async Task LoadAsync(IdentityUser user)
         {
+
             Username = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             Email = await _userManager.GetEmailAsync(user);
@@ -127,6 +136,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // GET: Profile Page
         public async Task<IActionResult> OnGetAsync()
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -143,6 +154,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // POST: Update Profile
         public async Task<IActionResult> OnPostUpdateProfileAsync()
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -318,5 +331,28 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Your password has been changed.";
             return RedirectToPage();
         }
+
+
+
+
+        // Controller method to display amount of items in the shopping cart
+        public async Task<int> GetCartItemCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return 0;
+
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
+
+            if (shoppingCart == null) return 0;
+
+            // Sum the quantity column to get total number of items in the shopping cart
+            var totalItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .SumAsync(sci => sci.quantity);
+
+            return totalItems;
+        }
+
     }
 }
