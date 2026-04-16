@@ -1,5 +1,57 @@
 ﻿
 <style>
+    .section {
+        padding: 5rem 2rem;
+    }
+
+    .container {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .section-green {
+        background: var(--green-faint);
+        border-top: 1px solid rgba(27,77,63,.08);
+        border-bottom: 1px solid rgba(27,77,63,.08);
+    }
+
+    .section-eyebrow {
+        display: inline-block;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .75rem;
+    }
+
+    .section-title {
+        font-family: var(--font-serif);
+        font-size: clamp(1.75rem, 3vw, 2.6rem);
+        font-weight: 600;
+        color: var(--green-dark);
+        line-height: 1.2;
+    }
+
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .section-green {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        padding: 4rem;
+    }
+
+        .section-green .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
     /* ─── ABOUT US ─── */
 
     .values-grid {

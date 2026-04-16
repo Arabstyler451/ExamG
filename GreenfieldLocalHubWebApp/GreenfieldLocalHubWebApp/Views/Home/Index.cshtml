@@ -1,8 +1,263 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* ======================================================
+   HOME PAGE
+====================================================== *@
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="hero-inner">
+        <div>
+            <div class="hero-eyebrow">
+                <div class="hero-eyebrow-dot"></div>
+                Certified Local Cooperative
+            </div>
+            <h1 class="hero-title" id="hero-heading">
+                Farm-fresh food,<br /><em>straight to your door.</em>
+            </h1>
+            <p class="hero-desc">
+                Greenfield Local Hub connects you with our community of local farmers and food producers.
+                Seasonal produce, ethical farming, transparent pricing.
+            </p>
+            <div class="hero-btns">
+                <a asp-controller="Shop" asp-action="Index" class="btn btn-primary btn-lg">Shop Now</a>
+                <a asp-controller="Producers" asp-action="Index"
+                       class="btn btn-lg"
+                       style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.18);">
+                    Meet Our Producers
+                </a>
+            </div>
+            <div class="hero-stats" aria-label="Key statistics">
+                <div class="hero-stat"><strong>28+</strong><span>Local Producers</span></div>
+                <div class="hero-stat"><strong>400+</strong><span>Products</span></div>
+                <div class="hero-stat"><strong>100%</strong><span>Traceable</span></div>
+            </div>
+        </div>
+
+        <div class="hero-visual-stack" aria-hidden="true">
+            <div class="hero-card">
+                <div class="hero-card-label">Today's Highlight</div>
+                <div class="hero-card-value">Heritage Tomatoes</div>
+                <div class="hero-card-sub">Harvested this morning — Greenacre Farm</div>
+                <div class="hero-card-row">
+                    <div class="hero-card-pill">Organic</div>
+                    <div class="hero-card-pill">Field-grown</div>
+                    <div class="hero-card-pill" style="margin-left:auto;color:#d4a97a;">£3.20 / 500g</div>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="hero-card">
+                    <div class="hero-card-label">New In</div>
+                    <div class="hero-card-value" style="font-size:1.1rem;">Raw Milk Cheddar</div>
+                    <div class="hero-card-sub">Hillcrest Dairy</div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-label">Popular</div>
+                    <div class="hero-card-value" style="font-size:1.1rem;">Country Sourdough</div>
+                    <div class="hero-card-sub">The Old Mill Bakery</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--white);">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;flex-wrap:wrap;">
+            <div>
+                <span class="section-eyebrow">How It Works</span>
+                <h2 class="section-title">From field to your table in four steps</h2>
+                <p class="section-sub">We make buying local simple. Browse, order, and receive produce from farms within 30 miles of the hub.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;">
+                <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+                    <div style="width:32px;height:32px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">01</div>
+                    <div>
+                        <strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Browse</strong>
+                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Explore our seasonal products with full farm traceability.</p>
+                    </div>
+                </div>
+                <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+                    <div style="width:32px;height:32px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">02</div>
+                    <div>
+                        <strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Order</strong>
+                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Place orders for home delivery or in-store collection.</p>
+                    </div>
+                </div>
+                <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);border-bottom:none;">
+                    <div style="width:32px;height:32px;background:var(--brown);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">03</div>
+                    <div>
+                        <strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Track</strong>
+                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Track your order from farm to your front door.</p>
+                    </div>
+                </div>
+                <div style="display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border:1px solid var(--border);">
+                    <div style="width:32px;height:32px;background:var(--brown);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;">04</div>
+                    <div>
+                        <strong style="font-size:.9rem;display:block;margin-bottom:.25rem;">Earn Rewards</strong>
+                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">Collect loyalty points and redeem for discounts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THIS WEEK'S PICKS -->
+<section class="section section-green">
+    <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+            <div>
+                <span class="section-eyebrow">This Week's Picks</span>
+                <h2 class="section-title">Freshly Harvested</h2>
+            </div>
+            <a asp-controller="Shop" asp-action="Index" class="btn btn-outline">View All Products</a>
+        </div>
+
+        <div class="product-grid-gap">
+
+            @* Heritage Tomatoes *@
+            <article class="product-card" role="button" tabindex="0" aria-label="View Heritage Tomatoes"
+                     onclick="location.href='@Url.Action("Detail", "Shop", new { id = "heritage-tomatoes" })'">
+                <div class="pc-wrap">
+                    <div class="pc-img">
+                        <div class="pc-img-inner">
+                            <div class="img-placeholder square" style="font-size:.75rem;letter-spacing:.08em;">Image</div>
+                        </div>
+                    </div>
+                    <span class="pc-badge">New In</span>
+                </div>
+                <div class="pc-body">
+                    <p class="pc-producer">Greenacre Farm</p>
+                    <h3 class="pc-name">Heritage Tomatoes</h3>
+                    <p class="pc-desc">Mixed heritage varieties, vine-ripened</p>
+                    <div class="pc-footer">
+                        <span class="pc-price">£3.20<small> / 500g</small></span>
+                        <span class="pc-avail in">In Stock</span>
+                    </div>
+                </div>
+            </article>
+
+            @* Raw Milk Cheddar *@
+            <article class="product-card" role="button" tabindex="0" aria-label="View Raw Milk Cheddar"
+                     onclick="location.href='@Url.Action("Detail", "Shop", new { id = "raw-milk-cheddar" })'">
+                <div class="pc-wrap">
+                    <div class="pc-img">
+                        <div class="pc-img-inner">
+                            <div class="img-placeholder square">Image</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pc-body">
+                    <p class="pc-producer">Hillcrest Dairy</p>
+                    <h3 class="pc-name">Raw Milk Cheddar</h3>
+                    <p class="pc-desc">Aged 12 months, rich and crumbly</p>
+                    <div class="pc-footer">
+                        <span class="pc-price">£5.50<small> / 200g</small></span>
+                        <span class="pc-avail low">Low Stock</span>
+                    </div>
+                </div>
+            </article>
+
+            @* Country Sourdough *@
+            <article class="product-card" role="button" tabindex="0" aria-label="View Country Sourdough"
+                     onclick="location.href='@Url.Action("Detail", "Shop", new { id = "country-sourdough" })'">
+                <div class="pc-wrap">
+                    <div class="pc-img">
+                        <div class="pc-img-inner">
+                            <div class="img-placeholder square">Image</div>
+                        </div>
+                    </div>
+                    <span class="pc-badge brown">Popular</span>
+                </div>
+                <div class="pc-body">
+                    <p class="pc-producer">The Old Mill Bakery</p>
+                    <h3 class="pc-name">Country Sourdough</h3>
+                    <p class="pc-desc">Long-fermented, stone-baked loaf</p>
+                    <div class="pc-footer">
+                        <span class="pc-price">£4.80<small> / loaf</small></span>
+                        <span class="pc-avail in">In Stock</span>
+                    </div>
+                </div>
+            </article>
+
+            @* Wildflower Honey *@
+            <article class="product-card" role="button" tabindex="0" aria-label="View Wildflower Honey"
+                     onclick="location.href='@Url.Action("Detail", "Shop", new { id = "wildflower-honey" })'">
+                <div class="pc-wrap">
+                    <div class="pc-img">
+                        <div class="pc-img-inner">
+                            <div class="img-placeholder square">Image</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pc-body">
+                    <p class="pc-producer">Meadow Apiary</p>
+                    <h3 class="pc-name">Wildflower Honey</h3>
+                    <p class="pc-desc">Raw, unfiltered, single origin</p>
+                    <div class="pc-footer">
+                        <span class="pc-price">£6.90<small> / 350g</small></span>
+                        <span class="pc-avail in">In Stock</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCER STRIP -->
+<section class="section" style="background:var(--white);">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+            <div>
+                <span class="section-eyebrow">Our Community</span>
+                <h2 class="section-title">28 local farms &amp; food producers</h2>
+                <p class="section-sub">Every product on GLH comes from a farm within 30 miles. Meet the people behind your food and learn about their methods.</p>
+                <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+                    <a asp-controller="Producers" asp-action="Index" class="btn btn-primary">Meet Our Producers</a>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-ghost">Our Story</a>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+                <div style="background:var(--white);padding:1.6rem;">
+                    <p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">45</p>
+                    <p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Avg. acres per farm</p>
+                </div>
+                <div style="background:var(--white);padding:1.6rem;">
+                    <p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">30mi</p>
+                    <p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Maximum distance</p>
+                </div>
+                <div style="background:var(--white);padding:1.6rem;">
+                    <p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--green-dark);">4,000+</p>
+                    <p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Regular customers</p>
+                </div>
+                <div style="background:var(--white);padding:1.6rem;">
+                    <p style="font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--brown);">100%</p>
+                    <p style="font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.3rem;">Traceable</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--green);padding:4rem 2rem;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;flex-wrap:wrap;">
+            <div>
+                <h2 style="font-family:var(--font-serif);font-size:1.9rem;color:var(--white);margin-bottom:.6rem;">Are you a local producer?</h2>
+                <p style="color:rgba(255,255,255,.65);font-size:.93rem;line-height:1.7;max-width:520px;">
+                    Join our cooperative. Reach thousands of customers, manage your products and stock,
+                    and grow your business with our dedicated producer dashboard.
+                </p>
+            </div>
+            <a asp-controller="Home" asp-action="Contact" class="btn btn-brown btn-lg">Get in Touch</a>
+        </div>
+    </div>
+</section>
