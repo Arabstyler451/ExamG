@@ -1,71 +1,359 @@
 ﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.producers>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Producers";
+
+    var isAdminOrDev = User.IsInRole("Admin") || User.IsInRole("Developer");
+    var canEditDelete = User.IsInRole("Admin") || User.IsInRole("Developer") || User.IsInRole("Producer");
 }
 
-<h1>Index</h1>
+<style>
+    .producer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.producerImage)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.producerImage)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.producersId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.producersId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.producersId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .producer-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E2E2;
+        padding: 2rem;
+        transition: all .22s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .producer-card:hover {
+            border-color: #1B4D3F;
+            box-shadow: 0 6px 20px rgba(0,0,0,.10);
+        }
+
+    .producer-img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        margin-bottom: 1.2rem;
+        overflow: hidden;
+        background: #E8E8E8;
+    }
+
+        .producer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    .img-placeholder {
+        width: 100%;
+        height: 100%;
+        background: #E8E8E8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: .8rem;
+        font-weight: 500;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        border: 1px solid #D8D8D8;
+    }
+
+    .producer-name {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 600;
+        font-size: 1.15rem;
+        margin-bottom: .7rem;
+        color: #122e25;
+    }
+
+    .producer-desc {
+        font-size: .85rem;
+        color: #6B6B6B;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+
+    .producer-tags {
+        display: flex;
+        gap: .4rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.2rem;
+    }
+
+    .tag {
+        background: #F9F9F9;
+        color: #6B6B6B;
+        font-size: .7rem;
+        padding: .2rem .65rem;
+        border: 1px solid #E2E2E2;
+        font-weight: 500;
+    }
+
+    .producer-actions {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+
+    .page-hero {
+        background: #FFFFFF;
+        border-bottom: 1px solid #E2E2E2;
+        padding: 3rem 2rem 2.5rem;
+    }
+
+    .page-hero-inner {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .page-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: #7C5C3E;
+        display: block;
+        margin-bottom: .5rem;
+    }
+
+    .page-hero h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: #122e25;
+    }
+
+    .page-hero p {
+        color: #6B6B6B;
+        font-size: .95rem;
+        margin-top: .5rem;
+        max-width: 540px;
+        line-height: 1.65;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .75rem 1.75rem;
+        font-size: .875rem;
+        font-weight: 600;
+        border: none;
+        transition: all .22s ease;
+        cursor: pointer;
+        letter-spacing: .02em;
+        text-decoration: none;
+        font-family: inherit;
+    }
+
+    .btn-primary {
+        background: #1B4D3F;
+        color: #FFFFFF;
+    }
+
+        .btn-primary:hover {
+            background: #2a6b58;
+            color: #FFFFFF;
+        }
+
+    .btn-outline {
+        background: transparent;
+        color: #1B4D3F;
+        border: 1.5px solid #1B4D3F;
+    }
+
+        .btn-outline:hover {
+            background: #1B4D3F;
+            color: #FFFFFF;
+        }
+
+    .btn-ghost {
+        background: transparent;
+        color: #1A1A1A;
+        border: 1.5px solid #E2E2E2;
+    }
+
+        .btn-ghost:hover {
+            border-color: #1B4D3F;
+            color: #1B4D3F;
+        }
+
+    .btn-danger-soft {
+        background: transparent;
+        border: 1.5px solid #fde8e8;
+        color: #a0281e;
+    }
+
+        .btn-danger-soft:hover {
+            background: #fde8e8;
+        }
+
+    .btn-sm {
+        padding: .5rem 1.1rem;
+        font-size: .8rem;
+    }
+
+    .form-input {
+        padding: .75rem 1rem;
+        border: 1.5px solid #E2E2E2;
+        font-size: .875rem;
+        background: #FFFFFF;
+        color: #1A1A1A;
+        transition: all .22s ease;
+        outline: none;
+        font-family: inherit;
+        width: 100%;
+    }
+
+        .form-input:focus {
+            border-color: #1B4D3F;
+            box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+        }
+
+    .section {
+        padding: 5rem 2rem;
+    }
+
+    .container {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+</style>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-eyebrow">Our Community</span>
+        <h1>Meet Our Producers</h1>
+        <p>Local farmers and food artisans. Passionate about quality, sustainability and the land.</p>
+    </div>
+</div>
+
+<!-- MAIN SECTION -->
+<section class="section">
+    <div class="container">
+
+        <!-- Toolbar -->
+        <div style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid #E2E2E2;align-items:center;justify-content:space-between;">
+            <input type="search"
+                   class="form-input"
+                   placeholder="Search producers..."
+                   style="max-width:280px;"
+                   aria-label="Search producers"
+                   id="producerSearch">
+
+            @if (isAdminOrDev)
+            {
+                <a asp-action="Create" class="btn btn-primary btn-sm">+ Add New Producer</a>
+            }
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div style="text-align:center;padding:4rem 1rem;color:#6B6B6B;">
+                <p style="font-size:1rem;">No producers found.</p>
+                @if (isAdminOrDev)
+                {
+                    <a asp-action="Create" style="color:#1B4D3F;font-weight:600;margin-top:.5rem;display:inline-block;">Add the first one.</a>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="producer-grid" id="producerGrid">
+                @foreach (var item in Model)
+                {
+                    <article class="producer-card"
+                             data-name="@item.producerName?.ToLower()"
+                             role="region"
+                             aria-label="@item.producerName">
+
+                        <!-- Image -->
+                        <div class="producer-img">
+                            @if (!string.IsNullOrWhiteSpace(item.producerImage))
+                            {
+                                <img src="@item.producerImage" alt="@item.producerName">
+                            }
+                            else
+                            {
+                                <div class="img-placeholder">No Image</div>
+                            }
+                        </div>
+
+                        <!-- Name -->
+                        <h3 class="producer-name">@item.producerName</h3>
+
+                        <!-- Description -->
+                        @if (!string.IsNullOrWhiteSpace(item.producerDescription))
+                        {
+                            <p class="producer-desc">@item.producerDescription</p>
+                        }
+                        else
+                        {
+                            <p class="producer-desc" style="font-style:italic;color:#9A9A9A;">No description provided.</p>
+                        }
+
+                        <!-- Info tags -->
+                        <div class="producer-tags">
+                            @if (!string.IsNullOrWhiteSpace(item.producerLocation))
+                            {
+                                <span class="tag">📍 @item.producerLocation</span>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(item.producerPhone))
+                            {
+                                <span class="tag">📞 @item.producerPhone</span>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(item.producerEmail))
+                            {
+                                <span class="tag">✉ @item.producerEmail</span>
+                            }
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="producer-actions">
+                            <a asp-action="Details" asp-route-id="@item.producersId" class="btn btn-outline btn-sm">View Details</a>
+                            @if (canEditDelete)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.producersId" class="btn btn-ghost btn-sm">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.producersId"
+                                   class="btn btn-danger-soft btn-sm"
+                                   onclick="return confirm('Delete @item.producerName? This cannot be undone.');">Delete</a>
+                            }
+                        </div>
+
+                    </article>
+                }
+            </div>
+
+            <p style="font-size:.78rem;color:#6B6B6B;margin-top:1.5rem;">
+                Showing <strong id="visibleCount">@Model.Count()</strong> of @Model.Count() producers
+            </p>
+        }
+
+    </div>
+</section>
+
+<script>
+    (function () {
+        const searchInput = document.getElementById('producerSearch');
+        const grid = document.getElementById('producerGrid');
+        const countEl = document.getElementById('visibleCount');
+        if (!searchInput || !grid) return;
+
+        searchInput.addEventListener('input', function () {
+            const q = this.value.trim().toLowerCase();
+            const cards = grid.querySelectorAll('.producer-card');
+            let visible = 0;
+
+            cards.forEach(function (card) {
+                const show = q === '' || card.textContent.toLowerCase().includes(q);
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+
+            if (countEl) countEl.textContent = visible;
+        });
+    })();
+</script>

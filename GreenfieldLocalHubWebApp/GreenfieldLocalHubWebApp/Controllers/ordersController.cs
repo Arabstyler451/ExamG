@@ -39,6 +39,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
             if (User.IsInRole("Admin"))
             {
                 var allOrders = await _context.orders.Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
+
+                ViewData["Layout"] = "_AccountLayout";
                 return View(allOrders);
             }
 
@@ -47,11 +49,15 @@ namespace GreenfieldLocalHubWebApp.Controllers
             {
                 var producerProducts = await _context.products.Where(p => p.producers.UserId == userId).Select(p => p.productsId).ToListAsync();
                 var producerOrders = await _context.orderProducts.Where(op => producerProducts.Contains(op.productsId)).Include(op => op.orders).Include(op => op.products).ToListAsync();
+
+                ViewData["Layout"] = "_AccountLayout";
                 return View(producerOrders.Select(vo => vo.orders).Distinct().ToList());
             }
             else
             {
                 var orders = await _context.orders.Where(o => o.UserId == userId).Include(o => o.orderProducts).ThenInclude(op => op.products).ToListAsync();
+
+                ViewData["Layout"] = "_AccountLayout";
                 return View(orders);
             }
 

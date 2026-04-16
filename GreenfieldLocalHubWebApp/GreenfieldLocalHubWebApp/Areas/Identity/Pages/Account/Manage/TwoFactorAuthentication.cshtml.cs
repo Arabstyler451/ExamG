@@ -70,6 +70,10 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
             IsMachineRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user);
             RecoveryCodesLeft = await _userManager.CountRecoveryCodesAsync(user);
 
+
+
+            ViewData["ActivePage"] = "TwoFactorAuthentication";
+
             return Page();
         }
 

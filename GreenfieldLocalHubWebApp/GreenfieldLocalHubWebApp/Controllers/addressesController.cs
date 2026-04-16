@@ -25,6 +25,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
         {
             ViewBag.CartItemCount = await GetCartItemCount();
 
+
+            ViewData["Layout"] = "_AccountLayout";
             return View(await _context.address.ToListAsync());
         }
 

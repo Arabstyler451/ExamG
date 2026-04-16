@@ -22,13 +22,15 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
             _logger = logger;
         }
 
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            ViewData["ActivePage"] = "PersonalData";
 
             return Page();
         }

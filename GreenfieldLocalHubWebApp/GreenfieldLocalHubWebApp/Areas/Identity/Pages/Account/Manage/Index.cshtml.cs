@@ -112,6 +112,7 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // Load User Data
         private async Task LoadAsync(IdentityUser user)
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
 
             Username = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
@@ -146,6 +147,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadAsync(user);
+            ViewData["ActivePage"] = "Index";
+
             return Page();
         }
 
@@ -192,6 +195,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // POST: Change Email
         public async Task<IActionResult> OnPostChangeEmailAsync()
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -248,6 +253,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // POST: Send Verification Email
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -292,6 +299,8 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
         // POST: Change Password
         public async Task<IActionResult> OnPostChangePasswordAsync()
         {
+            ViewData["CartItemCount"] = await GetCartItemCount();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -331,7 +340,6 @@ namespace GreenfieldLocalHubWebApp.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Your password has been changed.";
             return RedirectToPage();
         }
-
 
 
 

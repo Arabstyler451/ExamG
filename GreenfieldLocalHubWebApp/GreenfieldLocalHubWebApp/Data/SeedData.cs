@@ -192,7 +192,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07123456789",
                     producerDescription = "Family-run for four generations. Organic certified with a focus on heirloom vegetable varieties and soil health regeneration.",
                     producerLocation = "Midshire, SK48",
-                    producerImage = "/images/greenacreFarm.jpg",
+                    producerImage = "/images/producers/greenacreFarm.jpg",
                     UserId = producerUser.Id
                 },
 
@@ -203,7 +203,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07111222333",
                     producerDescription = "Small-scale herd of 40 Friesian cows, all grass-fed. Handmade cheeses aged on-site. Unpasteurised milk also available.",
                     producerLocation = "Midshire, SK50",
-                    producerImage = "/images/hillcrestDairy.jpg",
+                    producerImage = "/images/producers/hillcrestDairy.jpg",
                     UserId = producerUser2.Id
                 },
                 
@@ -214,7 +214,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07555123456",
                     producerDescription = "Using locally-milled stoneground flour and slow fermentation. No additives, no preservatives - just honest bread.",
                     producerLocation = "Midshire, SK24",
-                    producerImage = "/images/theOldMillBakery.jpg",
+                    producerImage = "/images/producers/theOldMillBakery.jpg",
                     UserId = producerUser3.Id
                 },
 
@@ -225,7 +225,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07411223344",
                     producerDescription = "Traditional dry-ageing and butchery. All animals reared within 15 miles, slaughtered locally. Full traceability guaranteed.",
                     producerLocation = "Midshire, SK42",
-                    producerImage = "/images/moorsideButchery.jpg",
+                    producerImage = "/images/producers/moorsideButchery.jpg",
                     UserId = producerUser4.Id
                 },
 
@@ -236,7 +236,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07899887766",
                     producerDescription = "200 hives across wildflower meadows and woodland. Raw, cold-extracted honey. A proportion of profits supports pollinator conservation.",
                     producerLocation = "Midshire, SK35",
-                    producerImage = "/images/meadowApiary.jpg",
+                    producerImage = "/images/producers/meadowApiary.jpg",
                     UserId = producerUser5.Id
                 },
 
@@ -247,7 +247,7 @@ namespace GreenfieldLocalHubWebApp.Data
                     producerPhone = "07222334455",
                     producerDescription = "Mixed family farm nestled in the sunny slopes of Midshire. We grow a wide range of fruit and vegetables, keep free-range hens for eggs, and rear rare-breed pigs. Everything is grown and raised with care using regenerative farming practices.",
                     producerLocation = "Midshire, SK39",
-                    producerImage = "/images/sunfieldFarm.jpg",
+                    producerImage = "/images/producers/sunfieldFarm.jpg",
                     UserId = producerUser6.Id
                 }
             };
@@ -313,7 +313,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 3.20f,
                         stockQuantity = 100,
                         productAvailability = true,
-                        productImage = "/images/heritageTomatoes.jpg",
+                        productImage = "/images/products/heritageTomatoes.jpg",
                         producersId = greenAcreFarm.producersId,
                         categoriesId = vegCat.categoriesId
                     },
@@ -325,7 +325,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 2.40f,
                         stockQuantity = 80,
                         productAvailability = true,
-                        productImage = "/images/heritageCarrots.jpg",
+                        productImage = "/images/products/heritageCarrots.jpg",
                         producersId = greenAcreFarm.producersId,
                         categoriesId = vegCat.categoriesId
 
@@ -338,7 +338,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 5.50f,
                         stockQuantity = 0,
                         productAvailability = false,
-                        productImage = "/images/rawMilkCheddar.jpg",
+                        productImage = "/images/products/rawMilkCheddar.jpg",
                         producersId = hillCrestDairy.producersId,
                         categoriesId = dairyCat.categoriesId
                     },
@@ -350,7 +350,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 4.80f,
                         stockQuantity = 50,
                         productAvailability = true,
-                        productImage = "/images/countrySourdough.jpg",
+                        productImage = "/images/products/countrySourdough.jpg",
                         producersId = theOldMillBakery.producersId,
                         categoriesId = bakeryCat.categoriesId
                     },
@@ -362,7 +362,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 3.50f,
                         stockQuantity = 120,
                         productAvailability = true,
-                        productImage = "/images/coxApples.jpg",
+                        productImage = "/images/products/coxApples.jpg",
                         producersId = sunfieldFarm.producersId,
                         categoriesId = vegCat.categoriesId
                     },
@@ -374,7 +374,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 2.80f,
                         stockQuantity = 60,
                         productAvailability = true,
-                        productImage = "/images/mixedSaladLeaves.jpg",
+                        productImage = "/images/products/mixedSaladLeaves.jpg",
                         producersId = greenAcreFarm.producersId,
                         categoriesId = vegCat.categoriesId
                     },
@@ -386,7 +386,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 7.95f,
                         stockQuantity = 45,
                         productAvailability = true,
-                        productImage = "/images/grassFedBeefMince.jpg",
+                        productImage = "/images/products/grassFedBeefMince.jpg",
                         producersId = moorsideButchery.producersId,
                         categoriesId = meatCat.categoriesId
                     },
@@ -398,7 +398,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 4.25f,
                         stockQuantity = 35,
                         productAvailability = true,
-                        productImage = "/images/strawberryPreserve.jpg",
+                        productImage = "/images/products/strawberryPreserve.jpg",
                         producersId = sunfieldFarm.producersId,
                         categoriesId = honeyCat.categoriesId
                     },
@@ -410,7 +410,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 6.50f,
                         stockQuantity = 28,
                         productAvailability = true,
-                        productImage = "/images/wildflowerHoney.jpg",
+                        productImage = "/images/products/wildflowerHoney.jpg",
                         producersId = meadowApiary.producersId,
                         categoriesId = honeyCat.categoriesId
                     },
@@ -422,7 +422,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 3.75f,
                         stockQuantity = 150,
                         productAvailability = true,
-                        productImage = "/images/freeRangeEggs.jpg",
+                        productImage = "/images/products/freeRangeEggs.jpg",
                         producersId = sunfieldFarm.producersId,
                         categoriesId = dairyCat.categoriesId
                     },
@@ -434,7 +434,7 @@ namespace GreenfieldLocalHubWebApp.Data
                         productPrice = 3.10f,
                         stockQuantity = 40,
                         productAvailability = true,
-                        productImage = "/images/purpleSproutingBroccoli.jpg",
+                        productImage = "/images/products/purpleSproutingBroccoli.jpg",
                         producersId = greenAcreFarm.producersId,
                         categoriesId = vegCat.categoriesId
                     }

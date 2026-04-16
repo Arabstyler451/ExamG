@@ -1,6 +1,20 @@
 ﻿@inject SignInManager<IdentityUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+
+    //  Active detection that works for BOTH Razor Pages and MVC
+    var activePage = ViewData["ActivePage"] as string ?? ViewContext.RouteData.Values["page"]?.ToString()?.Split('/').Last() ?? ViewContext.RouteData.Values["action"]?.ToString();
+
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLowerInvariant();
+
+    var isProfile = activePage?.Equals("Index", StringComparison.OrdinalIgnoreCase) == true;
+    var isExternalLogins = activePage?.Equals("ExternalLogins", StringComparison.OrdinalIgnoreCase) == true;
+    var isTwoFactor = activePage?.Equals("TwoFactorAuthentication", StringComparison.OrdinalIgnoreCase) == true;
+    var isPersonalData = activePage?.Equals("PersonalData", StringComparison.OrdinalIgnoreCase) == true;
+
+    var isOrders = controller == "orders";
+    var isLoyalty = controller == "loyaltyaccounts";
+    var isAddressBook = controller == "addresses";
 }
 
 <style>
@@ -49,7 +63,7 @@
 
 <div class="account-nav">
     <!-- Profile (now includes email and password management) -->
-    <a class="account-nav-item @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+    <a class="account-nav-item @ManageNavPages.IndexNavClass(ViewContext)" id="profile" href="/Identity/Account/Manage/Index">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -62,7 +76,7 @@
 
     @if (hasExternalLogins)
     {
-        <a class="account-nav-item @ManageNavPages.ExternalLoginsNavClass(ViewContext)" id="external-login" asp-page="./ExternalLogins">
+        <a class="account-nav-item @(isExternalLogins ? "active" : "") @ManageNavPages.ExternalLoginsNavClass(ViewContext)" id="external-login" href="/Identity/Account/Manage/ExternalLogins">
             <span class="nav-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +89,7 @@
         </a>
     }
 
-    <a class="account-nav-item @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
+    <a class="account-nav-item @(isTwoFactor ? "active" : "") @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" href="/Identity/Account/Manage/TwoFactorAuthentication">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -86,7 +100,7 @@
         Two-Factor Authentication
     </a>
 
-    <a class="account-nav-item @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+    <a class="account-nav-item @(isPersonalData ? "active" : "") @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" href="/Identity/Account/Manage/PersonalData">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -97,7 +111,13 @@
         Personal Data
     </a>
 
-    <a class="account-nav-item" asp-area="" asp-controller="orders" asp-action="Index">
+
+
+
+
+    <!-- CUSTOM MVC LINKS --> 
+
+    <a class="account-nav-item @(isOrders ? "active" : "")" asp-area="" asp-controller="orders" asp-action="Index">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -109,7 +129,7 @@
         Orders
     </a>
 
-    <a class="account-nav-item" asp-area="" asp-controller="loyaltyAccounts" asp-action="Index">
+    <a class="account-nav-item @(isLoyalty ? "active" : "")" asp-area="" asp-controller="loyaltyAccounts" asp-action="Index">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -121,7 +141,7 @@
         My Loyalty
     </a>
 
-    <a class="account-nav-item" asp-area="" asp-controller="addresses" asp-action="Index">
+    <a class="account-nav-item @(isAddressBook ? "active" : "")" asp-area="" asp-controller="addresses" asp-action="Index">
         <span class="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -130,6 +150,6 @@
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
         </span>
-        Adress Book
+        Address Book
     </a>
 </div>
