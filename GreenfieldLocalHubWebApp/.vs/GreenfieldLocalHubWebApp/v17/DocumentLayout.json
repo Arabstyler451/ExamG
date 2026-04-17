@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\loyaltyaccountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "shoppingCartsController.cs",
               "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
               "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
               "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
               "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T09:55:24.33Z",
               "EditorCaption": ""
@@ -49,9 +49,10 @@
               "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\loyaltyAccounts\\Index.cshtml",
               "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\loyaltyAccounts\\Index.cshtml",
               "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\loyaltyAccounts\\Index.cshtml",
-              "ViewState": "AgIAAEsBAAAAAAAAAAAswHUBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAqwF0BAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-17T08:43:11.229Z"
+              "WhenOpened": "2026-04-17T08:43:11.229Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -61,20 +62,20 @@
               "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
               "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
               "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
-              "ViewState": "AgIAAEUBAAAAAAAAAAAAAFsBAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAmwJwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T08:36:14.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ordersController.cs",
               "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAAAHcAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAAAB0BAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T08:22:13.813Z",
               "EditorCaption": ""

@@ -110,15 +110,14 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // POST: orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: orders/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ordersId,addressId,delivery,collection,deliveryType,orderCollectionDate")] orders orders, int shoppingCartId)
         {
             ViewBag.CartItemCount = await GetCartItemCount();
 
-            // Set the UserId of the order to the currently logged-in user's ID
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (userId == null)
             {
                 ViewBag.shoppingCartId = shoppingCartId;
@@ -127,27 +126,23 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
             orders.UserId = userId;
             ModelState.Remove("UserId");
-
-
-            // Set the order date to the current date
             orders.orderDate = DateOnly.FromDateTime(DateTime.Today);
             ModelState.Remove("orderDate");
-
-            // Set the order status to "Pending"
             orders.orderStatus = "Pending";
             ModelState.Remove("orderStatus");
 
-
-
-            var shoppingCart = await _context.shoppingCart.FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCartId && sc.UserId == userId && sc.shoppingCartStatus);
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCartId && sc.UserId == userId && sc.shoppingCartStatus);
 
             if (shoppingCart == null)
-            {
                 return NotFound();
-            }
 
-            // Retrieve the shopping cart items for the specified cartId
-            var shoppingCartItems = await _context.shoppingCartItems.Where(sci => sci.shoppingCartId == shoppingCartId).Include(sci => sci.products).ToListAsync();
+            // Load shopping cart items + product + category (needed for vegetable discount)
+            var shoppingCartItems = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCartId)
+                .Include(sci => sci.products)
+                    .ThenInclude(p => p.categories)
+                .ToListAsync();
 
             if (!shoppingCartItems.Any())
             {
@@ -156,32 +151,63 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return View(orders);
             }
 
+            // === Calculate Subtotal & Loyalty Discounts ===
+            float subTotal = shoppingCartItems.Sum(item => item.products.productPrice * item.quantity);
 
-            // Calculate the total amount for the order based on the shopping cart items
-            float subTotal = 0.00f;
-            foreach (var shoppingCartItem in shoppingCartItems)
+            // Load active offers
+            var loyaltyAccount = await _context.loyaltyAccount
+                .FirstOrDefaultAsync(l => l.UserId == userId);
+
+            var activeOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? loyaltyAccount.ActiveOffers.Split(',').ToList()
+                : new List<string>();
+
+            float loyaltyDiscount = 0f;
+            var usedOffers = new List<string>(); // Track which offers were actually used
+
+            foreach (var item in shoppingCartItems)
             {
-                var productTotal = shoppingCartItem.products.productPrice * shoppingCartItem.quantity;
-                subTotal = productTotal + subTotal;
+                var price = item.products.productPrice * item.quantity;
+
+                // 10% off Fruits & Vegetables
+                if (activeOffers.Contains("10% off Fruits & Vegetables") &&
+                    item.products.categories != null &&
+                    string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                {
+                    loyaltyDiscount += (float)(price * 0.10);
+                    if (!usedOffers.Contains("10% off Fruits & Vegetables"))
+                        usedOffers.Add("10% off Fruits & Vegetables");
+                }
+
+                // Free Cheese
+                if (activeOffers.Contains("Free Cheese") &&
+                    item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    loyaltyDiscount += (float)price;
+                    if (!usedOffers.Contains("Free Cheese"))
+                        usedOffers.Add("Free Cheese");
+                }
             }
 
+            // £5 Voucher - Only if order is £20 or more
+            if (activeOffers.Contains("£5 Voucher") && subTotal >= 20f)
+            {
+                loyaltyDiscount += 5f;
+                if (!usedOffers.Contains("£5 Voucher"))
+                    usedOffers.Add("£5 Voucher");
+            }
 
-            // Check if the user is eligible for a discount based on their order history
+            // Order count discount (this is NOT a voucher, it's a permanent discount)
             var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
-
-            float discount = 0.00f;
-
             if (orderCount >= 5)
             {
-                discount = subTotal * 0.10f; // 10% discount for customers with 5 or more orders
+                loyaltyDiscount += (float)(subTotal * 0.10f);
             }
 
-            orders.totalAmount = subTotal - discount;
+            orders.totalAmount = subTotal - loyaltyDiscount;
             ModelState.Remove("totalAmount");
 
-
-
-            // If an address is selected, populate the delivery address fields in the orders model
+            // Address handling
             if (orders.addressId.HasValue)
             {
                 var selectedAddress = await _context.address.FindAsync(orders.addressId.Value);
@@ -194,62 +220,37 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 }
             }
 
-
-
-            // Validate that either delivery or collection is selected, but not both
+            // Delivery / Collection validation
             if (!orders.collection && !orders.delivery)
-            {
                 ModelState.AddModelError("delivery", "Please select either delivery or collection for your order");
-            }
 
-            // If delivery is selected, validate that a delivery type is chosen
             if (orders.collection)
             {
                 ModelState.Remove("deliveryType");
-
-                // Validate that a collection date is selected and is at least 2 days from today
                 if (orders.orderCollectionDate == null)
-                {
                     ModelState.AddModelError("orderCollectionDate", "Collection date is required.");
-                }
-                else
-                {
-                    var earliestCollectionDate = DateOnly.FromDateTime(DateTime.Today.AddDays(2));
-
-                    if (orders.orderCollectionDate.Value < earliestCollectionDate)
-                    {
-                        ModelState.AddModelError("orderCollectionDate", $"Collection date must be at least 2 days from today ({earliestCollectionDate:MM/dd/yyyy}).");
-                    }
-                }
+                else if (orders.orderCollectionDate.Value < DateOnly.FromDateTime(DateTime.Today.AddDays(2)))
+                    ModelState.AddModelError("orderCollectionDate", $"Collection date must be at least 2 days from today.");
             }
+            if (orders.delivery && string.IsNullOrWhiteSpace(orders.deliveryType))
+                ModelState.AddModelError("deliveryType", "Please select a delivery type for your order");
 
-
-            if (orders.delivery)
-            {
-                ModelState.Remove("orderCollectionDate");
-                if (string.IsNullOrWhiteSpace(orders.deliveryType))
-                {
-                    ModelState.AddModelError("deliveryType", "Please select a delivery type for your order");
-                }
-            }
-
-            // If the model state is valid, save the order to the database
             if (!ModelState.IsValid)
             {
                 ViewBag.shoppingCartId = shoppingCartId;
                 return View(orders);
             }
 
-
+            // ====================== SAVE ORDER ======================
             _context.orders.Add(orders);
             await _context.SaveChangesAsync();
 
-            // Create orderProducts entries for each shopping cart item and update product stock quantities
+            // Create orderProducts and update stock
             foreach (var shoppingCartItem in shoppingCartItems)
             {
                 if (shoppingCartItem.products.stockQuantity < shoppingCartItem.quantity)
                 {
-                    ModelState.AddModelError("", $"Sorry, we only have {shoppingCartItem.products.stockQuantity} units of {shoppingCartItem.products.productName} in stock. Please adjust the quantity in your shopping cart.");
+                    ModelState.AddModelError("", $"Sorry, we only have {shoppingCartItem.products.stockQuantity} units of {shoppingCartItem.products.productName} in stock.");
                     ViewBag.shoppingCartId = shoppingCartId;
                     return View(orders);
                 }
@@ -261,7 +262,6 @@ namespace GreenfieldLocalHubWebApp.Controllers
                     quantity = shoppingCartItem.quantity,
                     unitPrice = shoppingCartItem.unitPrice
                 };
-
                 _context.orderProducts.Add(orderProduct);
 
                 shoppingCartItem.products.stockQuantity -= shoppingCartItem.quantity;
@@ -270,61 +270,113 @@ namespace GreenfieldLocalHubWebApp.Controllers
             shoppingCart.shoppingCartStatus = false;
             await _context.SaveChangesAsync();
 
-
-
-
-
-
-            // LOYALTY POINTS Logic
-            try
+            // ====================== CONSUME ONLY THE OFFERS THAT WERE USED ======================
+            if (usedOffers.Any())
             {
-                var loyaltyAccount = await _context.loyaltyAccount
+                // Get a FRESH instance from database to avoid tracking issues
+                var loyaltyAccountForOffers = await _context.loyaltyAccount
+                    .AsNoTracking()  // Add this to ensure fresh data
                     .FirstOrDefaultAsync(l => l.UserId == userId);
 
-                if (loyaltyAccount == null)
+                if (loyaltyAccountForOffers != null && !string.IsNullOrEmpty(loyaltyAccountForOffers.ActiveOffers))
                 {
-                    loyaltyAccount = new loyaltyAccount
+                    var activeList = loyaltyAccountForOffers.ActiveOffers.Split(',').ToList();
+                    bool changed = false;
+
+                    foreach (var offer in usedOffers)
+                    {
+                        if (activeList.Contains(offer))  // Use Contains instead of Remove in loop
+                        {
+                            activeList.Remove(offer);
+                            changed = true;
+                            Console.WriteLine($"Removing offer: {offer}");
+                        }
+                    }
+
+                    if (changed)
+                    {
+                        var updatedAccount = await _context.loyaltyAccount
+                            .FirstOrDefaultAsync(l => l.UserId == userId);
+
+                        if (updatedAccount != null)
+                        {
+                            updatedAccount.ActiveOffers = string.Join(",", activeList.Where(s => !string.IsNullOrEmpty(s)));
+                            _context.Entry(updatedAccount).State = EntityState.Modified;
+                            await _context.SaveChangesAsync();
+
+                            // Verify the removal
+                            var verifyAccount = await _context.loyaltyAccount
+                                .FirstOrDefaultAsync(l => l.UserId == userId);
+                            Console.WriteLine($"VERIFICATION - ActiveOffers after removal: {verifyAccount?.ActiveOffers ?? "NULL"}");
+                        }
+                    }
+                }
+            }
+
+            // ====================== AWARD LOYALTY POINTS ======================
+            try
+            {
+                var loyaltyAccountForPoints = await _context.loyaltyAccount
+                    .FirstOrDefaultAsync(l => l.UserId == userId);
+
+                if (loyaltyAccountForPoints == null)
+                {
+                    loyaltyAccountForPoints = new loyaltyAccount
                     {
                         UserId = userId,
                         pointsBalance = 0,
                         loyaltyTier = "Bronze"
                     };
-                    _context.loyaltyAccount.Add(loyaltyAccount);
+                    _context.loyaltyAccount.Add(loyaltyAccountForPoints);
                     await _context.SaveChangesAsync();
                 }
 
-                int pointsEarned = (int)(orders.totalAmount * 10); // 10 points per £1
+                // Store old tier before updating
+                var oldTier = loyaltyAccountForPoints.loyaltyTier;
 
+                int pointsEarned = (int)(orders.totalAmount * 10); // 10 points per £1
                 var transaction = new loyaltyTransaction
                 {
-                    loyaltyAccountId = loyaltyAccount.loyaltyAccountId,
+                    loyaltyAccountId = loyaltyAccountForPoints.loyaltyAccountId,
                     ordersId = orders.ordersId,
                     loyaltyPoints = pointsEarned,
                     transactionType = "Earn",
                     transactionDate = DateTime.Now
                 };
+
                 _context.loyaltyTransaction.Add(transaction);
+                loyaltyAccountForPoints.pointsBalance += pointsEarned;
 
-                loyaltyAccount.pointsBalance += pointsEarned;
-
-                // Update tier based on points
-                if (loyaltyAccount.pointsBalance >= 5000) loyaltyAccount.loyaltyTier = "Platinum";
-                else if (loyaltyAccount.pointsBalance >= 2000) loyaltyAccount.loyaltyTier = "Gold";
-                else if (loyaltyAccount.pointsBalance >= 500) loyaltyAccount.loyaltyTier = "Silver";
+                loyaltyAccountForPoints.loyaltyTier = loyaltyAccountForPoints.pointsBalance switch
+                {
+                    >= 5000 => "Platinum",
+                    >= 2000 => "Gold",
+                    >= 500 => "Silver",
+                    _ => "Bronze"
+                };
 
                 await _context.SaveChangesAsync();
+
+                // Grant tier-based offers if tier improved
+                if (oldTier != loyaltyAccountForPoints.loyaltyTier)
+                {
+                    // You'll need to add a reference to your loyaltyAccountsController or move this logic
+                    await GrantTierOffersForOrder(userId, loyaltyAccountForPoints.loyaltyTier);
+                }
 
                 TempData["LoyaltyMessage"] = $"You earned {pointsEarned} loyalty points!";
             }
             catch (Exception ex)
             {
-                // Just log error - don't break the order
                 Console.WriteLine($"Loyalty error: {ex.Message}");
             }
 
-
             return RedirectToAction("Index", "shoppingCarts");
         }
+
+
+
+
 
         // GET: orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -342,6 +394,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
             ViewData["addressId"] = new SelectList(_context.address, "addressId", "addressId", orders.addressId);
             return View(orders);
         }
+
+
 
         // POST: orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -417,6 +471,52 @@ namespace GreenfieldLocalHubWebApp.Controllers
         {
             return _context.orders.Any(e => e.ordersId == id);
         }
+
+
+
+
+
+
+        // Add this method to your orders controller (near the bottom)
+        private async Task GrantTierOffersForOrder(string userId, string newTier)
+        {
+            var loyaltyAccount = await _context.loyaltyAccount
+                .FirstOrDefaultAsync(l => l.UserId == userId);
+
+            if (loyaltyAccount == null) return;
+
+            var currentActiveOffers = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? new List<string>()
+                : loyaltyAccount.ActiveOffers.Split(',').ToList();
+
+            bool changed = false;
+
+            // Grant offers based on tier (only if not already active)
+            if (newTier == "Silver" && !currentActiveOffers.Contains("10% off Fruits & Vegetables"))
+            {
+                currentActiveOffers.Add("10% off Fruits & Vegetables");
+                changed = true;
+            }
+            else if (newTier == "Gold" && !currentActiveOffers.Contains("Free Cheese"))
+            {
+                currentActiveOffers.Add("Free Cheese");
+                changed = true;
+            }
+            else if (newTier == "Platinum" && !currentActiveOffers.Contains("£5 Voucher"))
+            {
+                currentActiveOffers.Add("£5 Voucher");
+                changed = true;
+            }
+
+            if (changed)
+            {
+                loyaltyAccount.ActiveOffers = string.Join(",", currentActiveOffers);
+                _context.Update(loyaltyAccount);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
 
 
 

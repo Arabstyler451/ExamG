@@ -20,24 +20,23 @@ namespace GreenfieldLocalHubWebApp.Controllers
             _context = context;
         }
 
+
+
+
         // GET: shoppingCarts
         public async Task<IActionResult> Index()
         {
-            
             ViewBag.CartItemCount = await GetCartItemCount();
 
-
-            // Get the current user's ID from the claims
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
-                return RedirectToPage("/Account/Login", new { area = "Identity" });   // Redirect to the login page if the user is not authenticated
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
 
-
-            // Check if the user has an active shopping cart, if not create one
-            var shoppingCart = await _context.shoppingCart.FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus); // Find the active shopping cart for the user
+            // Get or create active shopping cart
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus);
 
             if (shoppingCart == null)
             {
@@ -51,38 +50,71 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 await _context.SaveChangesAsync();
             }
 
-
-            // Retrieve the shopping cart items for the current user's shopping cart, including the related products and shopping cart information
+            // Load cart items with product details + categories
             var shoppingCartItems = await _context.shoppingCartItems
-                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId) // Filter shopping cart items by the current user's shopping cart
-                .Include(sci => sci.shoppingCart) // Include the related shopping cart
-                .Include(sci => sci.products) // Include the related products
+                .Where(sci => sci.shoppingCartId == shoppingCart.shoppingCartId)
+                .Include(sci => sci.shoppingCart)
+                .Include(sci => sci.products)
+                    .ThenInclude(p => p.categories)           // Important: load categories
                 .ToListAsync();
 
-            float subTotalAmount = 0f; // Stores the total amount for the shopping cart
+            // Calculate subtotal
+            float subTotalAmount = shoppingCartItems.Sum(item =>
+                item.products.productPrice * item.quantity);
 
-            foreach (var shoppingCartItem in shoppingCartItems)
-            {
-                var productTotal = shoppingCartItem.products.productPrice * shoppingCartItem.quantity; // Calculate the total price for each item
-                subTotalAmount += productTotal; // Add the total price of each item to the overall total amount
-            }
+            // Load Active Loyalty Offers
+            var loyaltyAccount = await _context.loyaltyAccount
+                .FirstOrDefaultAsync(l => l.UserId == userId);
 
-            var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
+            var activeOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? loyaltyAccount.ActiveOffers.Split(',').ToList()
+                : new List<string>();
 
+            // === Calculate Loyalty Discounts ===
             float loyaltyDiscount = 0f;
 
+            foreach (var item in shoppingCartItems)
+            {
+                var price = item.products.productPrice * item.quantity;
+
+                // 10% off Fruits & Vegetables - ONLY on "Fruit & Veg" category
+                if (activeOffers.Contains("10% off Fruits & Vegetables") &&
+                    item.products.categories != null && string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                {
+                    loyaltyDiscount += (float)(price * 0.10);
+                }
+
+                // Free Cheese - make cheese items free
+                if (activeOffers.Contains("Free Cheese") &&
+                    item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    loyaltyDiscount += (float)price;   // this item becomes free
+                }
+            }
+
+            // £5 Voucher - Only if order is £20 or more
+            if (activeOffers.Contains("£5 Voucher") && subTotalAmount >= 20f)
+            {
+                loyaltyDiscount += 5f;
+            }
+
+            // Free Delivery is better handled in checkout (shipping), not here
+
+            // Keep your old order-based 10% discount (if you still want both)
+            var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
             if (orderCount >= 5)
             {
-                loyaltyDiscount = subTotalAmount * 0.10f;
+                loyaltyDiscount += (float)(subTotalAmount * 0.10f);
             }
 
             float total = subTotalAmount - loyaltyDiscount;
 
-
+            // Pass data to view
             ViewBag.subTotalAmount = subTotalAmount;
             ViewBag.loyaltyDiscount = loyaltyDiscount;
             ViewBag.total = total;
             ViewBag.orderCount = orderCount;
+            ViewBag.ActiveOffers = activeOffers;
 
             return View(shoppingCartItems);
         }

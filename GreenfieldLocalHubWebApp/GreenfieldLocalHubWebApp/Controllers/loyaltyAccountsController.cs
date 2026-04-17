@@ -111,6 +111,9 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            // Store old tier before changes
+            var oldTier = loyaltyAccount.loyaltyTier;
+
             // === Create redemption transaction ===
             var transaction = new loyaltyTransaction
             {
@@ -123,24 +126,81 @@ namespace GreenfieldLocalHubWebApp.Controllers
             loyaltyAccount.pointsBalance -= pointsCost;
             loyaltyAccount.loyaltyTier = GetLoyaltyTier(loyaltyAccount.pointsBalance);
 
-            // Add to permanent history
+            // Add to permanent history (track that user redeemed this offer with points)
             redeemedList.Add(offerTitle);
             loyaltyAccount.redeemedOffers = string.Join(",", redeemedList);
 
-            // Add to ACTIVE offers (can be used on next order)
+            // ✅ KEEP THIS - Add to ACTIVE offers (can be used on next order)
             var activeList = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
                 ? new List<string>()
                 : loyaltyAccount.ActiveOffers.Split(',').ToList();
-            activeList.Add(offerTitle);
-            loyaltyAccount.ActiveOffers = string.Join(",", activeList);
+
+            // Only add if not already active
+            if (!activeList.Contains(offerTitle))
+            {
+                activeList.Add(offerTitle);
+                loyaltyAccount.ActiveOffers = string.Join(",", activeList);
+            }
 
             _context.loyaltyTransaction.Add(transaction);
             _context.Update(loyaltyAccount);
             await _context.SaveChangesAsync();
 
+            // Grant tier-based offers if tier improved
+            if (oldTier != loyaltyAccount.loyaltyTier)
+            {
+                await GrantTierOffers(userId, loyaltyAccount.loyaltyTier);
+            }
+
             TempData["Success"] = $"Successfully redeemed {offerTitle}! {pointsCost} points deducted.";
             return RedirectToAction(nameof(Index));
         }
+
+
+
+        // Add this method to your loyaltyAccountsController
+        private async Task GrantTierOffers(string userId, string newTier)
+        {
+            var loyaltyAccount = await _context.loyaltyAccount
+                .FirstOrDefaultAsync(l => l.UserId == userId);
+
+            if (loyaltyAccount == null) return;
+
+            var currentActiveOffers = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? new List<string>()
+                : loyaltyAccount.ActiveOffers.Split(',').ToList();
+
+            bool changed = false;
+
+            // Grant offers based on tier (only if not already active)
+            if (newTier == "Silver" && !currentActiveOffers.Contains("10% off Fruits & Vegetables"))
+            {
+                currentActiveOffers.Add("10% off Fruits & Vegetables");
+                changed = true;
+            }
+            else if (newTier == "Gold" && !currentActiveOffers.Contains("Free Cheese"))
+            {
+                currentActiveOffers.Add("Free Cheese");
+                changed = true;
+            }
+            else if (newTier == "Platinum" && !currentActiveOffers.Contains("£5 Voucher"))
+            {
+                currentActiveOffers.Add("£5 Voucher");
+                changed = true;
+            }
+
+            if (changed)
+            {
+                loyaltyAccount.ActiveOffers = string.Join(",", currentActiveOffers);
+                _context.Update(loyaltyAccount);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
+
+
+
 
         // ===================== NEW HELPER =====================
         // Call this AFTER a successful order is placed if a loyalty offer was used
@@ -438,11 +498,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
             {
                 new LoyaltyOfferViewModel
                 {
-                    Title = "10% off Vegetables",
-                    Description = "10% off your next vegetable order",
+                    Title = "10% off Fruits & Vegetables",
+                    Description = "10% off your next fruits and vegetable order",
                     PointsCost = 200,
                     IsAvailable = pointsBalance >= 200,
-                    IsRedeemed = redeemedOffers.Contains("10% off Vegetables")
+                    IsRedeemed = redeemedOffers.Contains("10% off Fruits & Vegetables")
                 },
                 new LoyaltyOfferViewModel
                 {
