@@ -270,44 +270,73 @@ namespace GreenfieldLocalHubWebApp.Controllers
             shoppingCart.shoppingCartStatus = false;
             await _context.SaveChangesAsync();
 
-            // ====================== CONSUME ONLY THE OFFERS THAT WERE USED ======================
+
+            // ====================== CONSUME USED OFFERS (Critical Fix) ======================
             if (usedOffers.Any())
             {
-                // Get a FRESH instance from database to avoid tracking issues
+                // Use a fresh query + AsNoTracking to avoid EF tracking conflicts
                 var loyaltyAccountForOffers = await _context.loyaltyAccount
-                    .AsNoTracking()  // Add this to ensure fresh data
+                    .AsNoTracking()
                     .FirstOrDefaultAsync(l => l.UserId == userId);
 
-                if (loyaltyAccountForOffers != null && !string.IsNullOrEmpty(loyaltyAccountForOffers.ActiveOffers))
+                if (loyaltyAccountForOffers != null)
                 {
-                    var activeList = loyaltyAccountForOffers.ActiveOffers.Split(',').ToList();
+                    var activeList = string.IsNullOrEmpty(loyaltyAccountForOffers.ActiveOffers)
+                        ? new List<string>()
+                        : loyaltyAccountForOffers.ActiveOffers.Split(',').Select(s => s.Trim()).ToList();
+
+                    var consumedList = string.IsNullOrEmpty(loyaltyAccountForOffers.ConsumedOffers)
+                        ? new List<string>()
+                        : loyaltyAccountForOffers.ConsumedOffers.Split(',').Select(s => s.Trim()).ToList();
+
                     bool changed = false;
 
+                    // 10% off Fruits & Vegetables — only consume if it was actually applied this order
+                    if (usedOffers.Contains("10% off Fruits & Vegetables"))
+                    {
+                        if (activeList.Contains("10% off Fruits & Vegetables"))
+                        {
+                            activeList.Remove("10% off Fruits & Vegetables");
+                            if (!consumedList.Contains("10% off Fruits & Vegetables"))
+                                consumedList.Add("10% off Fruits & Vegetables");
+
+                            changed = true;
+                            Console.WriteLine(">>> 10% off Fruits & Vegetables successfully moved to ConsumedOffers");
+                        }
+                    }
+
+                    // Other offers (Free Cheese, £5 Voucher, etc.)
                     foreach (var offer in usedOffers)
                     {
-                        if (activeList.Contains(offer))  // Use Contains instead of Remove in loop
+                        if (offer == "10% off Fruits & Vegetables") continue;
+
+                        if (activeList.Contains(offer))
                         {
                             activeList.Remove(offer);
+                            if (!consumedList.Contains(offer))
+                                consumedList.Add(offer);
+
                             changed = true;
-                            Console.WriteLine($"Removing offer: {offer}");
+                            Console.WriteLine($">>> Offer moved to ConsumedOffers: {offer}");
                         }
                     }
 
                     if (changed)
                     {
-                        var updatedAccount = await _context.loyaltyAccount
+                        // Re-attach and update
+                        var accountToUpdate = await _context.loyaltyAccount
                             .FirstOrDefaultAsync(l => l.UserId == userId);
 
-                        if (updatedAccount != null)
+                        if (accountToUpdate != null)
                         {
-                            updatedAccount.ActiveOffers = string.Join(",", activeList.Where(s => !string.IsNullOrEmpty(s)));
-                            _context.Entry(updatedAccount).State = EntityState.Modified;
+                            accountToUpdate.ActiveOffers = string.Join(",", activeList.Where(s => !string.IsNullOrWhiteSpace(s)));
+                            accountToUpdate.ConsumedOffers = string.Join(",", consumedList.Where(s => !string.IsNullOrWhiteSpace(s)));
+
+                            _context.Update(accountToUpdate);
                             await _context.SaveChangesAsync();
 
-                            // Verify the removal
-                            var verifyAccount = await _context.loyaltyAccount
-                                .FirstOrDefaultAsync(l => l.UserId == userId);
-                            Console.WriteLine($"VERIFICATION - ActiveOffers after removal: {verifyAccount?.ActiveOffers ?? "NULL"}");
+                            Console.WriteLine(">>> Loyalty account updated successfully. ActiveOffers now: " + accountToUpdate.ActiveOffers);
+                            Console.WriteLine(">>> ConsumedOffers now: " + accountToUpdate.ConsumedOffers);
                         }
                     }
                 }
@@ -518,6 +547,23 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
 
 
+
+        private async Task LogOfferConsumption(int loyaltyAccountId, int orderId, IEnumerable<string> consumedOffers)
+        {
+            foreach (var offer in consumedOffers.Distinct())
+            {
+                var transaction = new loyaltyTransaction
+                {
+                    loyaltyAccountId = loyaltyAccountId,
+                    ordersId = orderId,
+                    loyaltyPoints = 0,
+                    transactionType = "Consume",
+                    transactionDate = DateTime.Now
+                };
+                _context.loyaltyTransaction.Add(transaction);
+            }
+            await _context.SaveChangesAsync();
+        }
 
 
         // Controller method to display amount of items in the shopping cart

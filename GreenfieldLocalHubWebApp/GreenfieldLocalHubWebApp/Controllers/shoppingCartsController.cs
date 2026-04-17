@@ -62,13 +62,20 @@ namespace GreenfieldLocalHubWebApp.Controllers
             float subTotalAmount = shoppingCartItems.Sum(item =>
                 item.products.productPrice * item.quantity);
 
-            // Load Active Loyalty Offers
+            // Load Active Loyalty Offers (only truly active ones)
             var loyaltyAccount = await _context.loyaltyAccount
                 .FirstOrDefaultAsync(l => l.UserId == userId);
 
             var activeOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
-                ? loyaltyAccount.ActiveOffers.Split(',').ToList()
+                ? loyaltyAccount.ActiveOffers.Split(',').Select(s => s.Trim()).ToList()
                 : new List<string>();
+
+            var consumedOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ConsumedOffers)
+                ? loyaltyAccount.ConsumedOffers.Split(',').Select(s => s.Trim()).ToList()
+                : new List<string>();
+
+            // Remove any consumed offers that might still be in ActiveOffers (safety cleanup)
+            activeOffers.RemoveAll(o => consumedOffers.Contains(o));
 
             // === Calculate Loyalty Discounts ===
             float loyaltyDiscount = 0f;
@@ -77,30 +84,29 @@ namespace GreenfieldLocalHubWebApp.Controllers
             {
                 var price = item.products.productPrice * item.quantity;
 
-                // 10% off Fruits & Vegetables - ONLY on "Fruit & Veg" category
+                // 10% off Fruits & Vegetables
                 if (activeOffers.Contains("10% off Fruits & Vegetables") &&
-                    item.products.categories != null && string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                    item.products.categories != null &&
+                    string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
                 {
                     loyaltyDiscount += (float)(price * 0.10);
                 }
 
-                // Free Cheese - make cheese items free
+                // Free Cheese
                 if (activeOffers.Contains("Free Cheese") &&
                     item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
                 {
-                    loyaltyDiscount += (float)price;   // this item becomes free
+                    loyaltyDiscount += (float)price;
                 }
             }
 
-            // £5 Voucher - Only if order is £20 or more
+            // £5 Voucher
             if (activeOffers.Contains("£5 Voucher") && subTotalAmount >= 20f)
             {
                 loyaltyDiscount += 5f;
             }
 
-            // Free Delivery is better handled in checkout (shipping), not here
-
-            // Keep your old order-based 10% discount (if you still want both)
+            // Permanent order count discount
             var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
             if (orderCount >= 5)
             {
@@ -114,7 +120,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             ViewBag.loyaltyDiscount = loyaltyDiscount;
             ViewBag.total = total;
             ViewBag.orderCount = orderCount;
-            ViewBag.ActiveOffers = activeOffers;
+            ViewBag.ActiveOffers = activeOffers;   // now cleaned
 
             return View(shoppingCartItems);
         }

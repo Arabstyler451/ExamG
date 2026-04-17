@@ -58,6 +58,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 ? new List<string>()
                 : loyaltyAccount.redeemedOffers.Split(',').ToList();
 
+            // Get consumed offers
+            var consumedList = string.IsNullOrEmpty(loyaltyAccount.ConsumedOffers)
+                ? new List<string>()
+                : loyaltyAccount.ConsumedOffers.Split(',').ToList();
+
             // Prepare dashboard data
             var pointsMonetaryValue = loyaltyAccount.pointsBalance / 100m;
             var pointsToNextTier = GetPointsToNextTier(loyaltyAccount.pointsBalance, loyaltyAccount.loyaltyTier);
@@ -73,7 +78,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             var recentTransactions = loyaltyAccount.loyaltyTransaction?
                 .OrderByDescending(t => t.transactionDate).Take(10).ToList() ?? new List<loyaltyTransaction>();
 
-            var availableOffers = GetAvailableOffers(loyaltyAccount.pointsBalance, redeemedList);
+            var availableOffers = GetAvailableOffers(loyaltyAccount.pointsBalance, redeemedList, consumedList);
 
             ViewBag.PointsMonetaryValue = pointsMonetaryValue;
             ViewBag.PointsToNextTier = pointsToNextTier;
@@ -105,10 +110,16 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 ? new List<string>()
                 : loyaltyAccount.redeemedOffers.Split(',').ToList();
 
-            if (redeemedList.Contains(offerTitle))
+            // Remove from consumed list if it exists (allows re-redeeming)
+            var consumedList = string.IsNullOrEmpty(loyaltyAccount.ConsumedOffers)
+                ? new List<string>()
+                : loyaltyAccount.ConsumedOffers.Split(',').ToList();
+
+            bool wasConsumed = consumedList.Contains(offerTitle);
+            if (wasConsumed)
             {
-                TempData["Error"] = $"You have already redeemed the '{offerTitle}' offer.";
-                return RedirectToAction(nameof(Index));
+                consumedList.Remove(offerTitle);
+                loyaltyAccount.ConsumedOffers = string.Join(",", consumedList);
             }
 
             // Store old tier before changes
@@ -126,16 +137,18 @@ namespace GreenfieldLocalHubWebApp.Controllers
             loyaltyAccount.pointsBalance -= pointsCost;
             loyaltyAccount.loyaltyTier = GetLoyaltyTier(loyaltyAccount.pointsBalance);
 
-            // Add to permanent history (track that user redeemed this offer with points)
-            redeemedList.Add(offerTitle);
-            loyaltyAccount.redeemedOffers = string.Join(",", redeemedList);
+            // Add to permanent history if not already there
+            if (!redeemedList.Contains(offerTitle))
+            {
+                redeemedList.Add(offerTitle);
+                loyaltyAccount.redeemedOffers = string.Join(",", redeemedList);
+            }
 
-            // ✅ KEEP THIS - Add to ACTIVE offers (can be used on next order)
+            // Add to ACTIVE offers
             var activeList = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
                 ? new List<string>()
                 : loyaltyAccount.ActiveOffers.Split(',').ToList();
 
-            // Only add if not already active
             if (!activeList.Contains(offerTitle))
             {
                 activeList.Add(offerTitle);
@@ -155,7 +168,6 @@ namespace GreenfieldLocalHubWebApp.Controllers
             TempData["Success"] = $"Successfully redeemed {offerTitle}! {pointsCost} points deducted.";
             return RedirectToAction(nameof(Index));
         }
-
 
 
         // Add this method to your loyaltyAccountsController
@@ -204,21 +216,46 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
         // ===================== NEW HELPER =====================
         // Call this AFTER a successful order is placed if a loyalty offer was used
-        public async Task ConsumeActiveOfferAsync(string offerTitle)
+        public async Task ConsumeActiveOfferAsync(string userId, string offerTitle, int orderId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var loyaltyAccount = await _context.loyaltyAccount
                 .FirstOrDefaultAsync(l => l.UserId == userId);
 
             if (loyaltyAccount == null) return;
 
+            // Remove from ActiveOffers
             var activeList = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
                 ? new List<string>()
                 : loyaltyAccount.ActiveOffers.Split(',').ToList();
 
-            if (activeList.Remove(offerTitle))
+            bool removed = activeList.Remove(offerTitle);
+
+            if (removed)
             {
                 loyaltyAccount.ActiveOffers = string.Join(",", activeList);
+
+                // Add to ConsumedOffers to prevent re-display
+                var consumedList = string.IsNullOrEmpty(loyaltyAccount.ConsumedOffers)
+                    ? new List<string>()
+                    : loyaltyAccount.ConsumedOffers.Split(',').ToList();
+
+                if (!consumedList.Contains(offerTitle))
+                {
+                    consumedList.Add(offerTitle);
+                    loyaltyAccount.ConsumedOffers = string.Join(",", consumedList);
+                }
+
+                // OPTIONAL: Create a consumption transaction record
+                var consumptionTransaction = new loyaltyTransaction
+                {
+                    loyaltyAccountId = loyaltyAccount.loyaltyAccountId,
+                    ordersId = orderId,  // Link to the order
+                    loyaltyPoints = 0,
+                    transactionType = "Consume",
+                    transactionDate = DateTime.Now
+                };
+                _context.loyaltyTransaction.Add(consumptionTransaction);
+
                 _context.Update(loyaltyAccount);
                 await _context.SaveChangesAsync();
             }
@@ -492,55 +529,66 @@ namespace GreenfieldLocalHubWebApp.Controllers
             };
         }
 
-        private List<LoyaltyOfferViewModel> GetAvailableOffers(int pointsBalance, List<string> redeemedOffers)
+        private List<LoyaltyOfferViewModel> GetAvailableOffers(int pointsBalance, List<string> redeemedOffers, List<string> consumedOffers)
         {
             var allOffers = new List<LoyaltyOfferViewModel>
-            {
-                new LoyaltyOfferViewModel
-                {
-                    Title = "10% off Fruits & Vegetables",
-                    Description = "10% off your next fruits and vegetable order",
-                    PointsCost = 200,
-                    IsAvailable = pointsBalance >= 200,
-                    IsRedeemed = redeemedOffers.Contains("10% off Fruits & Vegetables")
-                },
-                new LoyaltyOfferViewModel
-                {
-                    Title = "Free Cheese",
-                    Description = "One 200g cheese of your choice",
-                    PointsCost = 500,
-                    IsAvailable = pointsBalance >= 500,
-                    IsRedeemed = redeemedOffers.Contains("Free Cheese")
-                },
-                new LoyaltyOfferViewModel
-                {
-                    Title = "Free Delivery",
-                    Description = "Free delivery on your next order",
-                    PointsCost = 300,
-                    IsAvailable = pointsBalance >= 300,
-                    IsRedeemed = redeemedOffers.Contains("Free Delivery")
-                },
-                new LoyaltyOfferViewModel
-                {
-                    Title = "£5 Voucher",
-                    Description = "£5 off any order over £20",
-                    PointsCost = 800,
-                    IsAvailable = pointsBalance >= 800,
-                    IsRedeemed = redeemedOffers.Contains("£5 Voucher")
-                }
-            };
+    {
+        new LoyaltyOfferViewModel
+        {
+            Title = "10% off Fruits & Vegetables",
+            Description = "10% off your next fruits and vegetable order",
+            PointsCost = 200,
+            IsRedeemed = redeemedOffers.Contains("10% off Fruits & Vegetables"),
+            IsAvailable = pointsBalance >= 200
+                          && !redeemedOffers.Contains("10% off Fruits & Vegetables")
+                          && !consumedOffers.Contains("10% off Fruits & Vegetables")
+        },
+
+        new LoyaltyOfferViewModel
+        {
+            Title = "Free Cheese",
+            Description = "One 200g cheese of your choice",
+            PointsCost = 500,
+            IsRedeemed = redeemedOffers.Contains("Free Cheese"),
+            IsAvailable = pointsBalance >= 500
+                          && !redeemedOffers.Contains("Free Cheese")
+                          && !consumedOffers.Contains("Free Cheese")
+        },
+
+        new LoyaltyOfferViewModel
+        {
+            Title = "Free Delivery",
+            Description = "Free delivery on your next order",
+            PointsCost = 300,
+            IsRedeemed = redeemedOffers.Contains("Free Delivery"),
+            IsAvailable = pointsBalance >= 300
+                          && !redeemedOffers.Contains("Free Delivery")
+                          && !consumedOffers.Contains("Free Delivery")
+        },
+
+        new LoyaltyOfferViewModel
+        {
+            Title = "£5 Voucher",
+            Description = "£5 off any order over £20",
+            PointsCost = 800,
+            IsRedeemed = redeemedOffers.Contains("£5 Voucher"),
+            IsAvailable = pointsBalance >= 800
+                          && !redeemedOffers.Contains("£5 Voucher")
+                          && !consumedOffers.Contains("£5 Voucher")
+        }
+    };
 
             return allOffers;
         }
-    }
 
-    // ViewModel for offers
-    public class LoyaltyOfferViewModel
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int PointsCost { get; set; }
-        public bool IsAvailable { get; set; }
-        public bool IsRedeemed { get; set; }
+        // ViewModel for offers
+        public class LoyaltyOfferViewModel
+        {
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public int PointsCost { get; set; }
+            public bool IsAvailable { get; set; }
+            public bool IsRedeemed { get; set; }
+        }
     }
 }
