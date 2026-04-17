@@ -80,6 +80,10 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("loyaltyAccountId"));
 
+                    b.Property<string>("ActiveOffers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -90,6 +94,10 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
 
                     b.Property<int>("pointsBalance")
                         .HasColumnType("int");
+
+                    b.Property<string>("redeemedOffers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("loyaltyAccountId");
 

@@ -13,60 +13,84 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\countrySourdough.jpg",
-      "PackagePath": "staticwebassets\\images\\countrySourdough.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\greenacreFarm.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\greenacreFarm.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\coxApples.jpg",
-      "PackagePath": "staticwebassets\\images\\coxApples.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\hillcrestDairy.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\hillcrestDairy.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\freeRangeEggs.jpg",
-      "PackagePath": "staticwebassets\\images\\freeRangeEggs.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\meadowApiary.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\meadowApiary.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\grassFedBeefMince.jpg",
-      "PackagePath": "staticwebassets\\images\\grassFedBeefMince.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\moorsideButchery.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\moorsideButchery.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\greenacreFarm.jpg",
-      "PackagePath": "staticwebassets\\images\\greenacreFarm.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\sunfieldFarm.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\sunfieldFarm.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\heritageCarrots.jpg",
-      "PackagePath": "staticwebassets\\images\\heritageCarrots.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\theOldMillBakery.jpg",
+      "PackagePath": "staticwebassets\\images\\producers\\theOldMillBakery.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\heritageTomatoes.jpg",
-      "PackagePath": "staticwebassets\\images\\heritageTomatoes.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\countrySourdough.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\countrySourdough.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\hillcrestDairy.jpg",
-      "PackagePath": "staticwebassets\\images\\hillcrestDairy.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\coxApples.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\coxApples.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\mixedSaladLeaves.jpg",
-      "PackagePath": "staticwebassets\\images\\mixedSaladLeaves.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\freeRangeEggs.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\freeRangeEggs.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\purpleSproutingBroccoli.jpg",
-      "PackagePath": "staticwebassets\\images\\purpleSproutingBroccoli.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\grassFedBeefMince.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\grassFedBeefMince.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\rawMilkCheddar.jpg",
-      "PackagePath": "staticwebassets\\images\\rawMilkCheddar.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\greenacreFarm.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\greenacreFarm.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\strawberryPreserve.jpg",
-      "PackagePath": "staticwebassets\\images\\strawberryPreserve.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\heritageCarrots.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\heritageCarrots.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\theOldMillBakery.jpg",
-      "PackagePath": "staticwebassets\\images\\theOldMillBakery.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\heritageTomatoes.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\heritageTomatoes.jpg"
     },
     {
-      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\wildflowerHoney.jpg",
-      "PackagePath": "staticwebassets\\images\\wildflowerHoney.jpg"
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\hillcrestDairy.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\hillcrestDairy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\mixedSaladLeaves.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\mixedSaladLeaves.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\purpleSproutingBroccoli.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\purpleSproutingBroccoli.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\rawMilkCheddar.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\rawMilkCheddar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\strawberryPreserve.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\strawberryPreserve.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\theOldMillBakery.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\theOldMillBakery.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\wildflowerHoney.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\wildflowerHoney.jpg"
     },
     {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\js\\site.js",

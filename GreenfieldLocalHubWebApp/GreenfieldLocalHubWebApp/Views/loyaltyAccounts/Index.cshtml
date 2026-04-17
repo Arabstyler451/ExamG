@@ -1,48 +1,375 @@
-﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.loyaltyAccount>
+﻿@using GreenfieldLocalHubWebApp.Models
+@model loyaltyAccount
 
 @{
-    Layout = "~/Views/Shared/_AccountLayout.cshtml";
-    ViewData["Title"] = "My Loyalty";
+    ViewData["Title"] = "My Loyalty Rewards";
+    Layout = "_AccountLayout";
 }
 
-<h1>Index</h1>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <!-- Loyalty Card -->
+            <div class="loyalty-card">
+                <div class="loyalty-tier-label">@Model.loyaltyTier Member</div>
+                <div class="loyalty-points">@Model.pointsBalance.ToString("N0")</div>
+                <div class="loyalty-worth">points — worth <strong>£@ViewBag.PointsMonetaryValue.ToString("F2")</strong> in discounts</div>
+                <div class="points-bar">
+                    <div class="points-bar-fill" style="width: @ViewBag.TierProgress%;"></div>
+                </div>
+                <div class="points-meta">
+                    <span>@Model.loyaltyTier</span>
+                    <span>@ViewBag.PointsToNextTier points to @ViewBag.NextTierName</span>
+                </div>
+            </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.pointsBalance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.loyaltyTier)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pointsBalance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.loyaltyTier)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.loyaltyAccountId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.loyaltyAccountId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.loyaltyAccountId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <!-- Stats Summary -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Points Earned</div>
+                        <div class="stat-value">@ViewBag.TotalPointsEarned.ToString("N0")</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Points Redeemed</div>
+                        <div class="stat-value">@ViewBag.TotalPointsRedeemed.ToString("N0")</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-label">Current Tier</div>
+                        <div class="stat-value">@Model.loyaltyTier</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redeem Offers Section -->
+            <h3 class="mt-4 mb-3">Redeem Offers</h3>
+            <div class="offer-grid">
+                @if (ViewBag.AvailableOffers != null && ViewBag.AvailableOffers.Count > 0)
+                {
+                    @foreach (var offer in ViewBag.AvailableOffers)
+                    {
+                        <div class="offer-card">
+                            <div class="offer-card-title">@offer.Title</div>
+                            <div class="offer-card-desc">@offer.Description</div>
+                            <div class="offer-cost">@offer.PointsCost pts</div>
+
+                            @if (offer.IsRedeemed)
+                            {
+                                // Already redeemed - show disabled button
+                                <button type="button" class="btn btn-redeemed btn-sm w-100 mt-3" disabled>
+                                    ✓ Redeemed
+                                </button>
+                            }
+                            else if (offer.IsAvailable)
+                            {
+                        // Available - show redeem button
+                                <form asp-action="RedeemOffer" method="post" class="mt-3">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="offerTitle" value="@offer.Title" />
+                                    <input type="hidden" name="pointsCost" value="@offer.PointsCost" />
+                                    <button type="submit" class="btn btn-primary btn-sm w-100">
+                                        Redeem
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                // Not enough points - show disabled button
+                                <button type="button" class="btn btn-secondary btn-sm w-100 mt-3" disabled>
+                                    Insufficient Points
+                                </button>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info">No offers available yet. Keep shopping to earn more points!</div>
+                }
+            </div>
+
+            <!-- Recent Transactions -->
+            <h3 class="mt-4 mb-3">Recent Transactions</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction Type</th>
+                            <th>Points</th>
+                            <th>Order ID</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.RecentTransactions != null && ViewBag.RecentTransactions.Count > 0)
+                        {
+                            @foreach (var transaction in ViewBag.RecentTransactions)
+                            {
+                                <tr>
+                                    <td>@transaction.transactionDate.ToString("dd MMM yyyy HH:mm")</td>
+                                    <td>
+                                        @if (transaction.transactionType == "Earn")
+                                        {
+                                            <span class="badge bg-success">Earned</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning">Redeemed</span>
+                                        }
+                                    </td>
+                                    <td class="@(transaction.transactionType == "Earn" ? "text-success" : "text-danger")">
+                                        @(transaction.transactionType == "Earn" ? "+" : "-")@transaction.loyaltyPoints
+                                    </td>
+                                    <td>
+                                        @if (transaction.ordersId != null && transaction.ordersId > 0)
+                                        {
+                                            <a href="@Url.Action("Details", "orders", new { id = transaction.ordersId })">#@transaction.ordersId</a>
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (transaction.ordersId != null && transaction.ordersId > 0)
+                                        {
+                                            <a href="@Url.Action("Details", "orders", new { id = transaction.ordersId })" class="btn btn-sm btn-outline-primary">View Order</a>
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center">No transactions yet. Start shopping to earn points!</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- View All Transactions Link -->
+            <div class="text-center mt-3">
+                <a asp-action="TransactionHistory" class="btn btn-outline-primary">View All Transactions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .loyalty-card {
+        background: linear-gradient(135deg, #1B4D3F 0%, #122e25 100%);
+        padding: 2rem;
+        color: white;
+        border-radius: 0px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .loyalty-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: rgba(124, 92, 62, 0.2);
+            border-radius: 50%;
+        }
+
+    .loyalty-tier-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+    }
+
+    .loyalty-points {
+        font-family: 'Georgia', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #d4a97a;
+        line-height: 1;
+        margin: 0.4rem 0;
+    }
+
+    .loyalty-worth {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+        .loyalty-worth strong {
+            color: #d4a97a;
+        }
+
+    .points-bar {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 1.2rem 0 0.35rem;
+        overflow: hidden;
+    }
+
+    .points-bar-fill {
+        height: 100%;
+        background: #d4a97a;
+        transition: width 0.3s ease;
+    }
+
+    .points-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.45);
+    }
+
+    .stat-card {
+        background: white;
+        border: 1px solid #E2E2E2;
+        padding: 1.2rem;
+        text-align: center;
+        transition: all 0.22s ease;
+    }
+
+        .stat-card:hover {
+            border-color: #1B4D3F;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+    .stat-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6B6B6B;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+        font-family: 'Georgia', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1B4D3F;
+    }
+
+    .offer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .offer-card {
+        background: white;
+        border: 1px solid #E2E2E2;
+        padding: 1.4rem;
+        transition: all 0.22s ease;
+    }
+
+        .offer-card:hover {
+            border-color: #1B4D3F;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+    .offer-card-title {
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .offer-card-desc {
+        font-size: 0.78rem;
+        color: #6B6B6B;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+    }
+
+    .offer-cost {
+        font-family: 'Georgia', serif;
+        font-size: 1.05rem;
+        color: #7C5C3E;
+        font-weight: 600;
+    }
+
+    .badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+    .text-success {
+        color: #28a745 !important;
+        font-weight: 600;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+        font-weight: 600;
+    }
+
+    .btn-outline-primary {
+        border: 1.5px solid #1B4D3F;
+        background: transparent;
+        color: #1B4D3F;
+        padding: 0.5rem 1.5rem;
+        transition: all 0.22s ease;
+    }
+
+        .btn-outline-primary:hover {
+            background: #1B4D3F;
+            border: 1.5px solid #1B4D3F;
+            color: white;
+        }
+
+    .alert-info {
+        background-color: #e8eef8;
+        border-left: 3px solid #1a3a8f;
+        padding: 0.75rem 1rem;
+        color: #1a3a8f;
+    }
+
+    .btn-redeemed {
+        background-color: white !important;
+        color: #28a745 !important;
+        border: 1px solid #28a745 !important;
+    }
+
+        .btn-redeemed:hover {
+            background-color: #f0fff0 !important;
+            color: #28a745 !important;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d !important;
+        color: white !important;
+        border: 1px solid #6c757d !important;
+        cursor: not-allowed !important;
+    }
+
+        .btn-secondary:disabled,
+        .btn-redeemed:disabled {
+            cursor: not-allowed !important;
+            opacity: 0.7 !important;
+        }
+</style>

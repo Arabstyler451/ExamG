@@ -80,12 +80,12 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 .Include(op => op.products)
                 .ToListAsync();
 
-            if (!orderProducts.Any())   
+            if (!orderProducts.Any())
             {
                 return NotFound();
             }
 
-            return View(orderProducts);  
+            return View(orderProducts);
         }
 
         // GET: orders/Create
@@ -103,7 +103,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             ViewBag.HasAddresses = userAddresses.Any();
 
             // Build dropdown (pre-select the newly added address if coming back from Addresses/Create)
-            ViewData["AddressId"] = new SelectList(userAddresses,"addressId","street",selectedAddressId);
+            ViewData["AddressId"] = new SelectList(userAddresses, "addressId", "street", selectedAddressId);
             return View();
         }
 
@@ -187,7 +187,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 var selectedAddress = await _context.address.FindAsync(orders.addressId.Value);
                 if (selectedAddress != null)
                 {
-                    orders.DeliveryStreet = selectedAddress.street;     
+                    orders.DeliveryStreet = selectedAddress.street;
                     orders.DeliveryCity = selectedAddress.city;
                     orders.DeliveryPostalCode = selectedAddress.postalCode;
                     orders.DeliveryCountry = selectedAddress.country;
@@ -240,7 +240,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return View(orders);
             }
 
-            
+
             _context.orders.Add(orders);
             await _context.SaveChangesAsync();
 
@@ -253,7 +253,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                     ViewBag.shoppingCartId = shoppingCartId;
                     return View(orders);
                 }
-                
+
                 var orderProduct = new orderProducts
                 {
                     ordersId = orders.ordersId,
@@ -266,9 +266,62 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
                 shoppingCartItem.products.stockQuantity -= shoppingCartItem.quantity;
             }
-            
+
             shoppingCart.shoppingCartStatus = false;
             await _context.SaveChangesAsync();
+
+
+
+
+
+
+            // LOYALTY POINTS Logic
+            try
+            {
+                var loyaltyAccount = await _context.loyaltyAccount
+                    .FirstOrDefaultAsync(l => l.UserId == userId);
+
+                if (loyaltyAccount == null)
+                {
+                    loyaltyAccount = new loyaltyAccount
+                    {
+                        UserId = userId,
+                        pointsBalance = 0,
+                        loyaltyTier = "Bronze"
+                    };
+                    _context.loyaltyAccount.Add(loyaltyAccount);
+                    await _context.SaveChangesAsync();
+                }
+
+                int pointsEarned = (int)(orders.totalAmount * 10); // 10 points per £1
+
+                var transaction = new loyaltyTransaction
+                {
+                    loyaltyAccountId = loyaltyAccount.loyaltyAccountId,
+                    ordersId = orders.ordersId,
+                    loyaltyPoints = pointsEarned,
+                    transactionType = "Earn",
+                    transactionDate = DateTime.Now
+                };
+                _context.loyaltyTransaction.Add(transaction);
+
+                loyaltyAccount.pointsBalance += pointsEarned;
+
+                // Update tier based on points
+                if (loyaltyAccount.pointsBalance >= 5000) loyaltyAccount.loyaltyTier = "Platinum";
+                else if (loyaltyAccount.pointsBalance >= 2000) loyaltyAccount.loyaltyTier = "Gold";
+                else if (loyaltyAccount.pointsBalance >= 500) loyaltyAccount.loyaltyTier = "Silver";
+
+                await _context.SaveChangesAsync();
+
+                TempData["LoyaltyMessage"] = $"You earned {pointsEarned} loyalty points!";
+            }
+            catch (Exception ex)
+            {
+                // Just log error - don't break the order
+                Console.WriteLine($"Loyalty error: {ex.Message}");
+            }
+
 
             return RedirectToAction("Index", "shoppingCarts");
         }

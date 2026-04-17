@@ -1,0 +1,168 @@
+﻿@using GreenfieldLocalHubWebApp.Models
+@model List<loyaltyTransaction>
+
+@{
+    ViewData["Title"] = "Transaction History";
+    Layout = "_AccountLayout";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Transaction History</h1>
+        <a asp-action="Index" class="btn btn-outline-primary">Back to Dashboard</a>
+    </div>
+
+    <!-- Filter Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Transaction Type</label>
+                    <select name="transactionType" class="form-select">
+                        <option value="All">All</option>
+                        <option value="Earn" selected="@(ViewBag.CurrentType == "Earn")">Earned</option>
+                        <option value="Redeem" selected="@(ViewBag.CurrentType == "Redeem")">Redeemed</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a asp-action="TransactionHistory" class="btn btn-secondary ms-2">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Transaction Type</th>
+                    <th>Points</th>
+                    <th>Order ID</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var transaction in Model)
+                    {
+                        <tr>
+                            <td>@transaction.transactionDate.ToString("dd MMM yyyy HH:mm")</td>
+                            <td>
+                                @if (transaction.transactionType == "Earn")
+                                {
+                                    <span class="badge bg-success">Earned</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Redeemed</span>
+                                }
+                            </td>
+                            <td class="@(transaction.transactionType == "Earn" ? "text-success" : "text-danger")">
+                                @(transaction.transactionType == "Earn" ? "+" : "-")@transaction.loyaltyPoints
+                            </td>
+                            <td>
+                                @if (transaction.ordersId.HasValue)
+                                {
+                                    <a href="@Url.Action("Details", "orders", new { id = transaction.ordersId })">#@transaction.ordersId</a>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            </td>
+                            <td>
+                                @if (transaction.ordersId.HasValue)
+                                {
+                                    <a href="@Url.Action("Details", "orders", new { id = transaction.ordersId })" class="btn btn-sm btn-outline-primary">View Order</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4">No transactions found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("TransactionHistory", new { page = ViewBag.CurrentPage - 1, transactionType = ViewBag.CurrentType })">Previous</a>
+                    </li>
+                }
+
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("TransactionHistory", new { page = i, transactionType = ViewBag.CurrentType })">@i</a>
+                    </li>
+                }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("TransactionHistory", new { page = ViewBag.CurrentPage + 1, transactionType = ViewBag.CurrentType })">Next</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <!-- Summary -->
+    <div class="alert alert-info mt-4">
+        <strong>Summary:</strong> Total Points Earned: @ViewBag.TotalPointsEarned | Total Points Redeemed: @ViewBag.TotalPointsRedeemed
+    </div>
+</div>
+
+<style>
+    .badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+    .text-success {
+        color: #28a745 !important;
+        font-weight: 600;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+        font-weight: 600;
+    }
+
+    .page-item.active .page-link {
+        background-color: #1B4D3F;
+        border-color: #1B4D3F;
+    }
+
+    .alert-info {
+        background-color: #e8eef8;
+        border-left: 3px solid #1a3a8f;
+        color: #1a3a8f;
+    }
+</style>
