@@ -8,6 +8,9 @@
         public string city { get; set; }
         public string postalCode { get; set; }
         public string country { get; set; }
+        public bool IsDefault { get; set; }
+        public DateTime createdDate { get; set; }  
+
 
         public ICollection<orders>? orders { get; set; }
     }

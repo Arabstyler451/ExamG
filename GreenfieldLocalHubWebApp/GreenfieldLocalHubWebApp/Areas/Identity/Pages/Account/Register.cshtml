@@ -1,64 +1,367 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create Account";
 }
 
-<h1>@ViewData["Title"]</h1>
+@* ── Google Fonts ── *@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+<style>
+    /* ── Design tokens ── */
+    .glh-auth-root {
+        --green:       #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark:  #122e25;
+        --green-faint: #f0f5f3;
+        --brown:       #7C5C3E;
+        --brown-light: #9b7455;
+        --white:       #FFFFFF;
+        --off-white:   #F9F9F9;
+        --border:      #E2E2E2;
+        --text:        #1A1A1A;
+        --text-muted:  #6B6B6B;
+        --text-light:  #9A9A9A;
+        --shadow-md:   0 6px 20px rgba(0,0,0,.10);
+        --font-serif:  'Playfair Display', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+        --transition:  all .22s ease;
+    }
+
+    /* ── Full-page centred layout ── */
+    .glh-auth-page {
+        min-height: calc(100vh - 73px);
+        background: var(--off-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+        font-family: var(--font-sans);
+        color: var(--text);
+    }
+
+    /* ── Auth card ── */
+    .glh-auth-box {
+        background: var(--white);
+        padding: 2.8rem;
+        width: 100%;
+        max-width: 480px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* ── Logo bar ── */
+    .glh-auth-logo-bar {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .glh-auth-logo-name {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--green-dark);
+    }
+
+    /* ── Headings ── */
+    .glh-auth-title {
+        font-family: var(--font-serif);
+        font-size: 1.7rem;
+        color: var(--green-dark);
+        text-align: center;
+        margin-bottom: .3rem;
+    }
+    .glh-auth-sub {
+        font-size: .875rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* ── Validation summary ── */
+    .glh-validation-summary {
+        background: #fde8e8;
+        border-left: 3px solid #a0281e;
+        color: #a0281e;
+        padding: .85rem 1rem;
+        font-size: .83rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.55;
+    }
+    .glh-validation-summary ul { margin: .3rem 0 0 1rem; padding: 0; }
+    .glh-field-error {
+        display: block;
+        font-size: .75rem;
+        color: #a0281e;
+        margin-top: .3rem;
+    }
+
+    /* ── Two-column name row ── */
+    .glh-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* ── Form elements ── */
+    .glh-form-group { margin-bottom: 1.2rem; }
+
+    .glh-form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+        font-family: var(--font-sans);
+    }
+
+    .glh-form-input {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+    .glh-form-input:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+    .glh-form-input.input-validation-error { border-color: #c0392b; }
+
+    .glh-form-hint {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .35rem;
+    }
+
+    /* ── Terms checkbox ── */
+    .glh-terms {
+        display: flex;
+        align-items: flex-start;
+        gap: .6rem;
+        font-size: .82rem;
+        color: var(--text-muted);
+        margin-bottom: 1.4rem;
+        font-family: var(--font-sans);
+        line-height: 1.5;
+    }
+    .glh-terms input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--green);
+        cursor: pointer;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .glh-terms a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .glh-terms a:hover { text-decoration: underline; }
+
+    /* ── Primary button ── */
+    .glh-btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: .85rem 1.75rem;
+        background: var(--green);
+        color: #fff;
+        font-size: .9rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        border-radius: 0;
+    }
+    .glh-btn-primary:hover { background: var(--green-light); color: #fff; }
+
+    /* ── Divider ── */
+    .glh-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.6rem 0;
+        font-size: .75rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+    .glh-divider::before,
+    .glh-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    /* ── External provider buttons ── */
+    .glh-ext-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: .72rem 1.2rem;
+        background: var(--white);
+        color: var(--text);
+        font-size: .875rem;
+        font-weight: 500;
+        border: 1.5px solid var(--border);
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        margin-bottom: .6rem;
+        border-radius: 0;
+        text-align: center;
+    }
+    .glh-ext-btn:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── No external providers notice ── */
+    .glh-ext-notice {
+        font-size: .82rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        padding: .9rem 1rem;
+        background: var(--off-white);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--border);
+    }
+    .glh-ext-notice a { color: var(--green); font-weight: 500; }
+
+    /* ── Footer ── */
+    .glh-auth-footer {
+        text-align: center;
+        font-size: .83rem;
+        color: var(--text-muted);
+        margin-top: 1.6rem;
+        line-height: 1.7;
+        font-family: var(--font-sans);
+    }
+    .glh-auth-footer a {
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .glh-auth-footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @@media (max-width: 480px) {
+        .glh-auth-box { padding: 2rem 1.4rem; }
+        .glh-form-row { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="glh-auth-root">
+    <div class="glh-auth-page">
+        <div class="glh-auth-box">
+
+            <!-- Logo bar -->
+            <div class="glh-auth-logo-bar">
+                <span class="glh-auth-logo-name">Greenfield Local Hub</span>
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
+
+            <!-- Heading -->
+            <h1 class="glh-auth-title">Create an Account</h1>
+            <p class="glh-auth-sub">Join GLH and start shopping local today</p>
+
+            <!-- Validation summary -->
+            <div asp-validation-summary="ModelOnly" class="glh-validation-summary" role="alert"></div>
+
+            <!-- Registration form -->
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+                <!-- Email -->
+                <div class="glh-form-group">
+                    <label asp-for="Input.Email" class="glh-form-label">Email Address</label>
+                    <input asp-for="Input.Email"
+                           class="glh-form-input"
+                           type="email"
+                           autocomplete="username"
+                           aria-required="true"
+                           placeholder="you@example.com" />
+                    <span asp-validation-for="Input.Email" class="glh-field-error"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="glh-form-group">
+                    <label asp-for="Input.Password" class="glh-form-label">Password</label>
+                    <input asp-for="Input.Password"
+                           class="glh-form-input"
+                           type="password"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Minimum 6 characters" />
+                    <p class="glh-form-hint">Must include at least one number and one special character.</p>
+                    <span asp-validation-for="Input.Password" class="glh-field-error"></span>
+                </div>
+
+                <!-- Confirm password -->
+                <div class="glh-form-group">
+                    <label asp-for="Input.ConfirmPassword" class="glh-form-label">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword"
+                           class="glh-form-input"
+                           type="password"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Repeat your password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="glh-field-error"></span>
+                </div>
+
+                <!-- Terms & conditions -->
+                <div class="glh-terms">
+                    <input type="checkbox" id="reg-terms" name="AgreeToTerms" value="true" />
+                    <label for="reg-terms">
+                        I agree to the
+                        <a href="#">Terms &amp; Conditions</a>
+                        and
+                        <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button id="registerSubmit" type="submit" class="glh-btn-primary">
+                    Create Account
+                </button>
+
+            </form>
+
+            <!-- External providers -->
+            @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+            {
+                <div class="glh-divider">or register with</div>
+                <form id="external-account"
+                      asp-page="./ExternalLogin"
+                      asp-route-returnUrl="@Model.ReturnUrl"
+                      method="post">
+                    @foreach (var provider in Model.ExternalLogins!)
+                    {
+                        <button type="submit"
+                                class="glh-ext-btn"
+                                name="provider"
+                                value="@provider.Name"
+                                title="Register using your @provider.DisplayName account">
+                            @provider.DisplayName
+                        </button>
+                    }
+                </form>
             }
-        </section>
+
+            <!-- Sign-in footer link -->
+            <div class="glh-auth-footer">
+                Already have an account? <a asp-page="./Login">Sign in</a>
+            </div>
+
+        </div>
     </div>
 </div>
 

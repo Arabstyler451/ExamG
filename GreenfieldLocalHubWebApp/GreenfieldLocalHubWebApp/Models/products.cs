@@ -11,7 +11,7 @@
         public float productPrice { get; set; }
         public bool productAvailability { get; set; }
         public string productImage { get; set; }
-
+        public string productUnit { get; set; }
         public producers producers { get; set; } // Navigation property to producers
         public categories categories { get; set; } // Navigation property to categories
         public ICollection<orderProducts>? orderProducts { get; set; }

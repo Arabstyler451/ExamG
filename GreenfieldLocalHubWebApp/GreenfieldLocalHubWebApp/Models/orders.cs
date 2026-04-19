@@ -10,7 +10,8 @@ namespace GreenfieldLocalHubWebApp.Models
         public float totalAmount { get; set; }
         public bool delivery { get; set; }
         public bool collection { get; set; }
-        public string? deliveryType { get; set; }  
+        public string? deliveryType { get; set; }
+        public float deliveryFee { get; set; }
         public string orderStatus { get; set; }
         public DateOnly? orderCollectionDate { get; set; }
         public DateOnly orderDate { get; set; }

@@ -81,8 +81,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\site.css
-D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\favicon.ico
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\LICENSE.txt
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\dist\jquery.slim.min.map
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\dist\jquery.slim.min.js
@@ -143,3 +141,5 @@ D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\Greenfield
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\site.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\favicon.ico
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\site.css

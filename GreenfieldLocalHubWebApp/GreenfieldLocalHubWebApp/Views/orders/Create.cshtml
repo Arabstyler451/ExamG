@@ -1,138 +1,884 @@
-﻿    @model GreenfieldLocalHubWebApp.Models.orders
+﻿@model GreenfieldLocalHubWebApp.Models.orders
 
 @{
     ViewData["Title"] = "Checkout";
 }
 
-<h1>Checkout</h1>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
-<p>Choose how you would like to receive your order.</p>
+<style>
+    /* ── Design tokens ── */
+    .glh-checkout-root {
+        --green:        #1B4D3F;
+        --green-light:  #2a6b58;
+        --green-dark:   #122e25;
+        --green-faint:  #f0f5f3;
+        --brown:        #7C5C3E;
+        --brown-faint:  #f7f3ee;
+        --white:        #FFFFFF;
+        --off-white:    #F9F9F9;
+        --border:       #E2E2E2;
+        --border-dark:  #C8C8C8;
+        --text:         #1A1A1A;
+        --text-muted:   #6B6B6B;
+        --text-light:   #9A9A9A;
+        --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
+        --shadow-md:    0 6px 20px rgba(0,0,0,.10);
+        --font-serif:   'Playfair Display', Georgia, serif;
+        --font-sans:    'DM Sans', system-ui, sans-serif;
+        --transition:   all .22s ease;
+        font-family: var(--font-sans);
+        color: var(--text);
+    }
 
-<form asp-action="Create" method="post">
-    <div asp-validation-summary="All" style="color: red;"></div>
+    /* ── Page hero ── */
+    .glh-page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 0 2rem;
+        margin-bottom: 0;
+    }
+    .glh-page-hero-inner { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
+    .glh-page-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+        display: block;
+    }
+    .glh-page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: var(--green-dark);
+    }
+    .glh-page-hero p {
+        color: var(--text-muted);
+        font-size: .95rem;
+        margin-top: .5rem;
+        max-width: 520px;
+        line-height: 1.65;
+    }
 
-    <input type="hidden" name="shoppingCartId" value ="@ViewBag.shoppingCartId"/>
+    /* ── Breadcrumb ── */
+    .glh-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .78rem;
+        color: var(--text-light);
+        margin-bottom: .75rem;
+        flex-wrap: wrap;
+    }
+    .glh-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color .2s; }
+    .glh-breadcrumb a:hover { color: var(--green); }
+    .glh-breadcrumb-sep { color: var(--border-dark); }
 
-    <div style="margin-bottom:20px;">
-        <label style="font-weight:bold; display:block; margin-bottom:10px;">Order Method</label>
+    /* ── Section wrapper ── */
+    .glh-section {
+        padding: 3.5rem 2rem;
+        max-width: 1320px;
+        margin: 0 auto;
+    }
 
-        <div>
-            <input asp-for="delivery" id="deliveryCheck" />
-            <label asp-for="delivery">Delivery</label>
-        </div>
+    /* ── Two-column checkout grid ── */
+    .glh-checkout-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 2.5rem;
+        align-items: start;
+    }
 
-        <div>
-            <input asp-for="collection" id="collectionCheck" />
-            <label asp-for="collection">Collection</label>
+    /* ── Section card ── */
+    .glh-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+    }
+    .glh-card-header {
+        padding: 1.2rem 1.6rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+    }
+    .glh-card-header-num {
+        width: 26px;
+        height: 26px;
+        background: var(--green);
+        color: #fff;
+        font-size: .72rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        letter-spacing: .02em;
+    }
+    .glh-card-header h2 {
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        color: var(--green-dark);
+        font-weight: 600;
+        margin: 0;
+    }
+    .glh-card-body { padding: 1.6rem; }
+
+    /* ── Fulfilment toggle ── */
+    .glh-fulfilment-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+    }
+    .glh-fulfilment-option {
+        border: 1.5px solid var(--border);
+        padding: 1.2rem;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        user-select: none;
+    }
+    .glh-fulfilment-option:hover { border-color: var(--green); }
+    .glh-fulfilment-option.selected {
+        border-color: var(--green);
+        background: var(--green-faint);
+    }
+    .glh-fulfilment-option input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .glh-fulfilment-icon {
+        font-size: 1.3rem;
+        margin-bottom: .5rem;
+        display: block;
+    }
+    .glh-fulfilment-title {
+        font-size: .9rem;
+        font-weight: 600;
+        color: var(--green-dark);
+        display: block;
+    }
+    .glh-fulfilment-sub {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .2rem;
+        display: block;
+        line-height: 1.45;
+    }
+    .glh-fulfilment-check {
+        position: absolute;
+        top: .75rem;
+        right: .75rem;
+        width: 18px;
+        height: 18px;
+        border: 1.5px solid var(--border);
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+    .glh-fulfilment-option.selected .glh-fulfilment-check {
+        background: var(--green);
+        border-color: var(--green);
+    }
+    .glh-fulfilment-check::after {
+        content: '';
+        width: 6px;
+        height: 10px;
+        border: 2px solid #fff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(42deg) translateY(-1px);
+        opacity: 0;
+    }
+    .glh-fulfilment-option.selected .glh-fulfilment-check::after { opacity: 1; }
+
+    /* ── Conditional panels ── */
+    .glh-conditional { display: none; }
+    .glh-conditional.visible { display: block; }
+
+    /* ── Form elements ── */
+    .glh-form-group { margin-bottom: 1.2rem; }
+    .glh-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .glh-form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+    }
+    .glh-form-input,
+    .glh-form-select {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+    .glh-form-input:focus,
+    .glh-form-select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+    .glh-form-input.input-validation-error,
+    .glh-form-select.input-validation-error { border-color: #c0392b; }
+    .glh-field-error {
+        display: block;
+        font-size: .75rem;
+        color: #a0281e;
+        margin-top: .3rem;
+    }
+    .glh-form-hint {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .3rem;
+        line-height: 1.45;
+    }
+    .glh-select-wrap { position: relative; }
+    .glh-select-wrap::after {
+        content: '▾';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        pointer-events: none;
+        font-size: .8rem;
+    }
+
+    /* ── Address card option ── */
+    .glh-address-card {
+        border: 1.5px solid var(--border);
+        padding: 1.1rem 1.2rem;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-bottom: .7rem;
+        display: flex;
+        align-items: flex-start;
+        gap: .9rem;
+    }
+    .glh-address-card:hover { border-color: var(--green); }
+    .glh-address-card.selected { border-color: var(--green); background: var(--green-faint); }
+    .glh-address-card input[type="radio"] { margin-top: .2rem; accent-color: var(--green); }
+    .glh-address-card-text { font-size: .875rem; line-height: 1.6; }
+    .glh-address-card-label {
+        font-size: .68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: var(--green);
+        margin-bottom: .2rem;
+        display: block;
+    }
+
+    /* ── No address state ── */
+    .glh-no-address {
+        background: var(--off-white);
+        border: 2px dashed var(--border);
+        padding: 2rem;
+        text-align: center;
+    }
+    .glh-no-address p {
+        font-size: .9rem;
+        color: var(--text-muted);
+        margin-bottom: 1.2rem;
+        line-height: 1.65;
+    }
+
+    /* ── Add address link ── */
+    .glh-add-address-link {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        font-size: .83rem;
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: .6rem;
+        border: 1.5px solid var(--green);
+        padding: .45rem 1rem;
+        transition: var(--transition);
+    }
+    .glh-add-address-link:hover { background: var(--green); color: #fff; }
+
+    /* ── Info notice boxes ── */
+    .glh-info-box {
+        background: var(--green-faint);
+        border: 1px solid rgba(27,77,63,.15);
+        padding: 1rem 1.2rem;
+        font-size: .83rem;
+        line-height: 1.65;
+        color: var(--text-muted);
+        margin-top: 1rem;
+    }
+    .glh-info-box strong {
+        display: block;
+        color: var(--green-dark);
+        font-size: .78rem;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        margin-bottom: .3rem;
+    }
+    .glh-alert-warning {
+        background: #fdf3e7;
+        border-left: 3px solid #9a5a10;
+        color: #9a5a10;
+        padding: .85rem 1.1rem;
+        font-size: .83rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.55;
+    }
+    .glh-alert-error {
+        background: #fde8e8;
+        border-left: 3px solid #a0281e;
+        color: #a0281e;
+        padding: .85rem 1.1rem;
+        font-size: .83rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.55;
+    }
+
+    /* ── Order summary sidebar ── */
+    .glh-summary-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 1.8rem;
+        position: sticky;
+        top: 90px;
+    }
+    .glh-summary-title {
+        font-family: var(--font-serif);
+        font-size: 1.25rem;
+        color: var(--green-dark);
+        margin-bottom: 1.3rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 1rem;
+    }
+    .glh-summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: .875rem;
+        padding: .5rem 0;
+        color: var(--text-muted);
+    }
+    .glh-summary-row:last-of-type { border-bottom: none; }
+    .glh-summary-row.total {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text);
+        border-top: 1.5px solid var(--border);
+        border-bottom: none;
+        padding-top: .9rem;
+        margin-top: .4rem;
+    }
+
+    /* ── Place order button ── */
+    .glh-btn-place-order {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: .9rem 1.75rem;
+        background: var(--green);
+        color: #fff;
+        font-size: .95rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        border-radius: 0;
+        margin-top: 1.4rem;
+    }
+    .glh-btn-place-order:hover { background: var(--green-light); }
+    .glh-btn-place-order:disabled {
+        background: var(--border-dark);
+        cursor: not-allowed;
+    }
+    .glh-ssl-note {
+        text-align: center;
+        font-size: .72rem;
+        color: var(--text-light);
+        margin-top: .6rem;
+    }
+
+    /* ── Back link ── */
+    .glh-back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        font-size: .83rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        margin-top: 1.2rem;
+        transition: color .2s;
+    }
+    .glh-back-link:hover { color: var(--green); }
+
+    /* ── Loyalty earn badge ── */
+    .glh-loyalty-earn {
+        background: var(--green-faint);
+        border: 1px solid rgba(27,77,63,.12);
+        padding: 1rem 1.2rem;
+        margin-top: 1rem;
+        font-size: .82rem;
+    }
+    .glh-loyalty-earn strong { color: var(--green-dark); }
+    .glh-loyalty-earn p { color: var(--text-muted); margin-top: .25rem; line-height: 1.55; }
+
+    /* ── Responsive ── */
+    @@media (max-width: 900px) {
+        .glh-checkout-grid { grid-template-columns: 1fr; }
+        .glh-summary-card { position: static; }
+        .glh-fulfilment-grid { grid-template-columns: 1fr; }
+    }
+    @@media (max-width: 540px) {
+        .glh-section { padding: 2.5rem 1rem; }
+        .glh-form-row { grid-template-columns: 1fr; }
+        .glh-card-body { padding: 1.2rem; }
+    }
+</style>
+
+<div class="glh-checkout-root">
+
+    <!-- Page hero -->
+    <div class="glh-page-hero">
+        <div class="glh-page-hero-inner">
+            <nav class="glh-breadcrumb" aria-label="Breadcrumb">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <span class="glh-breadcrumb-sep">›</span>
+                <a asp-controller="ShoppingCarts" asp-action="Index">Basket</a>
+                <span class="glh-breadcrumb-sep">›</span>
+                <span aria-current="page">Checkout</span>
+            </nav>
+            <span class="glh-page-eyebrow">Secure Checkout</span>
+            <h1>Complete Your Order</h1>
+            <p>Choose your fulfilment method and confirm your delivery details below.</p>
         </div>
     </div>
 
+    <div class="glh-section">
+        <form asp-action="Create" method="post" id="checkoutForm">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="glh-alert-error" role="alert"></div>
+            <input type="hidden" name="shoppingCartId" value="@ViewBag.shoppingCartId" />
+            <input type="hidden" name="FulfilmentChoice" id="FulfilmentChoice" />
 
-    <div style="margin-bottom:25px;">
-        <label style="font-weight:bold; display:block; margin-bottom:10px;">Delivery Address</label>
+            <div class="glh-checkout-grid">
 
-        @if (ViewBag.HasAddresses == true)
+                <!-- LEFT COLUMN — form steps -->
+                <div>
+
+                    <!-- ── Step 1: Fulfilment Method ── -->
+                    <div class="glh-card">
+                        <div class="glh-card-header">
+                            <span class="glh-card-header-num">1</span>
+                            <h2>Fulfilment Method</h2>
+                        </div>
+                        <div class="glh-card-body">
+                            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:1.2rem;">
+                                Select how you would like to receive your order.
+                            </p>
+
+                            <div class="glh-fulfilment-grid">
+                                <!-- Home Delivery tile -->
+                                <label class="glh-fulfilment-option" id="tile-delivery" for="deliveryCheck">
+                                    <span class="glh-fulfilment-check" aria-hidden="true"></span>
+                                    <span class="glh-fulfilment-icon">🚚</span>
+                                    <span class="glh-fulfilment-title">Home Delivery</span>
+                                    <span class="glh-fulfilment-sub">
+                                        Delivered to your door.<br />
+                                        Next available: next business day.
+                                    </span>
+                                </label>
+
+                                <!-- Click & Collect tile -->
+                                <label class="glh-fulfilment-option" id="tile-collection" for="collectionCheck">
+                                    <span class="glh-fulfilment-check" aria-hidden="true"></span>
+                                    <span class="glh-fulfilment-icon">🏪</span>
+                                    <span class="glh-fulfilment-title">Click &amp; Collect</span>
+                                    <span class="glh-fulfilment-sub">
+                                        Pick up from the GLH Hub.<br />
+                                        14 Market Square, Greenfield.
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <input type="hidden" name="delivery"   id="deliveryCheck"   value="false" />
+                            <input type="hidden" name="collection" id="collectionCheck" value="false" />
+
+                            <!-- Delivery type (shown when Home Delivery selected) -->
+                            <div id="deliveryTypeGroup" class="glh-conditional">
+                                <div class="glh-form-group">
+                                    <label asp-for="deliveryType" class="glh-form-label">Delivery Speed</label>
+                                    <div class="glh-select-wrap">
+                                        <select asp-for="deliveryType" class="glh-form-select" id="deliveryTypeSelect">
+                                            <option value="">Select delivery speed</option>
+                                            <option value="Standard">Standard (3–5 working days)</option>
+                                            <option value="First Class">First Class (1–2 working days)</option>
+                                            <option value="Next Day">Next Day (order by 8pm)</option>
+                                        </select>
+                                    </div>
+                                    <span asp-validation-for="deliveryType" class="glh-field-error"></span>
+                                </div>
+                                <div class="glh-info-box">
+                                    <strong>Delivery information</strong>
+                                    Free delivery on orders over £30. Standard delivery is £3.50.
+                                    Orders placed before 8pm qualify for next-day despatch.
+                                </div>
+                            </div>
+
+                            <!-- Collection date (shown when Click & Collect selected) -->
+                            <div id="orderCollectionDateGroup" class="glh-conditional">
+                                <div class="glh-form-group">
+                                    <label asp-for="orderCollectionDate" class="glh-form-label">Collection Date</label>
+                                    <input asp-for="orderCollectionDate"
+                                           type="date"
+                                           id="collectionDate"
+                                           class="glh-form-input" />
+                                    <p class="glh-form-hint">Earliest collection is 2 days from today. Collection hours: Mon–Fri 8am–6pm, Sat 8am–4pm.</p>
+                                    <span asp-validation-for="orderCollectionDate" class="glh-field-error"></span>
+                                </div>
+                                <div class="glh-info-box">
+                                    <strong>Collection address</strong>
+                                    GLH Hub · 14 Market Square · Greenfield · MK12 4AB<br />
+                                    Bring your order confirmation email or order number.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ── Step 2: Delivery Address ── -->
+                    <div class="glh-card" id="addressCard">
+                        <div class="glh-card-header">
+                            <span class="glh-card-header-num">2</span>
+                            <h2>Delivery Address</h2>
+                        </div>
+                        <div class="glh-card-body">
+
+                            @if (ViewBag.HasAddresses == true)
+                            {
+                                <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:1.2rem;">
+                                    Select a saved address or add a new one.
+                                </p>
+
+                                <!-- Address dropdown rendered as a styled select -->
+                                <div class="glh-form-group">
+                                    <label class="glh-form-label" for="addressId">Saved Addresses</label>
+                                    <div class="glh-select-wrap">
+                                        @Html.DropDownListFor(
+                                            model => model.addressId,
+                                            (SelectList)ViewData["AddressId"],
+                                            "— Select an address —",
+                                            new { @class = "glh-form-select", id = "addressId" })
+                                    </div>
+                                    <span asp-validation-for="addressId" class="glh-field-error"></span>
+                                </div>
+
+                                <a asp-controller="Addresses"
+                                   asp-action="Create"
+                                   asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                                   class="glh-add-address-link">
+                                    + Add a new address
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="glh-no-address">
+                                    <p>
+                                        You don't have any saved addresses yet.<br />
+                                        Please add your first delivery address to continue.
+                                    </p>
+                                    <a asp-controller="Addresses"
+                                       asp-action="Create"
+                                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
+                                       class="glh-btn-place-order"
+                                       style="display:inline-flex;width:auto;padding:.75rem 1.75rem;text-decoration:none;">
+                                        Add Your First Address
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    <!-- Back to cart -->
+                    <a asp-controller="ShoppingCarts"
+                       asp-action="Index"
+                       class="glh-back-link">
+                        ← Back to Basket
+                    </a>
+
+                </div>
+
+<!-- RIGHT COLUMN — order summary sidebar -->
+<div>
+    <div class="glh-summary-card order-summary" role="region" aria-label="Order summary">
+        <h2 class="glh-summary-title summary-title">Order Summary</h2>
+
+        @if (ViewBag.CartTotal != null)
         {
-            @Html.DropDownListFor(model => model.addressId,(SelectList)ViewData["AddressId"],"Select an address from your address book",new { @class = "form-control" })
-            <span asp-validation-for="addressId" style="color: red;"></span>
+            <!-- Pass clean values to JS (only once) -->
+            <script id="checkout-data">
+                window.checkoutData = {
+                    subtotalBefore: @(((decimal)(ViewBag.SubtotalBeforeDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+                    loyaltyDiscount: @(((decimal)(ViewBag.LoyaltyDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+                    discountedSubtotal: @(((decimal)ViewBag.CartTotal).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+                    freeDeliveryThreshold: 30.00
+                };
+            </script>
 
-            <div style="margin-top:8px;">
-                <a asp-controller="Addresses"
-                       asp-action="Create"
-                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
-                       class="btn btn-sm btn-outline-primary">
-                    + Add another address
-                </a>
+            <div id="summary-rows">
+                <div class="glh-summary-row summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal-before">£@(((decimal)(ViewBag.SubtotalBeforeDiscount ?? 0m)).ToString("0.00"))</span>
+                </div>
+
+                @if ((decimal)(ViewBag.LoyaltyDiscount ?? 0m) > 0)
+                {
+                    <div class="glh-summary-row summary-row" style="color:#1a6b40;">
+                        <span>Loyalty Discount</span>
+                        <span id="loyalty-discount">−£@(((decimal)(ViewBag.LoyaltyDiscount ?? 0m)).ToString("0.00"))</span>
+                    </div>
+                }
+
+                <div class="glh-summary-row summary-row">
+                    <span>Subtotal after discount</span>
+                    <span id="discounted-subtotal">£@(((decimal)ViewBag.CartTotal).ToString("0.00"))</span>
+                </div>
+
+                <div class="glh-summary-row summary-row">
+                    <span>Delivery</span>
+                    <span id="delivery-fee">—</span>
+                </div>
+
+                <div class="glh-summary-row summary-row total" style="margin-top:50px;">
+                    <span>Total</span>
+                    <span id="grand-total">£0.00</span>
+                </div>
             </div>
         }
         else
         {
-            <div style="background:#f8f9fa; padding:20px; border:2px dashed #ccc; border-radius:8px; text-align:center;">
-                <p style="margin-bottom:15px; font-size:1.1em;">
-                    You don't have any saved addresses yet.<br>
-                    Please add your first delivery address to continue.
-                </p>
-                <a asp-controller="Addresses"
-                       asp-action="Create"
-                       asp-route-returnUrl="@Url.Action("Create", "Orders", new { shoppingCartId = ViewBag.shoppingCartId })"
-                       class="btn btn-primary btn-lg">
-                    ➕ Add Your First Delivery Address
-                </a>
+            <p style="font-size:.83rem;color:var(--text-muted);">
+                Unable to load basket totals. Please go back to your basket and try again.
+            </p>
+        }
+
+        <!-- Fulfilment summary -->
+        <div id="summaryFulfilment" style="margin-top:1.5rem;padding-top:1rem; solid var(--border);">
+            <p style="font-weight:600;color:var(--text);margin-bottom:.4rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;">Fulfilment</p>
+            <span id="summaryFulfilmentText" style="font-size:.875rem;">No method selected</span>
+        </div>
+        
+        <button type="submit"
+                id="placeOrderBtn"
+                class="glh-btn-place-order btn btn-primary"
+                style="margin-top:1.5rem;"
+                form="checkoutForm">
+            Place Order Securely
+        </button>
+
+        <p class="glh-ssl-note">SSL encrypted · Secure checkout</p>
+    </div>
+
+    <!-- Loyalty earn notice -->
+    <div class="glh-loyalty-earn">
+        <strong>Earn Loyalty Points</strong>
+        <p>Every order earns you points towards discounts on future shops with Greenfield Local Hub.</p>
+    </div>
+
+    <!-- Trust signals -->
+    <div class="glh-info-box" style="margin-top:1rem;">
+        <strong>Our Guarantee</strong>
+        Fresh produce delivered within 24 hours of harvest. Not happy? 
+        Contact us within 48 hours for a full refund or replacement.
+    </div>
+</div>
+
             </div>
-        }
+        </form>
     </div>
+</div>
 
-    <div id="deliveryTypeGroup" style="display:none; margin-bottom:15px;">
-        <label asp-for="deliveryType"></label>
-        <select asp-for="deliveryType">
-            <option value="">Select Delivery Type</option>
-            <option value="Next Day">Next Day</option>
-            <option value="First Class">First Class</option>
-            <option value="Standard">Standard</option>
-        </select>
-        <br/>
-        <span asp-validation-for="deliveryType" style="color: red;"></span>
-    </div>
 
-    <div id="orderCollectionDateGroup" style="display:none; margin-bottom:20px;">
-        <label asp-for="orderCollectionDate"></label>
-        <input asp-for="orderCollectionDate" type="date" id="collectionDate"/>
-        <div>Earliest collection date is 2 days from today</div>
-        <span asp-validation-for="orderCollectionDate" style="color:red;"></span>
-    </div>
 
-    <div>
-        <button type="submit">Place Order</button>
-    </div>
-
-    <div style="margin-top:10px;">
-        <a asp-controller="shoppingCarts" asp-action="Index">Back to Cart</a>
-    </div>
-
-</form>
-
-<script>
-    const collectionDateInput = document.getElementById('collectionDate');
-
-    const today = new Date();
-    today.setDate(today.getDate() + 2); // Add 2 days to current date
-    const minDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-
-    if (collectionDateInput) {
-        collectionDateInput.min = minDate;
-    }
-
-    const deliveryCheck = document.getElementById("deliveryCheck");
-    const collectionCheck = document.getElementById("collectionCheck");
-
-    const deliveryTypeGroup = document.getElementById("deliveryTypeGroup");
-    const orderCollectionDateGroup = document.getElementById("orderCollectionDateGroup");
-
-    function updateForm() {
-
-        deliveryTypeGroup.style.display = "none";
-        orderCollectionDateGroup.style.display = "none";
-
-        deliveryCheck.disabled = false;
-        collectionCheck.disabled = false;
-
-        if (deliveryCheck.checked) {
-            deliveryTypeGroup.style.display = "block";
-            collectionCheck.disabled = true;
-        }
-        else if (collectionCheck.checked) {
-            orderCollectionDateGroup.style.display = "block";
-            deliveryCheck.disabled = true;
-        }
-    }
-
-    deliveryCheck.addEventListener("change", updateForm);
-    collectionCheck.addEventListener("change", updateForm);
-
-    updateForm();
-</script>
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+    (function () {
+    /* ── Config ─────────────────────────────────────────────── */
+    const CFG = {
+        deliveryFees:          { Standard: 3.50, "First Class": 5.50, "Next Day": 7.99 },
+        defaultDeliveryFee:    3.50,
+        freeDeliveryThreshold: 30.00,
+        minCollectionDaysAhead: 2,
+    };
+
+    /* ── Server data ─────────────────────────────────────────── */
+    const sd = window.checkoutData ?? {};
+    const subtotalBefore    = parseFloat(sd.subtotalBefore)    || 0;
+    const loyaltyDiscount   = parseFloat(sd.loyaltyDiscount)   || 0;
+    const discountedSubtotal = parseFloat(sd.discountedSubtotal) || 0;
+
+    /* ── DOM refs ────────────────────────────────────────────── */
+    const $  = id => document.getElementById(id);
+    const deliveryCheck      = $('deliveryCheck');
+    const collectionCheck    = $('collectionCheck');
+    const tileDelivery       = $('tile-delivery');
+    const tileCollection     = $('tile-collection');
+    const deliveryTypeGrp    = $('deliveryTypeGroup');
+    const collectionDateGrp  = $('orderCollectionDateGroup');
+    const collectionDateEl   = $('collectionDate');
+    const addressCard        = $('addressCard');
+    const summaryText        = $('summaryFulfilmentText');
+    const deliveryTypeSelect = $('deliveryTypeSelect');
+    const fulfilmentInput    = $('FulfilmentChoice');
+    const subtotalBeforeEl   = $('subtotal-before');
+    const loyaltyDiscountEl  = $('loyalty-discount');
+    const discountedSubEl    = $('discounted-subtotal');
+    const deliveryFeeEl      = $('delivery-fee');
+    const grandTotalEl       = $('grand-total');
+
+    /* ── Helpers ─────────────────────────────────────────────── */
+    function toggle(el, condition, prop = 'visible') {
+        if (!el) return;
+        if (prop === 'visible') el.classList.toggle('visible', condition);
+        else if (prop === 'display') el.style.display = condition ? '' : 'none';
+        else if (prop === 'disabled') el.disabled = !condition;
+    }
+
+    /* ── Initialise collection date min ─────────────────────── */
+    if (collectionDateEl) {
+        const min = new Date();
+        min.setDate(min.getDate() + CFG.minCollectionDaysAhead);
+        collectionDateEl.min = min.toISOString().split('T')[0];
+    }
+
+    /* ── Sub-renderers ───────────────────────────────────────── */
+    function updateTiles(isDelivery, isCollection) {
+        tileDelivery  ?.classList.toggle('selected', isDelivery);
+        tileCollection?.classList.toggle('selected', isCollection);
+    }
+
+    function updatePanels(isDelivery, isCollection) {
+        toggle(deliveryTypeGrp,   isDelivery,   'visible');
+        toggle(collectionDateGrp, isCollection, 'visible');
+        toggle(deliveryTypeSelect, isDelivery,  'disabled');
+        toggle(collectionDateEl,   isCollection,'disabled');
+        toggle(addressCard, !isCollection, 'display');
+    }
+
+    function updateSummaryText(isDelivery, isCollection) {
+        if (!summaryText) return;
+        if (isDelivery) {
+            const label = deliveryTypeSelect?.value
+                ? deliveryTypeSelect.options[deliveryTypeSelect.selectedIndex].text
+                : 'Home Delivery';
+            summaryText.textContent = `Home Delivery — ${label}`;
+        } else if (isCollection) {
+            let datePart = 'date TBC';
+            if (collectionDateEl?.valueAsDate) {
+                // valueAsDate is UTC midnight; add offset to get local date
+                const d = new Date(collectionDateEl.valueAsDate.getTime()
+                    + collectionDateEl.valueAsDate.getTimezoneOffset() * 60000);
+                datePart = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+            }
+            summaryText.textContent = `Click & Collect — ${datePart}`;
+        } else {
+            summaryText.textContent = 'No method selected';
+        }
+    }
+
+    function updateTotals(isDelivery) {
+        let deliveryFee = 0;
+        if (isDelivery && deliveryTypeSelect?.value) {
+            deliveryFee = discountedSubtotal >= CFG.freeDeliveryThreshold
+                ? 0
+                : (CFG.deliveryFees[deliveryTypeSelect.value] ?? CFG.defaultDeliveryFee);
+        }
+
+        const grandTotal = discountedSubtotal + deliveryFee;
+
+        if (subtotalBeforeEl)   subtotalBeforeEl.textContent  = `£${subtotalBefore.toFixed(2)}`;
+        if (discountedSubEl)    discountedSubEl.textContent   = `£${discountedSubtotal.toFixed(2)}`;
+        if (loyaltyDiscountEl)  loyaltyDiscountEl.textContent = `−£${loyaltyDiscount.toFixed(2)}`;
+        if (deliveryFeeEl) {
+            deliveryFeeEl.innerHTML = deliveryFee === 0
+                ? '<span style="color:#1a6b40;">Free</span>'
+                : `£${deliveryFee.toFixed(2)}`;
+        }
+        if (grandTotalEl) grandTotalEl.textContent = `£${grandTotal.toFixed(2)}`;
+    }
+
+    /* ── Main update ─────────────────────────────────────────── */
+    function update() {
+        const isDelivery   = deliveryCheck?.value  === 'true';
+        const isCollection = collectionCheck?.value === 'true';
+        updateTiles(isDelivery, isCollection);
+        updatePanels(isDelivery, isCollection);
+        updateSummaryText(isDelivery, isCollection);
+        updateTotals(isDelivery);
+    }
+
+    /* ── Tile click handlers ─────────────────────────────────── */
+tileDelivery?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('deliveryCheck').value   = 'true';
+    document.getElementById('collectionCheck').value = 'false';
+    if (fulfilmentInput) fulfilmentInput.value = 'Delivery';
+    update();
+});
+
+tileCollection?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('collectionCheck').value = 'true';
+    document.getElementById('deliveryCheck').value   = 'false';
+    if (fulfilmentInput) fulfilmentInput.value = 'Collection';
+    update();
+});
+
+    /* ── Change listeners ────────────────────────────────────── */
+    deliveryTypeSelect?.addEventListener('change', update);
+    collectionDateEl?.addEventListener('change', update);
+
+    /* ── Sync FulfilmentChoice on load (e.g. after failed POST) ─ */
+if (fulfilmentInput) {
+    if (document.getElementById('deliveryCheck')?.value === 'true')   fulfilmentInput.value = 'Delivery';
+    if (document.getElementById('collectionCheck')?.value === 'true') fulfilmentInput.value = 'Collection';
+}
+
+    /* ── Initial render ──────────────────────────────────────── */
+    update();
+
+    console.log('✅ Checkout JS loaded');
+    console.log('shoppingCartId:', document.querySelector('input[name="shoppingCartId"]')?.value);
+})();
+
+</script>
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

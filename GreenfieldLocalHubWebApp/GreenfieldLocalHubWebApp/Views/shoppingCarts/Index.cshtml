@@ -195,6 +195,33 @@
         text-align: center;
     }
 
+    .qty-btn {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1.5px solid var(--border);
+        color: var(--text);
+        font-size: 1rem;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 0;
+        line-height: 1;
+    }
+
+        .qty-btn:hover:not(:disabled) {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .qty-btn:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+
     .cart-line-total {
         font-family: var(--font-serif);
         font-size: 1rem;
@@ -502,7 +529,21 @@
 
                                 <!-- QTY -->
                                 <td>
-                                    <span class="cart-qty">@item.quantity</span>
+                                    <div style="display:flex;align-items:center;gap:.4rem;">
+                                        <form asp-controller="shoppingCartItems" asp-action="UpdateQuantity" method="post" style="display:contents;">
+                                            <input type="hidden" name="shoppingCartItemsId" value="@item.shoppingCartItemsId" />
+                                            <input type="hidden" name="change" value="-1" />
+                                            <button type="submit" class="qty-btn" aria-label="Decrease quantity" @(item.quantity <= 1 ? "disabled" : "")>−</button>
+                                        </form>
+
+                                        <span class="cart-qty">@item.quantity</span>
+
+                                        <form asp-controller="shoppingCartItems" asp-action="UpdateQuantity" method="post" style="display:contents;">
+                                            <input type="hidden" name="shoppingCartItemsId" value="@item.shoppingCartItemsId" />
+                                            <input type="hidden" name="change" value="1" />
+                                            <button type="submit" class="qty-btn" aria-label="Increase quantity" @(item.quantity >= item.products?.stockQuantity ? "disabled" : "")>+</button>
+                                        </form>
+                                    </div>
                                 </td>
 
                                 <!-- LINE TOTAL -->

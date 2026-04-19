@@ -1,5 +1,8 @@
-﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -7,19 +10,125 @@
     {
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
+
+    var user = await SignInManager.UserManager.GetUserAsync(User);
+    var userName = user?.UserName?.Split('@')[0];
+    // Capitalise first letter for the greeting
+    var greeting = string.IsNullOrEmpty(userName)
+        ? "your account"
+        : char.ToUpper(userName[0]) + userName.Substring(1);
 }
 
-<h1>Manage your account</h1>
+<style>
+    /* ── TOKENS ── */
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --text-light: #9A9A9A;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
 
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
+    /* ── PAGE HERO ── */
+    .account-page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 3rem 2rem 2.5rem;
+    }
+
+    .account-page-hero-inner {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .account-page-eyebrow {
+        display: block;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+    }
+
+    .account-page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: var(--green-dark);
+        margin: 0;
+    }
+
+    .account-page-hero p {
+        color: var(--text-muted);
+        font-size: .95rem;
+        margin-top: .5rem;
+        max-width: 540px;
+        line-height: 1.65;
+    }
+
+    /* ── MAIN SECTION ── */
+    .account-section {
+        padding: 4rem 2rem 5rem;
+    }
+
+    .account-container {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    /* ── TWO-COLUMN LAYOUT ── */
+    .account-layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    /* ── RESPONSIVE ── */
+    @@media (max-width: 768px) {
+        .account-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .account-section {
+            padding: 2.5rem 1.25rem 4rem;
+        }
+    }
+</style>
+
+<!-- PAGE HERO -->
+<div class="account-page-hero">
+    <div class="account-page-hero-inner">
+        <span class="account-page-eyebrow">My Account</span>
+        <h1>Welcome back, @greeting</h1>
+        <p>Manage your profile, orders, and loyalty rewards.</p>
+    </div>
+</div>
+
+<!-- ACCOUNT BODY -->
+<div class="account-section">
+    <div class="account-container">
+        <div class="account-layout">
+
+            <!-- SIDEBAR -->
             <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+
+            <!-- PAGE CONTENT -->
+            <div>
+                @RenderBody()
+            </div>
+
         </div>
     </div>
 </div>

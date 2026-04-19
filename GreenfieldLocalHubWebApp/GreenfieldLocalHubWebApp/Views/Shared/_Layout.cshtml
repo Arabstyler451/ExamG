@@ -477,6 +477,10 @@
                 <a class="nav-link" role="listitem" asp-area="" asp-controller="producers" asp-action="Index">Producers</a>
                 <a class="nav-link" role="listitem" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
                 <a class="nav-link" role="listitem" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Producer"))
+                {
+                    <a class="nav-link" role="listitem" asp-area="" asp-controller="producerDashboard" asp-action="Index">Producer Dashboard</a>
+                }
             </div>
 
             <!-- Right-side actions -->

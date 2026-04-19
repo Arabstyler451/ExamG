@@ -30,6 +30,9 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("addressId"));
 
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -41,6 +44,9 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
                     b.Property<string>("country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createdDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("postalCode")
                         .IsRequired()
@@ -203,6 +209,9 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
                     b.Property<bool>("delivery")
                         .HasColumnType("bit");
 
+                    b.Property<float>("deliveryFee")
+                        .HasColumnType("real");
+
                     b.Property<string>("deliveryType")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,6 +307,10 @@ namespace GreenfieldLocalHubWebApp.Data.Migrations
 
                     b.Property<float>("productPrice")
                         .HasColumnType("real");
+
+                    b.Property<string>("productUnit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("stockQuantity")
                         .HasColumnType("int");

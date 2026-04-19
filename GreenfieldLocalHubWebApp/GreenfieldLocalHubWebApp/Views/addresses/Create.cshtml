@@ -12,26 +12,37 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group">
                 <label asp-for="street" class="control-label"></label>
                 <input asp-for="street" class="form-control" />
                 <span asp-validation-for="street" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="city" class="control-label"></label>
                 <input asp-for="city" class="form-control" />
                 <span asp-validation-for="city" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="postalCode" class="control-label"></label>
-                <input asp-for="postalCode" class="form-control" />
+                <label asp-for="postalCode"></label>
+                <input asp-for="postalCode" class="form-control" placeholder="e.g., SW1A 1AA" />
                 <span asp-validation-for="postalCode" class="text-danger"></span>
+                <small class="form-text text-muted">Enter a valid UK post code</small>
             </div>
+            
             <div class="form-group">
-                <label asp-for="country" class="control-label"></label>
-                <input asp-for="country" class="form-control" />
+                <label asp-for="country"></label>
+                <select asp-for="country" class="form-control" required>
+                    <option value="">Select a country</option>
+                    <option value="England">England</option>
+                    <option value="Wales">Wales</option>
+                    <option value="Scotland">Scotland</option>
+                </select>
                 <span asp-validation-for="country" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -44,5 +55,46 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Real-time post code validation using postcode.io
+        document.addEventListener('DOMContentLoaded', function() {
+            const postCodeInput = document.getElementById('postalCode');
+            
+            if (postCodeInput) {
+                postCodeInput.addEventListener('blur', async function() {
+                    const postCode = this.value.replace(/\s/g, '').toUpperCase();
+                    
+                    if (postCode.length > 2) {
+                        try {
+                            const response = await fetch(`https://api.postcodes.io/postcodes/${postCode}/validate`);
+                            const data = await response.json();
+                            
+                            if (!data.result) {
+                                this.setCustomValidity('Please enter a valid UK post code');
+                                this.style.borderColor = '#dc3545';
+                                this.style.backgroundColor = '#fff8f8';
+                            } else {
+                                this.setCustomValidity('');
+                                this.style.borderColor = '#28a745';
+                                this.style.backgroundColor = '#f8fff8';
+                            }
+                        } catch (error) {
+                            console.error('Validation error:', error);
+                        }
+                    }
+                });
+                
+                // Reset styling when user starts typing
+                postCodeInput.addEventListener('input', function() {
+                    this.setCustomValidity('');
+                    this.style.borderColor = '';
+                    this.style.backgroundColor = '';
+                });
+            }
+        });
+    </script>
 }

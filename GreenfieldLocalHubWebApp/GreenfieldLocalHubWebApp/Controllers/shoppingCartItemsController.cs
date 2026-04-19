@@ -62,10 +62,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int productsId)
+        public async Task<IActionResult> Create(int productsId, int quantity = 1)
         {
+            // Clamp quantity to a valid range
+            if (quantity < 1) quantity = 1;
 
-            // Check if the product exists in the database
             var product = await _context.products.FirstOrDefaultAsync(p => p.productsId == productsId);
 
             if (product == null)
@@ -73,17 +74,15 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return NotFound();
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (userId == null)
             {
-                return RedirectToPage("/Account/Login", new { area = "Identity" });   // Redirect to the login page if the user is not authenticated
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
 
-
-
-            // Check if the user has an active shopping cart, if not create one
-            var shoppingCart = await _context.shoppingCart.FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus == true); // Find the active shopping cart for the user
+            var shoppingCart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus == true);
 
             if (shoppingCart == null)
             {
@@ -97,13 +96,17 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 await _context.SaveChangesAsync();
             }
 
-
-            // Check if the product is already in the shopping cart, if so increase the quantity, if not add a new item to the shopping cart
-            var shoppingCartItem = await _context.shoppingCartItems.FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCart.shoppingCartId && sc.productsId == productsId); // Check if the product is already in the shopping cart
+            var shoppingCartItem = await _context.shoppingCartItems
+                .FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCart.shoppingCartId && sc.productsId == productsId);
 
             if (shoppingCartItem != null)
             {
-                shoppingCartItem.quantity++; // If the product is already in the cart, increase the quantity
+                // Add the chosen quantity on top of whatever is already in the cart,
+                // but never exceed available stock
+                shoppingCartItem.quantity = Math.Min(
+                    shoppingCartItem.quantity + quantity,
+                    product.stockQuantity
+                );
             }
             else
             {
@@ -111,14 +114,12 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 {
                     shoppingCartId = shoppingCart.shoppingCartId,
                     productsId = productsId,
-                    quantity = 1
+                    quantity = Math.Min(quantity, product.stockQuantity)
                 };
-
-                _context.shoppingCartItems.Add(shoppingCartItem); // If the product is not in the cart, add a new item to the shopping cart
+                _context.shoppingCartItems.Add(shoppingCartItem);
             }
 
             await _context.SaveChangesAsync();
-
 
             return RedirectToAction("Index", "products");
         }
@@ -216,6 +217,36 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool shoppingCartItemsExists(int id)
         {
             return _context.shoppingCartItems.Any(e => e.shoppingCartItemsId == id);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateQuantity(int shoppingCartItemsId, int change)
+        {
+            var item = await _context.shoppingCartItems
+                .Include(i => i.products)
+                .FirstOrDefaultAsync(i => i.shoppingCartItemsId == shoppingCartItemsId);
+
+            if (item == null)
+                return NotFound();
+
+            var newQty = item.quantity + change;
+
+            if (newQty <= 0)
+            {
+                // Remove the item entirely if quantity drops to zero
+                _context.shoppingCartItems.Remove(item);
+            }
+            else
+            {
+                // Cap at available stock
+                item.quantity = Math.Min(newQty, item.products?.stockQuantity ?? newQty);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "shoppingCarts");
         }
 
 

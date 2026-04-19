@@ -1,5 +1,6 @@
 ﻿using GreenfieldLocalHubWebApp.Data;
 using GreenfieldLocalHubWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,10 +25,31 @@ namespace GreenfieldLocalHubWebApp.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.CartItemCount = await GetCartItemCount();
-
-
             ViewData["Layout"] = "_AccountLayout";
-            return View(await _context.address.ToListAsync());
+
+            // Get the currently logged-in user's ID
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var addresses = _context.address
+                   .Where(a => a.UserId == userId)
+                   .OrderByDescending(a => a.IsDefault)  // moves default address to the top
+                   .ThenByDescending(a => a.createdDate)  //sort the newest addresses added first
+                   .ToList();
+
+            // Check if there's only one address and it's not already set as default
+            if (addresses.Count == 1 && !addresses[0].IsDefault)
+            {
+                addresses[0].IsDefault = true;
+                _context.address.Update(addresses[0]);
+                await _context.SaveChangesAsync();
+            }
+
+            return View(addresses);
         }
 
         // GET: addresses/Details/5
@@ -65,7 +87,6 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("addressId,street,city,postalCode,country")] address address, string returnUrl = null)
         {
-            ViewBag.CartItemCount = await GetCartItemCount();
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -75,6 +96,9 @@ namespace GreenfieldLocalHubWebApp.Controllers
             }
             address.UserId = userId;
             ModelState.Remove("UserId");
+
+            ViewBag.CartItemCount = await GetCartItemCount();
+
 
             if (ModelState.IsValid)
             {
@@ -189,6 +213,36 @@ namespace GreenfieldLocalHubWebApp.Controllers
         private bool addressExists(int id)
         {
             return _context.address.Any(e => e.addressId == id);
+        }
+
+
+        // Controller method to set an address as default for the user
+        [HttpPost]
+        public IActionResult SetDefault(int id)
+        {
+            // Get all addresses for the current user
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var addresses = _context.address.Where(a => a.UserId == userId).ToList();
+
+            // Find the address to set as default
+            var addressToSetDefault = addresses.FirstOrDefault(a => a.addressId == id);
+            if (addressToSetDefault == null)
+            {
+                return NotFound();
+            }
+
+            // Remove default flag from all addresses
+            foreach (var addr in addresses)
+            {
+                addr.IsDefault = false;
+            }
+
+            // Set the selected address as default
+            addressToSetDefault.IsDefault = true;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
 

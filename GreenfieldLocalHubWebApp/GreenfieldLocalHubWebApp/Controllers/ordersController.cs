@@ -94,18 +94,33 @@ namespace GreenfieldLocalHubWebApp.Controllers
             ViewBag.CartItemCount = await GetCartItemCount();
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
 
             ViewBag.shoppingCartId = shoppingCartId;
 
             // Get user's addresses
-            var userAddresses = await _context.address.Where(a => a.UserId == userId).ToListAsync();
+            var userAddresses = await _context.address
+                .Where(a => a.UserId == userId)
+                .ToListAsync();
 
             ViewBag.HasAddresses = userAddresses.Any();
-
-            // Build dropdown (pre-select the newly added address if coming back from Addresses/Create)
             ViewData["AddressId"] = new SelectList(userAddresses, "addressId", "street", selectedAddressId);
+
+            // Calculate totals for display
+            var (subtotalBeforeDiscount, loyaltyDiscount, cartTotalAfterDiscount) =
+                await CalculateOrderTotals(userId, shoppingCartId);
+
+            ViewBag.CartTotal = cartTotalAfterDiscount;           // Shown as "Subtotal" in checkout
+            ViewBag.SubtotalBeforeDiscount = subtotalBeforeDiscount;
+            ViewBag.LoyaltyDiscount = loyaltyDiscount;
+
             return View();
         }
+
+
 
         // POST: orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -125,19 +140,18 @@ namespace GreenfieldLocalHubWebApp.Controllers
             }
 
             orders.UserId = userId;
-            ModelState.Remove("UserId");
             orders.orderDate = DateOnly.FromDateTime(DateTime.Today);
-            ModelState.Remove("orderDate");
             orders.orderStatus = "Pending";
-            ModelState.Remove("orderStatus");
 
             var shoppingCart = await _context.shoppingCart
-                .FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCartId && sc.UserId == userId && sc.shoppingCartStatus);
+                .FirstOrDefaultAsync(sc => sc.shoppingCartId == shoppingCartId
+                                        && sc.UserId == userId
+                                        && sc.shoppingCartStatus);
 
             if (shoppingCart == null)
                 return NotFound();
 
-            // Load shopping cart items + product + category (needed for vegetable discount)
+            // Load items (needed for both discount calculation and saving orderProducts)
             var shoppingCartItems = await _context.shoppingCartItems
                 .Where(sci => sci.shoppingCartId == shoppingCartId)
                 .Include(sci => sci.products)
@@ -151,61 +165,31 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return View(orders);
             }
 
-            // === Calculate Subtotal & Loyalty Discounts ===
-            float subTotal = shoppingCartItems.Sum(item => item.products.productPrice * item.quantity);
+            // === Calculate totals (re-use the same logic as GET) ===
+            var (subtotalBeforeDiscount, loyaltyDiscount, cartTotalAfterDiscount) =
+                await CalculateOrderTotals(userId, shoppingCartId);
 
-            // Load active offers
-            var loyaltyAccount = await _context.loyaltyAccount
-                .FirstOrDefaultAsync(l => l.UserId == userId);
-
-            var activeOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
-                ? loyaltyAccount.ActiveOffers.Split(',').ToList()
-                : new List<string>();
-
-            float loyaltyDiscount = 0f;
-            var usedOffers = new List<string>(); // Track which offers were actually used
-
-            foreach (var item in shoppingCartItems)
+            // Calculate delivery fee
+            decimal deliveryFee = 0m;
+            if (orders.delivery)
             {
-                var price = item.products.productPrice * item.quantity;
-
-                // 10% off Fruits & Vegetables
-                if (activeOffers.Contains("10% off Fruits & Vegetables") &&
-                    item.products.categories != null &&
-                    string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                if (cartTotalAfterDiscount >= 30m)
                 {
-                    loyaltyDiscount += (float)(price * 0.10);
-                    if (!usedOffers.Contains("10% off Fruits & Vegetables"))
-                        usedOffers.Add("10% off Fruits & Vegetables");
+                    deliveryFee = 0m;
                 }
-
-                // Free Cheese
-                if (activeOffers.Contains("Free Cheese") &&
-                    item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
+                else
                 {
-                    loyaltyDiscount += (float)price;
-                    if (!usedOffers.Contains("Free Cheese"))
-                        usedOffers.Add("Free Cheese");
+                    deliveryFee = orders.deliveryType switch
+                    {
+                        "First Class" => 5.50m,
+                        "Next Day" => 7.99m,
+                        _ => 3.50m
+                    };
                 }
             }
 
-            // £5 Voucher - Only if order is £20 or more
-            if (activeOffers.Contains("£5 Voucher") && subTotal >= 20f)
-            {
-                loyaltyDiscount += 5f;
-                if (!usedOffers.Contains("£5 Voucher"))
-                    usedOffers.Add("£5 Voucher");
-            }
-
-            // Order count discount (this is NOT a voucher, it's a permanent discount)
-            var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
-            if (orderCount >= 5)
-            {
-                loyaltyDiscount += (float)(subTotal * 0.10f);
-            }
-
-            orders.totalAmount = subTotal - loyaltyDiscount;
-            ModelState.Remove("totalAmount");
+            orders.deliveryFee = (float)deliveryFee;
+            orders.totalAmount = (float)(cartTotalAfterDiscount + deliveryFee);
 
             // Address handling
             if (orders.addressId.HasValue)
@@ -220,7 +204,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 }
             }
 
-            // Delivery / Collection validation
+            // Validation
             if (!orders.collection && !orders.delivery)
                 ModelState.AddModelError("delivery", "Please select either delivery or collection for your order");
 
@@ -230,13 +214,17 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 if (orders.orderCollectionDate == null)
                     ModelState.AddModelError("orderCollectionDate", "Collection date is required.");
                 else if (orders.orderCollectionDate.Value < DateOnly.FromDateTime(DateTime.Today.AddDays(2)))
-                    ModelState.AddModelError("orderCollectionDate", $"Collection date must be at least 2 days from today.");
+                    ModelState.AddModelError("orderCollectionDate", "Collection date must be at least 2 days from today.");
             }
+
             if (orders.delivery && string.IsNullOrWhiteSpace(orders.deliveryType))
                 ModelState.AddModelError("deliveryType", "Please select a delivery type for your order");
 
             if (!ModelState.IsValid)
             {
+                ViewBag.CartTotal = cartTotalAfterDiscount;
+                ViewBag.SubtotalBeforeDiscount = subtotalBeforeDiscount;
+                ViewBag.LoyaltyDiscount = loyaltyDiscount;
                 ViewBag.shoppingCartId = shoppingCartId;
                 return View(orders);
             }
@@ -245,12 +233,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
             _context.orders.Add(orders);
             await _context.SaveChangesAsync();
 
-            // Create orderProducts and update stock
-            foreach (var shoppingCartItem in shoppingCartItems)
+            foreach (var item in shoppingCartItems)
             {
-                if (shoppingCartItem.products.stockQuantity < shoppingCartItem.quantity)
+                if (item.products.stockQuantity < item.quantity)
                 {
-                    ModelState.AddModelError("", $"Sorry, we only have {shoppingCartItem.products.stockQuantity} units of {shoppingCartItem.products.productName} in stock.");
+                    ModelState.AddModelError("", $"Sorry, we only have {item.products.stockQuantity} units of {item.products.productName} in stock.");
                     ViewBag.shoppingCartId = shoppingCartId;
                     return View(orders);
                 }
@@ -258,13 +245,13 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 var orderProduct = new orderProducts
                 {
                     ordersId = orders.ordersId,
-                    productsId = shoppingCartItem.productsId,
-                    quantity = shoppingCartItem.quantity,
-                    unitPrice = shoppingCartItem.unitPrice
+                    productsId = item.productsId,
+                    quantity = item.quantity,
+                    unitPrice = item.unitPrice
                 };
-                _context.orderProducts.Add(orderProduct);
 
-                shoppingCartItem.products.stockQuantity -= shoppingCartItem.quantity;
+                _context.orderProducts.Add(orderProduct);
+                item.products.stockQuantity -= item.quantity;
             }
 
             shoppingCart.shoppingCartStatus = false;
@@ -272,6 +259,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
 
             // ====================== CONSUME USED OFFERS (Critical Fix) ======================
+            var usedOffers = new List<string>();
             if (usedOffers.Any())
             {
                 // Use a fresh query + AsNoTracking to avoid EF tracking conflicts
@@ -563,6 +551,56 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 _context.loyaltyTransaction.Add(transaction);
             }
             await _context.SaveChangesAsync();
+        }
+
+
+
+        private async Task<(decimal subtotalBeforeDiscount, decimal loyaltyDiscount, decimal cartTotalAfterDiscount)>
+    CalculateOrderTotals(string userId, int shoppingCartId)
+        {
+            var items = await _context.shoppingCartItems
+                .Where(sci => sci.shoppingCartId == shoppingCartId)
+                .Include(sci => sci.products)
+                    .ThenInclude(p => p.categories)
+                .ToListAsync();
+
+            if (!items.Any())
+                return (0m, 0m, 0m);
+
+            decimal subtotal = items.Sum(i => (decimal)i.products.productPrice * i.quantity);
+            decimal discount = 0m;
+
+            var loyaltyAccount = await _context.loyaltyAccount.FirstOrDefaultAsync(l => l.UserId == userId);
+            var activeOffers = loyaltyAccount != null && !string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? loyaltyAccount.ActiveOffers.Split(',').Select(o => o.Trim()).ToList()
+                : new List<string>();
+
+            foreach (var item in items)
+            {
+                decimal price = (decimal)item.products.productPrice * item.quantity;
+
+                if (activeOffers.Contains("10% off Fruits & Vegetables") &&
+                    item.products.categories != null &&
+                    string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                {
+                    discount += price * 0.10m;
+                }
+
+                if (activeOffers.Contains("Free Cheese") &&
+                    item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    discount += price;
+                }
+            }
+
+            if (activeOffers.Contains("£5 Voucher") && subtotal >= 20m)
+                discount += 5m;
+
+            var orderCount = await _context.orders.CountAsync(o => o.UserId == userId);
+            if (orderCount >= 5)
+                discount += subtotal * 0.10m;
+
+            return (subtotal, discount, subtotal - discount);
         }
 
 

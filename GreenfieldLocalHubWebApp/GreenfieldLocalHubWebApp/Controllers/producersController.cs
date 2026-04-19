@@ -40,7 +40,9 @@ namespace GreenfieldLocalHubWebApp.Controllers
             }
 
             var producers = await _context.producers
+                .Include(p => p.products)
                 .FirstOrDefaultAsync(m => m.producersId == id);
+
             if (producers == null)
             {
                 return NotFound();

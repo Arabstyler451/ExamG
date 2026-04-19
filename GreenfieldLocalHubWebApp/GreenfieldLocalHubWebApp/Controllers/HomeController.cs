@@ -24,7 +24,14 @@ namespace GreenfieldLocalHubWebApp.Controllers
         {
             ViewBag.CartItemCount = await GetCartItemCount();
 
-            return View();
+            // Fetch featured products (include producer) and pass to the view
+            var featuredProducts = await _context.products
+                .Include(p => p.producers)      // eager load producer
+                .OrderByDescending(p => p.productsId) // or whatever ordering you prefer
+                .Take(8)                       // fetch a reasonable number for the view
+                .ToListAsync();
+
+            return View(featuredProducts);
         }
 
         public async Task<IActionResult> About()

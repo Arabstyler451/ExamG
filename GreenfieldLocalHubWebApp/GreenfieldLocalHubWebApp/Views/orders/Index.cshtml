@@ -1,111 +1,296 @@
 ﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.orders>
 
-
 @{
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
-    ViewData["Title"] = "Orders";
+    ViewData["Title"] = "My Orders";
 }
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
+<style>
+    /* ── Design tokens ── */
+    .glh-orders-root {
+        --green:       #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark:  #122e25;
+        --green-faint: #f0f5f3;
+        --brown:       #7C5C3E;
+        --white:       #FFFFFF;
+        --off-white:   #F9F9F9;
+        --border:      #E2E2E2;
+        --text:        #1A1A1A;
+        --text-muted:  #6B6B6B;
+        --text-light:  #9A9A9A;
+        --font-serif:  'Playfair Display', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+        --transition:  all .22s ease;
+        font-family: var(--font-sans);
+        color: var(--text);
+    }
 
-<h1>Index</h1>
+    /* ── Page title ── */
+    .glh-panel-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        color: var(--green-dark);
+        margin-bottom: 1.4rem;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.totalAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.delivery)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.collection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.deliveryType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.orderStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.orderCollectionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.orderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryStreet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryCity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryPostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryCountry)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.address)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.delivery)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.collection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deliveryType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.orderStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.orderCollectionDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.orderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryStreet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryPostalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryCountry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.address.addressId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ordersId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ordersId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ordersId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    /* ── Empty state ── */
+    .glh-empty {
+        padding: 3rem 2rem;
+        text-align: center;
+        background: var(--off-white);
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: .9rem;
+        line-height: 1.7;
+    }
+    .glh-empty a {
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .glh-empty a:hover { text-decoration: underline; }
+
+    /* ── Alert banner ── */
+    .glh-alert {
+        display: flex;
+        align-items: flex-start;
+        gap: .6rem;
+        padding: .9rem 1.2rem;
+        font-size: .85rem;
+        margin-bottom: 1.2rem;
+        border-left: 3px solid;
+        line-height: 1.55;
+    }
+    .glh-alert-info    { background: #e8eef8; color: #1a3a8f; border-color: #1a3a8f; }
+    .glh-alert-success { background: #eaf4ef; color: #1a6b40; border-color: #1a6b40; }
+    .glh-alert-warning { background: #fdf3e7; color: #9a5a10; border-color: #9a5a10; }
+
+    /* ── Order row ── */
+    .glh-order-row {
+        display: grid;
+        grid-template-columns: 160px 1fr auto auto;
+        gap: 1.5rem;
+        align-items: center;
+        padding: 1.1rem 1.4rem;
+        background: var(--white);
+        border: 1px solid var(--border);
+        margin-bottom: .6rem;
+        font-size: .875rem;
+        transition: var(--transition);
+    }
+    .glh-order-row:hover { border-color: #c8c8c8; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+
+    .glh-order-id {
+        font-weight: 700;
+        font-size: .875rem;
+        color: var(--green-dark);
+    }
+    .glh-order-date {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .15rem;
+    }
+    .glh-order-meta {
+        font-size: .83rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+    }
+    .glh-order-meta strong {
+        display: block;
+        color: var(--text);
+        font-weight: 600;
+        font-size: .875rem;
+        margin-bottom: .15rem;
+    }
+
+    /* ── Status badges ── */
+    .glh-order-status {
+        padding: .25rem .7rem;
+        font-size: .7rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    .glh-status-delivered   { background: #eaf4ef; color: #1a6b40; }
+    .glh-status-processing  { background: #fdf3e7; color: #9a5a10; }
+    .glh-status-dispatched  { background: #e8eef8; color: #1a3a8f; }
+    .glh-status-cancelled   { background: #fde8e8; color: #a0281e; }
+    .glh-status-pending     { background: #f5f5f5; color: #555; }
+
+    /* ── Button group ── */
+    .glh-order-actions {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    /* ── Buttons ── */
+    .glh-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .45rem 1rem;
+        font-size: .8rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        text-decoration: none;
+        white-space: nowrap;
+        border-radius: 0;
+    }
+    .glh-btn-outline {
+        background: transparent;
+        color: var(--green);
+        border: 1.5px solid var(--green);
+    }
+    .glh-btn-outline:hover { background: var(--green); color: #fff; }
+    .glh-btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1.5px solid var(--border);
+    }
+    .glh-btn-ghost:hover { border-color: var(--green); color: var(--green); }
+    .glh-btn-primary {
+        background: var(--green);
+        color: #fff;
+        border: 1.5px solid var(--green);
+    }
+    .glh-btn-primary:hover { background: var(--green-light); border-color: var(--green-light); color: #fff; }
+
+    /* ── Delivery type chip ── */
+    .glh-delivery-chip {
+        display: inline-block;
+        font-size: .68rem;
+        font-weight: 600;
+        padding: .18rem .55rem;
+        background: var(--green-faint);
+        color: var(--green-dark);
+        letter-spacing: .04em;
+        margin-top: .25rem;
+    }
+
+    /* ── Responsive ── */
+    @@media (max-width: 768px) {
+        .glh-order-row {
+            grid-template-columns: 1fr 1fr;
+            gap: .75rem;
+        }
+        .glh-order-meta { grid-column: 1 / -1; }
+        .glh-order-actions { grid-column: 1 / -1; justify-content: flex-start; }
+    }
+    @@media (max-width: 480px) {
+        .glh-order-row { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="glh-orders-root">
+
+    <h2 class="glh-panel-title">My Orders</h2>
+
+    @{
+        /* Highlight any active (non-delivered) orders at the top */
+        var activeOrder = Model.FirstOrDefault(o =>
+            !string.Equals(o.orderStatus, "Delivered",  StringComparison.OrdinalIgnoreCase) &&
+            !string.Equals(o.orderStatus, "Cancelled",  StringComparison.OrdinalIgnoreCase));
+    }
+    @if (activeOrder != null)
+    {
+        <div class="glh-alert glh-alert-success" role="status">
+            Order <strong>#@activeOrder.ordersId</strong> is currently
+            <strong>@activeOrder.orderStatus</strong> —
+            placed on @activeOrder.orderDate.ToString("d MMM yyyy").
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="glh-empty" role="status">
+            <p>You haven't placed any orders yet.</p>
+            <p><a asp-controller="Products" asp-action="Index">Browse our products</a> to get started.</p>
+        </div>
+    }
+    else
+    {
+        @foreach (var item in Model.OrderByDescending(o => o.orderDate))
+        {
+            /* ── Resolve status CSS class ── */
+            string statusClass = (item.orderStatus?.ToLower()) switch
+            {
+                "delivered"  => "glh-status-delivered",
+                "dispatched" => "glh-status-dispatched",
+                "processing" => "glh-status-processing",
+                "cancelled"  => "glh-status-cancelled",
+                _            => "glh-status-pending"
+            };
+
+            /* ── Delivery type label ── */
+            string deliveryLabel = item.deliveryType switch
+            {
+                "delivery"   => "Home Delivery",
+                "collection" => "Click & Collect",
+                _            => item.deliveryType ?? "—"
+            };
+
+            <div class="glh-order-row" role="row">
+
+                <!-- Column 1: order ID + date -->
+                <div>
+                    <p class="glh-order-id">#@item.ordersId</p>
+                    <p class="glh-order-date">@item.orderDate.ToString("d MMM yyyy")</p>
+                    <span class="glh-delivery-chip">@deliveryLabel</span>
+                </div>
+
+                <!-- Column 2: summary -->
+                <div class="glh-order-meta">
+                    <strong>@item.totalAmount.ToString("C")</strong>
+                    @if (!string.IsNullOrWhiteSpace(item.DeliveryCity))
+                    {
+                        <span>@item.DeliveryCity@(!string.IsNullOrWhiteSpace(item.DeliveryPostalCode) ? ", " + item.DeliveryPostalCode : "")</span>
+                    }
+                    @if (item.orderCollectionDate.HasValue)
+                    {
+                        <br /><span>Collection: @item.orderCollectionDate.Value.ToString("d MMM yyyy")</span>
+                    }
+                </div>
+
+                <!-- Column 3: status badge -->
+                <span class="glh-order-status @statusClass">
+                    @item.orderStatus
+                </span>
+
+                <!-- Column 4: actions -->
+                <div class="glh-order-actions">
+                    <a asp-action="Details"
+                       asp-route-id="@item.ordersId"
+                       class="glh-btn glh-btn-outline"
+                       aria-label="View details for order #@item.ordersId">
+                        Details
+                    </a>
+                    <form asp-controller="ShoppingCart"
+                          asp-action="Reorder"
+                          asp-route-orderId="@item.ordersId"
+                          method="post"
+                          style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit"
+                                class="glh-btn glh-btn-ghost"
+                                aria-label="Reorder items from order #@item.ordersId">
+                            Reorder
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        }
+    }
+
+</div>

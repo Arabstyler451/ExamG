@@ -227,6 +227,13 @@
         color: var(--green);
     }
 
+    .price-unit {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
     .pc-avail {
         font-size: .68rem;
         font-weight: 600;
@@ -460,7 +467,8 @@
 
         @foreach (var item in Model)
         {
-            <article class="product-card">
+
+            <article class="product-card" data-product-id="@item.productsId">
 
                 <!-- IMAGE -->
                 <div class="pc-wrap">
@@ -493,7 +501,10 @@
 
                     <!-- PRICE + AVAILABILITY -->
                     <div class="pc-footer">
-                        <span class="pc-price">£@item.productPrice.ToString("0.00")</span>
+                        <span class="pc-price">
+                            £@item.productPrice.ToString("0.00")
+                            <small class="price-unit">/ @item.productUnit</small>
+                        </span>
                         @if (item.stockQuantity > 10)
                         {
                             <span class="pc-avail in">In Stock</span>
@@ -510,11 +521,7 @@
 
                     <!-- ACTIONS -->
                     <div class="pc-actions">
-                        <a asp-action="Details" asp-route-id="@item.productsId" class="btn btn-ghost">
-                            Details
-                        </a>
-
-                        @if (User.IsInRole("Producer"))
+                        @if (User.IsInRole("Producer") || User.IsInRole("Admin") || User.IsInRole("Developer"))
                         {
                             <a asp-action="Edit" asp-route-id="@item.productsId" class="btn btn-ghost">
                                 Edit
@@ -524,11 +531,19 @@
                             </a>
                         }
 
-                        <form asp-controller="shoppingCartItems" asp-action="Create" method="post" style="flex:1;display:flex;">
+                        <form asp-controller="shoppingCartItems" asp-action="Create" method="post" style="flex:1;display:flex;gap:.4rem;align-items:center;">
                             <input type="hidden" name="productsId" value="@item.productsId" />
 
                             @if (item.stockQuantity > 0)
                             {
+                                <input type="number"
+                                       name="quantity"
+                                       value="1"
+                                       min="1"
+                                       max="@item.stockQuantity"
+                                       class="form-input"
+                                       style="width:60px;padding:.55rem .5rem;text-align:center;"
+                                       aria-label="Quantity" />
                                 <button type="submit" class="btn btn-primary btn-add-cart">
                                     Add to Cart
                                 </button>
@@ -548,3 +563,23 @@
     </div>
 
 </div>
+
+
+
+<script>
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            // Don't trigger if clicking on buttons, forms, or links
+            if (e.target.closest('.btn') ||
+                e.target.closest('form') ||
+                e.target.closest('button') ||
+                e.target.closest('a')) {
+                return;
+            }
+            
+            const productId = card.dataset.productId;
+            window.location.href = `/products/Details/${productId}`;
+        });
+    });
+</script>

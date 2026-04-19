@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\shoppingcartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\producers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\producers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\models\\loyaltyaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\models\\loyaltyaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\loyaltyaccountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\loyaltyaccountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|d:\\t level material\\visual studio 2026\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,70 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "shoppingCartsController.cs",
-              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
-              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
-              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
-              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\shoppingCartsController.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAwwGcAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T19:11:57.829Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "loyaltyAccount.cs",
-              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Models\\loyaltyAccount.cs",
-              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Models\\loyaltyAccount.cs",
-              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Models\\loyaltyAccount.cs",
-              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Models\\loyaltyAccount.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T18:43:13.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "loyaltyAccountsController.cs",
-              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
-              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
-              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
-              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\loyaltyAccountsController.cs",
-              "ViewState": "AgIAABECAAAAAAAAAAAowEUCAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T17:32:17.749Z",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\products\\Details.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\products\\Details.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\products\\Details.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\products\\Details.cshtml",
+              "ViewState": "AgIAAJUBAAAAAAAAAAAuwKUBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T22:50:08.413Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\producers\\Details.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\producers\\Details.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\producers\\Details.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\producers\\Details.cshtml",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAuwPoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T22:30:20.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ordersController.cs",
               "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
               "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAIAwwLIAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAEcCAAAAAAAAAAAmwGwCAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T17:32:08.72Z",
+              "WhenOpened": "2026-04-19T09:16:53.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "ToolTip": "D:\\T Level Material\\Visual Studio 2026\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\orders\\Create.cshtml",
+              "ViewState": "AgIAABcDAAAAAAAAAAAqwHEDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T00:00:06.303Z",
               "EditorCaption": ""
             }
           ]

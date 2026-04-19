@@ -2,79 +2,356 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Sign In";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                </div>
-                <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to log in.</h3>
-            <hr />
+@* ── Google Fonts ── *@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+<style>
+    /* ── Design tokens ── */
+    .glh-auth-root {
+        --green:       #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark:  #122e25;
+        --green-faint: #f0f5f3;
+        --brown:       #7C5C3E;
+        --brown-light: #9b7455;
+        --white:       #FFFFFF;
+        --off-white:   #F9F9F9;
+        --border:      #E2E2E2;
+        --text:        #1A1A1A;
+        --text-muted:  #6B6B6B;
+        --text-light:  #9A9A9A;
+        --shadow-md:   0 6px 20px rgba(0,0,0,.10);
+        --font-serif:  'Playfair Display', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+        --transition:  all .22s ease;
+    }
+
+    /* ── Full-page centred layout ── */
+    .glh-auth-page {
+        min-height: calc(100vh - 73px);
+        background: var(--off-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+        font-family: var(--font-sans);
+        color: var(--text);
+    }
+
+    /* ── Auth card ── */
+    .glh-auth-box {
+        background: var(--white);
+        padding: 2.8rem;
+        width: 100%;
+        max-width: 460px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* ── Logo bar ── */
+    .glh-auth-logo-bar {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .glh-auth-logo-name {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--green-dark);
+    }
+
+    /* ── Headings ── */
+    .glh-auth-title {
+        font-family: var(--font-serif);
+        font-size: 1.7rem;
+        color: var(--green-dark);
+        text-align: center;
+        margin-bottom: .3rem;
+    }
+    .glh-auth-sub {
+        font-size: .875rem;
+        color: var(--text-muted);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* ── Form elements ── */
+    .glh-form-group { margin-bottom: 1.2rem; }
+
+    .glh-form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+        font-family: var(--font-sans);
+    }
+
+    .glh-form-input {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+    .glh-form-input:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+    .glh-form-input.input-validation-error {
+        border-color: #c0392b;
+    }
+
+    /* ── Validation ── */
+    .glh-validation-summary {
+        background: #fde8e8;
+        border-left: 3px solid #a0281e;
+        color: #a0281e;
+        padding: .85rem 1rem;
+        font-size: .83rem;
+        margin-bottom: 1.4rem;
+        line-height: 1.55;
+    }
+    .glh-validation-summary ul { margin: .3rem 0 0 1rem; padding: 0; }
+    .glh-field-error {
+        display: block;
+        font-size: .75rem;
+        color: #a0281e;
+        margin-top: .3rem;
+    }
+
+    /* ── Remember me checkbox ── */
+    .glh-remember {
+        display: flex;
+        align-items: center;
+        gap: .55rem;
+        font-size: .83rem;
+        color: var(--text-muted);
+        margin-bottom: 1.4rem;
+        cursor: pointer;
+        font-family: var(--font-sans);
+    }
+    .glh-remember input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--green);
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    /* ── Forgot password link (right-aligned) ── */
+    .glh-forgot-row {
+        text-align: right;
+        margin-top: -.3rem;
+        margin-bottom: 1.2rem;
+    }
+    .glh-forgot-row a {
+        font-size: .82rem;
+        color: var(--green);
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+    .glh-forgot-row a:hover { color: var(--green-light); text-decoration: underline; }
+
+    /* ── Primary button ── */
+    .glh-btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: .85rem 1.75rem;
+        background: var(--green);
+        color: #fff;
+        font-size: .9rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        border-radius: 0;
+    }
+    .glh-btn-primary:hover { background: var(--green-light); color: #fff; }
+
+    /* ── Divider ── */
+    .glh-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.6rem 0;
+        font-size: .75rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+    .glh-divider::before,
+    .glh-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    /* ── External login buttons ── */
+    .glh-ext-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: .72rem 1.2rem;
+        background: var(--white);
+        color: var(--text);
+        font-size: .875rem;
+        font-weight: 500;
+        border: 1.5px solid var(--border);
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: var(--transition);
+        margin-bottom: .6rem;
+        border-radius: 0;
+        text-align: center;
+    }
+    .glh-ext-btn:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── Footer links ── */
+    .glh-auth-footer {
+        text-align: center;
+        font-size: .83rem;
+        color: var(--text-muted);
+        margin-top: 1.6rem;
+        line-height: 1.7;
+        font-family: var(--font-sans);
+    }
+    .glh-auth-footer a {
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .glh-auth-footer a:hover { text-decoration: underline; }
+
+    /* ── No external providers notice ── */
+    .glh-ext-notice {
+        font-size: .82rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        padding: .9rem 1rem;
+        background: var(--off-white);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--border);
+    }
+    .glh-ext-notice a { color: var(--green); font-weight: 500; }
+</style>
+
+<div class="glh-auth-root">
+    <div class="glh-auth-page">
+        <div class="glh-auth-box">
+
+            <!-- Logo bar -->
+            <div class="glh-auth-logo-bar">
+                <span class="glh-auth-logo-name">Greenfield Local Hub</span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="glh-auth-title">Welcome Back</h1>
+            <p class="glh-auth-sub">Sign in to your account</p>
+
+            <!-- Validation summary -->
             @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
+                var hasErrors = !ViewData.ModelState.IsValid;
             }
-        </section>
+            @if (hasErrors)
+            {
+                <div class="glh-validation-summary" role="alert">
+                    <strong>Please correct the following:</strong>
+                    <asp-validation-summary="ModelOnly" />
+                </div>
+            }
+
+            <!-- Local login form -->
+            <form id="account" method="post">
+                <AntiForgeryToken />
+
+                <div class="glh-form-group">
+                    <label asp-for="Input.Email" class="glh-form-label">Email Address</label>
+                    <input asp-for="Input.Email"
+                           class="glh-form-input"
+                           type="email"
+                           autocomplete="username"
+                           aria-required="true"
+                           placeholder="you@example.com" />
+                    <span asp-validation-for="Input.Email" class="glh-field-error"></span>
+                </div>
+
+                <div class="glh-form-group">
+                    <label asp-for="Input.Password" class="glh-form-label">Password</label>
+                    <input asp-for="Input.Password"
+                           class="glh-form-input"
+                           type="password"
+                           autocomplete="current-password"
+                           aria-required="true"
+                           placeholder="Your password" />
+                    <span asp-validation-for="Input.Password" class="glh-field-error"></span>
+                </div>
+
+                <div class="glh-forgot-row">
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot password?</a>
+                </div>
+
+                <label class="glh-remember">
+                    <input asp-for="Input.RememberMe" type="checkbox" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+
+                <button id="login-submit" type="submit" class="glh-btn-primary">
+                    Sign In
+                </button>
+            </form>
+
+            <!-- External logins -->
+            @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+            {
+                <div class="glh-divider">or continue with</div>
+                <form id="external-account"
+                      asp-page="./ExternalLogin"
+                      asp-route-returnUrl="@Model.ReturnUrl"
+                      method="post">
+                    @foreach (var provider in Model.ExternalLogins!)
+                    {
+                        <button type="submit"
+                                class="glh-ext-btn"
+                                name="provider"
+                                value="@provider.Name"
+                                title="Sign in with your @provider.DisplayName account">
+                            @provider.DisplayName
+                        </button>
+                    }
+                </form>
+            }
+
+            <!-- Footer links -->
+            <div class="glh-auth-footer">
+                New to GLH? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an account</a>
+                <br />
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+            </div>
+
+        </div>
     </div>
 </div>
 

@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenfieldLocalHubWebApp.Data;
+using GreenfieldLocalHubWebApp.Models;
+using GreenfieldLocalHubWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Tasks.Deployment.Bootstrapper;
 using Microsoft.EntityFrameworkCore;
-using GreenfieldLocalHubWebApp.Data;
-using GreenfieldLocalHubWebApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace GreenfieldLocalHubWebApp.Controllers
 {
@@ -80,7 +82,28 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 return NotFound();
             }
 
-            return View(products);
+            // Build the "You May Also Like" list:
+            //   same category, different product, max 4 items
+            var related = new List<products>();
+            if (products.categories != null)
+            {
+                related = await _context.products
+                    .Include(p => p.producers)
+                    .Include(p => p.categories)
+                    .Where(p => p.categories != null
+                             && p.categories.categoriesId == products.categories.categoriesId
+                             && p.productsId != products.productsId)
+                    .Take(4)
+                    .ToListAsync();
+            }
+
+            var viewModel = new productDetailsViewModel
+            {
+                Product = products,
+                RelatedProducts = related
+            };
+
+            return View(viewModel);
         }
 
         // GET: products/Create
