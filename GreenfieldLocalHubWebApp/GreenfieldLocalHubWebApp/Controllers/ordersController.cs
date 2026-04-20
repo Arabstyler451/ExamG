@@ -78,6 +78,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 .Where(op => op.ordersId == id)
                 .Include(op => op.orders)
                 .Include(op => op.products)
+                    .ThenInclude(p => p.producers)
                 .ToListAsync();
 
             if (!orderProducts.Any())

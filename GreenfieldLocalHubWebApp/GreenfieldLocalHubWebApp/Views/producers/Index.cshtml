@@ -4,7 +4,6 @@
     ViewData["Title"] = "Producers";
 
     var isAdminOrDev = User.IsInRole("Admin") || User.IsInRole("Developer");
-    var canEditDelete = User.IsInRole("Admin") || User.IsInRole("Developer") || User.IsInRole("Producer");
 }
 
 <style>
@@ -314,7 +313,7 @@
                         <!-- Actions -->
                         <div class="producer-actions">
                             <a asp-action="Details" asp-route-id="@item.producersId" class="btn btn-outline btn-sm">View Details</a>
-                            @if (canEditDelete)
+                            @if (isAdminOrDev)
                             {
                                 <a asp-action="Edit" asp-route-id="@item.producersId" class="btn btn-ghost btn-sm">Edit</a>
                                 <a asp-action="Delete" asp-route-id="@item.producersId"

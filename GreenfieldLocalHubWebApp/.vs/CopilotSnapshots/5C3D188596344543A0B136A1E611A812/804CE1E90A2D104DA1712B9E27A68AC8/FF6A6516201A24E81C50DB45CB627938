@@ -1,0 +1,436 @@
+﻿@model IEnumerable<GreenfieldLocalHubWebApp.Models.orderProducts>
+
+@{
+    ViewData["Title"] = "Order Details";
+    var firstItem = Model.FirstOrDefault();
+    var order = firstItem?.orders;
+
+    decimal subtotal = Model.Sum(item => (decimal)item.unitPrice * item.quantity);
+    decimal deliveryFee = (decimal)(order?.deliveryFee ?? 0f);
+
+    decimal expectedTotal = subtotal + deliveryFee;
+    decimal actualTotal = (decimal)(order?.totalAmount ?? 0f);
+    decimal loyaltyDiscount = expectedTotal > actualTotal ? expectedTotal - actualTotal : 0m;
+
+    decimal grandTotal = actualTotal > 0 ? actualTotal : expectedTotal;
+
+    int loyaltyPointsEarned = (int)(grandTotal * 10);
+}
+
+
+
+<style>
+    /* ── Order Detail page-specific styles ── */
+
+    .order-detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    /* Card wrapper */
+    .od-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 1.8rem;
+    }
+
+    .od-card-title {
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        color: var(--green-dark);
+        margin-bottom: 1.4rem;
+        padding-bottom: .9rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Info grid inside card */
+    .od-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .od-info-block {
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+    }
+
+    .od-info-label {
+        font-size: .7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .09em;
+        color: var(--text-muted);
+    }
+
+    .od-info-value {
+        font-size: .88rem;
+        font-weight: 500;
+        color: var(--text);
+    }
+
+    /* Delivery address block */
+    .od-address-block {
+        margin-top: 1.5rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+    }
+
+    .od-address {
+        font-style: normal;
+        font-size: .88rem;
+        line-height: 1.75;
+        color: var(--text);
+    }
+
+    /* Section headings */
+    .od-section-title {
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        color: var(--green-dark);
+    }
+
+    /* Products list */
+    .od-products-list {
+        border: 1px solid var(--border);
+        background: var(--white);
+    }
+
+    .od-product-row {
+        display: flex;
+        gap: 1.25rem;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        align-items: center;
+        transition: background .18s ease;
+    }
+
+        .od-product-row:last-child {
+            border-bottom: none;
+        }
+
+        .od-product-row:hover {
+            background: var(--off-white);
+        }
+
+    .od-product-thumb {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        border: 1px solid var(--border);
+        overflow: hidden;
+    }
+
+    .od-product-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .od-product-name {
+        font-size: .93rem;
+        font-weight: 600;
+        color: var(--text);
+        margin: .2rem 0 .4rem 0;
+        line-height: 1.3;
+    }
+
+    .od-product-meta {
+        font-size: .82rem;
+        color: var(--text-muted);
+    }
+
+    .od-product-total {
+        text-align: right;
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--green);
+        min-width: 90px;
+        flex-shrink: 0;
+    }
+
+    /* Summary sticky sidebar */
+    .od-summary-sticky {
+        position: sticky;
+        top: 100px;
+    }
+
+    .od-discount-row {
+        color: #1a6b40;
+        background: #eaf4ef;
+        margin: .2rem -.2rem;
+        padding: .5rem .2rem;
+        border-radius: 0;
+    }
+
+    .od-discount-amount {
+        font-weight: 600;
+        color: #1a6b40;
+    }
+
+    .od-summary-meta {
+        margin-top: 1.6rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--border);
+        font-size: .82rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        display: flex;
+        flex-direction: column;
+        gap: .15rem;
+    }
+
+    /* Loyalty block */
+    .od-loyalty-block {
+        background: var(--green-faint);
+        border: 1px solid rgba(27,77,63,.15);
+        padding: 1.3rem 1.4rem;
+        margin-top: 1.6rem;
+    }
+
+    .od-loyalty-points {
+        font-family: var(--font-serif);
+        font-size: 2.2rem;
+        color: #d4a97a;
+        margin: .35rem 0 .2rem 0;
+        line-height: 1;
+    }
+
+    /* ── Responsive ── */
+    @@media (max-width: 1080px) {
+        .order-detail-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .od-summary-sticky {
+            position: static;
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .od-info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .od-product-row {
+            flex-wrap: wrap;
+        }
+
+        .od-product-total {
+            min-width: auto;
+            width: 100%;
+            text-align: left;
+            padding-top: .4rem;
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="#" onclick="showPage('account')">My Account</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="#" onclick="showPage('account'); switchPanel(null, 'orders')">My Orders</a>
+            <span class="breadcrumb-sep">›</span>
+            <span aria-current="page">Order #@order?.ordersId</span>
+        </nav>
+        <span class="page-eyebrow">Order #@order?.ordersId</span>
+        <h1>Order Details</h1>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+
+        <div class="order-detail-grid">
+
+            <!-- ═══════════════ LEFT COLUMN ═══════════════ -->
+            <div>
+
+                <!-- Status Banner -->
+                <div class="alert alert-info" role="status" style="margin-bottom:2rem;">
+                    Placed on <strong>@order?.orderDate.ToString("dd MMMM yyyy")</strong> &nbsp;·&nbsp;
+                    Status:&nbsp;
+                    <span class="order-status @(order?.orderStatus?.ToLower() == "delivered" ? "delivered" : order?.orderStatus?.ToLower() == "processing" ? "processing" : "dispatched")">
+                        @order?.orderStatus
+                    </span>
+                </div>
+
+                <!-- ── Order Information ── -->
+                <div class="od-card" style="margin-bottom:2.5rem;">
+                    <h2 class="od-card-title">Order Information</h2>
+
+                    <div class="od-info-grid">
+                        <div class="od-info-block">
+                            <span class="od-info-label">Order Method</span>
+                            <span class="od-info-value">
+                                @(order?.delivery == true ? "Home Delivery" : order?.collection == true ? "Click &amp; Collect" : "Unknown")
+                            </span>
+                        </div>
+
+                        <div class="od-info-block">
+                            @if (order?.delivery == true && !string.IsNullOrEmpty(order.deliveryType))
+                            {
+                                <span class="od-info-label">Delivery Type</span>
+                                <span class="od-info-value">@order.deliveryType</span>
+                            }
+                            @if (order?.collection == true && order.orderCollectionDate.HasValue)
+                            {
+                                <span class="od-info-label">Collection Date</span>
+                                <span class="od-info-value">@order.orderCollectionDate.Value.ToString("dddd, dd MMMM yyyy")</span>
+                            }
+                        </div>
+                    </div>
+
+                    @if (order?.delivery == true)
+                    {
+                        <div class="od-address-block">
+                            <span class="od-info-label" style="display:block; margin-bottom:.6rem;">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:.3rem;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                                Delivery Address
+                            </span>
+                            <address class="od-address">
+                                @order.DeliveryStreet<br>
+                                @order.DeliveryCity<br>
+                                @order.DeliveryPostalCode<br>
+                                @order.DeliveryCountry
+                            </address>
+                        </div>
+                    }
+                </div>
+
+                <!-- ── Products ── -->
+                <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:1.2rem;">
+                    <h2 class="od-section-title">Products</h2>
+                    <span style="font-size:.78rem; color:var(--text-muted); font-weight:500;">@Model.Count() item@(Model.Count() != 1 ? "s" : "")</span>
+                </div>
+
+                <div class="od-products-list">
+                    @foreach (var item in Model)
+                    {
+                        decimal lineTotal = (decimal)item.unitPrice * item.quantity;
+
+                        <div class="od-product-row">
+                            <!-- Thumbnail -->
+                            <div class="od-product-thumb">
+                                @if (!string.IsNullOrEmpty(item.products?.productImage))
+                                {
+                                    <img src="@item.products.productImage"
+                                         alt="@item.products.productName"
+                                         style="width:100%; height:100%; object-fit:cover;">
+                                }
+                                else
+                                {
+                                    <div class="img-placeholder square" style="width:100%;height:100%;font-size:.65rem;">No Image</div>
+                                }
+                            </div>
+
+                            <!-- Info -->
+                            <div class="od-product-info">
+                                <p class="pc-producer">@(item.products?.producers?.producerName ?? "Local Producer")</p>
+                                <h3 class="od-product-name">@item.products?.productName</h3>
+                                <p class="od-product-meta">
+                                    @item.quantity &times; £@item.unitPrice.ToString("0.00")
+                                    @if (!string.IsNullOrEmpty(item.products?.productUnit))
+                                    {
+                                        <span style="text-transform:lowercase;">(@item.products.productUnit)</span>
+                                    }
+                                </p>
+                            </div>
+
+                            <!-- Line Total -->
+                            <div class="od-product-total">
+                                £@(item.products != null
+        ? ((decimal)item.products.productPrice * item.quantity).ToString("0.00")
+        : "0.00")
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+            <!-- ═══════════════ RIGHT COLUMN – Summary ═══════════════ -->
+            <div>
+                <div class="cart-summary od-summary-sticky">
+                    <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--green-dark); margin-bottom:1.6rem;">Order Summary</h3>
+
+                    <!-- Subtotal -->
+                    <div class="cart-summary-row">
+                        <span>Subtotal</span>
+                        <span>£@subtotal.ToString("0.00")</span>
+                    </div>
+
+                    <!-- Delivery Fee (only if delivery order) -->
+                    @if (order?.delivery == true)
+                    {
+                        <div class="cart-summary-row">
+                            <span>Delivery Fee</span>
+                            <span>£@deliveryFee.ToString("0.00")</span>
+                        </div>
+                    }
+
+                    <!-- Loyalty Discount (only if applied) -->
+                    @if (loyaltyDiscount > 0)
+                    {
+                        <div class="cart-summary-row od-discount-row">
+                            <span>
+                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:.25rem;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>
+                                Loyalty Discount
+                            </span>
+                            <span class="od-discount-amount">− £@loyaltyDiscount.ToString("0.00")</span>
+                        </div>
+                    }
+
+                    <!-- Grand Total -->
+                    <div class="cart-summary-row total" style="font-size:1.1rem; margin-top:1.2rem; padding-top:1.2rem; border-top:1.5px solid var(--border);">
+                        <span>Total Paid</span>
+                        <span>£@grandTotal.ToString("0.00")</span>
+                    </div>
+
+                    <!-- Meta -->
+                    <div class="od-summary-meta">
+                        <p><strong>Order Date:</strong> @order?.orderDate.ToString("dd MMM yyyy")</p>
+                        <p><strong>Payment:</strong> Credit / Debit Card</p>
+                    </div>
+
+                    <!-- Loyalty Points -->
+                    <div class="od-loyalty-block">
+                        <strong style="color:var(--green-dark); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em;">Loyalty Points Earned</strong>
+                        <p class="od-loyalty-points">+@loyaltyPointsEarned</p>
+                        <p style="font-size:.78rem; color:var(--text-muted);">Added to your loyalty account</p>
+                    </div>
+
+                    <!-- Action Button -->
+                    @if (order != null)
+                    {
+                        <form asp-controller="shoppingCarts"
+                              asp-action="Reorder"
+                              asp-route-orderId="@order.ordersId"
+                              method="post"
+                              style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit"
+                                    class="glh-btn glh-btn-ghost"
+                                    aria-label="Reorder items from order #@order.ordersId">
+                                Reorder
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back Link -->
+        <div style="margin-top:4rem; text-align:center;">
+            <a href="#" onclick="showPage('account'); switchPanel(null, 'orders')" class="btn btn-ghost">← Back to My Orders</a>
+        </div>
+
+    </div>
+</section>

@@ -540,12 +540,12 @@
             </div>
             <div class="footer-col">
                 <h4>Shop</h4>
-                <a asp-area="" asp-controller="products" asp-action="Index">All Products</a>
-                <a asp-area="" asp-controller="products" asp-action="Index">Fruit & Veg</a>
-                <a asp-area="" asp-controller="products" asp-action="Index">Dairy & Eggs</a>
-                <a asp-area="" asp-controller="products" asp-action="Index">Bread & Bakery</a>
-                <a asp-area="" asp-controller="products" asp-action="Index">Meat & Fish</a>
-                <a asp-area="" asp-controller="products" asp-action="Index">Honey & Preserves</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts">All Products</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="1">Fruit & Veg</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="2">Dairy & Eggs</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="3">Bread & Bakery</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="4">Meat & Fish</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="5">Honey & Preserves</a>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
@@ -560,6 +560,8 @@
                 <a asp-area="Identity" asp-page="/Account/Login">Sign in</a>
                 <a asp-area="" asp-controller="orders" asp-action="Index">My Orders</a>
                 <a asp-area="" asp-controller="loyaltyAccounts" asp-action="Index">Loyalty Rewards</a>
+                <a asp-area="" asp-controller="addresses" asp-action="Index">My Address Book</a>
+
             </div>
         </div>
         <div class="footer-bottom">

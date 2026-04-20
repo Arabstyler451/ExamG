@@ -1,5 +1,7 @@
 ﻿<style>
-    /* ─── DESIGN TOKENS ─── */
+    /* ============================================
+           1. DESIGN TOKENS (CSS Variables)
+           ============================================ */
     :root {
         --green: #1B4D3F;
         --green-light: #2a6b58;
@@ -25,7 +27,9 @@
         --transition: all .22s ease;
     }
 
-    /* ─── RESET ─── */
+    /* ============================================
+           2. BASE RESET & GLOBAL STYLES
+           ============================================ */
     *, *::before, *::after {
         box-sizing: border-box;
     }
@@ -41,13 +45,13 @@
         color: var(--text);
         min-height: 100vh;
         overflow-x: hidden;
-        /* Override Bootstrap body margin */
         margin: 0;
         padding: 0;
     }
 
     a {
         color: inherit;
+        text-decoration: none;
     }
 
     button {
@@ -55,7 +59,9 @@
         font-family: var(--font-sans);
     }
 
-    /* ─── SKIP LINK ─── */
+    /* ============================================
+           3. ACCESSIBILITY
+           ============================================ */
     .skip-link {
         position: absolute;
         top: -60px;
@@ -73,8 +79,50 @@
             top: 0;
         }
 
+    /* ============================================
+           4. PAGE HERO SECTION
+           ============================================ */
+    .page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 3rem 2rem 2.5rem;
+        margin-bottom: 50px;
+    }
 
-    /* ─── CONTACT ─── */
+    .page-hero-inner {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .page-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+        display: block;
+    }
+
+    .page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        color: var(--green-dark);
+        margin-bottom: 0.5rem;
+    }
+
+    .page-hero p {
+        color: var(--text-muted);
+        font-size: .95rem;
+        margin-top: .5rem;
+        max-width: 540px;
+        line-height: 1.65;
+    }
+
+    /* ============================================
+           5. CONTACT GRID & ITEMS
+           ============================================ */
     .contact-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -119,6 +167,80 @@
         color: var(--text-muted);
         line-height: 1.6;
     }
+
+    /* ============================================
+           6. FORM STYLES
+           ============================================ */
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+    }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+        }
+
+    .form-textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* ============================================
+           7. BUTTONS
+           ============================================ */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .75rem 1.75rem;
+        font-size: .875rem;
+        font-weight: 600;
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+    }
+
+    .btn-primary {
+        background: var(--green);
+        color: var(--white);
+    }
+
+        .btn-primary:hover {
+            background: var(--green-light);
+        }
 </style>
 
 
@@ -136,15 +258,33 @@
                 <div>
                     <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Send a Message</h2>
                     <div class="form-row">
-                        <div class="form-group"><label class="form-label" for="cf-fname">First Name</label><input type="text" id="cf-fname" class="form-input" placeholder="Adam" autocomplete="given-name"></div>
-                        <div class="form-group"><label class="form-label" for="cf-lname">Last Name</label><input type="text" id="cf-lname" class="form-input" placeholder="Mcarthy" autocomplete="family-name"></div>
+                        <div class="form-group">
+                            <label class="form-label" for="cf-fname">First Name</label>
+                            <input type="text" id="cf-fname" class="form-input" placeholder="First name" autocomplete="given-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="cf-lname">Last Name</label>
+                            <input type="text" id="cf-lname" class="form-input" placeholder="Last name" autocomplete="family-name">
+                        </div>
                     </div>
-                    <div class="form-group"><label class="form-label" for="cf-email">Email Address</label><input type="email" id="cf-email" class="form-input" placeholder="adam@example.ac.uk" autocomplete="email"></div>
+                    <div class="form-group">
+                        <label class="form-label" for="cf-email">Email Address</label>
+                        <input type="email" id="cf-email" class="form-input" placeholder="Email address" autocomplete="email">
+                    </div>
                     <div class="form-group">
                         <label class="form-label" for="cf-subject">Subject</label>
-                        <select id="cf-subject" class="form-select"><option>General Enquiry</option><option>Order Issue</option><option>Producer Membership</option><option>Press &amp; Media</option><option>Accessibility Support</option></select>
+                        <select id="cf-subject" class="form-select">
+                            <option>General Enquiry</option>
+                            <option>Order Issue</option>
+                            <option>Producer Membership</option>
+                            <option>Press &amp; Media</option>
+                            <option>Accessibility Support</option>
+                        </select>
                     </div>
-                    <div class="form-group"><label class="form-label" for="cf-msg">Message</label><textarea id="cf-msg" class="form-textarea" placeholder="Tell us how we can help..."></textarea></div>
+                    <div class="form-group">
+                        <label class="form-label" for="cf-msg">Message</label>
+                        <textarea id="cf-msg" class="form-textarea" placeholder="Tell us how we can help..."></textarea>
+                    </div>
                     <button class="btn btn-primary" onclick="showToast('Message sent. We will be in touch shortly.')">Send Message</button>
                 </div>
                 <div>
@@ -168,7 +308,6 @@
                     <div style="background:var(--brown-faint);border:1px solid rgba(124,92,62,.2);padding:1.4rem;margin-top:.5rem;">
                         <p style="font-size:.85rem;font-weight:600;color:var(--brown);margin-bottom:.4rem;">Interested in joining as a producer?</p>
                         <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;margin-bottom:.8rem;">Contact us via the form or call to discuss our cooperative membership and what it means for your business.</p>
-                        <button class="btn btn-brown btn-sm">Apply as a Producer</button>
                     </div>
                 </div>
             </div>
