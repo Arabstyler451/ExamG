@@ -1,5 +1,6 @@
 ﻿using GreenfieldLocalHubWebApp.Data;
 using GreenfieldLocalHubWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -120,6 +121,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: shoppingCarts/Details/5
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Details(int? id)
         {
             ViewBag.CartItemCount = await GetCartItemCount();
@@ -141,6 +143,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
 
         // GET: shoppingCarts/Create
+        [Authorize(Roles = "Admin, Developer")]
         public IActionResult Create()
         {
 
@@ -152,6 +155,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Create([Bind("shoppingCartId,UserId,shoppingCartCreatedAt,shoppingCartStatus")] shoppingCart shoppingCart)
         {
 
@@ -165,6 +169,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: shoppingCarts/Edit/5
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.CartItemCount = await GetCartItemCount();
@@ -187,6 +192,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Edit(int id, [Bind("shoppingCartId,UserId,shoppingCartCreatedAt,shoppingCartStatus")] shoppingCart shoppingCart)
         {
             if (id != shoppingCart.shoppingCartId)
@@ -218,6 +224,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: shoppingCarts/Delete/5
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -238,6 +245,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // POST: shoppingCarts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Developer")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var shoppingCart = await _context.shoppingCart.FindAsync(id);
