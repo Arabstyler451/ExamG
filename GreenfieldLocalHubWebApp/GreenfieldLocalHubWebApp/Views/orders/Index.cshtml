@@ -275,7 +275,7 @@
                        aria-label="View details for order #@item.ordersId">
                         Details
                     </a>
-                    <form asp-controller="ShoppingCart"
+                    <form asp-controller="shoppingCarts"
                           asp-action="Reorder"
                           asp-route-orderId="@item.ordersId"
                           method="post"

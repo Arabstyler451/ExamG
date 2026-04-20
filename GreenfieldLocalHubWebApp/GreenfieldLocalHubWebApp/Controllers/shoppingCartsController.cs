@@ -106,12 +106,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 loyaltyDiscount += 5f;
             }
 
-            // Permanent order count discount
-            var orderCount = await _context.orders.CountAsync(oc => oc.UserId == userId);
-            if (orderCount >= 5)
-            {
-                loyaltyDiscount += (float)(subTotalAmount * 0.10f);
-            }
+
 
             float total = subTotalAmount - loyaltyDiscount;
 
@@ -119,8 +114,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             ViewBag.subTotalAmount = subTotalAmount;
             ViewBag.loyaltyDiscount = loyaltyDiscount;
             ViewBag.total = total;
-            ViewBag.orderCount = orderCount;
-            ViewBag.ActiveOffers = activeOffers;   // now cleaned
+            ViewBag.ActiveOffers = activeOffers;
 
             return View(shoppingCartItems);
         }
@@ -262,11 +256,105 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
 
+        
+        //REORDER METHOD
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reorder(int orderId)
+        {
+            var orderItems = await _context.orderProducts
+                .Where(op => op.ordersId == orderId)
+                .ToListAsync();
+
+            if (!orderItems.Any())
+            {
+                TempData["Error"] = "No items found for this order.";
+                return RedirectToAction("Index", "Orders");
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var cart = await _context.shoppingCart
+                .FirstOrDefaultAsync(c => c.UserId == userId && c.shoppingCartStatus == true);
+
+            if (cart == null)
+            {
+                cart = new shoppingCart
+                {
+                    UserId = userId,
+                    shoppingCartStatus = true,
+                    shoppingCartCreatedAt = DateTime.Now
+                };
+
+                _context.shoppingCart.Add(cart);
+                await _context.SaveChangesAsync();
+            }
+
+            var productIds = orderItems.Select(i => i.productsId).ToList();
+
+            var products = await _context.products
+                .Where(p => productIds.Contains(p.productsId))
+                .ToDictionaryAsync(p => p.productsId);
+
+            var cartItems = await _context.shoppingCartItems
+                .Where(ci => ci.shoppingCartId == cart.shoppingCartId)
+                .ToListAsync();
+
+            var outOfStockItems = new List<string>();
+
+            foreach (var item in orderItems)
+            {
+                if (!products.TryGetValue(item.productsId, out var product) ||
+                    product.stockQuantity < item.quantity)
+                {
+                    outOfStockItems.Add(product?.productName ?? "Unknown product");
+                    continue;
+                }
+
+                var existingCartItem = cartItems
+                    .FirstOrDefault(ci => ci.productsId == item.productsId);
+
+                if (existingCartItem != null)
+                {
+                    var newQty = existingCartItem.quantity + item.quantity;
+                    existingCartItem.quantity = Math.Min(newQty, product.stockQuantity);
+                }
+                else
+                {
+                    _context.shoppingCartItems.Add(new shoppingCartItems
+                    {
+                        shoppingCartId = cart.shoppingCartId,
+                        productsId = item.productsId,
+                        quantity = item.quantity,
+                        unitPrice = item.unitPrice
+                    });
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            if (outOfStockItems.Any())
+            {
+                TempData["Warning"] = "Some items were out of stock: " + string.Join(", ", outOfStockItems);
+            }
+            else
+            {
+                TempData["Success"] = "Items added to your cart.";
+            }
+
+            return RedirectToAction("Index", "shoppingCarts");
+        }
+
+
 
         // Controller method to display amount of items in the shopping cart
         public async Task<int> GetCartItemCount()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Adjusted to use ClaimTypes.NameIdentifier
             if (userId == null) return 0;
 
             var shoppingCart = await _context.shoppingCart
