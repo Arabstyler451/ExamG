@@ -1778,3 +1778,4 @@ C:\Users\Digi-T-Y2-18\Documents\GitHub\ExamG\GreenfieldLocalHubWebApp\Greenfield
 C:\Users\Digi-T-Y2-18\Documents\GitHub\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.pdb
 C:\Users\Digi-T-Y2-18\Documents\GitHub\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\GreenfieldLocalHubWebApp.genruntimeconfig.cache
 C:\Users\Digi-T-Y2-18\Documents\GitHub\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\obj\Debug\net9.0\ref\GreenfieldLocalHubWebApp.dll
+C:\Users\Digi-T-Y2-18\Documents\GitHub\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
