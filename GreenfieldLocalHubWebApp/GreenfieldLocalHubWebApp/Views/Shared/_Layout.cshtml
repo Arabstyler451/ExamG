@@ -41,6 +41,63 @@
             --transition: all .22s ease;
         }
 
+        /* ─── DARK MODE (SOFT GREY THEME) ─── */
+        body.dark-mode {
+            /* Base backgrounds */
+            --white: #1e1e1e; /* main background */
+            --off-white: #252525; /* cards / sections */
+            /* Text */
+            --text: #f5f5f5;
+            --text-muted: #b5b5b5;
+            --text-light: #8a8a8a;
+            /* Borders */
+            --border: #2f2f2f;
+            --border-dark: #3a3a3a;
+            /* Keep brand identity (slightly brighter for dark UI) */
+            --green: #3f8f78;
+            --green-light: #5aa892;
+            --green-dark: #2c6b58;
+            --green-faint: #1f2e2a;
+            --brown: #a07a58;
+            --brown-light: #b08968;
+            --brown-faint: #2a2119;
+            /* Shadows (stronger for dark UI depth) */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,.5);
+            --shadow-sm: 0 2px 6px rgba(0,0,0,.6);
+            --shadow-md: 0 6px 18px rgba(0,0,0,.7);
+            --shadow-lg: 0 12px 36px rgba(0,0,0,.8);
+        }
+
+            body.dark-mode header {
+                background: var(--off-white);
+                border-bottom: 1px solid var(--border);
+            }
+
+            body.dark-mode .nav-links a {
+                color: var(--text-muted);
+            }
+
+                body.dark-mode .nav-links a:hover,
+                body.dark-mode .nav-links a.active {
+                    color: var(--green-light);
+                    border-bottom-color: var(--green-light);
+                }
+
+            body.dark-mode .nav-icon-btn {
+                border-color: var(--border);
+                color: var(--text-muted);
+            }
+
+                body.dark-mode .nav-icon-btn:hover {
+                    border-color: var(--green);
+                    color: var(--green-light);
+                }
+
+            body.dark-mode footer {
+                background: #151515;
+            }
+
+
         /* ─── RESET ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -407,9 +464,7 @@
             --text-muted: #333;
         }
 
-        body.large-text {
-            font-size: 18px;
-        }
+
 
         /* ─── RESPONSIVE ─── */
         @@media (max-width: 1080px) {
@@ -456,7 +511,11 @@
     <!-- ACCESSIBILITY BAR -->
     <div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
         <button class="a11y-btn" onclick="toggleHighContrast()">High Contrast</button>
-        <button class="a11y-btn" onclick="toggleLargeText()">Large Text</button>
+        <button class="a11y-btn" onclick="toggleDarkMode()">Dark Mode</button>
+        <button class="a11y-btn" onclick="toggleSpeech()" id="ttsBtn" aria-pressed="false">Read Page</button>
+        <button class="a11y-btn" onclick="changeTextSize(1)">A+</button>
+        <button class="a11y-btn" onclick="changeTextSize(-1)">A-</button>
+        <button class="a11y-btn" onclick="resetAccessibility()">Reset</button>
     </div>
 
     <!-- HEADER -->
@@ -544,7 +603,7 @@
                 <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="1">Fruit & Veg</a>
                 <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="2">Dairy & Eggs</a>
                 <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="3">Bread & Bakery</a>
-                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="4">Meat & Fish</a>
+                <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="4">Meat & Poultry</a>
                 <a asp-area="" asp-controller="products" asp-action="FilterProducts" asp-route-categoryId="5">Honey & Preserves</a>
             </div>
             <div class="footer-col">
@@ -581,55 +640,168 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-                function toggleHighContrast() {
-                    document.body.classList.toggle('high-contrast');
-                    showToast(document.body.classList.contains('high-contrast') ? 'High contrast enabled.' : 'High contrast disabled.');
-                }
-                function toggleLargeText() {
-                    document.body.classList.toggle('large-text');
-                    showToast(document.body.classList.contains('large-text') ? 'Large text enabled.' : 'Large text disabled.');
-                }
-                function toggleMobileNav(btn) {
-                    const nav = document.getElementById('mobile-nav');
-                    const open = nav.style.display === 'none' || nav.style.display === '';
-                    nav.style.display = open ? 'block' : 'none';
-                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-                }
-                function showToast(msg) {
-                    const t = document.getElementById('toast');
-                    t.textContent = msg;
-                    t.classList.add('show');
-                    setTimeout(() => t.classList.remove('show'), 3500);
-                }
 
-        // Highlight active nav link based on current path
+
+    <script>
+        /* =========================
+           ACCESSIBILITY STATE
+        ========================= */
+        let fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        let isSpeaking = false;
+        let utterance;
+
+        /* =========================
+           INIT (LOAD SAVED SETTINGS)
+        ========================= */
+        (function () {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+
+            applyFontSize();
+        })();
+
+        /* =========================
+           DARK MODE
+        ========================= */
+        function toggleDarkMode() {
+            const active = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', active);
+            showToast(active ? 'Dark mode enabled.' : 'Dark mode disabled.');
+        }
+
+        /* =========================
+           HIGH CONTRAST
+        ========================= */
+        function toggleHighContrast() {
+            const active = document.body.classList.toggle('high-contrast');
+            localStorage.setItem('highContrast', active);
+            showToast(active ? 'High contrast enabled.' : 'High contrast disabled.');
+        }
+
+        /* =========================
+           TEXT SIZE
+        ========================= */
+        function applyFontSize() {
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        function changeTextSize(delta) {
+            fontSize = Math.min(22, Math.max(14, fontSize + delta));
+            applyFontSize();
+            showToast('Text size: ' + fontSize + 'px');
+        }
+
+        /* =========================
+           TEXT TO SPEECH
+        ========================= */
+        function toggleSpeech() {
+            const btn = document.getElementById('ttsBtn');
+
+            if (isSpeaking) {
+                speechSynthesis.cancel();
+                isSpeaking = false;
+                btn.setAttribute('aria-pressed', 'false');
+                showToast('Speech stopped.');
+                return;
+            }
+
+            const text = getReadableText();
+
+            if (!text) {
+                showToast('No readable content found.');
+                return;
+            }
+
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-GB';
+            utterance.rate = 1;
+            utterance.pitch = 1;
+
+            utterance.onend = function () {
+                isSpeaking = false;
+                btn.setAttribute('aria-pressed', 'false');
+            };
+
+            speechSynthesis.speak(utterance);
+
+            isSpeaking = true;
+            btn.setAttribute('aria-pressed', 'true');
+            showToast('Reading page...');
+        }
+
+        function getReadableText() {
+            const main = document.getElementById('main-content');
+
+            if (!main) return document.body.innerText;
+
+            return main.innerText.replace(/\s+/g, ' ').trim();
+        }
+
+        /* =========================
+           RESET SETTINGS
+        ========================= */
+        function resetAccessibility() {
+            localStorage.clear();
+            speechSynthesis.cancel();
+            location.reload();
+        }
+
+        /* =========================
+           MOBILE NAV
+        ========================= */
+        function toggleMobileNav(btn) {
+            const nav = document.getElementById('mobile-nav');
+            const open = nav.style.display === 'block';
+
+            nav.style.display = open ? 'none' : 'block';
+            btn.setAttribute('aria-expanded', !open);
+
+            if (!open) {
+                nav.querySelector('a')?.focus();
+            }
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3500);
+        }
+
+        /* =========================
+           ACTIVE NAV LINK
+        ========================= */
         (function () {
             const currentPath = window.location.pathname.toLowerCase();
 
-            // Remove trailing slash for consistent comparison
             const normalizedPath = currentPath.endsWith('/') && currentPath !== '/'
                 ? currentPath.slice(0, -1)
                 : currentPath;
 
             document.querySelectorAll('.nav-links .nav-link').forEach(function (link) {
                 const href = link.getAttribute('href');
-                if (href && href !== '#') {
-                    let linkPath = href.toLowerCase().split('?')[0].split('#')[0]; // Remove query/hash
 
-                    // Handle relative paths (e.g., './about', '../contact')
+                if (href && href !== '#') {
+                    let linkPath = href.toLowerCase().split('?')[0].split('#')[0];
+
                     if (linkPath.startsWith('./')) linkPath = linkPath.slice(1);
                     if (linkPath.startsWith('../')) linkPath = linkPath.slice(2);
 
-                    // Normalize link path
                     let normalizedLink = linkPath.endsWith('/') && linkPath !== '/'
                         ? linkPath.slice(0, -1)
                         : linkPath;
 
-                    // If linkPath is empty, it's likely the home page
                     if (normalizedLink === '') normalizedLink = '/';
 
-                    // Exact match (home page or exact path)
                     if (normalizedPath === normalizedLink ||
                         (normalizedPath === '' && normalizedLink === '/') ||
                         (normalizedLink !== '/' && normalizedPath === normalizedLink)) {
