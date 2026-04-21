@@ -1,57 +1,408 @@
 ﻿@model GreenfieldLocalHubWebApp.Models.address
-
 @{
     ViewData["Title"] = "Add New Address";
 }
 
-<h1>Create</h1>
+<style>
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --brown-light: #9b7455;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --border-dark: #C8C8C8;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --text-light: #9A9A9A;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
 
-<h4>address</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="street" class="control-label"></label>
-                <input asp-for="street" class="form-control" />
-                <span asp-validation-for="street" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="city" class="control-label"></label>
-                <input asp-for="city" class="form-control" />
-                <span asp-validation-for="city" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="postalCode"></label>
-                <input asp-for="postalCode" class="form-control" placeholder="e.g., SW1A 1AA" />
-                <span asp-validation-for="postalCode" class="text-danger"></span>
-                <small class="form-text text-muted">Enter a valid UK post code</small>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="country"></label>
-                <select asp-for="country" class="form-control" required>
-                    <option value="">Select a country</option>
-                    <option value="England">England</option>
-                    <option value="Wales">Wales</option>
-                    <option value="Scotland">Scotland</option>
-                </select>
-                <span asp-validation-for="country" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    /* ── Page hero banner ── */
+    .addr-page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .addr-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+        font-family: var(--font-sans);
+    }
+
+    .addr-page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 600;
+        color: var(--green-dark);
+        margin-bottom: .5rem;
+    }
+
+    .addr-page-hero p {
+        color: var(--text-muted);
+        font-size: .9rem;
+        max-width: 520px;
+        line-height: 1.65;
+        font-family: var(--font-sans);
+    }
+
+    /* Breadcrumb */
+    .addr-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .78rem;
+        color: var(--text-light);
+        margin-bottom: .75rem;
+        font-family: var(--font-sans);
+    }
+
+        .addr-breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+            .addr-breadcrumb a:hover {
+                color: var(--green);
+            }
+
+    .addr-breadcrumb-sep {
+        color: var(--border-dark);
+    }
+
+    /* ── Form card ── */
+    .addr-form-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        padding: 2.5rem 2.8rem;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+        font-family: var(--font-sans);
+    }
+
+    .addr-form-section-label {
+        font-size: .7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        color: var(--text-muted);
+        margin-bottom: 1.4rem;
+        padding-bottom: .6rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Form groups ── */
+    .addr-form-group {
+        margin-bottom: 1.35rem;
+    }
+
+    .addr-form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+        font-family: var(--font-sans);
+    }
+
+        .addr-form-label .req {
+            color: var(--brown);
+            margin-left: .2rem;
+        }
+
+    .addr-input,
+    .addr-select {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+        border-radius: 0;
+    }
+
+        .addr-input:focus,
+        .addr-select:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+        }
+
+        .addr-input.input-valid {
+            border-color: #1a6b40;
+            background: #f6fbf8;
+        }
+
+        .addr-input.input-invalid {
+            border-color: #a0281e;
+            background: #fff8f8;
+        }
+
+    /* Custom select arrow */
+    .addr-select-wrap {
+        position: relative;
+    }
+
+        .addr-select-wrap::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid var(--text-muted);
+            pointer-events: none;
+        }
+
+    .addr-hint {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .35rem;
+        line-height: 1.5;
+    }
+
+    /* Validation feedback */
+    .addr-validation-summary {
+        background: #fde8e8;
+        color: #a0281e;
+        border-left: 3px solid #a0281e;
+        padding: .9rem 1.2rem;
+        font-size: .85rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .addr-field-error {
+        font-size: .78rem;
+        color: #a0281e;
+        margin-top: .3rem;
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
+    /* Postcode validation indicator */
+    .addr-postcode-status {
+        display: none;
+        font-size: .75rem;
+        margin-top: .35rem;
+        align-items: center;
+        gap: .35rem;
+        font-weight: 500;
+    }
+
+        .addr-postcode-status.checking {
+            display: flex;
+            color: var(--text-muted);
+        }
+
+        .addr-postcode-status.valid {
+            display: flex;
+            color: #1a6b40;
+        }
+
+        .addr-postcode-status.invalid {
+            display: flex;
+            color: #a0281e;
+        }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
+    }
+
+    /* ── Buttons ── */
+    .addr-btn-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+    }
+
+    .addr-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .75rem 2rem;
+        font-size: .875rem;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        letter-spacing: .02em;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        border-radius: 0;
+    }
+
+        .addr-btn-primary:hover {
+            background: var(--green-light);
+        }
+
+    .addr-back-link {
+        font-size: .85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-family: var(--font-sans);
+        transition: color .2s;
+        display: inline-flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
+        .addr-back-link:hover {
+            color: var(--green);
+        }
+
+    /* ── Two-column row for related fields ── */
+    .addr-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    @@media (max-width: 540px) {
+        .addr-form-card
+
+    {
+        padding: 1.8rem 1.4rem;
+    }
+
+    .addr-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    }
+</style>
+
+<!-- Page Hero -->
+<div class="addr-page-hero">
+    <div class="addr-breadcrumb">
+        <a asp-action="Index">Addresses</a>
+        <span class="addr-breadcrumb-sep">›</span>
+        <span>Add New Address</span>
     </div>
+    <p class="addr-eyebrow">Address Management</p>
+    <h1>Add New Address</h1>
+    <p>Enter the full delivery address details below. All fields are required and must be valid UK address information.</p>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<!-- Form Card -->
+<div class="addr-form-card">
+
+    <div asp-validation-summary="ModelOnly" class="addr-validation-summary"></div>
+
+    <p class="addr-form-section-label">Address Details</p>
+
+    <form asp-action="Create" novalidate>
+
+        <!-- Street -->
+        <div class="addr-form-group">
+            <label asp-for="street" class="addr-form-label">
+                Street Address <span class="req">*</span>
+            </label>
+            <input asp-for="street"
+                   class="addr-input"
+                   placeholder="e.g. 12 High Street"
+                   autocomplete="address-line1" />
+            <span asp-validation-for="street" class="addr-field-error"></span>
+        </div>
+
+        <!-- City -->
+        <div class="addr-form-group">
+            <label asp-for="city" class="addr-form-label">
+                City / Town <span class="req">*</span>
+            </label>
+            <input asp-for="city"
+                   class="addr-input"
+                   placeholder="e.g. Birmingham"
+                   autocomplete="address-level2" />
+            <span asp-validation-for="city" class="addr-field-error"></span>
+        </div>
+
+        <!-- Postcode + Country side-by-side -->
+        <div class="addr-form-row">
+
+            <!-- Postcode -->
+            <div class="addr-form-group">
+                <label asp-for="postalCode" class="addr-form-label">
+                    Post Code <span class="req">*</span>
+                </label>
+                <input asp-for="postalCode"
+                       id="postalCode"
+                       class="addr-input"
+                       placeholder="e.g. B1 1BB"
+                       autocomplete="postal-code"
+                       maxlength="8" />
+                <div id="postcodeStatus" class="addr-postcode-status" aria-live="polite">
+                    <span class="status-dot"></span>
+                    <span id="postcodeStatusText"></span>
+                </div>
+                <span asp-validation-for="postalCode" class="addr-field-error"></span>
+                <p class="addr-hint">Enter a valid UK post code.</p>
+            </div>
+
+            <!-- Country -->
+            <div class="addr-form-group">
+                <label asp-for="country" class="addr-form-label">
+                    Country <span class="req">*</span>
+                </label>
+                <div class="addr-select-wrap">
+                    <select asp-for="country" class="addr-select" required>
+                        <option value="">Select a country</option>
+                        <option value="England">England</option>
+                        <option value="Wales">Wales</option>
+                        <option value="Scotland">Scotland</option>
+                    </select>
+                </div>
+                <span asp-validation-for="country" class="addr-field-error"></span>
+            </div>
+
+        </div>
+
+        <!-- Actions -->
+        <div class="addr-btn-row">
+            <button type="submit" class="addr-btn-primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Save Address
+            </button>
+            <a asp-action="Index" class="addr-back-link">
+                ← Back to Addresses
+            </a>
+        </div>
+
+    </form>
 </div>
 
 @section Scripts {
@@ -60,41 +411,117 @@
     }
 
     <script>
-        // Real-time post code validation using postcode.io
-        document.addEventListener('DOMContentLoaded', function() {
-            const postCodeInput = document.getElementById('postalCode');
-            
-            if (postCodeInput) {
-                postCodeInput.addEventListener('blur', async function() {
-                    const postCode = this.value.replace(/\s/g, '').toUpperCase();
-                    
-                    if (postCode.length > 2) {
-                        try {
-                            const response = await fetch(`https://api.postcodes.io/postcodes/${postCode}/validate`);
-                            const data = await response.json();
-                            
-                            if (!data.result) {
-                                this.setCustomValidity('Please enter a valid UK post code');
-                                this.style.borderColor = '#dc3545';
-                                this.style.backgroundColor = '#fff8f8';
-                            } else {
-                                this.setCustomValidity('');
-                                this.style.borderColor = '#28a745';
-                                this.style.backgroundColor = '#f8fff8';
+        (function () {
+            'use strict';
+
+            /* ── Postcode real-time validation ── */
+            const postcodeInput = document.getElementById('postalCode');
+            const statusBox     = document.getElementById('postcodeStatus');
+            const statusText    = document.getElementById('postcodeStatusText');
+
+            function setPostcodeStatus(state, message) {
+                statusBox.className = 'addr-postcode-status ' + state;
+                statusText.textContent = message;
+            }
+
+            if (postcodeInput) {
+
+                postcodeInput.addEventListener('blur', async function () {
+                    const raw      = this.value.trim();
+                    const stripped = raw.replace(/\s+/g, '').toUpperCase();
+
+                    if (!stripped) return;
+
+                    /* Basic UK postcode format check before hitting the API */
+                    const ukPattern = /^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$/i;
+                    if (!ukPattern.test(stripped)) {
+                        setPostcodeStatus('invalid', 'Format does not look like a UK post code');
+                        this.classList.remove('input-valid');
+                        this.classList.add('input-invalid');
+                        this.setCustomValidity('Please enter a valid UK post code (e.g. B1 1BB).');
+                        return;
+                    }
+
+                    setPostcodeStatus('checking', 'Checking post code…');
+
+                    try {
+                        const res  = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(stripped)}/validate`);
+                        const data = await res.json();
+
+                        if (data.result) {
+                            setPostcodeStatus('valid', 'Valid UK post code');
+                            this.classList.remove('input-invalid');
+                            this.classList.add('input-valid');
+                            this.setCustomValidity('');
+
+                            /* Auto-format: insert space if missing (e.g. B11BB → B1 1BB) */
+                            if (!raw.includes(' ') && stripped.length >= 5) {
+                                const inward = stripped.slice(-3);
+                                const outward = stripped.slice(0, stripped.length - 3);
+                                this.value = outward + ' ' + inward;
                             }
-                        } catch (error) {
-                            console.error('Validation error:', error);
+                        } else {
+                            setPostcodeStatus('invalid', 'Post code not found — please check it');
+                            this.classList.remove('input-valid');
+                            this.classList.add('input-invalid');
+                            this.setCustomValidity('Post code not found in Royal Mail database.');
                         }
+                    } catch {
+                        /* If the API is unreachable, fall back silently — don't block submit */
+                        setPostcodeStatus('', '');
+                        this.classList.remove('input-valid', 'input-invalid');
+                        this.setCustomValidity('');
                     }
                 });
-                
-                // Reset styling when user starts typing
-                postCodeInput.addEventListener('input', function() {
+
+                /* Reset on new input */
+                postcodeInput.addEventListener('input', function () {
+                    statusBox.className = 'addr-postcode-status';
+                    this.classList.remove('input-valid', 'input-invalid');
                     this.setCustomValidity('');
-                    this.style.borderColor = '';
-                    this.style.backgroundColor = '';
                 });
             }
-        });
+
+            /* ── Street: letters, numbers, spaces, commas, hyphens only ── */
+            const streetInput = document.querySelector('input[name="street"]');
+            if (streetInput) {
+                streetInput.addEventListener('blur', function () {
+                    const val = this.value.trim();
+                    if (val && !/^[A-Za-z0-9 ,.\-']+$/.test(val)) {
+                        this.setCustomValidity('Street address contains invalid characters.');
+                        this.classList.add('input-invalid');
+                    } else {
+                        this.setCustomValidity('');
+                        this.classList.remove('input-invalid');
+                        if (val) this.classList.add('input-valid');
+                    }
+                });
+                streetInput.addEventListener('input', function () {
+                    this.setCustomValidity('');
+                    this.classList.remove('input-valid', 'input-invalid');
+                });
+            }
+
+            /* ── City: letters, spaces, hyphens only ── */
+            const cityInput = document.querySelector('input[name="city"]');
+            if (cityInput) {
+                cityInput.addEventListener('blur', function () {
+                    const val = this.value.trim();
+                    if (val && !/^[A-Za-z \-']+$/.test(val)) {
+                        this.setCustomValidity('City name should only contain letters.');
+                        this.classList.add('input-invalid');
+                    } else {
+                        this.setCustomValidity('');
+                        this.classList.remove('input-invalid');
+                        if (val) this.classList.add('input-valid');
+                    }
+                });
+                cityInput.addEventListener('input', function () {
+                    this.setCustomValidity('');
+                    this.classList.remove('input-valid', 'input-invalid');
+                });
+            }
+
+        })();
     </script>
 }

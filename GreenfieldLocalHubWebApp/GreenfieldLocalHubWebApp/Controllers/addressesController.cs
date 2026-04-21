@@ -49,6 +49,15 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 await _context.SaveChangesAsync();
             }
 
+            // Ensure there's at least one default address
+            if (addresses.Any() && !addresses.Any(a => a.IsDefault))
+            {
+                // If no address is marked as default, set the most recent as default
+                addresses[0].IsDefault = true;
+                _context.address.Update(addresses[0]);
+                await _context.SaveChangesAsync();
+            }
+
             return View(addresses);
         }
 
@@ -141,9 +150,18 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("addressId,UserId,street,city,postalCode,country")] address address)
+        public async Task<IActionResult> Edit(int id, [Bind("addressId,street,city,postalCode,country")] address address)
         {
             ViewBag.CartItemCount = await GetCartItemCount();
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            address.UserId = userId;
+            ModelState.Remove("UserId");
 
             if (id != address.addressId)
             {
@@ -193,6 +211,8 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(address);
         }
 
+
+
         // POST: addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -200,13 +220,63 @@ namespace GreenfieldLocalHubWebApp.Controllers
         {
             ViewBag.CartItemCount = await GetCartItemCount();
 
-            var address = await _context.address.FindAsync(id);
-            if (address != null)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
             {
-                _context.address.Remove(address);
+                return Unauthorized();
             }
 
-            await _context.SaveChangesAsync();
+            // Find the address with its related orders
+            var address = await _context.address
+                .Include(a => a.orders)
+                .FirstOrDefaultAsync(a => a.addressId == id && a.UserId == userId);
+
+            if (address == null)
+            {
+                return NotFound();
+            }
+
+            // Check if this address is used in any orders
+            var linkedOrders = address.orders?.Where(o => o.addressId == id).ToList();
+
+            if (linkedOrders != null && linkedOrders.Any())
+            {
+                // Break the foreign key relationship by setting addressId to null on all linked orders
+                foreach (var order in linkedOrders)
+                {
+                    order.addressId = null;
+                }
+
+                // Now it's safe to delete the address
+                _context.address.Remove(address);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = $"Address deleted successfully. It was used in {linkedOrders.Count} order(s), but those orders still have the address details saved.";
+            }
+            else
+            {
+                // No orders linked - safe to delete directly
+                _context.address.Remove(address);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Address deleted successfully.";
+            }
+
+            // If the deleted address was the default, set another address as default
+            if (address.IsDefault)
+            {
+                var newDefaultAddress = await _context.address
+                    .Where(a => a.UserId == userId && a.addressId != id)
+                    .OrderByDescending(a => a.createdDate)
+                    .FirstOrDefaultAsync();
+
+                if (newDefaultAddress != null)
+                {
+                    newDefaultAddress.IsDefault = true;
+                    await _context.SaveChangesAsync();
+                    TempData["Info"] = "Another address has been set as your default.";
+                }
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

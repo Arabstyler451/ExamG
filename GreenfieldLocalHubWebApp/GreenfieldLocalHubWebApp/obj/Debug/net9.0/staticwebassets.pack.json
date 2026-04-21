@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\about\\about.jpg",
+      "PackagePath": "staticwebassets\\images\\about\\about.jpg"
+    },
+    {
       "Id": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\producers\\greenacreFarm.jpg",
       "PackagePath": "staticwebassets\\images\\producers\\greenacreFarm.jpg"
     },

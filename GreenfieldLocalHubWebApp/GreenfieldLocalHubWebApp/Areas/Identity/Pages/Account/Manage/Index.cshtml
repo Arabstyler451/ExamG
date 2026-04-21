@@ -5,166 +5,598 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h3>@ViewData["Title"]</h3>
+<style>
+    :root {
+        --green: #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark: #122e25;
+        --green-faint: #f0f5f3;
+        --brown: #7C5C3E;
+        --brown-light: #9b7455;
+        --white: #FFFFFF;
+        --off-white: #F9F9F9;
+        --border: #E2E2E2;
+        --border-dark: #C8C8C8;
+        --text: #1A1A1A;
+        --text-muted: #6B6B6B;
+        --text-light: #9A9A9A;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'DM Sans', system-ui, sans-serif;
+        --transition: all .22s ease;
+    }
+
+    @@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+    /* ── Page hero ── */
+    .prof-page-hero {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 0rem 0rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .prof-eyebrow {
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--brown);
+        margin-bottom: .5rem;
+        font-family: var(--font-sans);
+        display: block;
+    }
+
+    .prof-page-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 600;
+        color: var(--green-dark);
+        margin-bottom: .45rem;
+    }
+
+    .prof-page-hero p {
+        color: var(--text-muted);
+        font-size: .9rem;
+        line-height: 1.65;
+        font-family: var(--font-sans);
+    }
+
+    /* ── Content wrapper — single column, constrained width ── */
+    .prof-content {
+        max-width: 680px;
+        font-family: var(--font-sans);
+        padding-bottom: 3rem;
+    }
+
+    /* ── Panel title ── */
+    .prof-panel-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        color: var(--green-dark);
+        margin-bottom: 1.4rem;
+    }
+
+    /* ── Info summary grid ── */
+    .prof-info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .prof-info-item {
+        background: var(--off-white);
+        padding: 1rem 1.2rem;
+        border: 1px solid var(--border);
+    }
+
+        .prof-info-item label {
+            font-size: .7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .prof-info-item p {
+            font-size: .9rem;
+            margin-top: .3rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+    /* Email confirmed badge inline */
+    .prof-email-confirmed {
+        display: inline-flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
+        .prof-email-confirmed .badge {
+            font-size: .65rem;
+            font-weight: 700;
+            background: #eaf4ef;
+            color: #1a6b40;
+            padding: .15rem .5rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+    /* ── Section sub-heading ── */
+    .prof-section-heading {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--green-dark);
+        margin-bottom: 1rem;
+        font-family: var(--font-sans);
+    }
+
+    .prof-section-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 2rem 0;
+    }
+
+    /* ── Form elements ── */
+    .prof-form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .prof-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .prof-form-label {
+        display: block;
+        font-size: .82rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .4rem;
+    }
+
+    .prof-input {
+        width: 100%;
+        padding: .75rem 1rem;
+        border: 1.5px solid var(--border);
+        font-family: var(--font-sans);
+        font-size: .875rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+        outline: none;
+        appearance: none;
+        border-radius: 0;
+    }
+
+        .prof-input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+        }
+
+        .prof-input:disabled {
+            background: var(--off-white);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            border-color: var(--border);
+        }
+
+    .prof-input-with-badge {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+    }
+
+        .prof-input-with-badge .prof-input {
+            flex: 1;
+        }
+
+    .prof-input-badge {
+        display: flex;
+        align-items: center;
+        padding: 0 .85rem;
+        background: #eaf4ef;
+        border: 1.5px solid #1a6b40;
+        border-left: none;
+        color: #1a6b40;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        white-space: nowrap;
+    }
+
+    .prof-hint {
+        font-size: .75rem;
+        color: var(--text-muted);
+        margin-top: .35rem;
+        line-height: 1.5;
+    }
+
+    .prof-field-error {
+        font-size: .78rem;
+        color: #a0281e;
+        margin-top: .3rem;
+        display: block;
+    }
+
+    .prof-validation-summary {
+        background: #fde8e8;
+        color: #a0281e;
+        border-left: 3px solid #a0281e;
+        padding: .9rem 1.2rem;
+        font-size: .85rem;
+        margin-bottom: 1.4rem;
+    }
+
+    /* Verify email link */
+    .prof-verify-link {
+        display: inline-block;
+        font-size: .78rem;
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: .4rem;
+        transition: color .2s;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: var(--font-sans);
+    }
+
+        .prof-verify-link:hover {
+            color: var(--green-light);
+            text-decoration: underline;
+        }
+
+    /* ── Alerts ── */
+    .prof-alert {
+        padding: .9rem 1.2rem;
+        font-size: .85rem;
+        margin-bottom: 1.4rem;
+        display: flex;
+        align-items: flex-start;
+        gap: .6rem;
+        border-left: 3px solid;
+        font-family: var(--font-sans);
+        line-height: 1.5;
+    }
+
+    .prof-alert-info {
+        background: #e8eef8;
+        color: #1a3a8f;
+        border-color: #1a3a8f;
+    }
+
+        .prof-alert-info a {
+            color: #1a3a8f;
+            font-weight: 600;
+        }
+
+    /* ── Buttons ── */
+    .prof-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .75rem 2rem;
+        font-size: .875rem;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        letter-spacing: .02em;
+        background: var(--green);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        border-radius: 0;
+    }
+
+        .prof-btn-primary:hover {
+            background: var(--green-light);
+        }
+
+        .prof-btn-primary:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+        }
+
+    /* ── Password strength meter ── */
+    .pw-strength-bar {
+        height: 4px;
+        background: var(--border);
+        margin-top: .5rem;
+        overflow: hidden;
+    }
+
+    .pw-strength-fill {
+        height: 100%;
+        width: 0;
+        transition: width .3s, background .3s;
+    }
+
+    .pw-strength-label {
+        font-size: .72rem;
+        color: var(--text-muted);
+        margin-top: .3rem;
+    }
+
+    @@media (max-width: 600px) {
+        .prof-info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .prof-form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .prof-content {
+            padding: 0 0 2rem;
+        }
+    }
+</style>
+
+<!-- Page Hero -->
+<div class="prof-page-hero">
+    <span class="prof-eyebrow">My Account</span>
+    <h1>@ViewData["Title"]</h1>
+    <p>Manage your profile information, email address, and password.</p>
+</div>
+
 <partial name="_StatusMessage" for="StatusMessage" />
 
-<div class="row">
-    <div class="col-md-6">
+<div class="prof-content">
 
-        <!-- ===================== -->
-        <!-- Profile Information   -->
-        <!-- ===================== -->
-        <h4 class="mt-4">Profile Information</h4>
-        <form id="profile-form" method="post" asp-page-handler="UpdateProfile">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <h2 class="prof-panel-title">My Profile</h2>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Username"
-                       class="form-control"
-                       placeholder="Please choose your username."
-                       disabled />
-                <label asp-for="Username" class="form-label"></label>
-            </div>
+    <!-- Read-only summary cards -->
+    <div class="prof-info-grid">
+        <div class="prof-info-item">
+            <label>Username</label>
+            <p>@Model.Username</p>
+        </div>
+        <div class="prof-info-item">
+            <label>Email</label>
+            <p>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <span class="prof-email-confirmed">
+                        @Model.Email
+                        <span class="badge">✓ Verified</span>
+                    </span>
+                }
+                else
+                {
+                    <span>@Model.Email <span style="color:#9a5a10;font-size:.72rem;font-weight:600;">Unverified</span></span>
+                }
+            </p>
+        </div>
+        <div class="prof-info-item">
+            <label>Phone Number</label>
+            <p>@(string.IsNullOrEmpty(Model.ProfileInput.PhoneNumber) ? "Not set" : Model.ProfileInput.PhoneNumber)</p>
+        </div>
+        <div class="prof-info-item">
+            <label>Account Status</label>
+            <p style="color:#1a6b40;">Active</p>
+        </div>
+    </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="ProfileInput.PhoneNumber"
-                       class="form-control"
-                       placeholder="Please enter your phone number." />
-                <label asp-for="ProfileInput.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="ProfileInput.PhoneNumber" class="text-danger"></span>
-            </div>
+    <!-- ══════════════════════════════════
+         SECTION 1 — Profile Information
+    ══════════════════════════════════ -->
+    <h3 class="prof-section-heading">Update Profile Details</h3>
 
-            <button id="update-profile-button"
-                    type="submit"
-                    class="w-100 btn btn-lg btn-primary">
-                Save
-            </button>
-        </form>
+    <form id="profile-form" method="post" asp-page-handler="UpdateProfile">
+        <div asp-validation-summary="ModelOnly" class="prof-validation-summary" role="alert"></div>
 
-        <hr class="my-5" />
+        <div class="prof-form-group">
+            <label class="prof-form-label">Username</label>
+            <input asp-for="Username" class="prof-input" disabled />
+            <p class="prof-hint">Your username cannot be changed.</p>
+        </div>
 
-        <!-- ===================== -->
-        <!-- Email Management      -->
-        <!-- ===================== -->
-        <h4>Manage Email</h4>
-        <form id="email-form" method="post">
-            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+        <div class="prof-form-group">
+            <label asp-for="ProfileInput.PhoneNumber" class="prof-form-label">Phone Number</label>
+            <input asp-for="ProfileInput.PhoneNumber"
+                   class="prof-input"
+                   placeholder="e.g. 07700 900 123"
+                   autocomplete="tel" />
+            <span asp-validation-for="ProfileInput.PhoneNumber" class="prof-field-error"></span>
+        </div>
 
+        <button id="update-profile-button" type="submit" class="prof-btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Save Changes
+        </button>
+    </form>
+
+    <hr class="prof-section-divider" />
+
+    <!-- ══════════════════════════════════
+         SECTION 2 — Email Management
+    ══════════════════════════════════ -->
+    <h3 class="prof-section-heading">Manage Email Address</h3>
+
+    <form id="email-form" method="post">
+        <div asp-validation-summary="All" class="prof-validation-summary" role="alert"></div>
+
+        <div class="prof-form-group">
+            <label asp-for="Email" class="prof-form-label">Current Email</label>
             @if (Model.IsEmailConfirmed)
             {
-                <div class="form-floating mb-3 input-group">
-                    <input asp-for="Email"
-                           class="form-control"
-                           placeholder="Please enter your email."
-                           disabled />
-                    <div class="input-group-append">
-                        <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
-                    </div>
-                    <label asp-for="Email" class="form-label"></label>
+                <div class="prof-input-with-badge">
+                    <input asp-for="Email" class="prof-input" disabled />
+                    <span class="prof-input-badge">✓ Verified</span>
                 </div>
             }
             else
             {
-                <div class="form-floating mb-3">
-                    <input asp-for="Email"
-                           class="form-control"
-                           placeholder="Please enter your email."
-                           disabled />
-                    <label asp-for="Email" class="form-label"></label>
-                    <button id="email-verification"
-                            type="submit"
-                            asp-page-handler="SendVerificationEmail"
-                            class="btn btn-link">
-                        Send verification email
-                    </button>
-                </div>
+                <input asp-for="Email" class="prof-input" disabled />
+                <button id="email-verification"
+                        type="submit"
+                        asp-page-handler="SendVerificationEmail"
+                        class="prof-verify-link">
+                    Resend verification email →
+                </button>
             }
+        </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="EmailInput.NewEmail"
-                       class="form-control"
-                       autocomplete="email"
+        <div class="prof-form-group">
+            <label asp-for="EmailInput.NewEmail" class="prof-form-label">New Email Address</label>
+            <input asp-for="EmailInput.NewEmail"
+                   class="prof-input"
+                   autocomplete="email"
+                   aria-required="true"
+                   placeholder="Enter your new email address" />
+            <span asp-validation-for="EmailInput.NewEmail" class="prof-field-error"></span>
+        </div>
+
+        <button id="change-email-button"
+                type="submit"
+                asp-page-handler="ChangeEmail"
+                class="prof-btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Update Email
+        </button>
+    </form>
+
+    <hr class="prof-section-divider" />
+
+    <!-- ══════════════════════════════════
+         SECTION 3 — Change Password
+    ══════════════════════════════════ -->
+    @if (Model.HasPassword)
+    {
+        <h3 class="prof-section-heading">Change Password</h3>
+
+        <form id="change-password-form" method="post" asp-page-handler="ChangePassword">
+            <div asp-validation-summary="ModelOnly" class="prof-validation-summary" role="alert"></div>
+
+            <div class="prof-form-group">
+                <label asp-for="ChangePasswordInput.OldPassword" class="prof-form-label">Current Password</label>
+                <input asp-for="ChangePasswordInput.OldPassword"
+                       class="prof-input"
+                       autocomplete="current-password"
                        aria-required="true"
-                       placeholder="Please enter new email." />
-                <label asp-for="EmailInput.NewEmail" class="form-label"></label>
-                <span asp-validation-for="EmailInput.NewEmail" class="text-danger"></span>
+                       placeholder="Enter your current password" />
+                <span asp-validation-for="ChangePasswordInput.OldPassword" class="prof-field-error"></span>
             </div>
 
-            <button id="change-email-button"
-                    type="submit"
-                    asp-page-handler="ChangeEmail"
-                    class="w-100 btn btn-lg btn-primary">
-                Change email
+            <div class="prof-form-row">
+                <div>
+                    <label asp-for="ChangePasswordInput.NewPassword" class="prof-form-label">New Password</label>
+                    <input asp-for="ChangePasswordInput.NewPassword"
+                           id="newPassword"
+                           class="prof-input"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Minimum 8 characters" />
+                    <div class="pw-strength-bar">
+                        <div class="pw-strength-fill" id="pwStrengthFill"></div>
+                    </div>
+                    <p class="pw-strength-label" id="pwStrengthLabel"></p>
+                    <span asp-validation-for="ChangePasswordInput.NewPassword" class="prof-field-error"></span>
+                </div>
+                <div>
+                    <label asp-for="ChangePasswordInput.ConfirmPassword" class="prof-form-label">Confirm New Password</label>
+                    <input asp-for="ChangePasswordInput.ConfirmPassword"
+                           id="confirmPassword"
+                           class="prof-input"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Repeat new password" />
+                    <span asp-validation-for="ChangePasswordInput.ConfirmPassword" class="prof-field-error"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="prof-btn-primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <rect x="3" y="11" width="18" height="11" rx="0" ry="0"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                Update Password
             </button>
         </form>
+    }
+    else
+    {
+        <div class="prof-alert prof-alert-info" role="status">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 style="flex-shrink:0;margin-top:.1rem;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>You do not have a password set. <a asp-page="./SetPassword">Click here to set one.</a></span>
+        </div>
+    }
 
-        <hr class="my-5" />
-
-        <!-- ===================== -->
-        <!-- Change Password       -->
-        <!-- ===================== -->
-        @if (Model.HasPassword)
-        {
-            <h4>Change Password</h4>
-            <form id="change-password-form"
-                  method="post"
-                  asp-page-handler="ChangePassword">
-                <div asp-validation-summary="ModelOnly"
-                     class="text-danger"
-                     role="alert"></div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="ChangePasswordInput.OldPassword"
-                           class="form-control"
-                           autocomplete="current-password"
-                           aria-required="true"
-                           placeholder="Please enter your old password." />
-                    <label asp-for="ChangePasswordInput.OldPassword"
-                           class="form-label"></label>
-                    <span asp-validation-for="ChangePasswordInput.OldPassword"
-                          class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="ChangePasswordInput.NewPassword"
-                           class="form-control"
-                           autocomplete="new-password"
-                           aria-required="true"
-                           placeholder="Please enter your new password." />
-                    <label asp-for="ChangePasswordInput.NewPassword"
-                           class="form-label"></label>
-                    <span asp-validation-for="ChangePasswordInput.NewPassword"
-                          class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="ChangePasswordInput.ConfirmPassword"
-                           class="form-control"
-                           autocomplete="new-password"
-                           aria-required="true"
-                           placeholder="Please confirm your new password." />
-                    <label asp-for="ChangePasswordInput.ConfirmPassword"
-                           class="form-label"></label>
-                    <span asp-validation-for="ChangePasswordInput.ConfirmPassword"
-                          class="text-danger"></span>
-                </div>
-
-                <button type="submit"
-                        class="w-100 btn btn-lg btn-primary">
-                    Update password
-                </button>
-            </form>
-        }
-        else
-        {
-            <div class="alert alert-info">
-                You do not have a password set.
-                <a asp-page="./SetPassword">Click here to set one.</a>
-            </div>
-        }
-    </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        (function () {
+            'use strict';
+
+            const newPwInput    = document.getElementById('newPassword');
+            const confirmInput  = document.getElementById('confirmPassword');
+            const strengthFill  = document.getElementById('pwStrengthFill');
+            const strengthLabel = document.getElementById('pwStrengthLabel');
+
+            if (!newPwInput || !strengthFill) return;
+
+            function scorePassword(pw) {
+                let score = 0;
+                if (pw.length >= 8)  score++;
+                if (pw.length >= 12) score++;
+                if (/[A-Z]/.test(pw)) score++;
+                if (/[0-9]/.test(pw)) score++;
+                if (/[^A-Za-z0-9]/.test(pw)) score++;
+                return score;
+            }
+
+            const levels = [
+                { label: '',            color: 'transparent', width: '0%'   },
+                { label: 'Very weak',   color: '#a0281e',     width: '20%'  },
+                { label: 'Weak',        color: '#c46b1a',     width: '40%'  },
+                { label: 'Fair',        color: '#9a5a10',     width: '60%'  },
+                { label: 'Strong',      color: '#1a6b40',     width: '80%'  },
+                { label: 'Very strong', color: '#1B4D3F',     width: '100%' },
+            ];
+
+            newPwInput.addEventListener('input', function () {
+                const score = this.value ? scorePassword(this.value) : 0;
+                const lvl   = levels[score] || levels[0];
+                strengthFill.style.width      = lvl.width;
+                strengthFill.style.background = lvl.color;
+                strengthLabel.textContent     = lvl.label;
+                strengthLabel.style.color     = lvl.color;
+            });
+
+            if (confirmInput) {
+                confirmInput.addEventListener('input', function () {
+                    if (this.value && newPwInput.value) {
+                        this.style.borderColor = this.value === newPwInput.value ? '#1a6b40' : '#a0281e';
+                    } else {
+                        this.style.borderColor = '';
+                    }
+                });
+            }
+        })();
+    </script>
 }

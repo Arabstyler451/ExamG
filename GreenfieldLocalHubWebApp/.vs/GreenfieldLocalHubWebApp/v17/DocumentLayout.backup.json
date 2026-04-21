@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|c:\\users\\digi-t-y2-18\\documents\\github\\examg\\greenfieldlocalhubwebapp\\greenfieldlocalhubwebapp\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D215B850-5925-4EBE-ADAE-BC3B32A424B1}|GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp.csproj|solutionrelative:greenfieldlocalhubwebapp\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ordersController.cs",
-              "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Controllers\\ordersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH4CAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T14:06:39.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Details.cshtml",
-              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Views\\orders\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Views\\orders\\Details.cshtml",
-              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Views\\orders\\Details.cshtml",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAgwMYAAAAhAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeDocumentMoniker": "GreenfieldLocalHubWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeToolTip": "GreenfieldLocalHubWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAEQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-20T13:39:51.511Z",
+              "WhenOpened": "2026-04-21T09:12:06.589Z",
               "EditorCaption": ""
             }
           ]
