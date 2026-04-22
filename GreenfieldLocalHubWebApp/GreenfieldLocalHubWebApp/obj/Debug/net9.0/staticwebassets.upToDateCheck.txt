@@ -73,10 +73,8 @@ wwwroot\images\products\countrySourdough.jpg
 wwwroot\images\products\coxApples.jpg
 wwwroot\images\products\freeRangeEggs.jpg
 wwwroot\images\products\grassFedBeefMince.jpg
-wwwroot\images\products\greenacreFarm.jpg
 wwwroot\images\products\heritageCarrots.jpg
 wwwroot\images\products\heritageTomatoes.jpg
-wwwroot\images\products\hillcrestDairy.jpg
 wwwroot\images\products\mixedSaladLeaves.jpg
 wwwroot\images\products\purpleSproutingBroccoli.jpg
 wwwroot\images\products\rawMilkCheddar.jpg

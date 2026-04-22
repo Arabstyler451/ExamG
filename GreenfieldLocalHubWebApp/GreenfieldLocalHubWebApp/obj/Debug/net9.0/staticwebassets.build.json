@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kTE/3QD452MhNLtQ/HxAaAHWbA/PE76A+MMcHATosDk=",
+  "Hash": "tS16FokEtEL1AJJIC53vtO8zKwGmJexN3wDIl4rNgLY=",
   "Source": "GreenfieldLocalHubWebApp",
   "BasePath": "_content/GreenfieldLocalHubWebApp",
   "Mode": "Default",
@@ -4301,27 +4301,6 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\grassFedBeefMince.jpg"
     },
     {
-      "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\greenacreFarm.jpg",
-      "SourceId": "GreenfieldLocalHubWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\",
-      "BasePath": "_content/GreenfieldLocalHubWebApp",
-      "RelativePath": "images/products/greenacreFarm#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "isr9l8qy0h",
-      "Integrity": "DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\greenacreFarm.jpg"
-    },
-    {
       "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\heritageCarrots.jpg",
       "SourceId": "GreenfieldLocalHubWebApp",
       "SourceType": "Discovered",
@@ -4362,27 +4341,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\heritageTomatoes.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\hillcrestDairy.jpg",
-      "SourceId": "GreenfieldLocalHubWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\",
-      "BasePath": "_content/GreenfieldLocalHubWebApp",
-      "RelativePath": "images/products/hillcrestDairy#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "40rrxbr83a",
-      "Integrity": "dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\hillcrestDairy.jpg"
     },
     {
       "Identity": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\mixedSaladLeaves.jpg",
@@ -6414,7 +6372,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6467,7 +6425,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6504,7 +6462,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6551,7 +6509,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6612,7 +6570,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6657,7 +6615,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6712,7 +6670,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6773,7 +6731,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6818,7 +6776,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6873,7 +6831,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6926,7 +6884,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6963,7 +6921,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16419,88 +16377,6 @@
       ]
     },
     {
-      "Route": "images/products/greenacreFarm.isr9l8qy0h.jpg",
-      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\greenacreFarm.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3573158"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "isr9l8qy0h"
-        },
-        {
-          "Name": "label",
-          "Value": "images/products/greenacreFarm.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU="
-        }
-      ]
-    },
-    {
-      "Route": "images/products/greenacreFarm.jpg",
-      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\greenacreFarm.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3573158"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU="
-        }
-      ]
-    },
-    {
       "Route": "images/products/heritageCarrots.010olt27ic.jpg",
       "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\heritageCarrots.jpg",
       "Selectors": [],
@@ -16661,88 +16537,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-1VhNfJ1NC39hY/i1IG+9eWNodv5DWZPhj8Oeixq19Ck="
-        }
-      ]
-    },
-    {
-      "Route": "images/products/hillcrestDairy.40rrxbr83a.jpg",
-      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\hillcrestDairy.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4728586"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "40rrxbr83a"
-        },
-        {
-          "Name": "label",
-          "Value": "images/products/hillcrestDairy.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo="
-        }
-      ]
-    },
-    {
-      "Route": "images/products/hillcrestDairy.jpg",
-      "AssetFile": "C:\\Users\\Digi-T-Y2-18\\Documents\\GitHub\\ExamG\\GreenfieldLocalHubWebApp\\GreenfieldLocalHubWebApp\\wwwroot\\images\\products\\hillcrestDairy.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4728586"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo="
         }
       ]
     },

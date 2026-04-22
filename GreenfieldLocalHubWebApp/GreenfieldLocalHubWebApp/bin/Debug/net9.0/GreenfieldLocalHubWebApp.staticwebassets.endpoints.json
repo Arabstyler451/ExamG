@@ -43,7 +43,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Vary",
@@ -92,7 +92,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         }
       ],
       "EndpointProperties": [
@@ -141,7 +141,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Vary",
@@ -204,7 +204,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Vary",
@@ -245,7 +245,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         }
       ],
       "EndpointProperties": [
@@ -286,7 +286,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 22 Apr 2026 11:32:48 GMT"
+          "Value": "Wed, 22 Apr 2026 14:40:18 GMT"
         },
         {
           "Name": "Vary",
@@ -10330,88 +10330,6 @@
       ]
     },
     {
-      "Route": "images/products/greenacreFarm.isr9l8qy0h.jpg",
-      "AssetFile": "images/products/greenacreFarm.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3573158"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "isr9l8qy0h"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU="
-        },
-        {
-          "Name": "label",
-          "Value": "images/products/greenacreFarm.jpg"
-        }
-      ]
-    },
-    {
-      "Route": "images/products/greenacreFarm.jpg",
-      "AssetFile": "images/products/greenacreFarm.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3573158"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-DpaZTMA4W1Tumb1ROcm4mhKsgC+qS86UbrQkVG6SWJU="
-        }
-      ]
-    },
-    {
       "Route": "images/products/heritageCarrots.010olt27ic.jpg",
       "AssetFile": "images/products/heritageCarrots.jpg",
       "Selectors": [],
@@ -10572,88 +10490,6 @@
         {
           "Name": "label",
           "Value": "images/products/heritageTomatoes.jpg"
-        }
-      ]
-    },
-    {
-      "Route": "images/products/hillcrestDairy.40rrxbr83a.jpg",
-      "AssetFile": "images/products/hillcrestDairy.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4728586"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "40rrxbr83a"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo="
-        },
-        {
-          "Name": "label",
-          "Value": "images/products/hillcrestDairy.jpg"
-        }
-      ]
-    },
-    {
-      "Route": "images/products/hillcrestDairy.jpg",
-      "AssetFile": "images/products/hillcrestDairy.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4728586"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 17 Apr 2026 07:59:43 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-dD4aqVWEjlNEG2X+JD23j8SQSsQfIzKbBJJo5bTWtIo="
         }
       ]
     },
