@@ -1,316 +1,271 @@
-﻿<style>
-    /* ============================================
-           1. DESIGN TOKENS (CSS Variables)
-           ============================================ */
+﻿@model GreenfieldLocalHubWebApp.ViewModels.contactEnquiryViewModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+    var producers = ViewBag.Producers as List<GreenfieldLocalHubWebApp.Models.producers>
+                    ?? new List<GreenfieldLocalHubWebApp.Models.producers>();
+    var success = TempData["ContactSuccess"] as string == "true";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
     :root {
-        --green: #1B4D3F;
+        --green:       #1B4D3F;
         --green-light: #2a6b58;
-        --green-dark: #122e25;
+        --green-dark:  #122e25;
         --green-faint: #f0f5f3;
-        --brown: #7C5C3E;
+        --brown:       #7C5C3E;
         --brown-light: #9b7455;
         --brown-faint: #f7f3ee;
-        --white: #FFFFFF;
-        --off-white: #F9F9F9;
-        --border: #E2E2E2;
-        --border-dark: #C8C8C8;
-        --text: #1A1A1A;
-        --text-muted: #6B6B6B;
-        --text-light: #9A9A9A;
-        --shadow-xs: 0 1px 3px rgba(0,0,0,.06);
-        --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
-        --shadow-md: 0 6px 20px rgba(0,0,0,.10);
-        --shadow-lg: 0 16px 48px rgba(0,0,0,.12);
-        --radius: 0px;
-        --font-serif: 'Playfair Display', Georgia, serif;
-        --font-sans: 'DM Sans', system-ui, sans-serif;
-        --transition: all .22s ease;
+        --white:       #FFFFFF;
+        --off-white:   #F9F9F9;
+        --border:      #E2E2E2;
+        --text:        #1A1A1A;
+        --text-muted:  #6B6B6B;
+        --text-light:  #9A9A9A;
+        --font-serif:  'Playfair Display', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+        --transition:  all .22s ease;
     }
 
-    /* ============================================
-           2. BASE RESET & GLOBAL STYLES
-           ============================================ */
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-        font-size: 16px;
-    }
-
-    body {
-        font-family: var(--font-sans);
-        background: var(--white);
-        color: var(--text);
-        min-height: 100vh;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
-    }
-
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    button {
-        cursor: pointer;
-        font-family: var(--font-sans);
-    }
-
-    /* ============================================
-           3. ACCESSIBILITY
-           ============================================ */
-    .skip-link {
-        position: absolute;
-        top: -60px;
-        left: 1rem;
-        background: var(--green);
-        color: var(--white);
-        padding: .5rem 1rem;
-        font-size: .85rem;
-        z-index: 9999;
-        transition: top .2s;
-        text-decoration: none;
-    }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-    /* ============================================
-           4. PAGE HERO SECTION
-           ============================================ */
     .page-hero {
         background: var(--white);
         border-bottom: 1px solid var(--border);
         padding: 3rem 2rem 2.5rem;
         margin-bottom: 50px;
     }
-
-    .page-hero-inner {
-        max-width: 1320px;
-        margin: 0 auto;
-    }
-
+    .page-hero-inner { max-width: 1320px; margin: 0 auto; }
     .page-eyebrow {
-        font-size: .72rem;
-        font-weight: 600;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        color: var(--brown);
-        margin-bottom: .5rem;
-        display: block;
+        font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+        text-transform: uppercase; color: var(--brown);
+        margin-bottom: .5rem; display: block;
     }
-
     .page-hero h1 {
         font-family: var(--font-serif);
         font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-        font-weight: 600;
-        color: var(--green-dark);
-        margin-bottom: 0.5rem;
+        font-weight: 600; color: var(--green-dark);
     }
+    .page-hero p { color: var(--text-muted); font-size: .95rem; max-width: 540px; line-height: 1.65; }
 
-    .page-hero p {
-        color: var(--text-muted);
-        font-size: .95rem;
-        margin-top: .5rem;
-        max-width: 540px;
-        line-height: 1.65;
-    }
+    .contact-wrap { max-width: 1320px; margin: 0 auto; padding: 0 2rem 4rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 
-    /* ============================================
-           5. CONTACT GRID & ITEMS
-           ============================================ */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-    }
-
-    .contact-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 1.6rem;
-    }
-
-    .contact-icon {
-        width: 44px;
-        height: 44px;
-        background: var(--green);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-        .contact-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: #fff;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-        }
-
-    .contact-text strong {
-        display: block;
-        font-size: .875rem;
-        font-weight: 600;
-        margin-bottom: .25rem;
-    }
-
-    .contact-text p {
-        font-size: .83rem;
-        color: var(--text-muted);
-        line-height: 1.6;
-    }
-
-    /* ============================================
-           6. FORM STYLES
-           ============================================ */
-    .form-group {
-        margin-bottom: 1.2rem;
-    }
-
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
     .form-label {
-        display: block;
-        font-size: .82rem;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: .4rem;
+        display: block; font-size: .82rem; font-weight: 600;
+        color: var(--text); margin-bottom: .4rem;
     }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-        width: 100%;
-        padding: .75rem 1rem;
+    .form-label .optional {
+        font-weight: 400; color: var(--text-muted); font-size: .75rem; margin-left: .3rem;
+    }
+    .form-input, .form-select, .form-textarea {
+        width: 100%; padding: .75rem 1rem;
         border: 1.5px solid var(--border);
-        font-family: var(--font-sans);
-        font-size: .875rem;
-        background: var(--white);
-        color: var(--text);
-        transition: var(--transition);
-        outline: none;
-        appearance: none;
+        font-family: var(--font-sans); font-size: .875rem;
+        background: var(--white); color: var(--text);
+        transition: var(--transition); outline: none; appearance: none;
     }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--green);
-            box-shadow: 0 0 0 3px rgba(27,77,63,.08);
-        }
-
-    .form-textarea {
-        min-height: 110px;
-        resize: vertical;
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
     }
+    .form-textarea { min-height: 110px; resize: vertical; }
+    .field-error { display: block; font-size: .75rem; color: #a0281e; margin-top: .3rem; }
 
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-
-    /* ============================================
-           7. BUTTONS
-           ============================================ */
     .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: .4rem;
-        padding: .75rem 1.75rem;
-        font-size: .875rem;
-        font-weight: 600;
-        border: none;
-        transition: var(--transition);
-        cursor: pointer;
-        letter-spacing: .02em;
-        font-family: var(--font-sans);
+        display: inline-flex; align-items: center; gap: .4rem;
+        padding: .75rem 1.75rem; font-size: .875rem; font-weight: 600;
+        border: none; cursor: pointer; letter-spacing: .02em;
+        font-family: var(--font-sans); transition: var(--transition);
+    }
+    .btn-primary { background: var(--green); color: var(--white); }
+    .btn-primary:hover { background: var(--green-light); }
+
+    .alert-success {
+        background: #eaf4ef; border-left: 3px solid #1a6b40;
+        color: #1a6b40; padding: .9rem 1.2rem;
+        font-size: .875rem; margin-bottom: 1.5rem; line-height: 1.55;
+    }
+    .alert-error {
+        background: #fde8e8; border-left: 3px solid #a0281e;
+        color: #a0281e; padding: .9rem 1.2rem;
+        font-size: .875rem; margin-bottom: 1.5rem;
     }
 
-    .btn-primary {
-        background: var(--green);
-        color: var(--white);
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
+    .contact-icon {
+        width: 44px; height: 44px; background: var(--green);
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .contact-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .contact-text strong { display: block; font-size: .875rem; font-weight: 600; margin-bottom: .25rem; }
+    .contact-text p { font-size: .83rem; color: var(--text-muted); line-height: 1.6; }
 
-        .btn-primary:hover {
-            background: var(--green-light);
-        }
+    @@media (max-width: 860px) {
+        .contact-grid { grid-template-columns: 1fr; }
+        .form-row { grid-template-columns: 1fr; }
+    }
 </style>
 
-
-<div class="page" id="page-contact">
-    <div class="page-hero">
-        <div class="page-hero-inner">
-            <span class="page-eyebrow">Get in Touch</span>
-            <h1>Contact Us</h1>
-            <p>We welcome enquiries from customers, producers, and anyone interested in what we do.</p>
-        </div>
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-eyebrow">Get in Touch</span>
+        <h1>Contact Us</h1>
+        <p>We welcome enquiries from customers, producers, and anyone interested in what we do.</p>
     </div>
-    <section class="section">
-        <div class="container">
-            <div class="contact-grid">
-                <div>
-                    <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Send a Message</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="cf-fname">First Name</label>
-                            <input type="text" id="cf-fname" class="form-input" placeholder="First name" autocomplete="given-name">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="cf-lname">Last Name</label>
-                            <input type="text" id="cf-lname" class="form-input" placeholder="Last name" autocomplete="family-name">
-                        </div>
+</div>
+
+<div class="contact-wrap">
+    <div class="contact-grid">
+
+        <!-- LEFT: FORM -->
+        <div>
+            <h2 style="font-family:var(--font-serif);font-size:1.4rem;
+                       color:var(--green-dark);margin-bottom:1.4rem;">
+                Send a Message
+            </h2>
+
+            @if (success)
+            {
+                <div class="alert-success" role="alert">
+                    ✓ Your message has been sent. We'll be in touch shortly.
+                </div>
+            }
+
+            <form asp-controller="Home" asp-action="Contact" method="post" novalidate>
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="alert-error"></div>
+
+                <!-- Name row -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label">First Name</label>
+                        <input asp-for="FirstName" class="form-input"
+                               placeholder="First name" autocomplete="given-name" />
+                        <span asp-validation-for="FirstName" class="field-error"></span>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="cf-email">Email Address</label>
-                        <input type="email" id="cf-email" class="form-input" placeholder="Email address" autocomplete="email">
+                        <label asp-for="LastName" class="form-label">Last Name</label>
+                        <input asp-for="LastName" class="form-input"
+                               placeholder="Last name" autocomplete="family-name" />
+                        <span asp-validation-for="LastName" class="field-error"></span>
                     </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">Email Address</label>
+                    <input asp-for="Email" type="email" class="form-input"
+                           placeholder="your@email.com" autocomplete="email" />
+                    <span asp-validation-for="Email" class="field-error"></span>
+                </div>
+
+                <!-- Subject + Producer row -->
+                <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label" for="cf-subject">Subject</label>
-                        <select id="cf-subject" class="form-select">
+                        <label asp-for="Subject" class="form-label">Subject</label>
+                        <select asp-for="Subject" class="form-select">
+                            <option value="">Select a subject</option>
                             <option>General Enquiry</option>
                             <option>Order Issue</option>
                             <option>Producer Membership</option>
                             <option>Press &amp; Media</option>
                             <option>Accessibility Support</option>
                         </select>
+                        <span asp-validation-for="Subject" class="field-error"></span>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="cf-msg">Message</label>
-                        <textarea id="cf-msg" class="form-textarea" placeholder="Tell us how we can help..."></textarea>
+                        <label asp-for="ProducerId" class="form-label">
+                            Producer
+                            <span class="optional">(optional)</span>
+                        </label>
+                        <select asp-for="ProducerId" class="form-select">
+                            <option value="">— No specific producer —</option>
+                            @foreach (var p in producers)
+                            {
+                                <option value="@p.producersId">@p.producerName</option>
+                            }
+                        </select>
                     </div>
-                    <button class="btn btn-primary" onclick="showToast('Message sent. We will be in touch shortly.')">Send Message</button>
                 </div>
-                <div>
-                    <h2 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--green-dark);margin-bottom:1.6rem;">Find Us</h2>
-                    <div class="contact-item">
-                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg></div>
-                        <div class="contact-text"><strong>Our Hub</strong><p>14 Market Square, Greenfield<br>Midshire, MK12 4AB</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></div>
-                        <div class="contact-text"><strong>Opening Hours</strong><p>Mon–Fri: 8am – 6pm<br>Sat: 8am – 4pm &nbsp; Sun: 10am – 2pm</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.96a16 16 0 006.26 6.26l1.32-1.32a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg></div>
-                        <div class="contact-text"><strong>Phone</strong><p>01234 567 890<br>Mon–Fri, 9am–5pm</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg></div>
-                        <div class="contact-text"><strong>Email</strong><p>greenfieldlocalhub@example.com</p></div>
-                    </div>
-                    <div style="background:var(--brown-faint);border:1px solid rgba(124,92,62,.2);padding:1.4rem;margin-top:.5rem;">
-                        <p style="font-size:.85rem;font-weight:600;color:var(--brown);margin-bottom:.4rem;">Interested in joining as a producer?</p>
-                        <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;margin-bottom:.8rem;">Contact us via the form or call to discuss our cooperative membership and what it means for your business.</p>
-                    </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label asp-for="Message" class="form-label">Message</label>
+                    <textarea asp-for="Message" class="form-textarea"
+                              placeholder="Tell us how we can help..."></textarea>
+                    <span asp-validation-for="Message" class="field-error"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+
+        <!-- RIGHT: FIND US -->
+        <div>
+            <h2 style="font-family:var(--font-serif);font-size:1.4rem;
+                       color:var(--green-dark);margin-bottom:1.6rem;">
+                Find Us
+            </h2>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-text">
+                    <strong>Our Hub</strong>
+                    <p>14 Market Square, Greenfield<br>Midshire, MK12 4AB</p>
                 </div>
             </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="contact-text">
+                    <strong>Opening Hours</strong>
+                    <p>Mon–Fri: 8am – 6pm<br>Sat: 8am – 4pm &nbsp; Sun: 10am – 2pm</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.96a16 16 0 006.26 6.26l1.32-1.32a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div class="contact-text">
+                    <strong>Phone</strong>
+                    <p>01234 567 890<br>Mon–Fri, 9am–5pm</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="contact-text">
+                    <strong>Email</strong>
+                    <p>greenfieldlocalhub@example.com</p>
+                </div>
+            </div>
+
+            <div style="background:var(--brown-faint);border:1px solid rgba(124,92,62,.2);
+                        padding:1.4rem;margin-top:.5rem;">
+                <p style="font-size:.85rem;font-weight:600;color:var(--brown);margin-bottom:.4rem;">
+                    Interested in joining as a producer?
+                </p>
+                <p style="font-size:.82rem;color:var(--text-muted);line-height:1.6;">
+                    Contact us via the form or call to discuss our cooperative membership
+                    and what it means for your business.
+                </p>
+            </div>
         </div>
-    </section>
+
+    </div>
 </div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

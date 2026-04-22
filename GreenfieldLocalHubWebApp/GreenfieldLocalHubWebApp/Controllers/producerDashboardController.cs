@@ -32,6 +32,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
 
             ViewBag.totalProducts = products.Count;
             ViewBag.lowStockProducts = products.Count(p => p.stockQuantity < 5);
+            ViewBag.totalStockUnits = products.Sum(p => p.stockQuantity);
             ViewBag.recentOrders = orders;
 
             return View(products);
