@@ -76,6 +76,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: producers/Edit/5
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,8 +97,18 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("producersId,UserId,producerName,producerEmail,producerPhone,producerDescription,producerLocation,producerImage")] producers producers)
+        [Authorize(Roles = "Producer, Admin, Developer")]
+        public async Task<IActionResult> Edit(int id, [Bind("producersId,producerName,producerEmail,producerPhone,producerDescription,producerLocation,producerImage")] producers producers)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            ModelState.Remove("UserId");
+
+
             if (id != producers.producersId)
             {
                 return NotFound();
@@ -127,6 +138,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         }
 
         // GET: producers/Delete/5
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +159,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
         // POST: producers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Producer, Admin, Developer")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var producers = await _context.producers.FindAsync(id);

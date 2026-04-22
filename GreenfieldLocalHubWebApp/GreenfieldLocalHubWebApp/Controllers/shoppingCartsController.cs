@@ -78,44 +78,60 @@ namespace GreenfieldLocalHubWebApp.Controllers
             // Remove any consumed offers that might still be in ActiveOffers (safety cleanup)
             activeOffers.RemoveAll(o => consumedOffers.Contains(o));
 
-            // === Calculate Loyalty Discounts ===
+            // === Calculate Loyalty Discount (only on user-selected PendingOffer) ===
             float loyaltyDiscount = 0f;
+            var pendingOffer = loyaltyAccount?.PendingOffer;
 
-            foreach (var item in shoppingCartItems)
+            // Guard: if the pending offer is no longer in ActiveOffers, clear it
+            if (!string.IsNullOrEmpty(pendingOffer) && !activeOffers.Contains(pendingOffer))
             {
-                var price = item.products.productPrice * item.quantity;
-
-                // 10% off Fruits & Vegetables
-                if (activeOffers.Contains("10% off Fruits & Vegetables") &&
-                    item.products.categories != null &&
-                    string.Equals(item.products.categories.categoryName?.Trim(), "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
-                {
-                    loyaltyDiscount += (float)(price * 0.10);
-                }
-
-                // Free Cheese
-                if (activeOffers.Contains("Free Cheese") &&
-                    item.products.productName?.Contains("Cheese", StringComparison.OrdinalIgnoreCase) == true)
-                {
-                    loyaltyDiscount += (float)price;
-                }
+                loyaltyAccount.PendingOffer = null;
+                pendingOffer = null;
+                _context.Update(loyaltyAccount);
+                await _context.SaveChangesAsync();
             }
 
-            // £5 Voucher
-            if (activeOffers.Contains("£5 Voucher") && subTotalAmount >= 20f)
+            if (!string.IsNullOrEmpty(pendingOffer))
             {
-                loyaltyDiscount += 5f;
+                switch (pendingOffer)
+                {
+                    case "10% off Fruits & Vegetables":
+                        foreach (var item in shoppingCartItems)
+                        {
+                            if (item.products.categories != null &&
+                                string.Equals(item.products.categories.categoryName?.Trim(),
+                                    "Fruit & Veg", StringComparison.OrdinalIgnoreCase))
+                            {
+                                loyaltyDiscount += item.products.productPrice * item.quantity * 0.10f;
+                            }
+                        }
+                        break;
+
+                    case "Free Cheese":
+                        foreach (var item in shoppingCartItems)
+                        {
+                            if (item.products.productName?.Contains("Cheese",
+                                    StringComparison.OrdinalIgnoreCase) == true)
+                            {
+                                loyaltyDiscount += item.products.productPrice * item.quantity;
+                            }
+                        }
+                        break;
+
+                    case "£5 Voucher":
+                        if (subTotalAmount >= 20f)
+                            loyaltyDiscount += 5f;
+                        break;
+                }
             }
-
-
 
             float total = subTotalAmount - loyaltyDiscount;
 
-            // Pass data to view
             ViewBag.subTotalAmount = subTotalAmount;
             ViewBag.loyaltyDiscount = loyaltyDiscount;
             ViewBag.total = total;
             ViewBag.ActiveOffers = activeOffers;
+            ViewBag.PendingOffer = pendingOffer;
 
             return View(shoppingCartItems);
         }
@@ -357,6 +373,34 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return RedirectToAction("Index", "shoppingCarts");
         }
 
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApplyOffer(string selectedOffer)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return Unauthorized();
+
+            var loyaltyAccount = await _context.loyaltyAccount
+                .FirstOrDefaultAsync(l => l.UserId == userId);
+
+            if (loyaltyAccount == null) return NotFound();
+
+            // Validate the chosen offer is genuinely active before accepting it
+            var activeOffers = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
+                ? new List<string>()
+                : loyaltyAccount.ActiveOffers.Split(',').Select(s => s.Trim()).ToList();
+
+            loyaltyAccount.PendingOffer = (selectedOffer == "none" || !activeOffers.Contains(selectedOffer))
+                ? null
+                : selectedOffer;
+
+            _context.Update(loyaltyAccount);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
 
 
         // Controller method to display amount of items in the shopping cart

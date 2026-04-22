@@ -159,62 +159,15 @@ namespace GreenfieldLocalHubWebApp.Controllers
             _context.Update(loyaltyAccount);
             await _context.SaveChangesAsync();
 
-            // Grant tier-based offers if tier improved
-            if (oldTier != loyaltyAccount.loyaltyTier)
-            {
-                await GrantTierOffers(userId, loyaltyAccount.loyaltyTier);
-            }
 
             TempData["Success"] = $"Successfully redeemed {offerTitle}! {pointsCost} points deducted.";
             return RedirectToAction(nameof(Index));
         }
 
 
-        // Add this method to your loyaltyAccountsController
-        private async Task GrantTierOffers(string userId, string newTier)
-        {
-            var loyaltyAccount = await _context.loyaltyAccount
-                .FirstOrDefaultAsync(l => l.UserId == userId);
-
-            if (loyaltyAccount == null) return;
-
-            var currentActiveOffers = string.IsNullOrEmpty(loyaltyAccount.ActiveOffers)
-                ? new List<string>()
-                : loyaltyAccount.ActiveOffers.Split(',').ToList();
-
-            bool changed = false;
-
-            // Grant offers based on tier (only if not already active)
-            if (newTier == "Silver" && !currentActiveOffers.Contains("10% off Fruits & Vegetables"))
-            {
-                currentActiveOffers.Add("10% off Fruits & Vegetables");
-                changed = true;
-            }
-            else if (newTier == "Gold" && !currentActiveOffers.Contains("Free Cheese"))
-            {
-                currentActiveOffers.Add("Free Cheese");
-                changed = true;
-            }
-            else if (newTier == "Platinum" && !currentActiveOffers.Contains("£5 Voucher"))
-            {
-                currentActiveOffers.Add("£5 Voucher");
-                changed = true;
-            }
-
-            if (changed)
-            {
-                loyaltyAccount.ActiveOffers = string.Join(",", currentActiveOffers);
-                _context.Update(loyaltyAccount);
-                await _context.SaveChangesAsync();
-            }
-        }
 
 
 
-
-
-
-        // ===================== NEW HELPER =====================
         // Call this AFTER a successful order is placed if a loyalty offer was used
         public async Task ConsumeActiveOfferAsync(string userId, string offerTitle, int orderId)
         {

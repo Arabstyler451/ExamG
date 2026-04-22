@@ -669,12 +669,13 @@
         {
             <!-- Pass clean values to JS (only once) -->
             <script id="checkout-data">
-                window.checkoutData = {
-                    subtotalBefore: @(((decimal)(ViewBag.SubtotalBeforeDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
-                    loyaltyDiscount: @(((decimal)(ViewBag.LoyaltyDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
-                    discountedSubtotal: @(((decimal)ViewBag.CartTotal).ToString(System.Globalization.CultureInfo.InvariantCulture)),
-                    freeDeliveryThreshold: 30.00
-                };
+window.checkoutData = {
+    subtotalBefore: @(((decimal)(ViewBag.SubtotalBeforeDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    loyaltyDiscount: @(((decimal)(ViewBag.LoyaltyDiscount ?? 0m)).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    discountedSubtotal: @(((decimal)ViewBag.CartTotal).ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    freeDeliveryThreshold: 30.00,
+    hasFreeDelivery: @((ViewBag.HasFreeDelivery == true).ToString().ToLower())
+};
             </script>
 
             <div id="summary-rows">
@@ -915,13 +916,15 @@
             }
         }
 
-        function updateTotals(isDelivery) {
-            let deliveryFee = 0;
-            if (isDelivery && deliveryTypeSelect?.value) {
-                deliveryFee = discountedSubtotal >= CFG.freeDeliveryThreshold
-                    ? 0
-                    : (CFG.deliveryFees[deliveryTypeSelect.value] ?? CFG.defaultDeliveryFee);
-            }
+const hasFreeDelivery = window.checkoutData?.hasFreeDelivery === true;
+
+function updateTotals(isDelivery) {
+    let deliveryFee = 0;
+    if (isDelivery && deliveryTypeSelect?.value) {
+        deliveryFee = hasFreeDelivery || discountedSubtotal >= CFG.freeDeliveryThreshold
+            ? 0
+            : (CFG.deliveryFees[deliveryTypeSelect.value] ?? CFG.defaultDeliveryFee);
+    }
 
             const grandTotal = discountedSubtotal + deliveryFee;
 
