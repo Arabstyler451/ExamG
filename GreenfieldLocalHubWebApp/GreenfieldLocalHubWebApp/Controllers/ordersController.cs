@@ -193,11 +193,11 @@ namespace GreenfieldLocalHubWebApp.Controllers
                 if (string.IsNullOrWhiteSpace(orders.deliveryType))
                     ModelState.AddModelError("deliveryType", "Please select a delivery type.");
 
-                // ✅ ADD THIS VALIDATION - Check if address is selected
+                //Check if address is selected
                 if (!orders.addressId.HasValue || orders.addressId.Value <= 0)
                     ModelState.AddModelError("addressId", "Please select a delivery address.");
 
-                // ✅ Also verify the address belongs to the user
+                //Also verify the address belongs to the user
                 if (orders.addressId.HasValue)
                 {
                     var addressExists = await _context.address
