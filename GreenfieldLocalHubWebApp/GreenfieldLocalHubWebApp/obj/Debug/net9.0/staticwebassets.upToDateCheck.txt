@@ -1,5 +1,6 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\about\about.jpg
 wwwroot\images\producers\greenacreFarm.jpg
 wwwroot\images\producers\hillcrestDairy.jpg
 wwwroot\images\producers\meadowApiary.jpg
@@ -81,7 +82,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\images\about\about.jpg
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\LICENSE.txt
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\dist\jquery.slim.min.map
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\jquery\dist\jquery.slim.min.js
