@@ -1,0 +1,254 @@
+﻿/* ── Design tokens ── */
+.glh-orders-root {
+    --green: #1B4D3F;
+    --green-light: #2a6b58;
+    --green-dark: #122e25;
+    --green-faint: #f0f5f3;
+    --brown: #7C5C3E;
+    --white: #FFFFFF;
+    --off-white: #F9F9F9;
+    --border: #E2E2E2;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --text-light: #9A9A9A;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --transition: all .22s ease;
+    font-family: var(--font-sans);
+    color: var(--text);
+}
+
+/* ── Page title ── */
+.glh-panel-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 1.4rem;
+}
+
+/* ── Empty state ── */
+.glh-empty {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: .9rem;
+    line-height: 1.7;
+}
+
+    .glh-empty a {
+        color: var(--green);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .glh-empty a:hover {
+            text-decoration: underline;
+        }
+
+/* ── Alert banner ── */
+.glh-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    padding: .9rem 1.2rem;
+    font-size: .85rem;
+    margin-bottom: 1.2rem;
+    border-left: 3px solid;
+    line-height: 1.55;
+}
+
+.glh-alert-info {
+    background: #e8eef8;
+    color: #1a3a8f;
+    border-color: #1a3a8f;
+}
+
+.glh-alert-success {
+    background: #eaf4ef;
+    color: #1a6b40;
+    border-color: #1a6b40;
+}
+
+.glh-alert-warning {
+    background: #fdf3e7;
+    color: #9a5a10;
+    border-color: #9a5a10;
+}
+
+/* ── Order row ── */
+.glh-order-row {
+    display: grid;
+    grid-template-columns: 160px 1fr auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.1rem 1.4rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin-bottom: .6rem;
+    font-size: .875rem;
+    transition: var(--transition);
+}
+
+    .glh-order-row:hover {
+        border-color: #c8c8c8;
+        box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+.glh-order-id {
+    font-weight: 700;
+    font-size: .875rem;
+    color: var(--green-dark);
+}
+
+.glh-order-date {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-top: .15rem;
+}
+
+.glh-order-meta {
+    font-size: .83rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+    .glh-order-meta strong {
+        display: block;
+        color: var(--text);
+        font-weight: 600;
+        font-size: .875rem;
+        margin-bottom: .15rem;
+    }
+
+/* ── Status badges ── */
+.glh-order-status {
+    padding: .25rem .7rem;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.glh-status-delivered {
+    background: #eaf4ef;
+    color: #1a6b40;
+}
+
+.glh-status-processing {
+    background: #fdf3e7;
+    color: #9a5a10;
+}
+
+.glh-status-dispatched {
+    background: #e8eef8;
+    color: #1a3a8f;
+}
+
+.glh-status-cancelled {
+    background: #fde8e8;
+    color: #a0281e;
+}
+
+.glh-status-pending {
+    background: #f5f5f5;
+    color: #555;
+}
+
+/* ── Button group ── */
+.glh-order-actions {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* ── Buttons ── */
+.glh-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .45rem 1rem;
+    font-size: .8rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .02em;
+    font-family: var(--font-sans);
+    transition: var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 0;
+}
+
+.glh-btn-outline {
+    background: transparent;
+    color: var(--green);
+    border: 1.5px solid var(--green);
+}
+
+    .glh-btn-outline:hover {
+        background: var(--green);
+        color: #fff;
+    }
+
+.glh-btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+}
+
+    .glh-btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+    }
+
+.glh-btn-primary {
+    background: var(--green);
+    color: #fff;
+    border: 1.5px solid var(--green);
+}
+
+    .glh-btn-primary:hover {
+        background: var(--green-light);
+        border-color: var(--green-light);
+        color: #fff;
+    }
+
+/* ── Delivery type chip ── */
+.glh-delivery-chip {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 600;
+    padding: .18rem .55rem;
+    background: var(--green-faint);
+    color: var(--green-dark);
+    letter-spacing: .04em;
+    margin-top: .25rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .glh-order-row {
+        grid-template-columns: 1fr 1fr;
+        gap: .75rem;
+    }
+
+    .glh-order-meta {
+        grid-column: 1 / -1;
+    }
+
+    .glh-order-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .glh-order-row {
+        grid-template-columns: 1fr;
+    }
+}
+

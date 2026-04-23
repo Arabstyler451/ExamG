@@ -1,0 +1,315 @@
+﻿:root {
+    --green: #1B4D3F;
+    --green-light: #2a6b58;
+    --green-dark: #122e25;
+    --green-faint: #f0f5f3;
+    --brown: #7C5C3E;
+    --brown-light: #9b7455;
+    --white: #FFFFFF;
+    --off-white: #F9F9F9;
+    --border: #E2E2E2;
+    --border-dark: #C8C8C8;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --text-light: #9A9A9A;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+    --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --transition: all .22s ease;
+}
+
+/* ── Page hero banner ── */
+.addr-page-hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.addr-eyebrow {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: .5rem;
+    font-family: var(--font-sans);
+}
+
+.addr-page-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: .5rem;
+}
+
+.addr-page-hero p {
+    color: var(--text-muted);
+    font-size: .9rem;
+    max-width: 520px;
+    line-height: 1.65;
+    font-family: var(--font-sans);
+}
+
+/* Breadcrumb */
+.addr-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--text-light);
+    margin-bottom: .75rem;
+    font-family: var(--font-sans);
+}
+
+    .addr-breadcrumb a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color .2s;
+    }
+
+        .addr-breadcrumb a:hover {
+            color: var(--green);
+        }
+
+.addr-breadcrumb-sep {
+    color: var(--border-dark);
+}
+
+/* ── Change indicator banner ── */
+.addr-edit-notice {
+    background: var(--green-faint);
+    border: 1px solid rgba(27,77,63,.15);
+    border-left: 3px solid var(--green);
+    padding: .9rem 1.2rem;
+    font-size: .83rem;
+    color: var(--green-dark);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--font-sans);
+    line-height: 1.5;
+}
+
+    .addr-edit-notice svg {
+        flex-shrink: 0;
+        stroke: var(--green);
+    }
+
+/* ── Form card ── */
+.addr-form-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 2.5rem 2.8rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-family: var(--font-sans);
+}
+
+.addr-form-section-label {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ── Form groups ── */
+.addr-form-group {
+    margin-bottom: 1.35rem;
+}
+
+.addr-form-label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .4rem;
+    font-family: var(--font-sans);
+}
+
+    .addr-form-label .req {
+        color: var(--brown);
+        margin-left: .2rem;
+    }
+
+.addr-input,
+.addr-select {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1.5px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    background: var(--white);
+    color: var(--text);
+    transition: var(--transition);
+    outline: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+    .addr-input:focus,
+    .addr-select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+
+    .addr-input.input-valid {
+        border-color: #1a6b40;
+        background: #f6fbf8;
+    }
+
+    .addr-input.input-invalid {
+        border-color: #a0281e;
+        background: #fff8f8;
+    }
+
+/* Custom select arrow */
+.addr-select-wrap {
+    position: relative;
+}
+
+    .addr-select-wrap::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid var(--text-muted);
+        pointer-events: none;
+    }
+
+.addr-hint {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-top: .35rem;
+    line-height: 1.5;
+}
+
+/* Validation feedback */
+.addr-validation-summary {
+    background: #fde8e8;
+    color: #a0281e;
+    border-left: 3px solid #a0281e;
+    padding: .9rem 1.2rem;
+    font-size: .85rem;
+    margin-bottom: 1.6rem;
+}
+
+.addr-field-error {
+    font-size: .78rem;
+    color: #a0281e;
+    margin-top: .3rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+/* Postcode validation indicator */
+.addr-postcode-status {
+    display: none;
+    font-size: .75rem;
+    margin-top: .35rem;
+    align-items: center;
+    gap: .35rem;
+    font-weight: 500;
+}
+
+    .addr-postcode-status.checking {
+        display: flex;
+        color: var(--text-muted);
+    }
+
+    .addr-postcode-status.valid {
+        display: flex;
+        color: #1a6b40;
+    }
+
+    .addr-postcode-status.invalid {
+        display: flex;
+        color: #a0281e;
+    }
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+/* ── Two-column row for related fields ── */
+.addr-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* ── Buttons ── */
+.addr-btn-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.addr-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .75rem 2rem;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    letter-spacing: .02em;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 0;
+}
+
+    .addr-btn-primary:hover {
+        background: var(--green-light);
+    }
+
+.addr-back-link {
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    transition: color .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+    .addr-back-link:hover {
+        color: var(--green);
+    }
+
+@media (max-width: 540px) {
+    .addr-form-card {
+        padding: 1.8rem 1.4rem;
+    }
+
+    .addr-form-row {
+        grid-template-columns: 1fr;
+    }
+}

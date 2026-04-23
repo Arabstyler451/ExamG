@@ -1,0 +1,364 @@
+﻿
+/* GLOBAL RESET & VARIABLES */
+:root {
+    --green: #1B4D3F;
+    --green-light: #2a6b58;
+    --green-dark: #122e25;
+    --green-faint: #f0f5f3;
+    --brown: #7C5C3E;
+    --brown-light: #9b7455;
+    --brown-faint: #f7f3ee;
+    --white: #FFFFFF;
+    --off-white: #F9F9F9;
+    --border: #E2E2E2;
+    --border-dark: #C8C8C8;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --text-light: #9A9A9A;
+    --shadow-xs: 0 1px 3px rgba(0,0,0,.06);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+    --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,.12);
+    --radius: 0px;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --transition: all .22s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+ul {
+    list-style: none;
+}
+
+/* ── About page grid ── */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+/* --- base page system (to make the about page active) --- */
+.page {
+    display: none;
+    animation: fadePage .3s ease;
+}
+
+    .page.active {
+        display: block;
+    }
+
+@keyframes fadePage {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --- page hero (EXACT copy from original index) --- */
+.page-hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 0rem 2.5rem;
+}
+
+.page-hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.page-eyebrow {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: .5rem;
+}
+
+.page-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.page-hero p {
+    color: var(--text-muted);
+    font-size: .95rem;
+    margin-top: .5rem;
+    max-width: 540px;
+    line-height: 1.65;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--text-light);
+    margin-bottom: .75rem;
+}
+
+    .breadcrumb a {
+        color: var(--text-muted);
+        transition: color .2s;
+    }
+
+        .breadcrumb a:hover {
+            color: var(--green);
+        }
+
+.breadcrumb-sep {
+    color: var(--border-dark);
+}
+
+/* ----- section components (exactly from index) BUT FULL WIDTH FIX ----- */
+.section {
+    padding: 5rem 2rem; /* horizontal padding removed: sections stretch edge-to-edge */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%)
+}
+
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-green {
+    background: var(--green-faint);
+    border-top: 1px solid rgba(27,77,63,.08);
+    border-bottom: 1px solid rgba(27,77,63,.08);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%)
+}
+
+.section-eyebrow {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: .75rem;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1.2;
+}
+
+.section-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 520px;
+    margin-top: .75rem;
+    line-height: 1.7;
+}
+
+/* image placeholder (matching index) */
+.img-placeholder {
+    background: #E8E8E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    border: 1px solid #D8D8D8;
+}
+
+    .img-placeholder.landscape {
+        aspect-ratio: 16/9;
+    }
+
+    .img-placeholder.square {
+        aspect-ratio: 1;
+    }
+
+/* values grid (exact) */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.value-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+    .value-card:hover {
+        border-color: var(--green);
+        box-shadow: var(--shadow-sm);
+    }
+
+.value-card-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--green-faint);
+    border: 1px solid rgba(27,77,63,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+
+    .value-card-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+    }
+
+.value-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--green-dark);
+    margin-bottom: .5rem;
+}
+
+.value-card-desc {
+    font-size: .83rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+/* ── FULL-WIDTH LAYOUT (EDGE-TO-EDGE) ── */
+/* Each section already has padding: 5rem 0; container inside restricts max-width content */
+/* The background & border will stretch across entire viewport because .section has no side padding */
+/* For any inner content that must stay aligned, we use .container or a centered inner wrapper */
+.section-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.full-width-content {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* Special fix for the "Benefits" section that originally had no background but was missing grid alignment */
+.benefits-single-col {
+    display: block;
+}
+
+    .benefits-single-col .about-grid {
+        display: block;
+        max-width: 800px;
+    }
+
+/* responsive overrides (as in index) */
+@media (max-width: 768px) {
+    .values-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .page-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .section {
+        padding: 3rem 0rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-inner {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 540px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* simple toast & mock */
+#toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--green-dark);
+    color: var(--white);
+    padding: .9rem 1.5rem;
+    font-size: .85rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all .28s ease;
+    z-index: 9999;
+    pointer-events: none;
+    max-width: 320px;
+    border-left: 3px solid var(--brown);
+}
+
+    #toast.show {
+        opacity: 1;
+        transform: none;
+    }
+
+/* Additional helper to ensure full background coverage for any nested element */
+.full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}

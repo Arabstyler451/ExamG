@@ -1,0 +1,591 @@
+﻿/* ── Design tokens ── */
+.glh-checkout-root {
+    --green: #1B4D3F;
+    --green-light: #2a6b58;
+    --green-dark: #122e25;
+    --green-faint: #f0f5f3;
+    --brown: #7C5C3E;
+    --brown-faint: #f7f3ee;
+    --white: #FFFFFF;
+    --off-white: #F9F9F9;
+    --border: #E2E2E2;
+    --border-dark: #C8C8C8;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --text-light: #9A9A9A;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+    --shadow-md: 0 6px 20px rgba(0,0,0,.10);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --transition: all .22s ease;
+    font-family: var(--font-sans);
+    color: var(--text);
+}
+
+/* ── Page hero ── */
+.glh-page-hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0 2rem;
+    margin-bottom: 0;
+}
+
+.glh-page-hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.glh-page-eyebrow {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.glh-page-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.glh-page-hero p {
+    color: var(--text-muted);
+    font-size: .95rem;
+    margin-top: .5rem;
+    max-width: 520px;
+    line-height: 1.65;
+}
+
+/* ── Breadcrumb ── */
+.glh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--text-light);
+    margin-bottom: .75rem;
+    flex-wrap: wrap;
+}
+
+    .glh-breadcrumb a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color .2s;
+    }
+
+        .glh-breadcrumb a:hover {
+            color: var(--green);
+        }
+
+.glh-breadcrumb-sep {
+    color: var(--border-dark);
+}
+
+/* ── Section wrapper ── */
+.glh-section {
+    padding: 3.5rem 2rem;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* ── Two-column checkout grid ── */
+.glh-checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ── Section card ── */
+.glh-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.glh-card-header {
+    padding: 1.2rem 1.6rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.glh-card-header-num {
+    width: 26px;
+    height: 26px;
+    background: var(--green);
+    color: #fff;
+    font-size: .72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: .02em;
+}
+
+.glh-card-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--green-dark);
+    font-weight: 600;
+    margin: 0;
+}
+
+.glh-card-body {
+    padding: 1.6rem;
+}
+
+/* ── Fulfilment toggle ── */
+.glh-fulfilment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.glh-fulfilment-option {
+    border: 1.5px solid var(--border);
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    user-select: none;
+}
+
+    .glh-fulfilment-option:hover {
+        border-color: var(--green);
+    }
+
+    .glh-fulfilment-option.selected {
+        border-color: var(--green);
+        background: var(--green-faint);
+    }
+
+    .glh-fulfilment-option input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+.glh-fulfilment-icon {
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.glh-fulfilment-title {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    display: block;
+}
+
+.glh-fulfilment-sub {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-top: .2rem;
+    display: block;
+    line-height: 1.45;
+}
+
+.glh-fulfilment-check {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.glh-fulfilment-option.selected .glh-fulfilment-check {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.glh-fulfilment-check::after {
+    content: '';
+    width: 6px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(42deg) translateY(-1px);
+    opacity: 0;
+}
+
+.glh-fulfilment-option.selected .glh-fulfilment-check::after {
+    opacity: 1;
+}
+
+/* ── Conditional panels ── */
+.glh-conditional {
+    display: none;
+}
+
+    .glh-conditional.visible {
+        display: block;
+    }
+
+/* ── Form elements ── */
+.glh-form-group {
+    margin-bottom: 1.2rem;
+}
+
+.glh-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.glh-form-label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .4rem;
+}
+
+.glh-form-input,
+.glh-form-select {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1.5px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    background: var(--white);
+    color: var(--text);
+    transition: var(--transition);
+    outline: none;
+    appearance: none;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+    .glh-form-input:focus,
+    .glh-form-select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(27,77,63,.08);
+    }
+
+    .glh-form-input.input-validation-error,
+    .glh-form-select.input-validation-error {
+        border-color: #c0392b;
+    }
+
+.glh-field-error {
+    display: block;
+    font-size: .75rem;
+    color: #a0281e;
+    margin-top: .3rem;
+}
+
+.glh-form-select.input-validation-error,
+.glh-form-input.input-validation-error {
+    border-color: #c0392b;
+    background-color: #fff8f8;
+}
+
+.glh-field-error {
+    display: block;
+    font-size: .75rem;
+    color: #a0281e;
+    margin-top: .3rem;
+}
+
+/* Add required star indicator */
+.glh-form-label.required:after {
+    content: " *";
+    color: #c0392b;
+    font-weight: normal;
+}
+
+.glh-form-hint {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-top: .3rem;
+    line-height: 1.45;
+}
+
+.glh-select-wrap {
+    position: relative;
+}
+
+    .glh-select-wrap::after {
+        content: '▾';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        pointer-events: none;
+        font-size: .8rem;
+    }
+
+/* ── Address card option ── */
+.glh-address-card {
+    border: 1.5px solid var(--border);
+    padding: 1.1rem 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: .7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .9rem;
+}
+
+    .glh-address-card:hover {
+        border-color: var(--green);
+    }
+
+    .glh-address-card.selected {
+        border-color: var(--green);
+        background: var(--green-faint);
+    }
+
+    .glh-address-card input[type="radio"] {
+        margin-top: .2rem;
+        accent-color: var(--green);
+    }
+
+.glh-address-card-text {
+    font-size: .875rem;
+    line-height: 1.6;
+}
+
+.glh-address-card-label {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--green);
+    margin-bottom: .2rem;
+    display: block;
+}
+
+/* ── No address state ── */
+.glh-no-address {
+    background: var(--off-white);
+    border: 2px dashed var(--border);
+    padding: 2rem;
+    text-align: center;
+}
+
+    .glh-no-address p {
+        font-size: .9rem;
+        color: var(--text-muted);
+        margin-bottom: 1.2rem;
+        line-height: 1.65;
+    }
+
+/* ── Add address link ── */
+.glh-add-address-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .83rem;
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: .6rem;
+    border: 1.5px solid var(--green);
+    padding: .45rem 1rem;
+    transition: var(--transition);
+}
+
+    .glh-add-address-link:hover {
+        background: var(--green);
+        color: #fff;
+    }
+
+/* ── Info notice boxes ── */
+.glh-info-box {
+    background: var(--green-faint);
+    border: 1px solid rgba(27,77,63,.15);
+    padding: 1rem 1.2rem;
+    font-size: .83rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+    .glh-info-box strong {
+        display: block;
+        color: var(--green-dark);
+        font-size: .78rem;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        margin-bottom: .3rem;
+    }
+
+.glh-alert-warning {
+    background: #fdf3e7;
+    border-left: 3px solid #9a5a10;
+    color: #9a5a10;
+    padding: .85rem 1.1rem;
+    font-size: .83rem;
+    margin-bottom: 1.4rem;
+    line-height: 1.55;
+}
+
+.glh-alert-error {
+    background: #fde8e8;
+    border-left: 3px solid #a0281e;
+    color: #a0281e;
+    padding: .85rem 1.1rem;
+    font-size: .83rem;
+    margin-bottom: 1.4rem;
+    line-height: 1.55;
+}
+
+/* ── Order summary sidebar ── */
+.glh-summary-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    position: sticky;
+    top: 90px;
+}
+
+.glh-summary-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--green-dark);
+    margin-bottom: 1.3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.glh-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .875rem;
+    padding: .5rem 0;
+    color: var(--text-muted);
+}
+
+    .glh-summary-row:last-of-type {
+        border-bottom: none;
+    }
+
+    .glh-summary-row.total {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text);
+        border-top: 1.5px solid var(--border);
+        border-bottom: none;
+        padding-top: .9rem;
+        margin-top: .4rem;
+    }
+
+/* ── Place order button ── */
+.glh-btn-place-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: .9rem 1.75rem;
+    background: var(--green);
+    color: #fff;
+    font-size: .95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .02em;
+    font-family: var(--font-sans);
+    transition: var(--transition);
+    border-radius: 0;
+    margin-top: 1.4rem;
+}
+
+    .glh-btn-place-order:hover {
+        background: var(--green-light);
+    }
+
+    .glh-btn-place-order:disabled {
+        background: var(--border-dark);
+        cursor: not-allowed;
+    }
+
+.glh-ssl-note {
+    text-align: center;
+    font-size: .72rem;
+    color: var(--text-light);
+    margin-top: .6rem;
+}
+
+/* ── Back link ── */
+.glh-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .83rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-top: 1.2rem;
+    transition: color .2s;
+}
+
+    .glh-back-link:hover {
+        color: var(--green);
+    }
+
+/* ── Loyalty earn badge ── */
+.glh-loyalty-earn {
+    background: var(--green-faint);
+    border: 1px solid rgba(27,77,63,.12);
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    font-size: .82rem;
+}
+
+    .glh-loyalty-earn strong {
+        color: var(--green-dark);
+    }
+
+    .glh-loyalty-earn p {
+        color: var(--text-muted);
+        margin-top: .25rem;
+        line-height: 1.55;
+    }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .glh-checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .glh-summary-card {
+        position: static;
+    }
+
+    .glh-fulfilment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    .glh-section {
+        padding: 2.5rem 1rem;
+    }
+
+    .glh-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .glh-card-body {
+        padding: 1.2rem;
+    }
+}

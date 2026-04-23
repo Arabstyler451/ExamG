@@ -142,7 +142,7 @@ namespace GreenfieldLocalHubWebApp.Data
             }
 
 
-            //Normal User
+            //Normal User 1
             var customer = await userManager.FindByEmailAsync("user@test.com");
             if (customer == null)
             {
@@ -153,6 +153,62 @@ namespace GreenfieldLocalHubWebApp.Data
             if (!await userManager.IsInRoleAsync(customer, "User"))
             {
                 await userManager.AddToRoleAsync(customer, "User");
+            }
+
+
+            //Normal User 2
+            var customer2 = await userManager.FindByEmailAsync("user2@test.com");
+            if (customer2 == null)
+            {
+                customer2 = new IdentityUser { UserName = "user2@test.com", Email = "user2@test.com", EmailConfirmed = true };
+                await userManager.CreateAsync(customer2, "User123!");
+            }
+
+            if (!await userManager.IsInRoleAsync(customer2, "User"))
+            {
+                await userManager.AddToRoleAsync(customer2, "User");
+            }
+
+
+            //Normal User 3
+            var customer3 = await userManager.FindByEmailAsync("user3@test.com");
+            if (customer3 == null)
+            {
+                customer3 = new IdentityUser { UserName = "user3@test.com", Email = "user3@test.com", EmailConfirmed = true };
+                await userManager.CreateAsync(customer3, "User123!");
+            }
+
+            if (!await userManager.IsInRoleAsync(customer3, "User"))
+            {
+                await userManager.AddToRoleAsync(customer3, "User");
+            }
+
+
+            //Normal User 4
+            var customer4 = await userManager.FindByEmailAsync("user4@test.com");
+            if (customer4 == null)
+            {
+                customer4 = new IdentityUser { UserName = "user4@test.com", Email = "user4@test.com", EmailConfirmed = true };
+                await userManager.CreateAsync(customer4, "User123!");
+            }
+
+            if (!await userManager.IsInRoleAsync(customer4, "User"))
+            {
+                await userManager.AddToRoleAsync(customer4, "User");
+            }
+
+
+            //Normal User 5
+            var customer5 = await userManager.FindByEmailAsync("user5@test.com");
+            if (customer5 == null)
+            {
+                customer5 = new IdentityUser { UserName = "user5@test.com", Email = "user5@test.com", EmailConfirmed = true };
+                await userManager.CreateAsync(customer5, "User123!");
+            }
+
+            if (!await userManager.IsInRoleAsync(customer5, "User"))
+            {
+                await userManager.AddToRoleAsync(customer5, "User");
             }
 
         }
@@ -439,6 +495,71 @@ namespace GreenfieldLocalHubWebApp.Data
 
                     new products
                     {
+                        productName = "Heirloom Potatoes",
+                        productDescription = "A mix of waxy and floury varieties, perfect for roasting, mashing or salads",
+                        productPrice = 2.90f,
+                        stockQuantity = 70,
+                        productUnit = "kg",
+                        productAvailability = true,
+                        productImage = "/images/products/heirloomPotatoes.jpg",
+                        producersId = greenAcreFarm.producersId,
+                        categoriesId = vegCat.categoriesId
+                    },
+
+                    new products
+                    {
+                        productName = "Free Range Chicken",
+                        productDescription = "Whole birds reared on pasture with plenty of space to roam. Rich flavour and tender meat.",
+                        productPrice = 14.95f,
+                        stockQuantity = 9,
+                        productUnit = "whole",
+                        productAvailability = true,
+                        productImage = "/images/products/freeRangeChicken.jpg",
+                        producersId = moorsideButchery.producersId,
+                        categoriesId = meatCat.categoriesId
+                    },
+
+                    new products
+                    {
+                        productName = "Sourdough Baguette",
+                        productDescription = "Crisp crust and chewy crumb, perfect for sandwiches or as an accompaniment to meals",
+                        productPrice = 2.50f,
+                        stockQuantity = 40,
+                        productUnit = "loaf",
+                        productAvailability = true,
+                        productImage = "/images/products/sourdoughBaguette.jpg",
+                        producersId = theOldMillBakery.producersId,
+                        categoriesId = bakeryCat.categoriesId
+                    },
+
+                    new products
+                    {
+                        productName = "Raw Milk Yogurt",
+                        productDescription = "Creamy, tangy yogurt made from our unpasteurised milk. Packed with natural probiotics.",
+                        productPrice = 4.00f,
+                        stockQuantity = 25,
+                        productUnit = "500g",
+                        productAvailability = true,
+                        productImage = "/images/products/rawMilkYogurt.jpg",
+                        producersId = hillCrestDairy.producersId,
+                        categoriesId = dairyCat.categoriesId
+                    },
+
+                    new products
+                    {
+                        productName = "Beef Sausages",
+                        productDescription = "Handmade sausages, seasoned with herbs and spices. Perfect for grilling or frying.",
+                        productPrice = 8.95f,
+                        stockQuantity = 50,
+                        productUnit = "pack of 6",
+                        productAvailability = true,
+                        productImage = "/images/products/beefSausages.jpg",
+                        producersId = moorsideButchery.producersId,
+                        categoriesId = meatCat.categoriesId
+                    },
+
+                    new products
+                    {
                         productName = "Purple Sprouting Broccoli",
                         productDescription = "Tender stems and sweet florets - the best of the spring brassicas",
                         productPrice = 3.10f,
@@ -451,6 +572,592 @@ namespace GreenfieldLocalHubWebApp.Data
                     }
                 };
                 await context.products.AddRangeAsync(products);
+                await context.SaveChangesAsync();
+            }
+        }
+
+
+
+        // Seeding addresses to users so that seeding orders is possible
+        public static async Task seedAddresses(IServiceProvider serviceProvider)
+        {
+            var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            // Check if addresses already exist
+            if (await context.address.AnyAsync())
+                return;
+
+            // Get your users
+            var normalUser1 = await userManager.FindByEmailAsync("user@test.com");
+            var normalUser2 = await userManager.FindByEmailAsync("user2@test.com");
+            var normalUser3 = await userManager.FindByEmailAsync("user3@test.com");
+            var normalUser4 = await userManager.FindByEmailAsync("user4@test.com");
+            var normalUser5 = await userManager.FindByEmailAsync("user5@test.com");
+
+            var addresses = new List<address>
+    {
+        // User 1 addresses
+        new address
+        {
+            UserId = normalUser1.Id,
+            street = "123 Main Street",
+            city = "Midshire",
+            postalCode = "SK48 1AB",
+            country = "England",
+            IsDefault = true,
+            createdDate = DateTime.Now.AddDays(-30)
+        },
+        new address
+        {
+            UserId = normalUser1.Id,
+            street = "45 Oak Avenue",
+            city = "Midshire",
+            postalCode = "SK48 2CD",
+            country = "England",
+            IsDefault = false,
+            createdDate = DateTime.Now.AddDays(-25)
+        },
+        
+        // User 2 addresses
+        new address
+        {
+            UserId = normalUser2.Id,
+            street = "78 Pine Road",
+            city = "Midshire",
+            postalCode = "SK50 3EF",
+            country = "England",
+            IsDefault = true,
+            createdDate = DateTime.Now.AddDays(-20)
+        },
+        
+        // User 3 addresses
+        new address
+        {
+            UserId = normalUser3.Id,
+            street = "12 Beech Lane",
+            city = "Midshire",
+            postalCode = "SK39 4GH",
+            country = "England",
+            IsDefault = true,
+            createdDate = DateTime.Now.AddDays(-15)
+        },
+        new address
+        {
+            UserId = normalUser3.Id,
+            street = "99 Willow Drive",
+            city = "Midshire",
+            postalCode = "SK39 5IJ",
+            country = "England",
+            IsDefault = false,
+            createdDate = DateTime.Now.AddDays(-10)
+        },
+        
+        // User 4 addresses
+        new address
+        {
+            UserId = normalUser4.Id,
+            street = "7 Chestnut Close",
+            city = "Midshire",
+            postalCode = "SK42 6KL",
+            country = "England",
+            IsDefault = true,
+            createdDate = DateTime.Now.AddDays(-12)
+        },
+        
+        // User 5 addresses
+        new address
+        {
+            UserId = normalUser5.Id,
+            street = "33 Sycamore Avenue",
+            city = "Midshire",
+            postalCode = "SK35 7MN",
+            country = "England",
+            IsDefault = true,
+            createdDate = DateTime.Now.AddDays(-8)
+        }
+    };
+
+            await context.address.AddRangeAsync(addresses);
+            await context.SaveChangesAsync();
+        }
+
+
+
+        public static async Task seedOrders(IServiceProvider serviceProvider)
+        {
+            var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            // Check if orders already exist
+            if (await context.orders.AnyAsync())
+                return;
+
+            // Get your normal users
+            var normalUser1 = await userManager.FindByEmailAsync("user@test.com");
+            var normalUser2 = await userManager.FindByEmailAsync("user2@test.com");
+            var normalUser3 = await userManager.FindByEmailAsync("user3@test.com");
+            var normalUser4 = await userManager.FindByEmailAsync("user4@test.com");
+            var normalUser5 = await userManager.FindByEmailAsync("user5@test.com");
+
+            // Get default addresses for users (already seeded)
+            var address1 = await context.address.FirstOrDefaultAsync(a => a.UserId == normalUser1.Id && a.IsDefault);
+            var address2 = await context.address.FirstOrDefaultAsync(a => a.UserId == normalUser2.Id && a.IsDefault);
+            var address3 = await context.address.FirstOrDefaultAsync(a => a.UserId == normalUser3.Id && a.IsDefault);
+            var address4 = await context.address.FirstOrDefaultAsync(a => a.UserId == normalUser4.Id && a.IsDefault);
+            var address5 = await context.address.FirstOrDefaultAsync(a => a.UserId == normalUser5.Id && a.IsDefault);
+
+            // Get all products
+            var allProducts = await context.products.ToListAsync();
+
+            if (allProducts.Count == 0)
+                throw new Exception("No products found to create orders.");
+
+            var orders = new List<orders>();
+            var orderProductsList = new List<orderProducts>();
+
+            // ORDER 1: DELIVERY - Standard Delivery - User 1
+            var heritageTomatoes = allProducts.First(p => p.productName == "Heritage Tomatoes");
+            var coxApples = allProducts.First(p => p.productName == "Cox Apples");
+            var wildflowerHoney = allProducts.First(p => p.productName == "Wildflower Honey");
+
+            var order1 = new orders
+            {
+                UserId = normalUser1.Id,
+                addressId = address1?.addressId, // Now safely exists from seedAddresses
+                totalAmount = (heritageTomatoes.productPrice * 2) + (coxApples.productPrice * 1) + (wildflowerHoney.productPrice * 2) + 3.99f,
+                delivery = true,
+                collection = false,
+                deliveryType = "Standard Delivery",
+                deliveryFee = 3.99f,
+                orderStatus = "Completed",
+                orderCollectionDate = null,
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-10)),
+                DeliveryStreet = address1?.street,
+                DeliveryCity = address1?.city,
+                DeliveryPostalCode = address1?.postalCode,
+                DeliveryCountry = address1?.country
+            };
+            orders.Add(order1);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order1,
+                productsId = heritageTomatoes.productsId,
+                quantity = 2,
+                unitPrice = heritageTomatoes.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order1,
+                productsId = coxApples.productsId,
+                quantity = 1,
+                unitPrice = coxApples.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order1,
+                productsId = wildflowerHoney.productsId,
+                quantity = 2,
+                unitPrice = wildflowerHoney.productPrice
+            });
+
+            // ORDER 2: COLLECTION - User 2
+            var rawMilkYogurt = allProducts.First(p => p.productName == "Raw Milk Yogurt");
+            var sourdoughBaguette = allProducts.First(p => p.productName == "Sourdough Baguette");
+            var beefSausages = allProducts.First(p => p.productName == "Beef Sausages");
+
+            var order2 = new orders
+            {
+                UserId = normalUser2.Id,
+                addressId = null, // No address for collection
+                totalAmount = (rawMilkYogurt.productPrice * 2) + (sourdoughBaguette.productPrice * 2) + (beefSausages.productPrice * 1),
+                delivery = false,
+                collection = true,
+                deliveryType = null,
+                deliveryFee = 0f,
+                orderStatus = "Shipped",
+                orderCollectionDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-7)),
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-8)),
+                DeliveryStreet = null,
+                DeliveryCity = null,
+                DeliveryPostalCode = null,
+                DeliveryCountry = null
+            };
+            orders.Add(order2);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order2,
+                productsId = rawMilkYogurt.productsId,
+                quantity = 2,
+                unitPrice = rawMilkYogurt.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order2,
+                productsId = sourdoughBaguette.productsId,
+                quantity = 2,
+                unitPrice = sourdoughBaguette.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order2,
+                productsId = beefSausages.productsId,
+                quantity = 1,
+                unitPrice = beefSausages.productPrice
+            });
+
+            // ORDER 3: DELIVERY - First Class Delivery - User 3
+            var freeRangeEggs = allProducts.First(p => p.productName == "Free Range Eggs");
+            var countrySourdough = allProducts.First(p => p.productName == "Country Sourdough");
+            var grassFedBeefMince = allProducts.First(p => p.productName == "Grass-Fed Beef Mince");
+            var strawberryPreserve = allProducts.First(p => p.productName == "Strawberry Preserve");
+            var mixedSaladLeaves = allProducts.First(p => p.productName == "Mixed Salad Leaves");
+
+            var order3 = new orders
+            {
+                UserId = normalUser3.Id,
+                addressId = address3.addressId,
+                totalAmount = (freeRangeEggs.productPrice * 1) + (countrySourdough.productPrice * 1) +
+                             (grassFedBeefMince.productPrice * 2) + (strawberryPreserve.productPrice * 2) +
+                             (mixedSaladLeaves.productPrice * 1) + 5.99f, // + delivery fee
+                delivery = true,
+                collection = false,
+                deliveryType = "First Class Delivery",
+                deliveryFee = 5.99f,
+                orderStatus = "Processing",
+                orderCollectionDate = null,
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5)),
+                DeliveryStreet = address3.street,
+                DeliveryCity = address3.city,
+                DeliveryPostalCode = address3.postalCode,
+                DeliveryCountry = address3.country
+            };
+            orders.Add(order3);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order3,
+                productsId = freeRangeEggs.productsId,
+                quantity = 1,
+                unitPrice = freeRangeEggs.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order3,
+                productsId = countrySourdough.productsId,
+                quantity = 1,
+                unitPrice = countrySourdough.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order3,
+                productsId = grassFedBeefMince.productsId,
+                quantity = 2,
+                unitPrice = grassFedBeefMince.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order3,
+                productsId = strawberryPreserve.productsId,
+                quantity = 2,
+                unitPrice = strawberryPreserve.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order3,
+                productsId = mixedSaladLeaves.productsId,
+                quantity = 1,
+                unitPrice = mixedSaladLeaves.productPrice
+            });
+
+            // ORDER 4: COLLECTION - User 4
+            var freeRangeChicken = allProducts.First(p => p.productName == "Free Range Chicken");
+            var heirloomPotatoes = allProducts.First(p => p.productName == "Heirloom Potatoes");
+            var heritageCarrots = allProducts.First(p => p.productName == "Heritage Carrots");
+
+            var order4 = new orders
+            {
+                UserId = normalUser4.Id,
+                addressId = null,
+                totalAmount = (freeRangeChicken.productPrice * 1) + (heirloomPotatoes.productPrice * 3) + (heritageCarrots.productPrice * 1),
+                delivery = false,
+                collection = true,
+                deliveryType = null,
+                deliveryFee = 0f,
+                orderStatus = "Pending",
+                orderCollectionDate = DateOnly.FromDateTime(DateTime.Now.AddDays(2)), // Future collection
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-3)),
+                DeliveryStreet = null,
+                DeliveryCity = null,
+                DeliveryPostalCode = null,
+                DeliveryCountry = null
+            };
+            orders.Add(order4);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order4,
+                productsId = freeRangeChicken.productsId,
+                quantity = 1,
+                unitPrice = freeRangeChicken.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order4,
+                productsId = heirloomPotatoes.productsId,
+                quantity = 3,
+                unitPrice = heirloomPotatoes.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order4,
+                productsId = heritageCarrots.productsId,
+                quantity = 1,
+                unitPrice = heritageCarrots.productPrice
+            });
+
+            // ORDER 5: DELIVERY - Next Day Delivery - User 5
+            var rawMilkCheddar = allProducts.First(p => p.productName == "Raw Milk Cheddar");
+            var purpleSproutingBroccoli = allProducts.First(p => p.productName == "Purple Sprouting Broccoli");
+
+            var order5 = new orders
+            {
+                UserId = normalUser5.Id,
+                addressId = address5.addressId,
+                totalAmount = (rawMilkCheddar.productPrice * 3) + (sourdoughBaguette.productPrice * 2) + (purpleSproutingBroccoli.productPrice * 2) + 7.99f,
+                delivery = true,
+                collection = false,
+                deliveryType = "Next Day Delivery",
+                deliveryFee = 7.99f,
+                orderStatus = "Delivered",
+                orderCollectionDate = null,
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-2)),
+                DeliveryStreet = address5.street,
+                DeliveryCity = address5.city,
+                DeliveryPostalCode = address5.postalCode,
+                DeliveryCountry = address5.country
+            };
+            orders.Add(order5);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order5,
+                productsId = rawMilkCheddar.productsId,
+                quantity = 3,
+                unitPrice = rawMilkCheddar.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order5,
+                productsId = sourdoughBaguette.productsId,
+                quantity = 2,
+                unitPrice = sourdoughBaguette.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order5,
+                productsId = purpleSproutingBroccoli.productsId,
+                quantity = 2,
+                unitPrice = purpleSproutingBroccoli.productPrice
+            });
+
+            // ORDER 6: DELIVERY - Standard Delivery - User 1 (Second order, Cancelled)
+            var beefSausages2 = allProducts.First(p => p.productName == "Beef Sausages");
+            var mixedSaladLeaves2 = allProducts.First(p => p.productName == "Mixed Salad Leaves");
+            var wildflowerHoney2 = allProducts.First(p => p.productName == "Wildflower Honey");
+
+            var order6 = new orders
+            {
+                UserId = normalUser1.Id,
+                addressId = address1.addressId,
+                totalAmount = (beefSausages2.productPrice * 2) + (mixedSaladLeaves2.productPrice * 2) + (wildflowerHoney2.productPrice * 1) + 3.99f,
+                delivery = true,
+                collection = false,
+                deliveryType = "Standard Delivery",
+                deliveryFee = 3.99f,
+                orderStatus = "Cancelled",
+                orderCollectionDate = null,
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-15)),
+                DeliveryStreet = address1.street,
+                DeliveryCity = address1.city,
+                DeliveryPostalCode = address1.postalCode,
+                DeliveryCountry = address1.country
+            };
+            orders.Add(order6);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order6,
+                productsId = beefSausages2.productsId,
+                quantity = 2,
+                unitPrice = beefSausages2.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order6,
+                productsId = mixedSaladLeaves2.productsId,
+                quantity = 2,
+                unitPrice = mixedSaladLeaves2.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order6,
+                productsId = wildflowerHoney2.productsId,
+                quantity = 1,
+                unitPrice = wildflowerHoney2.productPrice
+            });
+
+            // ORDER 7: COLLECTION - User 3 (Second order)
+            var freeRangeChicken2 = allProducts.First(p => p.productName == "Free Range Chicken");
+            var coxApples2 = allProducts.First(p => p.productName == "Cox Apples");
+            var strawberryPreserve2 = allProducts.First(p => p.productName == "Strawberry Preserve");
+            var rawMilkYogurt2 = allProducts.First(p => p.productName == "Raw Milk Yogurt");
+
+            var order7 = new orders
+            {
+                UserId = normalUser3.Id,
+                addressId = null,
+                totalAmount = (freeRangeChicken2.productPrice * 1) + (coxApples2.productPrice * 2) +
+                             (strawberryPreserve2.productPrice * 3) + (rawMilkYogurt2.productPrice * 2),
+                delivery = false,
+                collection = true,
+                deliveryType = null,
+                deliveryFee = 0f,
+                orderStatus = "Processing",
+                orderCollectionDate = DateOnly.FromDateTime(DateTime.Now.AddDays(3)), // Future collection
+                orderDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-1)),
+                DeliveryStreet = null,
+                DeliveryCity = null,
+                DeliveryPostalCode = null,
+                DeliveryCountry = null
+            };
+            orders.Add(order7);
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order7,
+                productsId = freeRangeChicken2.productsId,
+                quantity = 1,
+                unitPrice = freeRangeChicken2.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order7,
+                productsId = coxApples2.productsId,
+                quantity = 2,
+                unitPrice = coxApples2.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order7,
+                productsId = strawberryPreserve2.productsId,
+                quantity = 3,
+                unitPrice = strawberryPreserve2.productPrice
+            });
+
+            orderProductsList.Add(new orderProducts
+            {
+                orders = order7,
+                productsId = rawMilkYogurt2.productsId,
+                quantity = 2,
+                unitPrice = rawMilkYogurt2.productPrice
+            });
+
+            // Save all orders and order products
+            await context.orders.AddRangeAsync(orders);
+            await context.SaveChangesAsync();
+            await context.orderProducts.AddRangeAsync(orderProductsList);
+            await context.SaveChangesAsync();
+        }
+
+
+
+        public static async Task seedLoyaltyAccounts(IServiceProvider serviceProvider)
+        {
+            var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            // Skip if already seeded
+            if (await context.loyaltyAccount.AnyAsync()) return;
+
+            var users = new[]
+            {
+        "user@test.com", "user2@test.com", "user3@test.com",
+        "user4@test.com", "user5@test.com"
+    };
+
+            foreach (var email in users)
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                if (user == null) continue;
+
+                // Load all orders for this user
+                var userOrders = await context.orders
+                    .Where(o => o.UserId == user.Id)
+                    .ToListAsync();
+
+                if (!userOrders.Any()) continue;
+
+                // Calculate points earned: 10 points per £1 spent (matches my ordersController logic)
+                int totalPoints = userOrders
+                    .Where(o => o.orderStatus != "Cancelled")
+                    .Sum(o => (int)(o.totalAmount * 10));
+
+                string tier = totalPoints switch
+                {
+                    >= 5000 => "Platinum",
+                    >= 2000 => "Gold",
+                    >= 500 => "Silver",
+                    _ => "Bronze"
+                };
+
+                var loyaltyAccount = new loyaltyAccount
+                {
+                    UserId = user.Id,
+                    pointsBalance = totalPoints,
+                    loyaltyTier = tier,
+                    redeemedOffers = string.Empty,
+                    ActiveOffers = string.Empty,
+                    ConsumedOffers = string.Empty,
+                    PendingOffer = null
+                };
+
+                context.loyaltyAccount.Add(loyaltyAccount);
+                await context.SaveChangesAsync();
+
+                // Create an Earn transaction per non-cancelled order
+                foreach (var order in userOrders.Where(o => o.orderStatus != "Cancelled"))
+                {
+                    int pointsEarned = (int)(order.totalAmount * 10);
+
+                    context.loyaltyTransaction.Add(new loyaltyTransaction
+                    {
+                        loyaltyAccountId = loyaltyAccount.loyaltyAccountId,
+                        ordersId = order.ordersId,
+                        loyaltyPoints = pointsEarned,
+                        transactionType = "Earn",
+                        transactionDate = order.orderDate.ToDateTime(TimeOnly.MinValue)
+                    });
+                }
+
                 await context.SaveChangesAsync();
             }
         }

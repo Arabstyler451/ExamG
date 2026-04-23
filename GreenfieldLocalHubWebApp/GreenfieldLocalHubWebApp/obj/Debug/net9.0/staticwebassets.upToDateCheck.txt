@@ -1,3 +1,24 @@
+wwwroot\css\accountLayout.css
+wwwroot\css\pages\addresses\create.css
+wwwroot\css\pages\addresses\edit.css
+wwwroot\css\pages\addresses\index.css
+wwwroot\css\pages\home\about.css
+wwwroot\css\pages\home\contact.css
+wwwroot\css\pages\home\index.css
+wwwroot\css\pages\loyaltyAccounts\index.css
+wwwroot\css\pages\loyaltyAccounts\transactionHistory.css
+wwwroot\css\pages\orders\create.css
+wwwroot\css\pages\orders\details.css
+wwwroot\css\pages\orders\index.css
+wwwroot\css\pages\producerDashboard\index.css
+wwwroot\css\pages\producers\details.css
+wwwroot\css\pages\producers\index.css
+wwwroot\css\pages\products\create.css
+wwwroot\css\pages\products\delete.css
+wwwroot\css\pages\products\details.css
+wwwroot\css\pages\products\edit.css
+wwwroot\css\pages\products\index.css
+wwwroot\css\pages\shoppingCarts\index.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\about\about.jpg
@@ -7,17 +28,31 @@ wwwroot\images\producers\meadowApiary.jpg
 wwwroot\images\producers\moorsideButchery.jpg
 wwwroot\images\producers\sunfieldFarm.jpg
 wwwroot\images\producers\theOldMillBakery.jpg
+wwwroot\images\products\beefSausages.jpg
 wwwroot\images\products\countrySourdough.jpg
 wwwroot\images\products\coxApples.jpg
+wwwroot\images\products\freeRangeChicken.jpg
 wwwroot\images\products\freeRangeEggs.jpg
 wwwroot\images\products\grassFedBeefMince.jpg
+wwwroot\images\products\heirloomPotatoes.jpg
 wwwroot\images\products\heritageCarrots.jpg
 wwwroot\images\products\heritageTomatoes.jpg
 wwwroot\images\products\mixedSaladLeaves.jpg
 wwwroot\images\products\purpleSproutingBroccoli.jpg
 wwwroot\images\products\rawMilkCheddar.jpg
+wwwroot\images\products\rawMilkYogurt.jpg
+wwwroot\images\products\sourdoughBaguette.jpg
 wwwroot\images\products\strawberryPreserve.jpg
 wwwroot\images\products\wildflowerHoney.jpg
+wwwroot\js\pages\addresses\create.js
+wwwroot\js\pages\addresses\edit.js
+wwwroot\js\pages\orders\create.js
+wwwroot\js\pages\producerDashboard\index.js
+wwwroot\js\pages\producers\index.js
+wwwroot\js\pages\products\create.js
+wwwroot\js\pages\products\details.js
+wwwroot\js\pages\products\edit.js
+wwwroot\js\pages\products\index.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -138,6 +173,36 @@ D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\Greenfield
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\site.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\addresses\create.css
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\favicon.ico
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\products\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\accountLayout.css
 D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\site.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\products\edit.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\products\details.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\orders\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\producerDashboard\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\producers\details.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\producers\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\products\delete.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\products\create.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\orders\details.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\orders\create.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\home\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\loyaltyAccounts\transactionHistory.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\addresses\edit.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\addresses\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\home\about.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\home\contact.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\loyaltyAccounts\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\css\pages\shoppingCarts\index.css
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\site.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\products\index.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\addresses\edit.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\orders\create.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\producerDashboard\index.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\producers\index.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\products\create.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\products\details.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\products\edit.js
+D:\T Level Material\Visual Studio 2026\ExamG\GreenfieldLocalHubWebApp\GreenfieldLocalHubWebApp\wwwroot\js\pages\addresses\create.js

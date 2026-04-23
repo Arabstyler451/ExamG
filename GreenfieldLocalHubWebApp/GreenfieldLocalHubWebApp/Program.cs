@@ -41,6 +41,9 @@ using (var scope = app.Services.CreateScope())
     await SeedData.seedProducers(services);
     await SeedData.seedCategories(services);
     await SeedData.seedProducts(services);
+    await SeedData.seedAddresses(services);
+    await SeedData.seedOrders(services);
+    await SeedData.seedLoyaltyAccounts(services);
 }
 
 // Configure HTTP request pipeline middleware

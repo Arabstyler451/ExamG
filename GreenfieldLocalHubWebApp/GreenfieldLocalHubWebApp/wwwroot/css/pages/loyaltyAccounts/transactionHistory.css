@@ -1,0 +1,50 @@
+﻿.badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.text-success {
+    color: #28a745 !important;
+    font-weight: 600;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+    font-weight: 600;
+}
+
+.page-item.active .page-link {
+    background-color: #1B4D3F;
+    border-color: #1B4D3F;
+}
+
+.alert-info {
+    background-color: #e8eef8;
+    border-left: 3px solid #1a3a8f;
+    color: #1a3a8f;
+}
+
+.btn-outline-primary {
+    border: 1.5px solid #1B4D3F;
+    background: transparent;
+    color: #1B4D3F;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.22s ease;
+}
+
+    .btn-outline-primary:hover {
+        background: #1B4D3F;
+        border: 1.5px solid #1B4D3F;
+        color: white;
+    }
