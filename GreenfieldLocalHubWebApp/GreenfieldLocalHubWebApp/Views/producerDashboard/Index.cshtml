@@ -360,41 +360,86 @@
                     <a asp-controller="products" asp-action="Create" class="btn btn-primary btn-sm">Add Product</a>
                 </div>
 
-                <div class="table-wrap">
-                    <table class="data-table" role="table" aria-label="Product management table">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="products-tbody">
-                            @foreach (var item in Model.Take(5))
+<div class="table-wrap">
+    <table class="data-table" role="table" aria-label="Product management table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="products-tbody">
+            @foreach (var item in Model.Take(5))
+            {
+                var stockClass = item.stockQuantity == 0 ? "out"
+                               : item.stockQuantity <= 10 ? "low"
+                               : "in";
+                var stockLabel = item.stockQuantity == 0 ? "Out of Stock"
+                               : item.stockQuantity <= 10 ? "Low Stock"
+                               : "In Stock";
+                <tr>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:.85rem;">
+                            @if (!string.IsNullOrEmpty(item.productImage))
                             {
-                                var stockClass = item.stockQuantity == 0 ? "out"
-                                               : item.stockQuantity <= 10 ? "low"
-                                               : "in";
-                                var stockLabel = item.stockQuantity == 0 ? "Out of Stock"
-                                               : item.stockQuantity <= 10 ? "Low Stock"
-                                               : "In Stock";
-                                <tr>
-                                    <td><strong>@item.productName</strong></td>
-                                    <td>£@item.productPrice.ToString("0.00")</td>
-                                    <td>@item.stockQuantity units</td>
-                                    <td><span class="stock-pill @stockClass">@stockLabel</span></td>
-                                    <td>
-                                        <a asp-controller="products" asp-action="Edit"
-                                           asp-route-id="@item.productsId"
-                                           class="btn btn-ghost btn-sm">Edit</a>
-                                    </td>
-                                </tr>
+                                <img src="@item.productImage"
+                                     alt="@item.productName"
+                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                                     style="width:48px;height:48px;object-fit:cover;
+                                            border:1px solid var(--border);flex-shrink:0;" />
+                                <div style="width:48px;height:48px;background:var(--off-white);
+                                            border:1px solid var(--border);display:none;
+                                            align-items:center;justify-content:center;
+                                            font-size:.55rem;color:var(--text-light);
+                                            text-transform:uppercase;letter-spacing:.04em;
+                                            flex-shrink:0;">
+                                    IMG
+                                </div>
                             }
-                        </tbody>
-                    </table>
-                </div>
+                            else
+                            {
+                                <div style="width:48px;height:48px;background:var(--off-white);
+                                            border:1px solid var(--border);display:flex;
+                                            align-items:center;justify-content:center;
+                                            font-size:.55rem;color:var(--text-light);
+                                            text-transform:uppercase;letter-spacing:.04em;
+                                            flex-shrink:0;">
+                                    IMG
+                                </div>
+                            }
+                            <strong>@item.productName</strong>
+                        </div>
+                    </td>
+                    <td>£@item.productPrice.ToString("0.00")</td>
+                    <td>@item.stockQuantity units</td>
+                    <td><span class="stock-pill @stockClass">@stockLabel</span></td>
+                    <td>
+                        <div style="display:flex;gap:.5rem;align-items:center;">
+                            <a asp-controller="products" asp-action="Edit"
+                               asp-route-id="@item.productsId"
+                               class="btn btn-ghost btn-sm">Edit</a>
+
+                            <form asp-controller="products"
+                                  asp-action="Delete"
+                                  asp-route-id="@item.productsId"
+                                  method="get"
+                                  style="display:inline;">
+                                <button type="submit" class="btn btn-sm"
+                                        style="background:#fde8e8;color:#a0281e;
+                                               border:1.5px solid #fde8e8;">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
                 <a asp-controller="products" asp-action="Index" class="view-all-link">
                     View All Your Products &rarr;

@@ -13,8 +13,6 @@
         public string productImage { get; set; } // URL to an image representing the product in the shop page
         public string productUnit { get; set; } // Unit of measurement for the product (e.g., "kg", "liters", "pieces")
 
-
-        
         public producers? producers { get; set; } // Navigation property to producers, it's nullable because a product may be created before being assigned to a producer
         public categories categories { get; set; } // Navigation property to categories, it's not nullable because a product must belong to a category
         public ICollection<orderProducts>? orderProducts { get; set; } // Navigation property to orderProducts, it's nullable because a product may be created before being included in any orders

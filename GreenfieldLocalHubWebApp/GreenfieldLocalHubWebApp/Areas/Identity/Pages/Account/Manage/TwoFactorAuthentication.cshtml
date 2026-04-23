@@ -6,65 +6,420 @@
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
-<h3>@ViewData["Title"]</h3>
-@{
-    var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-    @if (consentFeature?.CanTrack ?? true)
-    {
-        @if (Model.Is2faEnabled)
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+<style>
+    .glh-2fa-root {
+        --green:       #1B4D3F;
+        --green-light: #2a6b58;
+        --green-dark:  #122e25;
+        --green-faint: #f0f5f3;
+        --brown:       #7C5C3E;
+        --white:       #FFFFFF;
+        --off-white:   #F9F9F9;
+        --border:      #E2E2E2;
+        --border-dark: #C8C8C8;
+        --text:        #1A1A1A;
+        --text-muted:  #6B6B6B;
+        --text-light:  #9A9A9A;
+        --red:         #a0281e;
+        --red-faint:   #fde8e8;
+        --amber:       #9a5a10;
+        --amber-faint: #fdf3e7;
+        --font-serif:  'Playfair Display', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+        --transition:  all .22s ease;
+        font-family: var(--font-sans);
+        color: var(--text);
+        max-width: 680px;
+    }
+
+    /* ── Page title ── */
+    .glh-2fa-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--green-dark);
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Alert banners ── */
+    .glh-alert {
+        display: flex;
+        align-items: flex-start;
+        gap: .85rem;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1rem;
+        font-size: .83rem;
+        line-height: 1.6;
+    }
+    .glh-alert-danger {
+        background: var(--red-faint);
+        border: 1px solid rgba(160,40,30,.2);
+        border-left: 3px solid var(--red);
+        color: #7a2018;
+    }
+    .glh-alert-warning {
+        background: var(--amber-faint);
+        border: 1px solid rgba(154,90,16,.2);
+        border-left: 3px solid var(--amber);
+        color: var(--amber);
+    }
+    .glh-alert-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: .1rem;
+    }
+    .glh-alert-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+    }
+    .glh-alert-danger .glh-alert-icon svg { stroke: var(--red); }
+    .glh-alert-warning .glh-alert-icon svg { stroke: var(--amber); }
+    .glh-alert strong { display: block; font-weight: 700; margin-bottom: .2rem; }
+    .glh-alert p { margin: 0; }
+    .glh-alert a { color: inherit; font-weight: 600; text-decoration: underline; }
+    .glh-alert a:hover { opacity: .8; }
+
+    /* ── Status card (2FA enabled) ── */
+    .glh-status-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .glh-status-indicator {
+        width: 42px;
+        height: 42px;
+        background: var(--green-faint);
+        border: 1px solid rgba(27,77,63,.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .glh-status-indicator svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+    }
+    .glh-status-indicator.off {
+        background: var(--off-white);
+        border-color: var(--border);
+    }
+    .glh-status-indicator.off svg { stroke: var(--text-light); }
+    .glh-status-label {
+        font-size: .7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .09em;
+        color: var(--text-light);
+        margin-bottom: .2rem;
+    }
+    .glh-status-value {
+        font-weight: 600;
+        font-size: .95rem;
+        color: var(--green-dark);
+    }
+    .glh-status-value.off { color: var(--text-muted); }
+
+    /* ── Section headings ── */
+    .glh-section-heading {
+        font-size: .72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        color: var(--text-light);
+        margin: 1.75rem 0 .85rem;
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+    }
+    .glh-section-heading::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    /* ── Action cards ── */
+    .glh-action-list { display: flex; flex-direction: column; gap: .75rem; }
+    .glh-action-item {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 1.1rem 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        transition: var(--transition);
+    }
+    .glh-action-item:hover { border-color: var(--green); }
+    .glh-action-item-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--green-faint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .glh-action-item-icon svg {
+        width: 17px;
+        height: 17px;
+        stroke: var(--green);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+    }
+    .glh-action-item-icon.danger { background: var(--red-faint); }
+    .glh-action-item-icon.danger svg { stroke: var(--red); }
+    .glh-action-item-icon.amber { background: var(--amber-faint); }
+    .glh-action-item-icon.amber svg { stroke: var(--amber); }
+    .glh-action-text { flex: 1; }
+    .glh-action-title {
+        font-size: .875rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: .15rem;
+    }
+    .glh-action-sub {
+        font-size: .75rem;
+        color: var(--text-muted);
+        line-height: 1.45;
+    }
+
+    /* ── Buttons ── */
+    .glh-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .6rem 1.2rem;
+        font-size: .82rem;
+        font-weight: 600;
+        border: none;
+        transition: var(--transition);
+        cursor: pointer;
+        letter-spacing: .02em;
+        font-family: var(--font-sans);
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .glh-btn-primary { background: var(--green); color: #fff; }
+    .glh-btn-primary:hover { background: var(--green-light); color: #fff; }
+    .glh-btn-danger { background: var(--red); color: #fff; }
+    .glh-btn-danger:hover { background: #7a2018; color: #fff; }
+    .glh-btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border: 1.5px solid var(--border);
+    }
+    .glh-btn-ghost:hover { border-color: var(--green); color: var(--green); }
+    .glh-btn-amber { background: var(--amber); color: #fff; }
+    .glh-btn-amber:hover { background: #7a420a; color: #fff; }
+</style>
+
+<div class="glh-2fa-root">
+
+    <partial name="_StatusMessage" for="StatusMessage" />
+
+    <h2 class="glh-2fa-title">Two-Factor Authentication</h2>
+
+    @{
+        var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
+
+        @if (consentFeature?.CanTrack ?? true)
         {
-            if (Model.RecoveryCodesLeft == 0)
+            @if (Model.Is2faEnabled)
             {
-                <div class="alert alert-danger">
-                    <strong>You have no recovery codes left.</strong>
-                    <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
+                <!-- 2FA STATUS: ENABLED -->
+                <div class="glh-status-card">
+                    <div class="glh-status-indicator">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <polyline points="9 12 11 14 15 10"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="glh-status-label">Security Status</p>
+                        <p class="glh-status-value">Two-factor authentication is enabled</p>
+                    </div>
+                </div>
+
+                <!-- RECOVERY CODE ALERTS -->
+                @if (Model.RecoveryCodesLeft == 0)
+                {
+                    <div class="glh-alert glh-alert-danger">
+                        <div class="glh-alert-icon">
+                            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <strong>You have no recovery codes left</strong>
+                            <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
+                        </div>
+                    </div>
+                }
+                else if (Model.RecoveryCodesLeft == 1)
+                {
+                    <div class="glh-alert glh-alert-danger">
+                        <div class="glh-alert-icon">
+                            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <strong>You have 1 recovery code left</strong>
+                            <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                        </div>
+                    </div>
+                }
+                else if (Model.RecoveryCodesLeft <= 3)
+                {
+                    <div class="glh-alert glh-alert-warning">
+                        <div class="glh-alert-icon">
+                            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <strong>You have @Model.RecoveryCodesLeft recovery codes left</strong>
+                            <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                        </div>
+                    </div>
+                }
+
+                <!-- 2FA MANAGEMENT ACTIONS -->
+                <p class="glh-section-heading">Manage 2FA</p>
+                <div class="glh-action-list">
+
+                    @if (Model.IsMachineRemembered)
+                    {
+                        <div class="glh-action-item">
+                            <div class="glh-action-item-icon amber">
+                                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div class="glh-action-text">
+                                <p class="glh-action-title">Forget this browser</p>
+                                <p class="glh-action-sub">You will be prompted for 2FA on your next login from this device.</p>
+                            </div>
+                            <form method="post" style="display:inline;">
+                                <button type="submit" class="glh-btn glh-btn-amber">Forget</button>
+                            </form>
+                        </div>
+                    }
+
+                    <div class="glh-action-item">
+                        <div class="glh-action-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div class="glh-action-text">
+                            <p class="glh-action-title">Reset recovery codes</p>
+                            <p class="glh-action-sub">Generate a fresh set of recovery codes for your account.</p>
+                        </div>
+                        <a asp-page="./GenerateRecoveryCodes" class="glh-btn glh-btn-primary">Reset</a>
+                    </div>
+
+                    <div class="glh-action-item">
+                        <div class="glh-action-item-icon danger">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        </div>
+                        <div class="glh-action-text">
+                            <p class="glh-action-title">Disable 2FA</p>
+                            <p class="glh-action-sub">Remove two-factor authentication from your account. Not recommended.</p>
+                        </div>
+                        <a asp-page="./Disable2fa" class="glh-btn glh-btn-danger">Disable</a>
+                    </div>
+
                 </div>
             }
-            else if (Model.RecoveryCodesLeft == 1)
+            else
             {
-                <div class="alert alert-danger">
-                    <strong>You have 1 recovery code left.</strong>
-                    <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
-                </div>
-            }
-            else if (Model.RecoveryCodesLeft <= 3)
-            {
-                <div class="alert alert-warning">
-                    <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
-                    <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                <!-- 2FA STATUS: DISABLED -->
+                <div class="glh-status-card">
+                    <div class="glh-status-indicator off">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="glh-status-label">Security Status</p>
+                        <p class="glh-status-value off">Two-factor authentication is not enabled</p>
+                    </div>
                 </div>
             }
 
-            if (Model.IsMachineRemembered)
-            {
-                <form method="post" style="display: inline-block">
-                    <button type="submit" class="btn btn-primary">Forget this browser</button>
-                </form>
-            }
-            <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
-            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
-        }
+            <!-- AUTHENTICATOR APP SECTION -->
+            <p class="glh-section-heading">Authenticator App</p>
+            <div class="glh-action-list">
+                @if (!Model.HasAuthenticator)
+                {
+                    <div class="glh-action-item">
+                        <div class="glh-action-item-icon">
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <div class="glh-action-text">
+                            <p class="glh-action-title">Add authenticator app</p>
+                            <p class="glh-action-sub">Set up an authenticator app like Google Authenticator or Authy to secure your account.</p>
+                        </div>
+                        <a id="enable-authenticator" asp-page="./EnableAuthenticator"
+                           class="glh-btn glh-btn-primary">Add App</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="glh-action-item">
+                        <div class="glh-action-item-icon">
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <div class="glh-action-text">
+                            <p class="glh-action-title">Set up authenticator app</p>
+                            <p class="glh-action-sub">Reconfigure your existing authenticator app with a new QR code.</p>
+                        </div>
+                        <a id="enable-authenticator" asp-page="./EnableAuthenticator"
+                           class="glh-btn glh-btn-primary">Set Up</a>
+                    </div>
 
-        <h4>Authenticator app</h4>
-        @if (!Model.HasAuthenticator)
-        {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Add authenticator app</a>
+                    <div class="glh-action-item">
+                        <div class="glh-action-item-icon danger">
+                            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                        </div>
+                        <div class="glh-action-text">
+                            <p class="glh-action-title">Reset authenticator app</p>
+                            <p class="glh-action-sub">Unlink your current authenticator app. You will need to re-scan the QR code.</p>
+                        </div>
+                        <a id="reset-authenticator" asp-page="./ResetAuthenticator"
+                           class="glh-btn glh-btn-ghost">Reset</a>
+                    </div>
+                }
+            </div>
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Set up authenticator app</a>
-            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+            <div class="glh-alert glh-alert-danger">
+                <div class="glh-alert-icon">
+                    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div>
+                    <strong>Privacy and cookie policy have not been accepted</strong>
+                    <p>You must accept the policy before you can enable two-factor authentication.</p>
+                </div>
+            </div>
         }
     }
-    else
-    {
-        <div class="alert alert-danger">
-            <strong>Privacy and cookie policy have not been accepted.</strong>
-            <p>You must accept the policy before you can enable two factor authentication.</p>
-        </div>
-    }
-}
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

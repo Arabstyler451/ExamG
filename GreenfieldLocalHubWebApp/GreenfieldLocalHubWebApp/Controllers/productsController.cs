@@ -106,12 +106,15 @@ namespace GreenfieldLocalHubWebApp.Controllers
             return View(viewModel);
         }
 
-        // GET: products/Create
         [Authorize(Roles = "Producer, Admin, Developer")]
         public IActionResult Create()
         {
-            ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId");
-            ViewData["producersId"] = new SelectList(_context.producers, "producersId", "producersId");
+            ViewBag.categoriesId = new SelectList(_context.categories, "categoriesId", "categoryName");
+
+            // Only admins/developers need to pick a producer manually
+            if (User.IsInRole("Admin") || User.IsInRole("Developer"))
+                ViewBag.producersId = new SelectList(_context.producers, "producersId", "producerName");
+
             return View();
         }
 
@@ -121,16 +124,36 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Producer, Admin, Developer")]
-        public async Task<IActionResult> Create([Bind("productsId,producersId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
+        public async Task<IActionResult> Create([Bind("productsId,producersId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage,productUnit")] products products)
         {
+            ModelState.Remove("producers");
+            ModelState.Remove("categories");
+
+            // For producers, always override producersId with their own —
+            // never trust what the form posts
+            if (User.IsInRole("Producer"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var producer = await _context.producers
+                    .FirstOrDefaultAsync(p => p.UserId == userId);
+
+                if (producer == null) return NotFound();
+
+                products.producersId = producer.producersId;
+            }
+
+            // producersId is now set so remove it from ModelState validation
+            ModelState.Remove("producersId");
+
             if (ModelState.IsValid)
             {
                 _context.Add(products);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "producerDashboard", new { activeTab = "products" });
             }
-            ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId", products.categoriesId);
-            ViewData["producersId"] = new SelectList(_context.producers, "producersId", "producersId", products.producersId);
+
+            ViewBag.categoriesId = new SelectList(_context.categories, "categoriesId", "categoryName", products.categoriesId);
+            ViewBag.producersId = new SelectList(_context.producers, "producersId", "producerName", products.producersId);
             return View(products);
         }
 
@@ -148,7 +171,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId", products.categoriesId);
+            ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoryName", products.categoriesId);
             return View(products);
         }
 
@@ -158,53 +181,74 @@ namespace GreenfieldLocalHubWebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Producer, Admin, Developer")]
-        public async Task<IActionResult> Edit(int id, [Bind("productsId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage")] products products)
+        public async Task<IActionResult> Edit(int id, [Bind("productsId,categoriesId,productName,productDescription,stockQuantity,productPrice,productAvailability,productImage,productUnit")] products products)
         {
-
             if (id != products.productsId)
-            {
                 return NotFound();
-            }
 
-            // Get the current user's ID
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
-            {
                 return Unauthorized();
-            }
 
-            // Find the producer associated with the current user
-            var producer = await _context.producers.FirstOrDefaultAsync(p => p.UserId == userId);
-            if (producer == null)
-            {
+            // Load the existing product from the database
+            var existing = await _context.products.FindAsync(id);
+            if (existing == null)
                 return NotFound();
-            }
 
-            products.producersId = producer.producersId;
+            // Security check: ensure this product belongs to the current producer
+            var producer = await _context.producers
+                .FirstOrDefaultAsync(p => p.UserId == userId);
+
+            if (producer == null)
+                return NotFound();
+
+            // Allow admins/developers to edit any product
+            if (!User.IsInRole("Admin") && !User.IsInRole("Developer") &&
+                existing.producersId != producer.producersId)
+                return Forbid();
+
+            // Apply only the editable fields to the tracked entity
+            existing.categoriesId = products.categoriesId;
+            existing.productName = products.productName;
+            existing.productDescription = products.productDescription;
+            existing.stockQuantity = products.stockQuantity;
+            existing.productPrice = products.productPrice;
+            existing.productAvailability = products.productAvailability;
+            existing.productImage = products.productImage;
+            existing.productUnit = products.productUnit;
+            existing.productUnit = products.productUnit;
+
             ModelState.Remove("producersId");
+            ModelState.Remove("producers");
+            ModelState.Remove("categories");
+
+
+            foreach (var kvp in ModelState)
+            {
+                foreach (var error in kvp.Value.Errors)
+                {
+                    Console.WriteLine($"ModelState error — Key: {kvp.Key}, Error: {error.ErrorMessage}");
+                }
+            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(products);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!productsExists(products.productsId))
-                    {
                         return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "producerDashboard", new { activeTab = "products" });
             }
-            ViewData["categoriesId"] = new SelectList(_context.categories, "categoriesId", "categoriesId", products.categoriesId);
-            return View(products);
+
+            ViewData["categoriesId"] = new SelectList(
+                _context.categories, "categoriesId", "categoryName", products.categoriesId);
+            return View(existing);
         }
 
 
@@ -255,7 +299,7 @@ namespace GreenfieldLocalHubWebApp.Controllers
             _context.products.Remove(products);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "producerDashboard", new { activeTab = "products" });
         }
 
         private bool productsExists(int id)
