@@ -236,6 +236,8 @@
     .order-status.processing { background: #fdf3e7; color: #9a5a10; }
     .order-status.dispatched { background: #e8eef8; color: #1a3a8f; }
     .order-status.pending    { background: #f5f5f5; color: #555; }
+    .order-status.ready    { background: #e8eef8; color: #1a3a8f; }
+    .order-status.collected { background: #eaf4ef; color: #1a6b40; }
 
     .stock-pill {
         display: inline-block;
@@ -320,27 +322,28 @@
             <div class="dash-stat" role="listitem">
                 <p class="dash-stat-label">Recent Orders</p>
                 <p class="dash-stat-value">
-                    @(ViewBag.recentOrders != null
-                        ? ((List<GreenfieldLocalHubWebApp.Models.orders>)ViewBag.recentOrders).Count
-                        : 0)
+                    @((ViewBag.recentOrders as List<GreenfieldLocalHubWebApp.Models.orders> ?? new List<GreenfieldLocalHubWebApp.Models.orders>()).Count)
                 </p>
                 <p class="dash-stat-delta">In the last period</p>
             </div>
         </div>
 
         <!-- ── TAB BAR ── -->
-        <div class="tab-bar" role="tablist" aria-label="Dashboard sections">
-            <button class="tab active" role="tab" aria-selected="true"
-                    onclick="switchDashTab(this,'dtab-products')">Product Management</button>
-            <button class="tab" role="tab" aria-selected="false"
-                    onclick="switchDashTab(this,'dtab-orders')">Order Management</button>
-        </div>
+<div class="tab-bar" role="tablist" aria-label="Dashboard sections">
+    <button class="tab @(ViewBag.activeTab == "products" ? "active" : "")"
+            role="tab"
+            aria-selected="@(ViewBag.activeTab == "products" ? "true" : "false")"
+            onclick="switchDashTab(this,'dtab-products')">Product Management</button>
+    <button class="tab @(ViewBag.activeTab == "orders" ? "active" : "")"
+            role="tab"
+            aria-selected="@(ViewBag.activeTab == "orders" ? "true" : "false")"
+            onclick="switchDashTab(this,'dtab-orders')">Order Management</button>
+</div>
 
         <!-- ════════════════
              PRODUCTS TAB
         ════════════════ -->
-        <div id="dtab-products" class="dtab active">
-
+<div id="dtab-products" class="dtab @(ViewBag.activeTab == "products" ? "active" : "")">
             @if (!Model.Any())
             {
                 <div class="empty-state">
@@ -399,13 +402,18 @@
             }
         </div>
 
-        <!-- ════════════════
+<!-- ════════════════
              ORDERS TAB
         ════════════════ -->
-        <div id="dtab-orders" class="dtab">
+<div id="dtab-orders" class="dtab @(ViewBag.activeTab == "orders" ? "active" : "")">
+    @{
+                var orders = ViewBag.recentOrders as List<GreenfieldLocalHubWebApp.Models.orders>
+                             ?? new List<GreenfieldLocalHubWebApp.Models.orders>();
+                var userEmails = ViewBag.userEmails as Dictionary<string, string>
+                                 ?? new Dictionary<string, string>();
+            }
 
-            @if (ViewBag.recentOrders == null ||
-                 ((List<GreenfieldLocalHubWebApp.Models.orders>)ViewBag.recentOrders).Count == 0)
+            @if (!orders.Any())
             {
                 <div class="empty-state">
                     <p>No recent orders.</p>
@@ -413,8 +421,6 @@
             }
             else
             {
-                var orders = (List<GreenfieldLocalHubWebApp.Models.orders>)ViewBag.recentOrders;
-
                 <div class="dtab-toolbar">
                     <input type="search" class="form-input" placeholder="Search orders…"
                            style="max-width:240px;" aria-label="Search orders"
@@ -426,6 +432,8 @@
                         <option>Processing</option>
                         <option>Dispatched</option>
                         <option>Delivered</option>
+                        <option>Ready to Collect</option>
+                        <option>Collected</option>
                     </select>
                     <span class="toolbar-meta">@orders.Count active orders</span>
                 </div>
@@ -435,30 +443,85 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
+                                <th>Customer</th>
                                 <th>Order Date</th>
+                                <th>Fulfilment</th>
                                 <th>Status</th>
-                                <th>Total</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody id="orders-tbody">
-                            @foreach (var order in orders.Take(5))
+                            @foreach (var order in orders)
                             {
                                 var statusClass = order.orderStatus?.ToLower() switch {
-                                    "delivered"  => "delivered",
-                                    "dispatched" => "dispatched",
-                                    "processing" => "processing",
-                                    _            => "pending"
+                                    "delivered"        => "delivered",
+                                    "dispatched"       => "dispatched",
+                                    "processing"       => "processing",
+                                    "ready to collect" => "ready",
+                                    "collected"        => "collected",
+                                    _                  => "pending"
                                 };
+
+                                var fulfilmentLabel = order.collection ? "Collection" : "Delivery";
+                                var fulfilmentColor = order.collection
+                                    ? "color:#1a3a8f;"
+                                    : "color:#1a6b40;";
+
+                                var nextStatus = order.collection
+                                    ? order.orderStatus switch
+                                    {
+                                        "Pending"          => "Processing",
+                                        "Processing"       => "Ready to Collect",
+                                        "Ready to Collect" => "Collected",
+                                        _                  => null
+                                    }
+                                    : order.orderStatus switch
+                                    {
+                                        "Pending"    => "Processing",
+                                        "Processing" => "Dispatched",
+                                        "Dispatched" => "Delivered",
+                                        _            => null
+                                    };
+
+                                var customerEmail = userEmails.TryGetValue(order.UserId, out var email)
+                                    ? email : "Unknown";
+
                                 <tr>
                                     <td><strong>#@order.ordersId</strong></td>
-                                    <td>@order.orderDate.ToString("dd MMM yyyy")</td>
-                                    <td><span class="order-status @statusClass">@order.orderStatus</span></td>
-                                    <td>£@order.totalAmount.ToString("0.00")</td>
                                     <td>
+                                        <span style="font-size:.82rem;">@customerEmail</span>
+                                    </td>
+                                    <td>@order.orderDate.ToString("dd MMM yyyy")</td>
+                                    <td>
+                                        <span class="order-status" style="@fulfilmentColor">
+                                            @fulfilmentLabel
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="order-status @statusClass">
+                                            @order.orderStatus
+                                        </span>
+                                    </td>
+                                    <td style="display:flex; gap:.5rem; align-items:center;">
                                         <a asp-controller="orders" asp-action="Details"
                                            asp-route-id="@order.ordersId"
                                            class="btn btn-ghost btn-sm">View</a>
+
+                                        @if (nextStatus != null)
+                                        {
+                                            <form asp-controller="producerDashboard"
+                                                  asp-action="UpdateOrderStatus"
+                                                  method="post" style="display:inline;">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="orderId"
+                                                       value="@order.ordersId" />
+                                                <button type="submit" class="btn btn-sm"
+                                                        style="background:var(--green);
+                                                               color:var(--white);">
+                                                    → @nextStatus
+                                                </button>
+                                            </form>
+                                        }
                                     </td>
                                 </tr>
                             }
